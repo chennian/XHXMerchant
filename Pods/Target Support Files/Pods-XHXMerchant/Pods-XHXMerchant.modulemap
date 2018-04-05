@@ -1,0 +1,6 @@
+framework module Pods_XHXMerchant {
+  umbrella header "Pods-XHXMerchant-umbrella.h"
+
+  export *
+  module * { export * }
+}

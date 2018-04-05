@@ -1,0 +1,89 @@
+PODS:
+  - Action (3.5.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - Alamofire (4.7.0)
+  - AliyunOSSiOS (2.9.2)
+  - APJTextPickerView (0.0.7)
+  - CryptoSwift (0.7.2)
+  - Differentiator (3.0.2)
+  - DZNEmptyDataSet (1.8.1)
+  - IQKeyboardManager (5.0.8)
+  - KeychainAccess (3.1.0)
+  - Kingfisher (4.6.4)
+  - MJRefresh (3.1.15.3)
+  - Moya/Core (10.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (10.0.2):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - PagingMenuController (2.2.0)
+  - Result (3.2.4)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - SDCycleScrollView (1.75):
+    - SDWebImage (>= 4.0.0)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - SnapKit (4.0.0)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (3.1.4)
+  - TOCropViewController (2.3.6)
+  - YYText (1.0.7)
+
+DEPENDENCIES:
+  - Action
+  - AliyunOSSiOS
+  - APJTextPickerView
+  - CryptoSwift (~> 0.7.0)
+  - DZNEmptyDataSet
+  - IQKeyboardManager
+  - KeychainAccess
+  - Kingfisher (~> 4.0)
+  - MJRefresh
+  - Moya/RxSwift (~> 10.0)
+  - PagingMenuController
+  - RxDataSources (~> 3.0)
+  - SDCycleScrollView
+  - SnapKit (~> 4.0.0)
+  - SVProgressHUD
+  - SwiftyJSON (= 3.1.4)
+  - TOCropViewController
+  - YYText
+
+SPEC CHECKSUMS:
+  Action: d60087ebce41b969d1afdad01e2fa1372a82f26e
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  AliyunOSSiOS: 0396d0483f7c83edc34e748b0ae17ffa0d7adc8d
+  APJTextPickerView: 2c2b6ca0f2a8076b8e10e3d6f2e92add429118e5
+  CryptoSwift: cd2158be2bf639aabc63ec804707c7137c90157c
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
+  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
+  Kingfisher: 68498a706e46c2a050b0c9572f100e5db407f6e0
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  Moya: 2b0531a9fef318e0bc484030c3db1e6f279ccb66
+  PagingMenuController: 6176618987bb170096664f2da097313e45ed9c31
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
+
+PODFILE CHECKSUM: a07fbeceefc0be95314aeb3786865c2fb559ddbf
+
+COCOAPODS: 1.4.0
