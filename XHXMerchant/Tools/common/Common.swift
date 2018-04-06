@@ -119,14 +119,14 @@ public func SNLog<T>(_ message: T, file: String = #file, function: String = #fun
     #endif
 }
 
-func CNLog<T>(messagr : T ,file : String = #file,function : String = #function, line : Int = #line  )
+func CNLog<T>(_ message : T ,file : String = #file,function : String = #function, line : Int = #line  )
 {
     #if DEBUG
     let str1 = (file as NSString).lastPathComponent
     let str2 = NSMutableString.init(string: str1)
     let range = NSRange.init(location: 0, length: str2.length)
     str2.replaceOccurrences(of: ".swift", with: "", options: NSString.CompareOptions.backwards, range: range)
-    print("<\(str2)--\(function)>[\(line)]:\(messagr)")
+    print("<\(str2)--\(function)>[\(line)]:\(message)")
     #endif
 }
 

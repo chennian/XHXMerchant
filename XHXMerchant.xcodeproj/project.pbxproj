@@ -14,6 +14,10 @@
 		8E7EDA3E2076800800483ADC /* XLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA3D2076800800483ADC /* XLoginController.swift */; };
 		8E7EDA402076802300483ADC /* XRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA3F2076802300483ADC /* XRegisterController.swift */; };
 		8E7EDA422076804D00483ADC /* XForgetPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA412076804D00483ADC /* XForgetPwdController.swift */; };
+		8E7EDA4420773BF100483ADC /* XMerBasicInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA4320773BF100483ADC /* XMerBasicInfoController.swift */; };
+		8E7EDA4720773D5900483ADC /* XMerApyleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA4620773D5900483ADC /* XMerApyleModel.swift */; };
+		8E7EDA4E207740BA00483ADC /* XBasicInfoFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA4D207740BA00483ADC /* XBasicInfoFieldCell.swift */; };
+		8E7EDA5020774C5F00483ADC /* XButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA4F20774C5F00483ADC /* XButtonCell.swift */; };
 		8EC76D002076092A00F78749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76CFF2076092A00F78749 /* AppDelegate.swift */; };
 		8EC76D022076092A00F78749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D012076092A00F78749 /* ViewController.swift */; };
 		8EC76D052076092A00F78749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC76D032076092A00F78749 /* Main.storyboard */; };
@@ -109,6 +113,10 @@
 		8E7EDA3D2076800800483ADC /* XLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLoginController.swift; sourceTree = "<group>"; };
 		8E7EDA3F2076802300483ADC /* XRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRegisterController.swift; sourceTree = "<group>"; };
 		8E7EDA412076804D00483ADC /* XForgetPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XForgetPwdController.swift; sourceTree = "<group>"; };
+		8E7EDA4320773BF100483ADC /* XMerBasicInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerBasicInfoController.swift; sourceTree = "<group>"; };
+		8E7EDA4620773D5900483ADC /* XMerApyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerApyleModel.swift; sourceTree = "<group>"; };
+		8E7EDA4D207740BA00483ADC /* XBasicInfoFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBasicInfoFieldCell.swift; sourceTree = "<group>"; };
+		8E7EDA4F20774C5F00483ADC /* XButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XButtonCell.swift; sourceTree = "<group>"; };
 		8EC76CFC2076092A00F78749 /* XHXMerchant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHXMerchant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC76CFF2076092A00F78749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC76D012076092A00F78749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +255,58 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8E7EDA4520773D0900483ADC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8E7EDA4820773FBB00483ADC /* Center */ = {
+			isa = PBXGroup;
+			children = (
+				8EC76DA320760AE900F78749 /* Controller */,
+				8EC76DA420760AE900F78749 /* View */,
+				8E7EDA4520773D0900483ADC /* Model */,
+			);
+			path = Center;
+			sourceTree = "<group>";
+		};
+		8E7EDA4920773FF000483ADC /* MerApply */ = {
+			isa = PBXGroup;
+			children = (
+				8E7EDA4C2077404D00483ADC /* Model */,
+				8E7EDA4B2077404300483ADC /* View */,
+				8E7EDA4A2077403500483ADC /* Controller */,
+			);
+			path = MerApply;
+			sourceTree = "<group>";
+		};
+		8E7EDA4A2077403500483ADC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E7EDA4320773BF100483ADC /* XMerBasicInfoController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8E7EDA4B2077404300483ADC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E7EDA4D207740BA00483ADC /* XBasicInfoFieldCell.swift */,
+				8E7EDA4F20774C5F00483ADC /* XButtonCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E7EDA4C2077404D00483ADC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E7EDA4620773D5900483ADC /* XMerApyleModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8EC76CF32076092A00F78749 = {
@@ -495,8 +555,8 @@
 		8EC76DA220760AE900F78749 /* CenterModule */ = {
 			isa = PBXGroup;
 			children = (
-				8EC76DA320760AE900F78749 /* Controller */,
-				8EC76DA420760AE900F78749 /* View */,
+				8E7EDA4820773FBB00483ADC /* Center */,
+				8E7EDA4920773FF000483ADC /* MerApply */,
 			);
 			path = CenterModule;
 			sourceTree = "<group>";
@@ -906,13 +966,16 @@
 				8EC76D9720760AA300F78749 /* BMAlertController.swift in Sources */,
 				8EC76D7720760AA300F78749 /* SZHUDTool.swift in Sources */,
 				8EC76D8F20760AA300F78749 /* SNBaseRadioButton.swift in Sources */,
+				8E7EDA4E207740BA00483ADC /* XBasicInfoFieldCell.swift in Sources */,
 				8EC76D7C20760AA300F78749 /* SNSwiftyJSONAble.swift in Sources */,
+				8E7EDA4420773BF100483ADC /* XMerBasicInfoController.swift in Sources */,
 				8EC76D8620760AA300F78749 /* RxMoyaAvailability.swift in Sources */,
 				8EC76D8C20760AA300F78749 /* UIButton_Extension.swift in Sources */,
 				8EC76D7D20760AA300F78749 /* VaporTestModel.swift in Sources */,
 				8EC76D9620760AA300F78749 /* SNBaseViewController.swift in Sources */,
 				8EC76D9120760AA300F78749 /* UIView_Extension.swift in Sources */,
 				8E73858920766577003349B8 /* XCenterController.swift in Sources */,
+				8E7EDA4720773D5900483ADC /* XMerApyleModel.swift in Sources */,
 				8EC76D8520760AA300F78749 /* Single+Response.swift in Sources */,
 				8EC76D7A20760AA300F78749 /* APIManager.swift in Sources */,
 				8EC76D9B20760AA300F78749 /* SNBaseTableView.swift in Sources */,
@@ -926,6 +989,7 @@
 				8EC76D7220760AA300F78749 /* UIImage+Extension.swift in Sources */,
 				8EC76D8A20760AA300F78749 /* UITableView_Extension.swift in Sources */,
 				8EC76D7620760AA300F78749 /* UIAlertViewController.swift in Sources */,
+				8E7EDA5020774C5F00483ADC /* XButtonCell.swift in Sources */,
 				8EC76D8220760AA300F78749 /* DDZOssManager.swift in Sources */,
 				8EC76D002076092A00F78749 /* AppDelegate.swift in Sources */,
 				8E73858B20766591003349B8 /* XCenterHeadCell.swift in Sources */,

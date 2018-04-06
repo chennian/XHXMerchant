@@ -94,7 +94,6 @@ extension SNMainTabBarController : UITabBarControllerDelegate {
     
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        ZJLog(messagr: "didSelect")
     }
     
 }

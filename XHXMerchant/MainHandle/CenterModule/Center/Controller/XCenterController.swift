@@ -51,10 +51,10 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell:XCenterHeadCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.clickBtnEvent = {
+            cell.timeButton.clickBtnEvent = {
                 if !cell.timeButton.isWorking{
                     //访问接口，获取验证码
-                    CNLog(messagr: "1")
+                    CNLog(1)
                     cell.timeButton.isWorking = true
                 }
             }
@@ -94,5 +94,9 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
             return fit(90)
         }
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            navigationController?.pushViewController(XMerBasicInfoController(), animated: true)
+        }
+    }
 }

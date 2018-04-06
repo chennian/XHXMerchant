@@ -9,9 +9,7 @@
 import UIKit
 
 class XCenterHeadCell: SNBaseTableViewCell {
-    
-    var  clickBtnEvent: (() -> ())?
-    
+        
     private let headImg = UIImageView().then{
         $0.backgroundColor = .red
         $0.layer.cornerRadius = fit(60)
