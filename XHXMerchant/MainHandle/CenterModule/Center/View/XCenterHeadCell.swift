@@ -10,17 +10,17 @@ import UIKit
 
 class XCenterHeadCell: SNBaseTableViewCell {
         
-    private let headImg = UIImageView().then{
+    var headImg = UIImageView().then{
         $0.backgroundColor = .red
         $0.layer.cornerRadius = fit(60)
         $0.layer.masksToBounds = true
     }
-    private let name = UILabel().then{
+    var name = UILabel().then{
         $0.text = "姓名"
         $0.textColor = Color(0x238822)
         $0.font = Font(30)
     }
-    private let phone = UILabel().then{
+    var phone = UILabel().then{
         $0.text = "17603078066"
         $0.textColor = Color(0x238822)
         $0.font = Font(30)

@@ -9,22 +9,22 @@
 import UIKit
 
 class XBasicInfoFieldCell: SNBaseTableViewCell {
-    private let line1 = UIView().then{
+    private var line1 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
-    private let line2 = UIView().then{
+    private var line2 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
-    private let line3 = UIView().then{
+    private var line3 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
-    private let line4 = UIView().then{
+    private var line4 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
-    private let line5 = UIView().then{
+    private var line5 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
-    private let line6 = UIView().then{
+    private var line6 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
     var accountName = UILabel().then{
@@ -53,7 +53,7 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         $0.placeholder = "李四"
     }
     
-    private let idCard = UILabel().then{
+    var idCard = UILabel().then{
         $0.text = "身份证号:"
         $0.font = Font(26)
         $0.textColor = Color(0x313131)

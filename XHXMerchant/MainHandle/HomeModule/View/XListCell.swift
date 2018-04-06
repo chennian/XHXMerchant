@@ -10,13 +10,13 @@ import UIKit
 
 class XListCell: SNBaseTableViewCell {
     
-    public let lable = UILabel().then{
+    var lable = UILabel().then{
         $0.text = "收款码"
         $0.textColor = Color(0x238822)
         $0.font = Font(30)
     }
     
-    private let button = UIButton().then{
+    var button = UIButton().then{
         $0.setBackgroundImage(UIImage(named: ""), for: UIControlState.normal)
         $0.backgroundColor = Color(0x238822)
     }
