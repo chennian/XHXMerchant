@@ -1,5 +1,5 @@
 //
-//  XHomeController.swift
+//  XCenterController.swift
 //  XHXMerchant
 //
 //  Created by Mac Pro on 2018/4/5.
@@ -7,29 +7,21 @@
 //
 
 import UIKit
-class XHomeController: SNBaseViewController {
 
+class XCenterController: SNBaseViewController {
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
-        $0.register(XBannerCell.self)
-        $0.register(XSpaceCell.self)
+        $0.register(XCenterHeadCell.self)
         $0.register(XListCell.self)
+        $0.register(XSpaceCell.self)
         $0.separatorStyle = .none
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
         setupUI()
     }
-    fileprivate func setNavigationBar(){
-        let barbutton = UIBarButtonItem.init(title: "登录", imgName:"", target: self, action: #selector(login))
-        navigationItem.rightBarButtonItem = barbutton
-    }
-    @objc fileprivate func login(){
-        navigationController?.pushViewController(XLoginController(), animated: true)
-    }
-    fileprivate func setupUI() {
+    func setupUI() {
         
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
@@ -48,43 +40,46 @@ class XHomeController: SNBaseViewController {
     
 }
 
-extension XHomeController:UITableViewDelegate,UITableViewDataSource{
+extension XCenterController:UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell:XBannerCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell:XCenterHeadCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.clickBtnEvent = {
+                if !cell.timeButton.isWorking{
+                    //访问接口，获取验证码
+                    CNLog(messagr: "1")
+                    cell.timeButton.isWorking = true
+                }
+            }
             return cell
         }else if indexPath.row == 1 {
             let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             return cell
         }else if indexPath.row == 2 {
             let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "收款码"
+            cell.lable.text = "推荐商家"
             return cell
         }else if indexPath.row == 3 {
             let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "店铺管理"
+            cell.lable.text = "推荐服务商/运营商"
             return cell
         }else if indexPath.row == 4 {
             let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "收益"
+            cell.lable.text = "资产管理"
             return cell
         }else if indexPath.row == 5 {
             let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "流量管理"
-            return cell
-        }else if indexPath.row == 6 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "修改密码"
+            cell.lable.text = "二级密码"
             return cell
         }else{
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             return cell
         }
     }

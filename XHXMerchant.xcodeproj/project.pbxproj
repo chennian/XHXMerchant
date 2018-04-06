@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		8DB56FDE9A990F93FD82B0C1 /* Pods_XHXMerchant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8131AC6AD6E1E6CE5B3426 /* Pods_XHXMerchant.framework */; };
+		8E73858920766577003349B8 /* XCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73858820766577003349B8 /* XCenterController.swift */; };
+		8E73858B20766591003349B8 /* XCenterHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73858A20766591003349B8 /* XCenterHeadCell.swift */; };
+		8E73858D207665B0003349B8 /* XCenterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73858C207665B0003349B8 /* XCenterListCell.swift */; };
+		8E7EDA3E2076800800483ADC /* XLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA3D2076800800483ADC /* XLoginController.swift */; };
+		8E7EDA402076802300483ADC /* XRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA3F2076802300483ADC /* XRegisterController.swift */; };
+		8E7EDA422076804D00483ADC /* XForgetPwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA412076804D00483ADC /* XForgetPwdController.swift */; };
 		8EC76D002076092A00F78749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76CFF2076092A00F78749 /* AppDelegate.swift */; };
 		8EC76D022076092A00F78749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D012076092A00F78749 /* ViewController.swift */; };
 		8EC76D052076092A00F78749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC76D032076092A00F78749 /* Main.storyboard */; };
@@ -15,7 +21,7 @@
 		8EC76D0A2076092B00F78749 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC76D082076092B00F78749 /* LaunchScreen.storyboard */; };
 		8EC76D152076092C00F78749 /* XHXMerchantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D142076092C00F78749 /* XHXMerchantTests.swift */; };
 		8EC76D202076092C00F78749 /* XHXMerchantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D1F2076092C00F78749 /* XHXMerchantUITests.swift */; };
-		8EC76D6F20760AA300F78749 /* LBBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D2F20760AA300F78749 /* LBBarButtonItem.swift */; };
+		8EC76D6F20760AA300F78749 /* UIBarButtonItemExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D2F20760AA300F78749 /* UIBarButtonItemExtention.swift */; };
 		8EC76D7020760AA300F78749 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D3020760AA300F78749 /* UISearchBarExtension.swift */; };
 		8EC76D7120760AA300F78749 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D3120760AA300F78749 /* Date+Extension.swift */; };
 		8EC76D7220760AA300F78749 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D3220760AA300F78749 /* UIImage+Extension.swift */; };
@@ -97,6 +103,12 @@
 		7B47A4B65314AA83B77DE3C4 /* Pods-XHXMerchantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantUITests/Pods-XHXMerchantUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		89ADAA6202EF977F5D06D873 /* Pods-XHXMerchantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantTests/Pods-XHXMerchantTests.release.xcconfig"; sourceTree = "<group>"; };
 		8B8131AC6AD6E1E6CE5B3426 /* Pods_XHXMerchant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHXMerchant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E73858820766577003349B8 /* XCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCenterController.swift; sourceTree = "<group>"; };
+		8E73858A20766591003349B8 /* XCenterHeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCenterHeadCell.swift; sourceTree = "<group>"; };
+		8E73858C207665B0003349B8 /* XCenterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCenterListCell.swift; sourceTree = "<group>"; };
+		8E7EDA3D2076800800483ADC /* XLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLoginController.swift; sourceTree = "<group>"; };
+		8E7EDA3F2076802300483ADC /* XRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRegisterController.swift; sourceTree = "<group>"; };
+		8E7EDA412076804D00483ADC /* XForgetPwdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XForgetPwdController.swift; sourceTree = "<group>"; };
 		8EC76CFC2076092A00F78749 /* XHXMerchant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHXMerchant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC76CFF2076092A00F78749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC76D012076092A00F78749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +122,7 @@
 		8EC76D1B2076092C00F78749 /* XHXMerchantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XHXMerchantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC76D1F2076092C00F78749 /* XHXMerchantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XHXMerchantUITests.swift; sourceTree = "<group>"; };
 		8EC76D212076092C00F78749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EC76D2F20760AA300F78749 /* LBBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBBarButtonItem.swift; sourceTree = "<group>"; };
+		8EC76D2F20760AA300F78749 /* UIBarButtonItemExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtention.swift; sourceTree = "<group>"; };
 		8EC76D3020760AA300F78749 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
 		8EC76D3120760AA300F78749 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8EC76D3220760AA300F78749 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -211,6 +223,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8E7EDA3A20767FA500483ADC /* LoginModule */ = {
+			isa = PBXGroup;
+			children = (
+				8E7EDA3B20767FB900483ADC /* Controller */,
+				8E7EDA3C20767FCE00483ADC /* View */,
+			);
+			path = LoginModule;
+			sourceTree = "<group>";
+		};
+		8E7EDA3B20767FB900483ADC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E7EDA3D2076800800483ADC /* XLoginController.swift */,
+				8E7EDA3F2076802300483ADC /* XRegisterController.swift */,
+				8E7EDA412076804D00483ADC /* XForgetPwdController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8E7EDA3C20767FCE00483ADC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8EC76CF32076092A00F78749 = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +319,7 @@
 		8EC76D2E20760AA300F78749 /* Extend */ = {
 			isa = PBXGroup;
 			children = (
-				8EC76D2F20760AA300F78749 /* LBBarButtonItem.swift */,
+				8EC76D2F20760AA300F78749 /* UIBarButtonItemExtention.swift */,
 				8EC76D3020760AA300F78749 /* UISearchBarExtension.swift */,
 				8EC76D3120760AA300F78749 /* Date+Extension.swift */,
 				8EC76D3220760AA300F78749 /* UIImage+Extension.swift */,
@@ -447,8 +485,9 @@
 		8EC76DA120760AE900F78749 /* MainHandle */ = {
 			isa = PBXGroup;
 			children = (
-				8EC76DA220760AE900F78749 /* CenterModule */,
+				8E7EDA3A20767FA500483ADC /* LoginModule */,
 				8EC76DA520760AE900F78749 /* HomeModule */,
+				8EC76DA220760AE900F78749 /* CenterModule */,
 			);
 			path = MainHandle;
 			sourceTree = "<group>";
@@ -465,6 +504,7 @@
 		8EC76DA320760AE900F78749 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8E73858820766577003349B8 /* XCenterController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -472,6 +512,8 @@
 		8EC76DA420760AE900F78749 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E73858A20766591003349B8 /* XCenterHeadCell.swift */,
+				8E73858C207665B0003349B8 /* XCenterListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -851,10 +893,12 @@
 			files = (
 				8EC76D7120760AA300F78749 /* Date+Extension.swift in Sources */,
 				8EC76D7920760AA300F78749 /* SNNetModel.swift in Sources */,
+				8E73858D207665B0003349B8 /* XCenterListCell.swift in Sources */,
 				8EC76D9420760AA300F78749 /* SNRXSectionModel.swift in Sources */,
-				8EC76D6F20760AA300F78749 /* LBBarButtonItem.swift in Sources */,
+				8EC76D6F20760AA300F78749 /* UIBarButtonItemExtention.swift in Sources */,
 				8EC76D8020760AA300F78749 /* SNMoyaResult.swift in Sources */,
 				8EC76D9F20760AA300F78749 /* SNContentGet.swift in Sources */,
+				8E7EDA422076804D00483ADC /* XForgetPwdController.swift in Sources */,
 				8EC76D7520760AA300F78749 /* SnapKit_Extension.swift in Sources */,
 				8EC76DA020760AA300F78749 /* SNBaseNaviController.swift in Sources */,
 				8EC76D9320760AA300F78749 /* SNBaseViewModel.swift in Sources */,
@@ -868,6 +912,7 @@
 				8EC76D7D20760AA300F78749 /* VaporTestModel.swift in Sources */,
 				8EC76D9620760AA300F78749 /* SNBaseViewController.swift in Sources */,
 				8EC76D9120760AA300F78749 /* UIView_Extension.swift in Sources */,
+				8E73858920766577003349B8 /* XCenterController.swift in Sources */,
 				8EC76D8520760AA300F78749 /* Single+Response.swift in Sources */,
 				8EC76D7A20760AA300F78749 /* APIManager.swift in Sources */,
 				8EC76D9B20760AA300F78749 /* SNBaseTableView.swift in Sources */,
@@ -883,11 +928,13 @@
 				8EC76D7620760AA300F78749 /* UIAlertViewController.swift in Sources */,
 				8EC76D8220760AA300F78749 /* DDZOssManager.swift in Sources */,
 				8EC76D002076092A00F78749 /* AppDelegate.swift in Sources */,
+				8E73858B20766591003349B8 /* XCenterHeadCell.swift in Sources */,
 				8EC76D9220760AA300F78749 /* SNStoreSectoiniModel.swift in Sources */,
 				8EC76D9520760AA300F78749 /* DDZBasicTableVC.swift in Sources */,
 				8EC76DA920760AE900F78749 /* XHomeController.swift in Sources */,
 				8EC76D9020760AA300F78749 /* UIImage_Extension.swift in Sources */,
 				8EC76D8120760AA300F78749 /* DDZUploadBtn.swift in Sources */,
+				8E7EDA3E2076800800483ADC /* XLoginController.swift in Sources */,
 				8EC76D8D20760AA300F78749 /* UIImageView_Extension.swift in Sources */,
 				8EC76D7020760AA300F78749 /* UISearchBarExtension.swift in Sources */,
 				8EC76D7420760AA300F78749 /* UIViewExtension.swift in Sources */,
@@ -903,6 +950,7 @@
 				8EC76D7F20760AA300F78749 /* SNMoya_ResponseMapper.swift in Sources */,
 				8EC76D8420760AA300F78749 /* MoyaProvider+Rx.swift in Sources */,
 				8EC76D9C20760AA300F78749 /* SNMainTabBarController.swift in Sources */,
+				8E7EDA402076802300483ADC /* XRegisterController.swift in Sources */,
 				8EC76D7B20760AA300F78749 /* GetResponse.swift in Sources */,
 				8EC76D9820760AA300F78749 /* SNBaseTableViewCell.swift in Sources */,
 			);

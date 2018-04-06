@@ -22,6 +22,8 @@ class SNBaseNaviController: UINavigationController {
             let button = UIButton()
             button.setImage(UIImage(named:"map_return1"), for: .normal)
 //            button.sizeToFit()
+            button.setTitle("返回", for: UIControlState.normal)
+            button.setTitleColor(.black, for: .normal)
             button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
             button.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0)
             button.addTarget(self, action: #selector(backUp), for: .touchUpInside)

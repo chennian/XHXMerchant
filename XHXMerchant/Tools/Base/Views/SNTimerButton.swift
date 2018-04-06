@@ -7,66 +7,95 @@
 //
 
 import UIKit
-import RxSwift
+import QuartzCore
 
-
-/// 每次点击按钮需调用start方法
-class SNTimerButton: UIButton {
+class TimerButton: UIButton {
     
-//    let buttonVari = Variable("验证码")
+    var timeLength = 60
+    var currentTime = 0
     
-    let time : Int
-    let content : String
-    init(remainTime: Int, title: String = "验证码") {
-        time = remainTime
-        content = title
-        super.init(frame: .zero)
-    }
+    var isWorking:Bool = false
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var start = ""
+    var prefix = ""
     
-    var remainSecond = 0 {
-        willSet {
-//            buttonVari.value = "\(newValue)秒"
-            setTitle("\(newValue)秒", for: .normal)
-            if newValue <= 0 {
-                isCounting = false
-                isEnabled = true
-//                buttonVari.value = "验证码"
-                setTitle("验证码", for: .normal)
-                
-            }
+    var clickBtnEvent: (() -> Void)?
+    
+    lazy var timeLayer: CATextLayer = {
+        let l = CATextLayer()
+        l.alignmentMode = kCAAlignmentCenter
+        l.font = Font(28)
+        l.fontSize = fit(28)
+        l.foregroundColor = UIColor.red.cgColor
+        l.contentsScale = 2
+        return l
+    }()
+    
+    var timer: Timer?
+    
+    func setup(_ startTitle: String?,timeTitlePrefix: String?,aTimeLength:Int?) {
+        layer.addSublayer(timeLayer)
+        if startTitle != nil {
+            start = startTitle!
         }
-    }
-    
-    var countdownTimer : Timer?
-    var isCounting = false {
-        willSet {
-            if newValue {
-                countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-                
-                remainSecond = time
-                
-            } else {
-                countdownTimer?.invalidate()
-                countdownTimer = nil
-                
-            }
-            
+        if timeTitlePrefix != nil {
+            prefix = timeTitlePrefix!
         }
+        if aTimeLength != nil{
+            timeLength = aTimeLength!
+        }
+        restore()
+        self.addTarget(self, action: #selector(clickBtn), for: .touchUpInside)
     }
     
-    @objc func updateTime(timer: Timer) {
-        // 计时开始时，逐秒减少remainingSeconds的值
-        remainSecond -= 1
-    }
-    
-    func start() {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        timeLayer.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 18)
+        timeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
         
-        isEnabled = false
-        isCounting = true
     }
-
+    
+    @objc func clockEvent() {
+        update()
+        if currentTime <= 0 {
+            restore()
+        }
+        //测试
+        currentTime -= 1
+    }
+    
+    @objc fileprivate func update() {
+        timeLayer.string = prefix + "\(currentTime)s"
+    }
+    
+    @objc fileprivate func restore() {
+        isWorking = false
+        currentTime = timeLength
+        timeLayer.string = start
+        timerChangeStatus(false)
+        self.isSelected = false
+    }
+    
+    
+    @objc fileprivate func clickBtn(_ sender: TimerButton) {
+        sender.isSelected = true
+        timerChangeStatus(true)
+        if clickBtnEvent != nil {
+            clickBtnEvent!()
+        }
+    }
+    
+    @objc fileprivate func timerChangeStatus(_ fire: Bool) {
+        if fire {
+            if timer == nil {
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(clockEvent), userInfo: nil, repeats: true)
+            }
+        } else {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
 }
+
+
+

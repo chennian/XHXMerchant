@@ -10,31 +10,31 @@ import UIKit
 
 class XListCell: SNBaseTableViewCell {
     
-    private lazy var tableview = UITableView.init(frame:.zero, style:UITableViewStyle.plain).then{
-        $0.backgroundColor = color_bg_gray_f5
-        $0.delegate = self
-        $0.dataSource = self
+    public let lable = UILabel().then{
+        $0.text = "收款码"
+        $0.textColor = Color(0x238822)
+        $0.font = Font(30)
+    }
+    
+    private let button = UIButton().then{
+        $0.setBackgroundImage(UIImage(named: ""), for: UIControlState.normal)
+        $0.backgroundColor = Color(0x238822)
     }
     
     override func setupView() {
-        contentView.addSubview(tableview)
-        tableview.snp.makeConstraints { (make) in
-            make.left.top.right.bottom.equalToSuperview()
+        contentView.addSubview(lable)
+        contentView.addSubview(button)
+        
+        lable.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().snOffset(30)
+            make.center.equalToSuperview()
+        }
+        button.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().snOffset(-30)
+            make.centerY.equalToSuperview()
+            make.height.width.snEqualTo(30)
         }
     }
 
 }
-extension XListCell:UITableViewDelegate,UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = "nihao"
-        cell.textLabel?.textColor = .black
-        return cell
-    }
-    
-    
-}
+
