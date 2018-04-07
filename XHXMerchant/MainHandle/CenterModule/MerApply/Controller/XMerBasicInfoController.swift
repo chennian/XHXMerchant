@@ -17,18 +17,7 @@ class XMerBasicInfoController: SNBaseViewController {
     fileprivate var emergencyContact :String?
     fileprivate var emergencyContactPhone :String?
     fileprivate var email :String?
-    fileprivate var oneStep:StepOne?
-
-//    var stepOneModel: StepOneProtocol?
-
-    fileprivate var path: String {
-        get {
-            let filename = "/archive"
-            let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-            return "\(documentDirectory)\(filename)"
-        }
-    }
-    
+    var stepOneModel: StepOneProtocol?
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
         $0.register(XBasicInfoFieldCell.self)
@@ -50,30 +39,38 @@ class XMerBasicInfoController: SNBaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        oneStep = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? StepOne
-        fieldCell.accountNameField.text = oneStep!.accountName
-        fieldCell.legalNameField.text = oneStep!.legalName
-        fieldCell.idCardTextField.text = oneStep!.idCard
-        fieldCell.emergencyContactField.text = oneStep!.emergencyContact
-        fieldCell.emergencyContactPhoneField.text = oneStep!.emergencyContactPhone
-        fieldCell.emailField.text = oneStep!.email
+        guard  let oneStep = stepOneModel  else {
+            return
+        }
+        fieldCell.accountNameField.text = oneStep.accountName
+        fieldCell.legalNameField.text = oneStep.legalName
+        fieldCell.idCardTextField.text = oneStep.idCard
+        fieldCell.emergencyContactField.text = oneStep.emergencyContact
+        fieldCell.emergencyContactPhoneField.text = oneStep.emergencyContactPhone
+        fieldCell.emailField.text = oneStep.email
     
     }
     func saveModel(){
-        self.accountName = fieldCell.accountNameField.text
-        self.legalName =  fieldCell.legalNameField.text
-        self.idCard = fieldCell.idCardTextField.text
-        self.emergencyContact = fieldCell.emergencyContactField.text
-        self.emergencyContactPhone = fieldCell.emergencyContactPhoneField.text
-        self.email = fieldCell.emailField.text
+        accountName = fieldCell.accountNameField.text
+        legalName =  fieldCell.legalNameField.text
+        idCard = fieldCell.idCardTextField.text
+        emergencyContact = fieldCell.emergencyContactField.text
+        emergencyContactPhone = fieldCell.emergencyContactPhoneField.text
+        email = fieldCell.emailField.text
+        
+        self.stepOneModel?.accountName = accountName
+        self.stepOneModel?.legalName = legalName
+        self.stepOneModel?.idCard = idCard
+        self.stepOneModel?.emergencyContact = emergencyContact
+        self.stepOneModel?.emergencyContactPhone = emergencyContactPhone
+        self.stepOneModel?.email = email
+        
+        ApplyModelTool.save(model: ApplyModel.shareApplyModel)
 
-        let oneStepArchive = StepOne.init(accountName!,legalName!,idCard!,emergencyContact!,emergencyContactPhone!,email!)
-         NSKeyedArchiver.archiveRootObject(oneStepArchive, toFile: self.path)
-        CNLog(oneStep?.accountName)
 
     }
     fileprivate func setupUI() {
-//        stepOneModel = ApplyModel.shareApplyModel.applySelfModel.stepOne
+        stepOneModel = ApplyModel.shareApplyModel.applySelfModel.stepOne
         self.title = "基本信息"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
