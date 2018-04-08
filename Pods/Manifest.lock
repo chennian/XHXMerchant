@@ -36,6 +36,7 @@ PODS:
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (3.1.4)
   - TOCropViewController (2.3.6)
+  - TZImagePickerController (2.0.0.9)
   - YYText (1.0.7)
 
 DEPENDENCIES:
@@ -56,6 +57,7 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftyJSON (= 3.1.4)
   - TOCropViewController
+  - TZImagePickerController
   - YYText
 
 SPEC CHECKSUMS:
@@ -82,8 +84,9 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
+  TZImagePickerController: 9bf89512bb6de53e87897f2e17e607c126a199d6
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: a07fbeceefc0be95314aeb3786865c2fb559ddbf
+PODFILE CHECKSUM: 4a783f7c7bf3a1e25416942e1c37c20eb541214c
 
 COCOAPODS: 1.4.0

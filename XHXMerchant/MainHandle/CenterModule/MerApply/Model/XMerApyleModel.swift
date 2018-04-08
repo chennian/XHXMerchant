@@ -16,6 +16,8 @@ protocol StepOneProtocol {
     var emergencyContact: String? { get set  }
     var emergencyContactPhone: String? { get set  }
     var email: String? { get set  }
+    var frontImage:ApplyImage? { get set }
+    var backImage:ApplyImage? { get set }
 }
 
 class StepOne: NSObject,StepOneProtocol,NSCoding {
@@ -30,6 +32,10 @@ class StepOne: NSObject,StepOneProtocol,NSCoding {
     var emergencyContactPhone: String?
     
     var email: String?
+    
+    var frontImage: ApplyImage?
+    
+    var backImage: ApplyImage?
     
     override init() {
         super.init()

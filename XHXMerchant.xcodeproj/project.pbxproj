@@ -18,6 +18,8 @@
 		8E7EDA4720773D5900483ADC /* XMerApyleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA4620773D5900483ADC /* XMerApyleModel.swift */; };
 		8E7EDA4E207740BA00483ADC /* XBasicInfoFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA4D207740BA00483ADC /* XBasicInfoFieldCell.swift */; };
 		8E7EDA5020774C5F00483ADC /* XButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA4F20774C5F00483ADC /* XButtonCell.swift */; };
+		8E7EDA522078A7E200483ADC /* XIdCardImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA512078A7E200483ADC /* XIdCardImageCell.swift */; };
+		8E7EDA542078B64A00483ADC /* DDZCamerationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA532078B64A00483ADC /* DDZCamerationController.swift */; };
 		8EC76D002076092A00F78749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76CFF2076092A00F78749 /* AppDelegate.swift */; };
 		8EC76D022076092A00F78749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D012076092A00F78749 /* ViewController.swift */; };
 		8EC76D052076092A00F78749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC76D032076092A00F78749 /* Main.storyboard */; };
@@ -117,6 +119,8 @@
 		8E7EDA4620773D5900483ADC /* XMerApyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerApyleModel.swift; sourceTree = "<group>"; };
 		8E7EDA4D207740BA00483ADC /* XBasicInfoFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBasicInfoFieldCell.swift; sourceTree = "<group>"; };
 		8E7EDA4F20774C5F00483ADC /* XButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XButtonCell.swift; sourceTree = "<group>"; };
+		8E7EDA512078A7E200483ADC /* XIdCardImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIdCardImageCell.swift; sourceTree = "<group>"; };
+		8E7EDA532078B64A00483ADC /* DDZCamerationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDZCamerationController.swift; sourceTree = "<group>"; };
 		8EC76CFC2076092A00F78749 /* XHXMerchant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHXMerchant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC76CFF2076092A00F78749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC76D012076092A00F78749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 			children = (
 				8E7EDA4D207740BA00483ADC /* XBasicInfoFieldCell.swift */,
 				8E7EDA4F20774C5F00483ADC /* XButtonCell.swift */,
+				8E7EDA512078A7E200483ADC /* XIdCardImageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 		8EC76D4420760AA300F78749 /* ALIOSS */ = {
 			isa = PBXGroup;
 			children = (
+				8E7EDA532078B64A00483ADC /* DDZCamerationController.swift */,
 				8EC76D4520760AA300F78749 /* DDZUploadBtn.swift */,
 				8EC76D4620760AA300F78749 /* DDZOssManager.swift */,
 			);
@@ -829,6 +835,7 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TOCropViewController/TOCropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -856,6 +863,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TOCropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -968,6 +976,7 @@
 				8EC76D8F20760AA300F78749 /* SNBaseRadioButton.swift in Sources */,
 				8E7EDA4E207740BA00483ADC /* XBasicInfoFieldCell.swift in Sources */,
 				8EC76D7C20760AA300F78749 /* SNSwiftyJSONAble.swift in Sources */,
+				8E7EDA542078B64A00483ADC /* DDZCamerationController.swift in Sources */,
 				8E7EDA4420773BF100483ADC /* XMerBasicInfoController.swift in Sources */,
 				8EC76D8620760AA300F78749 /* RxMoyaAvailability.swift in Sources */,
 				8EC76D8C20760AA300F78749 /* UIButton_Extension.swift in Sources */,
@@ -1016,6 +1025,7 @@
 				8EC76D9C20760AA300F78749 /* SNMainTabBarController.swift in Sources */,
 				8E7EDA402076802300483ADC /* XRegisterController.swift in Sources */,
 				8EC76D7B20760AA300F78749 /* GetResponse.swift in Sources */,
+				8E7EDA522078A7E200483ADC /* XIdCardImageCell.swift in Sources */,
 				8EC76D9820760AA300F78749 /* SNBaseTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
