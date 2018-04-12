@@ -95,8 +95,12 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.row == 2 {
             navigationController?.pushViewController(XMerBasicInfoController(), animated: true)
+        }
+        if indexPath.row == 4 {
+            navigationController?.pushViewController(XPropertyController(), animated: true)
         }
     }
 }

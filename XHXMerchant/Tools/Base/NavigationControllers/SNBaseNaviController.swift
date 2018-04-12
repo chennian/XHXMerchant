@@ -34,8 +34,6 @@ class SNBaseNaviController: UINavigationController {
      
         }
         super.pushViewController(viewController, animated: animated)
-
-      
     }
     
     
@@ -103,11 +101,7 @@ extension SNBaseNaviController {
     func resetShadowImage(){
         navigationBar.shadowImage = stroeShadowImage
     }
-    
 }
-
-
-
 
 class BMGeneralNaviBarItemButton : UIButton{
     
@@ -116,7 +110,7 @@ class BMGeneralNaviBarItemButton : UIButton{
         setTitle(title, for: .normal)
         setTitle(selectTitle, for: .selected)
         setTitleColor( color_font_black_607, for: .normal)
-        titleLabel?.font = UIFont.systemFont(ofSize: fit( 28))
+        titleLabel?.font = UIFont.systemFont(ofSize: fit( 30))
         sizeToFit()
     }
 

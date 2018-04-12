@@ -31,7 +31,7 @@ public extension MenuViewCustomizable {
         return UIColor.white
     }
     var height: CGFloat {
-        return 50
+        return 40
     }
     var animationDuration: TimeInterval {
         return 0.3
@@ -46,7 +46,7 @@ public extension MenuViewCustomizable {
         return .standard(widthMode: .flexible, centerItem: false, scrollingMode: .pagingEnabled)
     }
     var focusMode: MenuFocusMode {
-        return .underline(height: 3, color: UIColor.blue, horizontalPadding: 0, verticalPadding: 0)
+        return .underline(height: 2, color: UIColor.red, horizontalPadding: 30, verticalPadding: 0)
     }
     var dummyItemViewsSet: Int {
         return 3

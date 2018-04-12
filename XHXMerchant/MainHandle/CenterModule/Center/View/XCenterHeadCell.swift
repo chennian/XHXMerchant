@@ -28,6 +28,8 @@ class XCenterHeadCell: SNBaseTableViewCell {
     
     var timeButton = TimerButton().then{
         $0.timeLength = 60
+        $0.backgroundColor = Color(0x272424)
+
     }
     
     override func setupView() {

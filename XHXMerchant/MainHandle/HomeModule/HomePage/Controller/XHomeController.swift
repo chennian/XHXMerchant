@@ -27,7 +27,7 @@ class XHomeController: SNBaseViewController {
         navigationItem.rightBarButtonItem = barbutton
     }
     @objc fileprivate func login(){
-        navigationController?.pushViewController(XLoginController(), animated: true)
+        navigationController?.pushViewController(XRecmdRecordController(), animated: true)
     }
     fileprivate func setupUI() {
         

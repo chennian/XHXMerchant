@@ -26,7 +26,7 @@ class TimerButton: UIButton {
         l.alignmentMode = kCAAlignmentCenter
         l.font = Font(28)
         l.fontSize = fit(28)
-        l.foregroundColor = UIColor.red.cgColor
+        l.foregroundColor = Color(0xffffff).cgColor
         l.contentsScale = 2
         return l
     }()

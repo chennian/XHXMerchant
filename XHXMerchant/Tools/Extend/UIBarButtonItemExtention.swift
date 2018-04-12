@@ -20,6 +20,7 @@ extension UIBarButtonItem {
 		btn.setImage(UIImage(named: imgName), for: .highlighted)
 		btn.addTarget(target, action: action, for: .touchUpInside)
 		btn.frame = CGRect(x: 0, y: 0, width: 8, height: 16)
+        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: fit(-180))
 		self.init(customView: btn)
 		
 	}

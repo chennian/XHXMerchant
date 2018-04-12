@@ -59,10 +59,23 @@ class XMerBasicInfoController: SNBaseViewController {
         fieldCell.emergencyContactField.text = oneStep.emergencyContact
         fieldCell.emergencyContactPhoneField.text = oneStep.emergencyContactPhone
         fieldCell.emailField.text = oneStep.email
+        CNLog(oneStep.frontImage?.image)
         
-        imgCell.frontCard.setImage(oneStep.frontImage?.image, for: UIControlState.normal)
-        imgCell.backCard.setImage(oneStep.backImage?.image, for: UIControlState.normal)
-
+        if oneStep.frontImage?.image == nil {
+            imgCell.frontCard.setImage(UIImage(named:"new_addition"), for: .normal)
+        }else{
+            imgCell.frontCard.setImage(oneStep.frontImage?.image, for: UIControlState.normal)
+        }
+        if oneStep.backImage?.image == nil {
+            imgCell.frontCard.setImage(UIImage(named:"new_addition"), for: .normal)
+        }else{
+            imgCell.backCard.setImage(oneStep.backImage?.image, for: UIControlState.normal)
+        }
+        
+//
+//        imgCell.frontCard.kf.setImage(with: URL(string: (oneStep.frontImage?.path)!), for: .normal)
+//        imgCell.frontCard.kf.setImage(with: URL(string: (oneStep.backImage?.path)!), for: .normal)
+        
     }
     func saveModel(){
         accountName = fieldCell.accountNameField.text
@@ -71,6 +84,7 @@ class XMerBasicInfoController: SNBaseViewController {
         emergencyContact = fieldCell.emergencyContactField.text
         emergencyContactPhone = fieldCell.emergencyContactPhoneField.text
         email = fieldCell.emailField.text
+        
         
         self.stepOneModel?.accountName = accountName
         self.stepOneModel?.legalName = legalName
@@ -94,7 +108,6 @@ class XMerBasicInfoController: SNBaseViewController {
             make.left.top.right.bottom.equalToSuperview()
         }
     }
-
 }
 extension XMerBasicInfoController:UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -182,7 +195,7 @@ extension XMerBasicInfoController : UIImagePickerControllerDelegate,UINavigation
 extension  XMerBasicInfoController: TOCropViewControllerDelegate{
     func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {
         unowned let weakself = self
-        
+        SZHUD("上传图片中", type:.loading, callBack: nil)
         cropViewController.dismiss(animated: false) {
             weakself.protocolObject?.setPalceImg(img: image, fineshed: { (res) in
                 if res{//上传oss成功
@@ -196,7 +209,7 @@ extension  XMerBasicInfoController: TOCropViewControllerDelegate{
                         self.backImagePath = frontUrl + obk
                         self.stepOneModel?.backImage = ApplyImage(image: image, path: self.backImagePath)
                     }
-                    
+                    SZHUDDismiss()
                 }
             })
             

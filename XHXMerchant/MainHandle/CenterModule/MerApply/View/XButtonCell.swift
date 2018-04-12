@@ -24,7 +24,8 @@ class XButtonCell: SNBaseTableViewCell {
         submitBoutton.addTarget(self, action: #selector(stepOne), for: .touchUpInside)
     }
     @objc func stepOne(){
-        clickBtnEvent!("1")
+        guard let clickEvent = clickBtnEvent else {return}
+        clickEvent("1")
     }
     override func setupView() {
         contentView.addSubview(submitBoutton)
