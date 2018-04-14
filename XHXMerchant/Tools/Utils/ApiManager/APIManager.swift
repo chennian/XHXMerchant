@@ -21,7 +21,7 @@ import RxSwift
  * availableCode : 请求正确的代码数组
  * 请求结果需要用到。 sp_success 来解析 请求正确的数据
  */
-func ZJRequest<T : SNSwiftyJSONAble>(requestType: API, modelType: [T.Type],availableCode : [Int] = [000000]) -> Observable<SNMoyaResult<[T]>> {
+func ZJRequest<T : SNSwiftyJSONAble>(requestType: API, modelType: [T.Type],availableCode : [Int]) -> Observable<SNMoyaResult<[T]>> {
     return BMProvider.request(requestType).asObservable().zj_map(to: modelType.self, availableCode: availableCode)
 }
 
@@ -31,13 +31,8 @@ func ZJRequest<T : SNSwiftyJSONAble>(requestType: API, modelType: [T.Type],avail
 
 
 
-func SNRequestString(requestType: API) -> Observable<SNMoyaResult<Bool>> {
-    return BMProvider.request(requestType).asObservable().mapToString()
-}
 
-
-func SNRequest<T : SNSwiftyJSONAble>(requestType: API, modelType: [T.Type],availableCode : [String] = [
-    "000000"]) -> Observable<SNMoyaResult<[T]>> {
+func SNRequest<T : SNSwiftyJSONAble>(requestType: API, modelType: [T.Type],availableCode : [Int] = [1000]) -> Observable<SNMoyaResult<[T]>> {
     return BMProvider.request(requestType).asObservable().map(to: modelType.self,availableCode : availableCode)
 }
 

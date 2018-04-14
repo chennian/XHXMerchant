@@ -11,6 +11,17 @@ import UIKit
 class common: NSObject {
     
 }
+//用户信息
+public let PHONE = "phone"
+public let NickName = "nickName"
+public let IsMer = "isMer"
+public let IsAgent = "isAgent"
+public let MERCID = "mercId"
+public let TOKEN = "token"
+
+public let ISLOGIN = "user_login_status" // 用户登录状态  0 已登录 1 未登录
+public let LOGIN_TRUE = "0"
+public let LOGIN_FALSE = "1"
 
 //oss
 let OSSAccessKey = "LTAI6rTfz7ikikTG"
@@ -31,7 +42,7 @@ let color_bg_gray_e5 = Color(0xe5e5e5)
 let color_bg_gray_fa = Color(0xfafafa)
 let color_bg_light_blue = Color(0x88d2ff)
 let color_text_f5b49 = Color(0xff5b29)
-let color_main = Color(0x28c041)
+let color_main = Color(0xff0000)
 let color_gray_cf = Color(0xcfcfcf)
 let color_font_black_607 = Color(0x000607)
 let color_font_gray_9f = Color(0x9f9f9f)

@@ -19,7 +19,7 @@ class XUploadBankController: SNBaseViewController {
     }
 
     fileprivate func setupUI() {
-        
+        self.title = "修改银行卡"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
         tableView.delegate = self

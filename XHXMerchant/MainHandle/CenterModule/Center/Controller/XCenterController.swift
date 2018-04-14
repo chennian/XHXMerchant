@@ -12,7 +12,8 @@ class XCenterController: SNBaseViewController {
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
         $0.register(XCenterHeadCell.self)
-        $0.register(XListCell.self)
+        $0.register(XCenterListCell.self)
+        $0.register(XLoginOutCell.self)
         $0.register(XSpaceCell.self)
         $0.separatorStyle = .none
     }
@@ -21,7 +22,21 @@ class XCenterController: SNBaseViewController {
         super.viewDidLoad()
         setupUI()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = Color(0xff8518)
+        (navigationController as! SNBaseNaviController).hindShadowImage()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Color(0xffffff)]
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor = Color(0xffffff)
+        (navigationController as! SNBaseNaviController).resetShadowImage()
+         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Color(0x313131)]
+    }
+
     func setupUI() {
+     
         
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
@@ -45,41 +60,53 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell:XCenterHeadCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.timeButton.clickBtnEvent = {
-                if !cell.timeButton.isWorking{
-                    //访问接口，获取验证码
-                    CNLog(1)
-                    cell.timeButton.isWorking = true
-                }
-            }
             return cell
         }else if indexPath.row == 1 {
             let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+
             return cell
         }else if indexPath.row == 2 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "推荐商家"
+            let cell:XCenterListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.lable.text = "银行卡管理"
+            cell.img.image = UIImage(named: "my_card")
+            cell.accessoryType = .disclosureIndicator
             return cell
         }else if indexPath.row == 3 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "推荐服务商/运营商"
+            let cell:XCenterListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.lable.text = "修改登录密码"
+            cell.img.image = UIImage(named: "my_password")
+            cell.accessoryType = .disclosureIndicator
+
             return cell
         }else if indexPath.row == 4 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "资产管理"
+            let cell:XCenterListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.lable.text = "推送开关"
+            cell.img.image = UIImage(named: "my_switch")
+            cell.accessoryType = .disclosureIndicator
+
             return cell
         }else if indexPath.row == 5 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "二级密码"
+            let cell:XCenterListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.lable.text = "关于小黑熊商家版"
+            cell.img.image = UIImage(named: "mu_regard")
+            cell.accessoryType = .disclosureIndicator
+            return cell
+        }else if indexPath.row == 6{
+            let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             return cell
         }else{
-            let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell:XLoginOutCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.clickEvent = {[unowned self] in
+                
+                UIApplication.shared.keyWindow?.rootViewController = XLoginController()
+
+            }
             return cell
         }
     }
@@ -87,9 +114,11 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 {
-            return fit(300)
+            return fit(203)
         }else if indexPath.row == 1{
             return fit(20)
+        }else if indexPath.row == 7{
+            return fit(100)
         }else{
             return fit(90)
         }
@@ -97,7 +126,10 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 2 {
-            navigationController?.pushViewController(XMerBasicInfoController(), animated: true)
+            navigationController?.pushViewController(XMyBankCardController(), animated: true)
+        }
+        if indexPath.row == 3 {
+            navigationController?.pushViewController(XForgetPwdController(), animated: true)
         }
         if indexPath.row == 4 {
             navigationController?.pushViewController(XPropertyController(), animated: true)

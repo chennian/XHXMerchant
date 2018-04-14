@@ -18,17 +18,16 @@ let testAPIProvider = RxMoyaProvider<API>(stubClosure: MoyaProvider.immediatelyS
 let BMProvider = RxMoyaProvider<API>()
 
 enum API {
-   
+    case login(phone:String,password:String)
+    case forgetPass(mobile:String,code:String,password:String)
 }
 
 
 extension API: JSONMappableTargetType {
     var headers: [String : String]? {
         switch self {
-//        case .getTuanTuanList,.getMiaoMiaoList:
-//            return [
-//                "Content-Type": "application/x-www-form-urlencoded"
-//            ]
+        case .login(let phone,let password):
+            return ["X-AUTH-TOKEN":"\(phone):\(password)"]
         default:
             return [
                 "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
@@ -46,13 +45,19 @@ extension API: JSONMappableTargetType {
     var baseURL: URL {
         switch self {
         default:
-            return URL(string: "http://api.xiaoheixiong.net/")!
+//            return URL(string: "http://api.xiaoheixiong.net/")!
+        return URL(string: "http://192.168.0.3:8016/")!
+
         }
         
     }
     
     var path: String {
         switch self {
+        case .login:
+            return "user/validateCredentials"
+        case .forgetPass:
+            return "user/alterAccountPwd"
         default:
             return ""
         }
@@ -86,7 +91,9 @@ extension API: JSONMappableTargetType {
     var task: Task {
         
         switch self {
-            
+        case .forgetPass(let mobile,let code,let password):
+            let para = ["mobile": mobile,"code":code,"password":password]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
         default:
             return Task.requestPlain
         }

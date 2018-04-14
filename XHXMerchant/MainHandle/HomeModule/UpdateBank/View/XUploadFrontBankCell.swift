@@ -20,7 +20,7 @@ class XUploadFrontBankCell: SNBaseTableViewCell {
         $0.font = Font(30)
     }
     let bankCardImg = DDZUploadBtn().then{
-        $0.setImage(UIImage(named:"new_addition"),for:.normal)
+        $0.setImage(UIImage(named:"bank_card"),for:.normal)
         $0.imageView?.contentMode = .scaleAspectFill
     }
     let notice = UILabel().then{

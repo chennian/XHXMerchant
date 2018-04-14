@@ -16,7 +16,7 @@ enum SNMoyaError : Error {
 
 public enum SNMoyaResult<T> {
     case success(T)
-    case fail(code: String?, msg: String?)
+    case fail(code: Int?, msg: String?)
     case bool(msg: String)
     ///特殊类
     case sp_success(T,code : Int , msg : String)

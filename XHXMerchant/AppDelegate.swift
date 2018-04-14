@@ -18,7 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = .white
         self.window?.makeKeyAndVisible()
-        window?.rootViewController = SNMainTabBarController.shared
+        
+        if  XKeyChain.get(ISLOGIN) == "1" {
+            window?.rootViewController = SNMainTabBarController.shared
+        }else{
+            window?.rootViewController = XLoginController()
+
+        }
+
         return true
     }
 

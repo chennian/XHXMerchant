@@ -29,8 +29,8 @@ public extension Response {
 //            return SNMoyaResult.fail(code: jsonCode.int, msg: jsonMsg.string)
 //        }
         
-        guard jsonCode.stringValue == "000000", let mappedObject = T(jsonData: jsonObj) else {
-            return SNMoyaResult.fail(code: jsonCode.stringValue, msg: jsonMsg.string)
+        guard jsonCode.int == 1000, let mappedObject = T(jsonData: jsonObj) else {
+            return SNMoyaResult.fail(code: jsonCode.int, msg: jsonMsg.string)
         }
         
 //        return mappedObject
@@ -39,7 +39,7 @@ public extension Response {
     
     /// Maps data received from the signal into an array of objects which implement the SNSwiftyJSONAble protocol
     /// If the conversion fails, the signal errors.
-    public func map<T: SNSwiftyJSONAble>(to type:[T.Type],availableCode : [String]) throws -> SNMoyaResult<[T]> {
+    public func map<T: SNSwiftyJSONAble>(to type:[T.Type],availableCode : [Int]) throws -> SNMoyaResult<[T]> {
 //        let jsonObject = try mapJSON()
         let jsonData = try JSON(data: self.data)
 //        let mappedArray = JSON(jsonObject)
@@ -51,9 +51,9 @@ public extension Response {
         let mappedArray = jsonObj
         
         //错误处理
-        guard jsonCode.stringValue != "" && availableCode.contains(jsonCode.stringValue) else {//jsonCode.int == 000000
+        guard jsonCode.int != nil && availableCode.contains(jsonCode.int!) else {//jsonCode.int == 1000
             
-            return SNMoyaResult.fail(code: jsonCode.stringValue, msg: jsonMsg.string)
+            return SNMoyaResult.fail(code: jsonCode.int, msg: jsonMsg.string)
         }
         
         let mappedObjectsArray = mappedArray.arrayValue.flatMap { T(jsonData: $0) }
@@ -80,14 +80,14 @@ public extension Response {
         //错误处理
         if jsonCode.int != nil && !availableCode.contains(jsonCode.int!){
             
-            return SNMoyaResult.fail(code: jsonCode.stringValue, msg: jsonMsg.string)
+            return SNMoyaResult.fail(code: jsonCode.int, msg: jsonMsg.string)
         }
         
 
         
         let mappedObjectsArray = mappedArray.arrayValue.flatMap { T(jsonData: $0) }
         
-        return SNMoyaResult.sp_success(mappedObjectsArray, code: jsonCode.int ?? 000000, msg: jsonMsg.string ?? "")//.success(mappedObjectsArray)
+        return SNMoyaResult.sp_success(mappedObjectsArray, code: jsonCode.int ?? 1000, msg: jsonMsg.string ?? "")//.success(mappedObjectsArray)
     }
     
     
@@ -100,9 +100,9 @@ public extension Response {
         let jsonObj = jsonData[MOYA_RESULT_DATA]
         let jsonMsg = jsonData[MOYA_RESULT_MSG]
         
-        guard jsonCode.int == 000000, let mappedString = jsonObj.string else {
+        guard jsonCode.int == 1000, let mappedString = jsonObj.string else {
             //throw SNMoyaError.fail(code: nil, msg: jsonMsg.string)
-            return SNMoyaResult.fail(code: jsonCode.stringValue, msg: jsonMsg.string)
+            return SNMoyaResult.fail(code: jsonCode.int, msg: jsonMsg.string)
         }
         
         return SNMoyaResult.success(mappedString)
@@ -115,7 +115,7 @@ public extension Response {
         guard let model = SNNetModel(jsonData: jsonData) else {
             throw MoyaError.jsonMapping(self)
         }
-        guard model.code == "000000" else {
+        guard model.code == 1000 else {
             return SNMoyaResult.fail(code: model.code, msg: model.msg)
         }
         return SNMoyaResult.success(model)
@@ -126,24 +126,10 @@ public extension Response {
         let jsonData = JSON(data: self.data)
         
         guard let model = T(jsonData: jsonData) else {
-            return SNMoyaResult.fail(code: "9999", msg: "数据错误")
+            return SNMoyaResult.fail(code: 9999, msg: "数据错误")
         }
         
         return SNMoyaResult.success(model)
-    }
-    
-    public func mapToString() throws -> SNMoyaResult<Bool> {
-        let jsonData = JSON(data: self.data)
-        
-        guard let model = SNNetModel(jsonData: jsonData) else {
-            throw MoyaError.jsonMapping(self)
-        }
-        ZJLog(messagr: jsonData)
-        guard model.code == "000000" else {
-            ZJLog(messagr: model.code)
-            return SNMoyaResult.fail(code: model.code, msg: model.msg)
-        }
-        return SNMoyaResult.bool(msg: model.data!.stringValue)
     }
     
     public func mapToBool() throws -> SNMoyaResult<Bool> {
@@ -152,7 +138,7 @@ public extension Response {
         guard let model = SNNetModel(jsonData: jsonData) else {
             throw MoyaError.jsonMapping(self)
         }
-        guard model.code == "000000" else {
+        guard model.code == 1000 else {
             return SNMoyaResult.fail(code: model.code, msg: model.msg)
         }
         return SNMoyaResult.bool(msg: model.msg)

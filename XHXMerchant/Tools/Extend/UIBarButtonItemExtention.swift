@@ -13,7 +13,7 @@ extension UIBarButtonItem {
 	convenience init(title: String,imgName:String, fontSize: CGFloat = fit(30), target: AnyObject?, action: Selector) {
 		
 		let btn = UIButton()
-		btn.setTitleColor(UIColor.red, for: .normal)
+		btn.setTitleColor(Color(0x313131), for: .normal)
 		btn.setTitle(title, for: .normal)
 		btn.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
 		btn.setImage(UIImage(named: imgName), for: .normal)

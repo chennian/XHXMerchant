@@ -54,7 +54,7 @@ class XUpdateRoleCell: SNBaseTableViewCell {
     }
     
     var codeLable = UILabel().then{
-        $0.text = "短息验证"
+        $0.text = "短信验证"
         $0.textColor = Color(0x313131)
         $0.font = Font(30)
     }

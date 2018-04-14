@@ -20,7 +20,7 @@ class SNBaseNaviController: UINavigationController {
         
              if self.childViewControllers.count >= 1 {
             let button = UIButton()
-            button.setImage(UIImage(named:"map_return1"), for: .normal)
+            button.setImage(UIImage(named:"return"), for: .normal)
 //            button.sizeToFit()
             button.setTitle("返回", for: UIControlState.normal)
             button.setTitleColor(.black, for: .normal)

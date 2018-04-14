@@ -16,13 +16,13 @@ class XCenterHeadCell: SNBaseTableViewCell {
         $0.layer.masksToBounds = true
     }
     var name = UILabel().then{
-        $0.text = "姓名"
-        $0.textColor = Color(0x238822)
+        $0.text = "17603078066"
+        $0.textColor = Color(0xffffff)
         $0.font = Font(30)
     }
     var phone = UILabel().then{
-        $0.text = "17603078066"
-        $0.textColor = Color(0x238822)
+        $0.text = "服务商"
+        $0.textColor = Color(0xffffff)
         $0.font = Font(30)
     }
     
@@ -38,12 +38,16 @@ class XCenterHeadCell: SNBaseTableViewCell {
         contentView.addSubview(phone)
         contentView.addSubview(timeButton)
         
+        self.backgroundColor = Color(0xff8518)
+        
         timeButton.setup("获取验证码", timeTitlePrefix: "", aTimeLength: 60)
 
+        timeButton.isHidden = true
+        
         headImg.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().snOffset(60)
-            make.top.equalToSuperview().snOffset(60)
-            make.height.width.snEqualTo(120)
+            make.left.equalToSuperview().snOffset(57)
+            make.top.equalToSuperview().snOffset(24)
+            make.height.width.snEqualTo(122)
         }
         name.snp.makeConstraints { (make) in
             make.left.equalTo(headImg.snp.right).snOffset(30)

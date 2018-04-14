@@ -36,7 +36,7 @@ fileprivate extension SNMainTabBarController {
     func setup() {
         
         let home = navi(XHomeController(), title: "首页", image: "home_homepage", selectedImage: "home_homepage1")
-        let center = navi(XCenterController(), title: "个人", image: "home_new", selectedImage: "home_new1")
+        let center = navi(XCenterController(), title: "我的", image: "home_personal_center", selectedImage: "home_personal_center-1")
 //        let shopCart = navi(BMHShoppingCartVC(), title: "购物车", image: "home_shopping_trolley", selectedImage: "home_shopping_trolley1")
 //        let me = navi(BMMeViewController(), title: "我的", image: "home_personal_center", selectedImage: "home_personal_center1")
 //
@@ -75,7 +75,7 @@ fileprivate extension SNMainTabBarController {
         ]
         
         let defAttr = [
-            NSAttributedStringKey.foregroundColor : Color(0x413d3c)
+            NSAttributedStringKey.foregroundColor : Color(0x6c6c6c)
         ]
         
         vClass.tabBarItem.setTitleTextAttributes(defAttr, for: .normal)

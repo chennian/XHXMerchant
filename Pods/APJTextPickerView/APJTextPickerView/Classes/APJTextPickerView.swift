@@ -71,12 +71,12 @@ open class APJTextPickerView: UITextField {
     // common properties
     private(set) public var toolbar: UIToolbar?
     public weak var pickerDelegate: APJTextPickerViewDelegate?
-    public var cancelText = "Cancel" {
+    public var cancelText = "取消" {
         didSet {
             _updateToolbar()
         }
     }
-    public var doneText = "Done" {
+    public var doneText = "完成" {
         didSet {
             _updateToolbar()
         }
@@ -200,6 +200,7 @@ open class APJTextPickerView: UITextField {
         titleBarButton.isEnabled = false
         
         toolbar = UIToolbar()
+        toolbar?.tintColor = .red
         toolbar?.barStyle = .default
         toolbar?.isTranslucent = true
         toolbar?.setItems([cancelButton, space, titleBarButton, space, doneButton], animated: false)

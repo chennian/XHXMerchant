@@ -11,12 +11,12 @@ import SwiftyJSON
 
 public class SNNetModel: SNSwiftyJSONAble {
     
-    let code : String
+    let code : Int
     let msg : String
     let data : JSON?
     
     required public init?(jsonData: JSON) {
-        self.code = jsonData[MOYA_RESULT_CODE].stringValue
+        self.code = jsonData[MOYA_RESULT_CODE].intValue
         self.msg = jsonData[MOYA_RESULT_MSG].stringValue
         let oda = jsonData[MOYA_RESULT_DATA].object
         self.data = JSON(oda)

@@ -24,7 +24,7 @@ public extension ObservableType where E == Response {
     
     /// Maps data received from the signal into an array of objects which implement the ALSwiftyJSONAble protocol.
     /// If the conversion fails, the signal errors.
-    public func map<T: SNSwiftyJSONAble>(to type: [T.Type],availableCode : [String]) -> Observable<SNMoyaResult<[T]>> {
+    public func map<T: SNSwiftyJSONAble>(to type: [T.Type],availableCode : [Int]) -> Observable<SNMoyaResult<[T]>> {
         return flatMap { response -> Observable<SNMoyaResult<[T]>> in
             return Observable.just(try response.map(to: type,availableCode : availableCode))
         }
@@ -59,12 +59,6 @@ public extension ObservableType where E == Response {
     public func mapToBool() -> Observable<SNMoyaResult<Bool>> {
         return flatMap({ response -> Observable<SNMoyaResult<Bool>> in
             return Observable.just(try response.mapToBool())
-        })
-    }
-    
-    public func mapToString() -> Observable<SNMoyaResult<Bool>> {
-        return flatMap({ response -> Observable<SNMoyaResult<Bool>> in
-            return Observable.just(try response.mapToString())
         })
     }
 }

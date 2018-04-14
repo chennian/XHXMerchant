@@ -34,11 +34,18 @@ class XMyBankCardController: SNBaseViewController {
         $0.font = Font(28)
         $0.textColor = Color(0xfffff)
     }
+    @objc func tapOne(){
+        self.navigationController?.pushViewController(XUploadBankController(), animated: true)
+    }
     
     func setUI(){
         self.title = "我的银行卡"
         bankCardImg.frame  = CGRect(x: fit(30), y: fit(66), width: fit(690), height: fit(209))
         let gradientLayer = CAGradientLayer().shadowLayer()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOne))
+        bankCardImg.addGestureRecognizer(tapGesture)
+        
         gradientLayer.frame = CGRect(x: 0, y: 0, width: fit(690), height: fit(209))
         gradientLayer.cornerRadius = fit(10)
         bankCardImg.layer.insertSublayer(gradientLayer, at:0)

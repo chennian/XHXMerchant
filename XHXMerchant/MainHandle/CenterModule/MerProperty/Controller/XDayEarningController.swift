@@ -7,17 +7,19 @@
 //
 
 import UIKit
-
+import APJTextPickerView
 class XDayEarningController: SNBaseViewController {
     
-   var  titleBtn = UIButton().then{
-        $0.setTitle("2018-10-28", for: .normal)
-        $0.setImage(UIImage(named: "123"), for: .normal)
-        $0.titleLabel?.font = Font(32)
-        $0.setTitleColor(Color(0x313131), for:UIControlState.normal)
-
-        $0.width = fit(195)
-        $0.height = fit(28)
+   var  titleField = APJTextPickerView().then{
+        $0.borderStyle = .none
+        $0.font = Font(30)
+        $0.textColor = Color(0x313131)
+        $0.textAlignment = .center
+        $0.backgroundColor = Color(0xffffff)
+        $0.layer.cornerRadius = fit(4)
+        $0.text = "2018-10-28"
+        $0.datePicker?.datePickerMode = .date
+        $0.dateFormatter.dateFormat = "yyyy-MM-dd"
     }
 
     fileprivate let tableView:UITableView = UITableView().then{
@@ -33,6 +35,8 @@ class XDayEarningController: SNBaseViewController {
         self.view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        titleField.delegate = self
+
         tableView.snp.makeConstraints { (make) in
             make.left.top.right.bottom.equalToSuperview()
         }
@@ -40,7 +44,6 @@ class XDayEarningController: SNBaseViewController {
     override func setupView() {
         setupUI()
         setNavBar()
-
     }
 
 }
@@ -73,30 +76,30 @@ extension XDayEarningController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
             return fit(20)
-
         }else if indexPath.row == 1{
-            
             return fit(636)
-            
         }else if indexPath.row == 2{
-            
             return fit(20)
-
         }else if indexPath.row == 3{
-            
             return fit(843)
-
         }else{
-            
             return fit(20)
-
         }
     }
-    
 }
 
 extension XDayEarningController{
     func setNavBar() {
-        navigationItem.titleView = titleBtn
+        navigationItem.titleView = titleField
+        let  rightView  = UIView().then{
+            $0.backgroundColor = .red
+        }
+        
+        titleField.rightView = rightView
+    }
+}
+extension XDayEarningController:UITextFieldDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        CNLog("结束编辑")
     }
 }

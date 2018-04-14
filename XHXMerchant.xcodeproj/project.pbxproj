@@ -8,6 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		8DB56FDE9A990F93FD82B0C1 /* Pods_XHXMerchant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8131AC6AD6E1E6CE5B3426 /* Pods_XHXMerchant.framework */; };
+		8E0AC3E8207FA8360050BE7C /* XMerLicenseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0AC3E7207FA8360050BE7C /* XMerLicenseController.swift */; };
+		8E0AC3F1207FA9C10050BE7C /* XMerLicenseFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0AC3F0207FA9C10050BE7C /* XMerLicenseFieldCell.swift */; };
+		8E0AC3F4207FB9760050BE7C /* XMerLicenseImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0AC3F3207FB9760050BE7C /* XMerLicenseImgCell.swift */; };
+		8E0AC3F9207FC54B0050BE7C /* XOpenAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0AC3F8207FC54B0050BE7C /* XOpenAccountController.swift */; };
+		8E0AC3FB207FC5840050BE7C /* XOpenAccountFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0AC3FA207FC5840050BE7C /* XOpenAccountFieldCell.swift */; };
+		8E0AC3FD207FC8DF0050BE7C /* XOpenAccountImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0AC3FC207FC8DF0050BE7C /* XOpenAccountImgCell.swift */; };
+		8E0AC402207FCFBA0050BE7C /* XPrivateAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0AC401207FCFBA0050BE7C /* XPrivateAccountController.swift */; };
+		8E0AC404207FD0050050BE7C /* XPrivateAccountFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0AC403207FD0050050BE7C /* XPrivateAccountFieldCell.swift */; };
+		8E0AC406207FD04D0050BE7C /* XPrivateAccountImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0AC405207FD04D0050BE7C /* XPrivateAccountImgCell.swift */; };
+		8E110E2B208072CA002176F9 /* province_data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E110E2A208072CA002176F9 /* province_data.json */; };
+		8E110E2D20809D6C002176F9 /* XFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E2C20809D6C002176F9 /* XFunctionCell.swift */; };
+		8E110E2F2080E19A002176F9 /* XLoginOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E2E2080E19A002176F9 /* XLoginOutCell.swift */; };
+		8E110E3120812161002176F9 /* XForgetStepTwoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E3020812161002176F9 /* XForgetStepTwoController.swift */; };
+		8E110E3720812AE3002176F9 /* XRcmdOperatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E3620812AE3002176F9 /* XRcmdOperatorController.swift */; };
+		8E110E3920812B1C002176F9 /* XOperatorTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E3820812B1C002176F9 /* XOperatorTopCell.swift */; };
+		8E110E3B20812F9B002176F9 /* XOperatorEndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E3A20812F9B002176F9 /* XOperatorEndCell.swift */; };
 		8E73858920766577003349B8 /* XCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73858820766577003349B8 /* XCenterController.swift */; };
 		8E73858B20766591003349B8 /* XCenterHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73858A20766591003349B8 /* XCenterHeadCell.swift */; };
 		8E73858D207665B0003349B8 /* XCenterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73858C207665B0003349B8 /* XCenterListCell.swift */; };
@@ -111,6 +127,13 @@
 		8ED20809207F4192006F441A /* XRecmdUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED20808207F4192006F441A /* XRecmdUpdateController.swift */; };
 		8ED2080B207F4657006F441A /* XRecmdMerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2080A207F4657006F441A /* XRecmdMerCell.swift */; };
 		8ED2080D207F466D006F441A /* XRecmdUpdateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2080C207F466D006F441A /* XRecmdUpdateCell.swift */; };
+		8ED284CC2081B337008ED5AE /* XRcmdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284CB2081B337008ED5AE /* XRcmdController.swift */; };
+		8ED284CE2081B3FD008ED5AE /* XRecmdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284CD2081B3FD008ED5AE /* XRecmdCell.swift */; };
+		8ED284D02081BF61008ED5AE /* XOperatorBtnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284CF2081BF61008ED5AE /* XOperatorBtnCell.swift */; };
+		8ED284D22081CE56008ED5AE /* AddressPiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D12081CE56008ED5AE /* AddressPiker.swift */; };
+		8ED284D42081DB65008ED5AE /* industry.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ED284D32081DB65008ED5AE /* industry.json */; };
+		8ED284D62081DBB5008ED5AE /* IndustyPiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D52081DBB5008ED5AE /* IndustyPiker.swift */; };
+		8ED284D82081E2D7008ED5AE /* XKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D72081E2D7008ED5AE /* XKeyChain.swift */; };
 		D358378D924E0084BAED85F3 /* Pods_XHXMerchantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68DEA94657D0AAD5BFEDF18 /* Pods_XHXMerchantUITests.framework */; };
 		EF0073D9E415D4C20A15537F /* Pods_XHXMerchantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0322BAA131B8929A61E5F4 /* Pods_XHXMerchantTests.framework */; };
 /* End PBXBuildFile section */
@@ -139,6 +162,22 @@
 		7B47A4B65314AA83B77DE3C4 /* Pods-XHXMerchantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantUITests/Pods-XHXMerchantUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		89ADAA6202EF977F5D06D873 /* Pods-XHXMerchantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantTests/Pods-XHXMerchantTests.release.xcconfig"; sourceTree = "<group>"; };
 		8B8131AC6AD6E1E6CE5B3426 /* Pods_XHXMerchant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHXMerchant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E0AC3E7207FA8360050BE7C /* XMerLicenseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerLicenseController.swift; sourceTree = "<group>"; };
+		8E0AC3F0207FA9C10050BE7C /* XMerLicenseFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerLicenseFieldCell.swift; sourceTree = "<group>"; };
+		8E0AC3F3207FB9760050BE7C /* XMerLicenseImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerLicenseImgCell.swift; sourceTree = "<group>"; };
+		8E0AC3F8207FC54B0050BE7C /* XOpenAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOpenAccountController.swift; sourceTree = "<group>"; };
+		8E0AC3FA207FC5840050BE7C /* XOpenAccountFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOpenAccountFieldCell.swift; sourceTree = "<group>"; };
+		8E0AC3FC207FC8DF0050BE7C /* XOpenAccountImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOpenAccountImgCell.swift; sourceTree = "<group>"; };
+		8E0AC401207FCFBA0050BE7C /* XPrivateAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPrivateAccountController.swift; sourceTree = "<group>"; };
+		8E0AC403207FD0050050BE7C /* XPrivateAccountFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPrivateAccountFieldCell.swift; sourceTree = "<group>"; };
+		8E0AC405207FD04D0050BE7C /* XPrivateAccountImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPrivateAccountImgCell.swift; sourceTree = "<group>"; };
+		8E110E2A208072CA002176F9 /* province_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = province_data.json; sourceTree = "<group>"; };
+		8E110E2C20809D6C002176F9 /* XFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFunctionCell.swift; sourceTree = "<group>"; };
+		8E110E2E2080E19A002176F9 /* XLoginOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLoginOutCell.swift; sourceTree = "<group>"; };
+		8E110E3020812161002176F9 /* XForgetStepTwoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XForgetStepTwoController.swift; sourceTree = "<group>"; };
+		8E110E3620812AE3002176F9 /* XRcmdOperatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRcmdOperatorController.swift; sourceTree = "<group>"; };
+		8E110E3820812B1C002176F9 /* XOperatorTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOperatorTopCell.swift; sourceTree = "<group>"; };
+		8E110E3A20812F9B002176F9 /* XOperatorEndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOperatorEndCell.swift; sourceTree = "<group>"; };
 		8E73858820766577003349B8 /* XCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCenterController.swift; sourceTree = "<group>"; };
 		8E73858A20766591003349B8 /* XCenterHeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCenterHeadCell.swift; sourceTree = "<group>"; };
 		8E73858C207665B0003349B8 /* XCenterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCenterListCell.swift; sourceTree = "<group>"; };
@@ -249,6 +288,13 @@
 		8ED20808207F4192006F441A /* XRecmdUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRecmdUpdateController.swift; sourceTree = "<group>"; };
 		8ED2080A207F4657006F441A /* XRecmdMerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRecmdMerCell.swift; sourceTree = "<group>"; };
 		8ED2080C207F466D006F441A /* XRecmdUpdateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRecmdUpdateCell.swift; sourceTree = "<group>"; };
+		8ED284CB2081B337008ED5AE /* XRcmdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRcmdController.swift; sourceTree = "<group>"; };
+		8ED284CD2081B3FD008ED5AE /* XRecmdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRecmdCell.swift; sourceTree = "<group>"; };
+		8ED284CF2081BF61008ED5AE /* XOperatorBtnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOperatorBtnCell.swift; sourceTree = "<group>"; };
+		8ED284D12081CE56008ED5AE /* AddressPiker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPiker.swift; sourceTree = "<group>"; };
+		8ED284D32081DB65008ED5AE /* industry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = industry.json; sourceTree = "<group>"; };
+		8ED284D52081DBB5008ED5AE /* IndustyPiker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndustyPiker.swift; sourceTree = "<group>"; };
+		8ED284D72081E2D7008ED5AE /* XKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XKeyChain.swift; sourceTree = "<group>"; };
 		B3A85545585FF99D0C908042 /* Pods-XHXMerchantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantTests/Pods-XHXMerchantTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D263DE3CC99C91AE754BE336 /* Pods-XHXMerchantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantUITests/Pods-XHXMerchantUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E68DEA94657D0AAD5BFEDF18 /* Pods_XHXMerchantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHXMerchantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -295,6 +341,151 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8E0AC3E9207FA8660050BE7C /* BaseInfo */ = {
+			isa = PBXGroup;
+			children = (
+				8E7EDA4A2077403500483ADC /* Controller */,
+				8E7EDA4C2077404D00483ADC /* Model */,
+				8E7EDA4B2077404300483ADC /* View */,
+			);
+			path = BaseInfo;
+			sourceTree = "<group>";
+		};
+		8E0AC3EC207FA9170050BE7C /* MerLicense */ = {
+			isa = PBXGroup;
+			children = (
+				8E0AC3ED207FA9710050BE7C /* Controller */,
+				8E0AC3EF207FA9840050BE7C /* Model */,
+				8E0AC3EE207FA97E0050BE7C /* View */,
+			);
+			path = MerLicense;
+			sourceTree = "<group>";
+		};
+		8E0AC3ED207FA9710050BE7C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E0AC3E7207FA8360050BE7C /* XMerLicenseController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8E0AC3EE207FA97E0050BE7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E0AC3F0207FA9C10050BE7C /* XMerLicenseFieldCell.swift */,
+				8E0AC3F3207FB9760050BE7C /* XMerLicenseImgCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E0AC3EF207FA9840050BE7C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8E0AC3F2207FB3080050BE7C /* ComomModel */ = {
+			isa = PBXGroup;
+			children = (
+				8E7EDA4620773D5900483ADC /* XMerApyleModel.swift */,
+				8ED284D12081CE56008ED5AE /* AddressPiker.swift */,
+				8ED284D52081DBB5008ED5AE /* IndustyPiker.swift */,
+			);
+			path = ComomModel;
+			sourceTree = "<group>";
+		};
+		8E0AC3F5207FC4CE0050BE7C /* OpenAccount */ = {
+			isa = PBXGroup;
+			children = (
+				8E0AC3F6207FC5070050BE7C /* Controller */,
+				8E0AC3F7207FC51C0050BE7C /* View */,
+			);
+			path = OpenAccount;
+			sourceTree = "<group>";
+		};
+		8E0AC3F6207FC5070050BE7C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E0AC3F8207FC54B0050BE7C /* XOpenAccountController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8E0AC3F7207FC51C0050BE7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E0AC3FA207FC5840050BE7C /* XOpenAccountFieldCell.swift */,
+				8E0AC3FC207FC8DF0050BE7C /* XOpenAccountImgCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E0AC3FE207FCF5A0050BE7C /* PrivateAccount */ = {
+			isa = PBXGroup;
+			children = (
+				8E0AC3FF207FCF830050BE7C /* Controller */,
+				8E0AC400207FCF8C0050BE7C /* View */,
+			);
+			path = PrivateAccount;
+			sourceTree = "<group>";
+		};
+		8E0AC3FF207FCF830050BE7C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E0AC401207FCFBA0050BE7C /* XPrivateAccountController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8E0AC400207FCF8C0050BE7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E0AC403207FD0050050BE7C /* XPrivateAccountFieldCell.swift */,
+				8E0AC405207FD04D0050BE7C /* XPrivateAccountImgCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E110E3220812A5C002176F9 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				8ED20803207F3FA2006F441A /* Controller */,
+				8ED20805207F3FC4006F441A /* Modle */,
+				8ED20804207F3FBE006F441A /* View */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		8E110E3320812A76002176F9 /* Operator */ = {
+			isa = PBXGroup;
+			children = (
+				8E110E3520812ABF002176F9 /* Controller */,
+				8E110E3420812AB2002176F9 /* View */,
+			);
+			path = Operator;
+			sourceTree = "<group>";
+		};
+		8E110E3420812AB2002176F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E110E3820812B1C002176F9 /* XOperatorTopCell.swift */,
+				8E110E3A20812F9B002176F9 /* XOperatorEndCell.swift */,
+				8ED284CD2081B3FD008ED5AE /* XRecmdCell.swift */,
+				8ED284CF2081BF61008ED5AE /* XOperatorBtnCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E110E3520812ABF002176F9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E110E3620812AE3002176F9 /* XRcmdOperatorController.swift */,
+				8ED284CB2081B337008ED5AE /* XRcmdController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		8E7EDA3A20767FA500483ADC /* LoginModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +501,7 @@
 				8E7EDA3D2076800800483ADC /* XLoginController.swift */,
 				8E7EDA3F2076802300483ADC /* XRegisterController.swift */,
 				8E7EDA412076804D00483ADC /* XForgetPwdController.swift */,
+				8E110E3020812161002176F9 /* XForgetStepTwoController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -341,9 +533,11 @@
 		8E7EDA4920773FF000483ADC /* MerApply */ = {
 			isa = PBXGroup;
 			children = (
-				8E7EDA4C2077404D00483ADC /* Model */,
-				8E7EDA4B2077404300483ADC /* View */,
-				8E7EDA4A2077403500483ADC /* Controller */,
+				8E0AC3F2207FB3080050BE7C /* ComomModel */,
+				8E0AC3FE207FCF5A0050BE7C /* PrivateAccount */,
+				8E0AC3F5207FC4CE0050BE7C /* OpenAccount */,
+				8E0AC3EC207FA9170050BE7C /* MerLicense */,
+				8E0AC3E9207FA8660050BE7C /* BaseInfo */,
 			);
 			path = MerApply;
 			sourceTree = "<group>";
@@ -369,7 +563,6 @@
 		8E7EDA4C2077404D00483ADC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8E7EDA4620773D5900483ADC /* XMerApyleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -472,6 +665,8 @@
 				8EC76D062076092B00F78749 /* Assets.xcassets */,
 				8EC76D082076092B00F78749 /* LaunchScreen.storyboard */,
 				8EC76D0B2076092B00F78749 /* Info.plist */,
+				8ED284D32081DB65008ED5AE /* industry.json */,
+				8E110E2A208072CA002176F9 /* province_data.json */,
 				8EC76DAA20760B1900F78749 /* XHXMerchant-Bridging-Header.h */,
 			);
 			path = XHXMerchant;
@@ -582,6 +777,7 @@
 			isa = PBXGroup;
 			children = (
 				8EC76D4D20760AA300F78749 /* Common.swift */,
+				8ED284D72081E2D7008ED5AE /* XKeyChain.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -689,7 +885,6 @@
 			children = (
 				8EA0E064207C5ECE0018232E /* MerProperty */,
 				8E7EDA4820773FBB00483ADC /* Center */,
-				8E7EDA4920773FF000483ADC /* MerApply */,
 			);
 			path = CenterModule;
 			sourceTree = "<group>";
@@ -707,6 +902,7 @@
 			children = (
 				8E73858A20766591003349B8 /* XCenterHeadCell.swift */,
 				8E73858C207665B0003349B8 /* XCenterListCell.swift */,
+				8E110E2E2080E19A002176F9 /* XLoginOutCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -714,6 +910,7 @@
 		8EC76DA520760AE900F78749 /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
+				8E7EDA4920773FF000483ADC /* MerApply */,
 				8ED20800207F3F35006F441A /* Recommend */,
 				8ED207FD207F0990006F441A /* MyBankCard */,
 				8ED207F3207E4478006F441A /* UpdateBank */,
@@ -738,6 +935,7 @@
 				8EC76DAD20762BC700F78749 /* XSpaceCell.swift */,
 				8EC76DAF20762D4C00F78749 /* XListCell.swift */,
 				8ED207ED207E055E006F441A /* XUpdateRoleCell.swift */,
+				8E110E2C20809D6C002176F9 /* XFunctionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -804,9 +1002,8 @@
 		8ED20800207F3F35006F441A /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
-				8ED20805207F3FC4006F441A /* Modle */,
-				8ED20804207F3FBE006F441A /* View */,
-				8ED20803207F3FA2006F441A /* Controller */,
+				8E110E3320812A76002176F9 /* Operator */,
+				8E110E3220812A5C002176F9 /* Record */,
 			);
 			path = Recommend;
 			sourceTree = "<group>";
@@ -960,7 +1157,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED284D42081DB65008ED5AE /* industry.json in Resources */,
 				8EC76D0A2076092B00F78749 /* LaunchScreen.storyboard in Resources */,
+				8E110E2B208072CA002176F9 /* province_data.json in Resources */,
 				8EC76D072076092B00F78749 /* Assets.xcassets in Resources */,
 				8EC76D052076092A00F78749 /* Main.storyboard in Resources */,
 			);
@@ -1189,25 +1388,34 @@
 				8ED20809207F4192006F441A /* XRecmdUpdateController.swift in Sources */,
 				8EA0E05E207C5E130018232E /* PNValue.swift in Sources */,
 				8ED207F1207E0DCB006F441A /* XRoleController.swift in Sources */,
+				8E0AC3E8207FA8360050BE7C /* XMerLicenseController.swift in Sources */,
 				8ED207FC207EFE60006F441A /* XUploadFrontBankCell.swift in Sources */,
+				8E0AC3F9207FC54B0050BE7C /* XOpenAccountController.swift in Sources */,
 				8EC76D7920760AA300F78749 /* SNNetModel.swift in Sources */,
 				8E73858D207665B0003349B8 /* XCenterListCell.swift in Sources */,
 				8EC76D9420760AA300F78749 /* SNRXSectionModel.swift in Sources */,
 				8EA0E05B207C5DFD0018232E /* PNPieChartDataItem.swift in Sources */,
+				8E0AC402207FCFBA0050BE7C /* XPrivateAccountController.swift in Sources */,
 				8EC76D6F20760AA300F78749 /* UIBarButtonItemExtention.swift in Sources */,
 				8EA0E081207CDD570018232E /* XDayEarningController.swift in Sources */,
+				8E0AC3F1207FA9C10050BE7C /* XMerLicenseFieldCell.swift in Sources */,
+				8E110E3720812AE3002176F9 /* XRcmdOperatorController.swift in Sources */,
 				8EC76D8020760AA300F78749 /* SNMoyaResult.swift in Sources */,
 				8EC76D9F20760AA300F78749 /* SNContentGet.swift in Sources */,
 				8E7EDA422076804D00483ADC /* XForgetPwdController.swift in Sources */,
 				8EC76D7520760AA300F78749 /* SnapKit_Extension.swift in Sources */,
+				8ED284D22081CE56008ED5AE /* AddressPiker.swift in Sources */,
 				8EC76DA020760AA300F78749 /* SNBaseNaviController.swift in Sources */,
 				8EC76D9320760AA300F78749 /* SNBaseViewModel.swift in Sources */,
 				8ED20807207F4165006F441A /* XRecmdMerController.swift in Sources */,
 				8EA0E074207C82B80018232E /* PNBarChart.swift in Sources */,
 				8EC76D022076092A00F78749 /* ViewController.swift in Sources */,
+				8E110E2D20809D6C002176F9 /* XFunctionCell.swift in Sources */,
 				8EC76D9720760AA300F78749 /* BMAlertController.swift in Sources */,
 				8EC76D7720760AA300F78749 /* SZHUDTool.swift in Sources */,
+				8ED284CC2081B337008ED5AE /* XRcmdController.swift in Sources */,
 				8EC76D8F20760AA300F78749 /* SNBaseRadioButton.swift in Sources */,
+				8E0AC3F4207FB9760050BE7C /* XMerLicenseImgCell.swift in Sources */,
 				8E7EDA4E207740BA00483ADC /* XBasicInfoFieldCell.swift in Sources */,
 				8ED207E9207DD390006F441A /* XEarningDayDetailTCell.swift in Sources */,
 				8EC76D7C20760AA300F78749 /* SNSwiftyJSONAble.swift in Sources */,
@@ -1217,9 +1425,11 @@
 				8EC76D8620760AA300F78749 /* RxMoyaAvailability.swift in Sources */,
 				8EC76D8C20760AA300F78749 /* UIButton_Extension.swift in Sources */,
 				8EA0E069207C5F890018232E /* XPropertyController.swift in Sources */,
+				8E110E3B20812F9B002176F9 /* XOperatorEndCell.swift in Sources */,
 				8EC76D7D20760AA300F78749 /* VaporTestModel.swift in Sources */,
 				8ED2080D207F466D006F441A /* XRecmdUpdateCell.swift in Sources */,
 				8EA0E077207C85140018232E /* XTotalEarningsMidCell.swift in Sources */,
+				8ED284CE2081B3FD008ED5AE /* XRecmdCell.swift in Sources */,
 				8ED20802207F3F98006F441A /* XRecmdRecordController.swift in Sources */,
 				8ED207EB207DDB2D006F441A /* XbarChartView.swift in Sources */,
 				8EC76D9620760AA300F78749 /* SNBaseViewController.swift in Sources */,
@@ -1229,6 +1439,7 @@
 				8E73858920766577003349B8 /* XCenterController.swift in Sources */,
 				8E7EDA4720773D5900483ADC /* XMerApyleModel.swift in Sources */,
 				8EC76D8520760AA300F78749 /* Single+Response.swift in Sources */,
+				8ED284D82081E2D7008ED5AE /* XKeyChain.swift in Sources */,
 				8EC76D7A20760AA300F78749 /* APIManager.swift in Sources */,
 				8EC76D9B20760AA300F78749 /* SNBaseTableView.swift in Sources */,
 				8EC76DB020762D4C00F78749 /* XListCell.swift in Sources */,
@@ -1244,25 +1455,34 @@
 				8EC76D7620760AA300F78749 /* UIAlertViewController.swift in Sources */,
 				8E7EDA5020774C5F00483ADC /* XButtonCell.swift in Sources */,
 				8EA0E085207CEF3A0018232E /* XEarningDayEndCell.swift in Sources */,
+				8ED284D02081BF61008ED5AE /* XOperatorBtnCell.swift in Sources */,
 				8EC76D8220760AA300F78749 /* DDZOssManager.swift in Sources */,
 				8EC76D002076092A00F78749 /* AppDelegate.swift in Sources */,
 				8E73858B20766591003349B8 /* XCenterHeadCell.swift in Sources */,
 				8EC76D9220760AA300F78749 /* SNStoreSectoiniModel.swift in Sources */,
 				8EA0E07B207C9FAA0018232E /* XEarningDetailController.swift in Sources */,
 				8EA0E06B207C6E690018232E /* XTotalEarningTopCell.swift in Sources */,
+				8E110E3920812B1C002176F9 /* XOperatorTopCell.swift in Sources */,
 				8EC76D9520760AA300F78749 /* DDZBasicTableVC.swift in Sources */,
+				8E0AC404207FD0050050BE7C /* XPrivateAccountFieldCell.swift in Sources */,
 				8EC76DA920760AE900F78749 /* XHomeController.swift in Sources */,
 				8EA0E05A207C5DFD0018232E /* PNPieChart.swift in Sources */,
+				8E0AC3FD207FC8DF0050BE7C /* XOpenAccountImgCell.swift in Sources */,
 				8EC76D9020760AA300F78749 /* UIImage_Extension.swift in Sources */,
+				8ED284D62081DBB5008ED5AE /* IndustyPiker.swift in Sources */,
 				8ED207EE207E055E006F441A /* XUpdateRoleCell.swift in Sources */,
+				8E110E2F2080E19A002176F9 /* XLoginOutCell.swift in Sources */,
 				8EC76D8120760AA300F78749 /* DDZUploadBtn.swift in Sources */,
+				8E0AC406207FD04D0050BE7C /* XPrivateAccountImgCell.swift in Sources */,
 				8E7EDA3E2076800800483ADC /* XLoginController.swift in Sources */,
 				8ED207F8207E44FF006F441A /* XUploadBankController.swift in Sources */,
 				8EC76D8D20760AA300F78749 /* UIImageView_Extension.swift in Sources */,
+				8E110E3120812161002176F9 /* XForgetStepTwoController.swift in Sources */,
 				8EA0E083207CDE300018232E /* XEarningDayHeaderCell.swift in Sources */,
 				8EA0E05F207C5E130018232E /* PNColor.swift in Sources */,
 				8EC76D7020760AA300F78749 /* UISearchBarExtension.swift in Sources */,
 				8EC76D7420760AA300F78749 /* UIViewExtension.swift in Sources */,
+				8E0AC3FB207FC5840050BE7C /* XOpenAccountFieldCell.swift in Sources */,
 				8EC76D8920760AA300F78749 /* CGRect_Extension.swift in Sources */,
 				8EC76D7320760AA300F78749 /* Extension_Then.swift in Sources */,
 				8EA0E063207C5E4C0018232E /* PNChartLabel.swift in Sources */,
