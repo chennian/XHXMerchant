@@ -9,6 +9,9 @@
 import UIKit
 
 class XCenterController: SNBaseViewController {
+    fileprivate var topCell:XCenterHeadCell = XCenterHeadCell()
+    fileprivate var loginoutCell:XLoginOutCell = XLoginOutCell()
+
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
         $0.register(XCenterHeadCell.self)
@@ -25,6 +28,57 @@ class XCenterController: SNBaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        if XKeyChain.get(PHONE) == ""{
+            topCell.name.text = "未登录"
+        }else{
+            topCell.name.text = XKeyChain.get(PHONE)
+        }
+        
+        CNLog(XKeyChain.get(IsAgent) + XKeyChain.get(OPERATER) + XKeyChain.get(CORPORATION))
+        if XKeyChain.get(PHONE) == "" || XKeyChain.get(PHONE).isEmpty{
+            loginoutCell.loginOutBtn.setTitle("登录", for: .normal)
+            topCell.phone.text = ""
+        }else{
+            loginoutCell.loginOutBtn.setTitle("退出登录", for: .normal)
+
+            if XKeyChain.get(IsAgent) == "1" {
+                if XKeyChain.get(OPERATER) == "1"  {
+                    if XKeyChain.get(CORPORATION) == "1" {
+                        topCell.phone.text = "服务商    运营商    服务中心"
+                    }else{
+                        topCell.phone.text = "服务商    运营商"
+                    }
+                }else{
+                    if XKeyChain.get(CORPORATION) == "1"{
+                        topCell.phone.text = "服务商    服务中心"
+                    }else{
+                        topCell.phone.text = "服务商"
+                        
+                    }
+                }
+            }else{
+                if XKeyChain.get(OPERATER) == "1"  {
+                    if XKeyChain.get(CORPORATION) == "1" {
+                        topCell.phone.text = "运营商    服务中心"
+                    }else{
+                        topCell.phone.text = "商家"
+                    }
+                }else{
+                    if XKeyChain.get(CORPORATION) == "1"{
+                        topCell.phone.text = "服务中心"
+                    }else{
+                        topCell.phone.text = "商家"
+                        
+                    }
+                }
+                
+            }
+            
+        }
+        
+        
         navigationController?.navigationBar.barTintColor = Color(0xff8518)
         (navigationController as! SNBaseNaviController).hindShadowImage()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Color(0xffffff)]
@@ -66,6 +120,53 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell:XCenterHeadCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            topCell = cell
+            if XKeyChain.get(PHONE) == ""{
+                cell.name.text = "未登录"
+            }else{
+                cell.name.text = XKeyChain.get(PHONE)
+            }
+            
+            CNLog(XKeyChain.get(IsAgent) + XKeyChain.get(OPERATER) + XKeyChain.get(CORPORATION))
+            if XKeyChain.get(PHONE) == ""{
+                cell.phone.text = ""
+            }else{
+                if XKeyChain.get(IsAgent) == "1" {
+                    if XKeyChain.get(OPERATER) == "1"  {
+                        if XKeyChain.get(CORPORATION) == "1" {
+                            cell.phone.text = "服务商    运营商    服务中心"
+                        }else{
+                            cell.phone.text = "服务商    运营商"
+                        }
+                    }else{
+                        if XKeyChain.get(CORPORATION) == "1"{
+                            cell.phone.text = "服务商    服务中心"
+                        }else{
+                            cell.phone.text = "服务商"
+
+                        }
+                    }
+                }else{
+                    if XKeyChain.get(OPERATER) == "1"  {
+                        if XKeyChain.get(CORPORATION) == "1" {
+                            cell.phone.text = "运营商    服务中心"
+                        }else{
+                            cell.phone.text = "商家"
+                        }
+                    }else{
+                        if XKeyChain.get(CORPORATION) == "1"{
+                            cell.phone.text = "服务中心"
+                        }else{
+                            cell.phone.text = "商家"
+                            
+                        }
+                    }
+                    
+                }
+            
+            }
+            
+            
             return cell
         }else if indexPath.row == 1 {
             let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -102,9 +203,24 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
             return cell
         }else{
             let cell:XLoginOutCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            self.loginoutCell = cell
             cell.clickEvent = {[unowned self] in
                 
-                UIApplication.shared.keyWindow?.rootViewController = XLoginController()
+                if XKeyChain.get(ISLOGIN) == "1"{
+                    XKeyChain.set("0", key: ISLOGIN)
+                    XKeyChain.set("", key: PHONE)
+                    XKeyChain.set("", key:IsMer )
+                    XKeyChain.set("", key:IsAgent )
+                    XKeyChain.set("", key:ROLE )
+                    XKeyChain.set("", key:NickName)
+                    XKeyChain.set("", key:PARENTPHONE)
+                    XKeyChain.set("", key:OPERATER)
+                    XKeyChain.set("", key:CORPORATION)
+                }
+                
+                self.navigationController?.pushViewController(XLoginController(), animated: true)
+                
+              
 
             }
             return cell
@@ -132,7 +248,7 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
             navigationController?.pushViewController(XForgetPwdController(), animated: true)
         }
         if indexPath.row == 4 {
-            navigationController?.pushViewController(XPropertyController(), animated: true)
+//            navigationController?.pushViewController(XPropertyController(), animated: true)
         }
     }
 }

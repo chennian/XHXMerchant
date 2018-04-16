@@ -24,6 +24,25 @@
 		8E110E3720812AE3002176F9 /* XRcmdOperatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E3620812AE3002176F9 /* XRcmdOperatorController.swift */; };
 		8E110E3920812B1C002176F9 /* XOperatorTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E3820812B1C002176F9 /* XOperatorTopCell.swift */; };
 		8E110E3B20812F9B002176F9 /* XOperatorEndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E3A20812F9B002176F9 /* XOperatorEndCell.swift */; };
+		8E1758D320823AD300D58DCE /* BankListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1758D220823AD300D58DCE /* BankListModel.swift */; };
+		8E4EFCEB2082566F00798F99 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCEA2082566F00798F99 /* TokenModel.swift */; };
+		8E4EFCED208264C300798F99 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCEC208264C300798F99 /* UserModel.swift */; };
+		8E4EFCEF2082FFA100798F99 /* BankCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCEE2082FFA100798F99 /* BankCardModel.swift */; };
+		8E4EFCF32083232400798F99 /* ErCodeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCF12083232400798F99 /* ErCodeTool.swift */; };
+		8E4EFCF42083232400798F99 /* ZJPayErCodeContetnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCF22083232400798F99 /* ZJPayErCodeContetnView.swift */; };
+		8E4EFCF62083575800798F99 /* XUpdateServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCF52083575800798F99 /* XUpdateServiceCell.swift */; };
+		8E4EFCF8208359B100798F99 /* XServiceRoleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCF7208359B100798F99 /* XServiceRoleController.swift */; };
+		8E4EFCFA208388FF00798F99 /* bankCardPiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCF9208388FF00798F99 /* bankCardPiker.swift */; };
+		8E4EFCFC2083988600798F99 /* XFlowTeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCFB2083988600798F99 /* XFlowTeamController.swift */; };
+		8E4EFCFE2083998A00798F99 /* XFlowTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCFD2083998A00798F99 /* XFlowTeamCell.swift */; };
+		8E4EFD0020839BA300798F99 /* XFlowMerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCFF20839BA300798F99 /* XFlowMerController.swift */; };
+		8E4EFD0220839BD000798F99 /* XFlowMerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFD0120839BD000798F99 /* XFlowMerCell.swift */; };
+		8E4EFD0420839F0A00798F99 /* FlowMerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFD0320839F0A00798F99 /* FlowMerModel.swift */; };
+		8E4EFD062083A73100798F99 /* FlowTeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFD052083A73100798F99 /* FlowTeamModel.swift */; };
+		8E4EFD0C2083C52F00798F99 /* MerHomeTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFD0B2083C52F00798F99 /* MerHomeTopCell.swift */; };
+		8E4EFD0E2083C54F00798F99 /* XMerHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFD0D2083C54F00798F99 /* XMerHomeController.swift */; };
+		8E4EFD102083CCC100798F99 /* MerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFD0F2083CCC100798F99 /* MerHomeView.swift */; };
+		8E4EFD122083D91300798F99 /* MerHomeEndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFD112083D91300798F99 /* MerHomeEndCell.swift */; };
 		8E73858920766577003349B8 /* XCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73858820766577003349B8 /* XCenterController.swift */; };
 		8E73858B20766591003349B8 /* XCenterHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73858A20766591003349B8 /* XCenterHeadCell.swift */; };
 		8E73858D207665B0003349B8 /* XCenterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73858C207665B0003349B8 /* XCenterListCell.swift */; };
@@ -36,6 +55,14 @@
 		8E7EDA5020774C5F00483ADC /* XButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA4F20774C5F00483ADC /* XButtonCell.swift */; };
 		8E7EDA522078A7E200483ADC /* XIdCardImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA512078A7E200483ADC /* XIdCardImageCell.swift */; };
 		8E7EDA542078B64A00483ADC /* DDZCamerationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7EDA532078B64A00483ADC /* DDZCamerationController.swift */; };
+		8E7F1F682083DEE1007C9D1A /* MerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7F1F672083DEE1007C9D1A /* MerHeaderCell.swift */; };
+		8E7F1F6B20845325007C9D1A /* XMerReciptCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7F1F6A20845325007C9D1A /* XMerReciptCodeController.swift */; };
+		8E7F1F6E20845D7F007C9D1A /* XMerDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7F1F6D20845D7F007C9D1A /* XMerDataController.swift */; };
+		8E7F1F7020845EE3007C9D1A /* XMerActiveImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7F1F6F20845EE3007C9D1A /* XMerActiveImgCell.swift */; };
+		8E7F1F7220846258007C9D1A /* XMerLogoImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7F1F7120846258007C9D1A /* XMerLogoImgCell.swift */; };
+		8E7F1F74208463C0007C9D1A /* XMerDetailImgsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7F1F73208463C0007C9D1A /* XMerDetailImgsCell.swift */; };
+		8E7F1F7620846C57007C9D1A /* XMerDataEndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7F1F7520846C57007C9D1A /* XMerDataEndCell.swift */; };
+		8E7F1F7820846C93007C9D1A /* XMerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7F1F7720846C93007C9D1A /* XMerDataView.swift */; };
 		8EA0E05A207C5DFD0018232E /* PNPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA0E058207C5DFD0018232E /* PNPieChart.swift */; };
 		8EA0E05B207C5DFD0018232E /* PNPieChartDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA0E059207C5DFD0018232E /* PNPieChartDataItem.swift */; };
 		8EA0E05E207C5E130018232E /* PNValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA0E05C207C5E130018232E /* PNValue.swift */; };
@@ -116,8 +143,8 @@
 		8EC76DB020762D4C00F78749 /* XListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76DAF20762D4C00F78749 /* XListCell.swift */; };
 		8ED207E9207DD390006F441A /* XEarningDayDetailTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED207E8207DD390006F441A /* XEarningDayDetailTCell.swift */; };
 		8ED207EB207DDB2D006F441A /* XbarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED207EA207DDB2D006F441A /* XbarChartView.swift */; };
-		8ED207EE207E055E006F441A /* XUpdateRoleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED207ED207E055E006F441A /* XUpdateRoleCell.swift */; };
-		8ED207F1207E0DCB006F441A /* XRoleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED207F0207E0DCB006F441A /* XRoleController.swift */; };
+		8ED207EE207E055E006F441A /* XUpdateOperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED207ED207E055E006F441A /* XUpdateOperCell.swift */; };
+		8ED207F1207E0DCB006F441A /* XOperRoleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED207F0207E0DCB006F441A /* XOperRoleController.swift */; };
 		8ED207F8207E44FF006F441A /* XUploadBankController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED207F7207E44FF006F441A /* XUploadBankController.swift */; };
 		8ED207FA207E45B9006F441A /* XUpdateBankHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED207F9207E45B9006F441A /* XUpdateBankHeaderCell.swift */; };
 		8ED207FC207EFE60006F441A /* XUploadFrontBankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED207FB207EFE60006F441A /* XUploadFrontBankCell.swift */; };
@@ -134,6 +161,8 @@
 		8ED284D42081DB65008ED5AE /* industry.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ED284D32081DB65008ED5AE /* industry.json */; };
 		8ED284D62081DBB5008ED5AE /* IndustyPiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D52081DBB5008ED5AE /* IndustyPiker.swift */; };
 		8ED284D82081E2D7008ED5AE /* XKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D72081E2D7008ED5AE /* XKeyChain.swift */; };
+		8ED284DA208209E4008ED5AE /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D9208209E4008ED5AE /* BannerModel.swift */; };
+		8EF0C2F52084BEB10002340D /* ShopHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2F42084BEB10002340D /* ShopHomeModel.swift */; };
 		D358378D924E0084BAED85F3 /* Pods_XHXMerchantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68DEA94657D0AAD5BFEDF18 /* Pods_XHXMerchantUITests.framework */; };
 		EF0073D9E415D4C20A15537F /* Pods_XHXMerchantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0322BAA131B8929A61E5F4 /* Pods_XHXMerchantTests.framework */; };
 /* End PBXBuildFile section */
@@ -178,6 +207,25 @@
 		8E110E3620812AE3002176F9 /* XRcmdOperatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRcmdOperatorController.swift; sourceTree = "<group>"; };
 		8E110E3820812B1C002176F9 /* XOperatorTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOperatorTopCell.swift; sourceTree = "<group>"; };
 		8E110E3A20812F9B002176F9 /* XOperatorEndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOperatorEndCell.swift; sourceTree = "<group>"; };
+		8E1758D220823AD300D58DCE /* BankListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankListModel.swift; sourceTree = "<group>"; };
+		8E4EFCEA2082566F00798F99 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		8E4EFCEC208264C300798F99 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		8E4EFCEE2082FFA100798F99 /* BankCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardModel.swift; sourceTree = "<group>"; };
+		8E4EFCF12083232400798F99 /* ErCodeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErCodeTool.swift; sourceTree = "<group>"; };
+		8E4EFCF22083232400798F99 /* ZJPayErCodeContetnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZJPayErCodeContetnView.swift; sourceTree = "<group>"; };
+		8E4EFCF52083575800798F99 /* XUpdateServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XUpdateServiceCell.swift; sourceTree = "<group>"; };
+		8E4EFCF7208359B100798F99 /* XServiceRoleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XServiceRoleController.swift; sourceTree = "<group>"; };
+		8E4EFCF9208388FF00798F99 /* bankCardPiker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bankCardPiker.swift; sourceTree = "<group>"; };
+		8E4EFCFB2083988600798F99 /* XFlowTeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFlowTeamController.swift; sourceTree = "<group>"; };
+		8E4EFCFD2083998A00798F99 /* XFlowTeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFlowTeamCell.swift; sourceTree = "<group>"; };
+		8E4EFCFF20839BA300798F99 /* XFlowMerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFlowMerController.swift; sourceTree = "<group>"; };
+		8E4EFD0120839BD000798F99 /* XFlowMerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFlowMerCell.swift; sourceTree = "<group>"; };
+		8E4EFD0320839F0A00798F99 /* FlowMerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowMerModel.swift; sourceTree = "<group>"; };
+		8E4EFD052083A73100798F99 /* FlowTeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTeamModel.swift; sourceTree = "<group>"; };
+		8E4EFD0B2083C52F00798F99 /* MerHomeTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerHomeTopCell.swift; sourceTree = "<group>"; };
+		8E4EFD0D2083C54F00798F99 /* XMerHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerHomeController.swift; sourceTree = "<group>"; };
+		8E4EFD0F2083CCC100798F99 /* MerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerHomeView.swift; sourceTree = "<group>"; };
+		8E4EFD112083D91300798F99 /* MerHomeEndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerHomeEndCell.swift; sourceTree = "<group>"; };
 		8E73858820766577003349B8 /* XCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCenterController.swift; sourceTree = "<group>"; };
 		8E73858A20766591003349B8 /* XCenterHeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCenterHeadCell.swift; sourceTree = "<group>"; };
 		8E73858C207665B0003349B8 /* XCenterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCenterListCell.swift; sourceTree = "<group>"; };
@@ -190,6 +238,14 @@
 		8E7EDA4F20774C5F00483ADC /* XButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XButtonCell.swift; sourceTree = "<group>"; };
 		8E7EDA512078A7E200483ADC /* XIdCardImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIdCardImageCell.swift; sourceTree = "<group>"; };
 		8E7EDA532078B64A00483ADC /* DDZCamerationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDZCamerationController.swift; sourceTree = "<group>"; };
+		8E7F1F672083DEE1007C9D1A /* MerHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerHeaderCell.swift; sourceTree = "<group>"; };
+		8E7F1F6A20845325007C9D1A /* XMerReciptCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerReciptCodeController.swift; sourceTree = "<group>"; };
+		8E7F1F6D20845D7F007C9D1A /* XMerDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerDataController.swift; sourceTree = "<group>"; };
+		8E7F1F6F20845EE3007C9D1A /* XMerActiveImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerActiveImgCell.swift; sourceTree = "<group>"; };
+		8E7F1F7120846258007C9D1A /* XMerLogoImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerLogoImgCell.swift; sourceTree = "<group>"; };
+		8E7F1F73208463C0007C9D1A /* XMerDetailImgsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerDetailImgsCell.swift; sourceTree = "<group>"; };
+		8E7F1F7520846C57007C9D1A /* XMerDataEndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerDataEndCell.swift; sourceTree = "<group>"; };
+		8E7F1F7720846C93007C9D1A /* XMerDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerDataView.swift; sourceTree = "<group>"; };
 		8EA0E058207C5DFD0018232E /* PNPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNPieChart.swift; sourceTree = "<group>"; };
 		8EA0E059207C5DFD0018232E /* PNPieChartDataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNPieChartDataItem.swift; sourceTree = "<group>"; };
 		8EA0E05C207C5E130018232E /* PNValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNValue.swift; sourceTree = "<group>"; };
@@ -277,8 +333,8 @@
 		8EC76DAF20762D4C00F78749 /* XListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XListCell.swift; sourceTree = "<group>"; };
 		8ED207E8207DD390006F441A /* XEarningDayDetailTCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEarningDayDetailTCell.swift; sourceTree = "<group>"; };
 		8ED207EA207DDB2D006F441A /* XbarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XbarChartView.swift; sourceTree = "<group>"; };
-		8ED207ED207E055E006F441A /* XUpdateRoleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XUpdateRoleCell.swift; sourceTree = "<group>"; };
-		8ED207F0207E0DCB006F441A /* XRoleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRoleController.swift; sourceTree = "<group>"; };
+		8ED207ED207E055E006F441A /* XUpdateOperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XUpdateOperCell.swift; sourceTree = "<group>"; };
+		8ED207F0207E0DCB006F441A /* XOperRoleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOperRoleController.swift; sourceTree = "<group>"; };
 		8ED207F7207E44FF006F441A /* XUploadBankController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XUploadBankController.swift; sourceTree = "<group>"; };
 		8ED207F9207E45B9006F441A /* XUpdateBankHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XUpdateBankHeaderCell.swift; sourceTree = "<group>"; };
 		8ED207FB207EFE60006F441A /* XUploadFrontBankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XUploadFrontBankCell.swift; sourceTree = "<group>"; };
@@ -295,6 +351,8 @@
 		8ED284D32081DB65008ED5AE /* industry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = industry.json; sourceTree = "<group>"; };
 		8ED284D52081DBB5008ED5AE /* IndustyPiker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndustyPiker.swift; sourceTree = "<group>"; };
 		8ED284D72081E2D7008ED5AE /* XKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XKeyChain.swift; sourceTree = "<group>"; };
+		8ED284D9208209E4008ED5AE /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		8EF0C2F42084BEB10002340D /* ShopHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopHomeModel.swift; sourceTree = "<group>"; };
 		B3A85545585FF99D0C908042 /* Pods-XHXMerchantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantTests/Pods-XHXMerchantTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D263DE3CC99C91AE754BE336 /* Pods-XHXMerchantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantUITests/Pods-XHXMerchantUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E68DEA94657D0AAD5BFEDF18 /* Pods_XHXMerchantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHXMerchantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -391,6 +449,7 @@
 				8E7EDA4620773D5900483ADC /* XMerApyleModel.swift */,
 				8ED284D12081CE56008ED5AE /* AddressPiker.swift */,
 				8ED284D52081DBB5008ED5AE /* IndustyPiker.swift */,
+				8E4EFCF9208388FF00798F99 /* bankCardPiker.swift */,
 			);
 			path = ComomModel;
 			sourceTree = "<group>";
@@ -424,6 +483,7 @@
 		8E0AC3FE207FCF5A0050BE7C /* PrivateAccount */ = {
 			isa = PBXGroup;
 			children = (
+				8E1758D120823A9700D58DCE /* Model */,
 				8E0AC3FF207FCF830050BE7C /* Controller */,
 				8E0AC400207FCF8C0050BE7C /* View */,
 			);
@@ -460,6 +520,7 @@
 		8E110E3320812A76002176F9 /* Operator */ = {
 			isa = PBXGroup;
 			children = (
+				8E4EFCF02083231200798F99 /* Code */,
 				8E110E3520812ABF002176F9 /* Controller */,
 				8E110E3420812AB2002176F9 /* View */,
 			);
@@ -486,9 +547,75 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		8E1758D120823A9700D58DCE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E1758D220823AD300D58DCE /* BankListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8E4EFCE92082565B00798F99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E4EFCEA2082566F00798F99 /* TokenModel.swift */,
+				8E4EFCEC208264C300798F99 /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8E4EFCF02083231200798F99 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				8E4EFCF12083232400798F99 /* ErCodeTool.swift */,
+				8E4EFCF22083232400798F99 /* ZJPayErCodeContetnView.swift */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		8E4EFD072083C3B800798F99 /* MerManager */ = {
+			isa = PBXGroup;
+			children = (
+				8E7F1F6C20845D2E007C9D1A /* MerData */,
+				8E7F1F69208452CE007C9D1A /* MerReciptCode */,
+				8E4EFD082083C4D700798F99 /* MerHomePage */,
+			);
+			path = MerManager;
+			sourceTree = "<group>";
+		};
+		8E4EFD082083C4D700798F99 /* MerHomePage */ = {
+			isa = PBXGroup;
+			children = (
+				8EF0C2F32084BE900002340D /* Model */,
+				8E4EFD0A2083C4FB00798F99 /* View */,
+				8E4EFD092083C4EB00798F99 /* Controller */,
+			);
+			path = MerHomePage;
+			sourceTree = "<group>";
+		};
+		8E4EFD092083C4EB00798F99 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E4EFD0D2083C54F00798F99 /* XMerHomeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8E4EFD0A2083C4FB00798F99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E4EFD0B2083C52F00798F99 /* MerHomeTopCell.swift */,
+				8E4EFD0F2083CCC100798F99 /* MerHomeView.swift */,
+				8E4EFD112083D91300798F99 /* MerHomeEndCell.swift */,
+				8E7F1F672083DEE1007C9D1A /* MerHeaderCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8E7EDA3A20767FA500483ADC /* LoginModule */ = {
 			isa = PBXGroup;
 			children = (
+				8E4EFCE92082565B00798F99 /* Model */,
 				8E7EDA3B20767FB900483ADC /* Controller */,
 				8E7EDA3C20767FCE00483ADC /* View */,
 			);
@@ -565,6 +692,27 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8E7F1F69208452CE007C9D1A /* MerReciptCode */ = {
+			isa = PBXGroup;
+			children = (
+				8E7F1F6A20845325007C9D1A /* XMerReciptCodeController.swift */,
+			);
+			path = MerReciptCode;
+			sourceTree = "<group>";
+		};
+		8E7F1F6C20845D2E007C9D1A /* MerData */ = {
+			isa = PBXGroup;
+			children = (
+				8E7F1F6D20845D7F007C9D1A /* XMerDataController.swift */,
+				8E7F1F6F20845EE3007C9D1A /* XMerActiveImgCell.swift */,
+				8E7F1F7120846258007C9D1A /* XMerLogoImgCell.swift */,
+				8E7F1F73208463C0007C9D1A /* XMerDetailImgsCell.swift */,
+				8E7F1F7520846C57007C9D1A /* XMerDataEndCell.swift */,
+				8E7F1F7720846C93007C9D1A /* XMerDataView.swift */,
+			);
+			path = MerData;
 			sourceTree = "<group>";
 		};
 		8EA0E056207C5D4C0018232E /* ThreeSource */ = {
@@ -739,13 +887,13 @@
 		8EC76D3A20760AA300F78749 /* ApiManager */ = {
 			isa = PBXGroup;
 			children = (
+				8EC76D4120760AA300F78749 /* API.swift */,
 				8EC76D3B20760AA300F78749 /* Observable+SwiftyJSONMapper.swift */,
 				8EC76D3C20760AA300F78749 /* SNNetModel.swift */,
 				8EC76D3D20760AA300F78749 /* APIManager.swift */,
 				8EC76D3E20760AA300F78749 /* GetResponse.swift */,
 				8EC76D3F20760AA300F78749 /* SNSwiftyJSONAble.swift */,
 				8EC76D4020760AA300F78749 /* VaporTestModel.swift */,
-				8EC76D4120760AA300F78749 /* API.swift */,
 				8EC76D4220760AA300F78749 /* SNMoya_ResponseMapper.swift */,
 				8EC76D4320760AA300F78749 /* SNMoyaResult.swift */,
 			);
@@ -910,6 +1058,7 @@
 		8EC76DA520760AE900F78749 /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
+				8E4EFD072083C3B800798F99 /* MerManager */,
 				8E7EDA4920773FF000483ADC /* MerApply */,
 				8ED20800207F3F35006F441A /* Recommend */,
 				8ED207FD207F0990006F441A /* MyBankCard */,
@@ -923,7 +1072,10 @@
 			isa = PBXGroup;
 			children = (
 				8EC76DA720760AE900F78749 /* XHomeController.swift */,
-				8ED207F0207E0DCB006F441A /* XRoleController.swift */,
+				8ED207F0207E0DCB006F441A /* XOperRoleController.swift */,
+				8E4EFCF7208359B100798F99 /* XServiceRoleController.swift */,
+				8E4EFCFB2083988600798F99 /* XFlowTeamController.swift */,
+				8E4EFCFF20839BA300798F99 /* XFlowMerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -934,8 +1086,11 @@
 				8EC76DAB2076256700F78749 /* XBannerCell.swift */,
 				8EC76DAD20762BC700F78749 /* XSpaceCell.swift */,
 				8EC76DAF20762D4C00F78749 /* XListCell.swift */,
-				8ED207ED207E055E006F441A /* XUpdateRoleCell.swift */,
+				8ED207ED207E055E006F441A /* XUpdateOperCell.swift */,
 				8E110E2C20809D6C002176F9 /* XFunctionCell.swift */,
+				8E4EFCF52083575800798F99 /* XUpdateServiceCell.swift */,
+				8E4EFCFD2083998A00798F99 /* XFlowTeamCell.swift */,
+				8E4EFD0120839BD000798F99 /* XFlowMerCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -943,6 +1098,9 @@
 		8ED207EC207E0513006F441A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8ED284D9208209E4008ED5AE /* BannerModel.swift */,
+				8E4EFD0320839F0A00798F99 /* FlowMerModel.swift */,
+				8E4EFD052083A73100798F99 /* FlowTeamModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -995,6 +1153,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED207FE207F0B71006F441A /* XMyBankCardController.swift */,
+				8E4EFCEE2082FFA100798F99 /* BankCardModel.swift */,
 			);
 			path = MyBankCard;
 			sourceTree = "<group>";
@@ -1032,6 +1191,14 @@
 			children = (
 			);
 			path = Modle;
+			sourceTree = "<group>";
+		};
+		8EF0C2F32084BE900002340D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8EF0C2F42084BEB10002340D /* ShopHomeModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C8E6596F4CEFF5F7014DB98E /* Frameworks */ = {
@@ -1249,6 +1416,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/PGActionSheet/PGActionSheet.framework",
 				"${BUILT_PRODUCTS_DIR}/PagingMenuController/PagingMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -1277,6 +1445,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PGActionSheet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PagingMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -1387,10 +1556,11 @@
 				8EC76D7120760AA300F78749 /* Date+Extension.swift in Sources */,
 				8ED20809207F4192006F441A /* XRecmdUpdateController.swift in Sources */,
 				8EA0E05E207C5E130018232E /* PNValue.swift in Sources */,
-				8ED207F1207E0DCB006F441A /* XRoleController.swift in Sources */,
+				8ED207F1207E0DCB006F441A /* XOperRoleController.swift in Sources */,
 				8E0AC3E8207FA8360050BE7C /* XMerLicenseController.swift in Sources */,
 				8ED207FC207EFE60006F441A /* XUploadFrontBankCell.swift in Sources */,
 				8E0AC3F9207FC54B0050BE7C /* XOpenAccountController.swift in Sources */,
+				8E4EFCED208264C300798F99 /* UserModel.swift in Sources */,
 				8EC76D7920760AA300F78749 /* SNNetModel.swift in Sources */,
 				8E73858D207665B0003349B8 /* XCenterListCell.swift in Sources */,
 				8EC76D9420760AA300F78749 /* SNRXSectionModel.swift in Sources */,
@@ -1401,6 +1571,7 @@
 				8E0AC3F1207FA9C10050BE7C /* XMerLicenseFieldCell.swift in Sources */,
 				8E110E3720812AE3002176F9 /* XRcmdOperatorController.swift in Sources */,
 				8EC76D8020760AA300F78749 /* SNMoyaResult.swift in Sources */,
+				8E4EFD062083A73100798F99 /* FlowTeamModel.swift in Sources */,
 				8EC76D9F20760AA300F78749 /* SNContentGet.swift in Sources */,
 				8E7EDA422076804D00483ADC /* XForgetPwdController.swift in Sources */,
 				8EC76D7520760AA300F78749 /* SnapKit_Extension.swift in Sources */,
@@ -1420,10 +1591,12 @@
 				8ED207E9207DD390006F441A /* XEarningDayDetailTCell.swift in Sources */,
 				8EC76D7C20760AA300F78749 /* SNSwiftyJSONAble.swift in Sources */,
 				8E7EDA542078B64A00483ADC /* DDZCamerationController.swift in Sources */,
+				8EF0C2F52084BEB10002340D /* ShopHomeModel.swift in Sources */,
 				8E7EDA4420773BF100483ADC /* XMerBasicInfoController.swift in Sources */,
 				8ED2080B207F4657006F441A /* XRecmdMerCell.swift in Sources */,
 				8EC76D8620760AA300F78749 /* RxMoyaAvailability.swift in Sources */,
 				8EC76D8C20760AA300F78749 /* UIButton_Extension.swift in Sources */,
+				8E7F1F7220846258007C9D1A /* XMerLogoImgCell.swift in Sources */,
 				8EA0E069207C5F890018232E /* XPropertyController.swift in Sources */,
 				8E110E3B20812F9B002176F9 /* XOperatorEndCell.swift in Sources */,
 				8EC76D7D20760AA300F78749 /* VaporTestModel.swift in Sources */,
@@ -1431,27 +1604,39 @@
 				8EA0E077207C85140018232E /* XTotalEarningsMidCell.swift in Sources */,
 				8ED284CE2081B3FD008ED5AE /* XRecmdCell.swift in Sources */,
 				8ED20802207F3F98006F441A /* XRecmdRecordController.swift in Sources */,
+				8E4EFD0C2083C52F00798F99 /* MerHomeTopCell.swift in Sources */,
 				8ED207EB207DDB2D006F441A /* XbarChartView.swift in Sources */,
+				8E4EFCEF2082FFA100798F99 /* BankCardModel.swift in Sources */,
 				8EC76D9620760AA300F78749 /* SNBaseViewController.swift in Sources */,
 				8EC76D9120760AA300F78749 /* UIView_Extension.swift in Sources */,
 				8ED207FF207F0B71006F441A /* XMyBankCardController.swift in Sources */,
 				8EA0E07D207CA1140018232E /* XEarningDeatilCell.swift in Sources */,
 				8E73858920766577003349B8 /* XCenterController.swift in Sources */,
+				8E7F1F74208463C0007C9D1A /* XMerDetailImgsCell.swift in Sources */,
 				8E7EDA4720773D5900483ADC /* XMerApyleModel.swift in Sources */,
+				8E4EFCFE2083998A00798F99 /* XFlowTeamCell.swift in Sources */,
 				8EC76D8520760AA300F78749 /* Single+Response.swift in Sources */,
+				8E4EFD0E2083C54F00798F99 /* XMerHomeController.swift in Sources */,
 				8ED284D82081E2D7008ED5AE /* XKeyChain.swift in Sources */,
+				8E4EFCF62083575800798F99 /* XUpdateServiceCell.swift in Sources */,
 				8EC76D7A20760AA300F78749 /* APIManager.swift in Sources */,
+				8E4EFCF32083232400798F99 /* ErCodeTool.swift in Sources */,
 				8EC76D9B20760AA300F78749 /* SNBaseTableView.swift in Sources */,
 				8EC76DB020762D4C00F78749 /* XListCell.swift in Sources */,
 				8EC76D8E20760AA300F78749 /* UINavigation_Extension.swift in Sources */,
 				8EC76D8320760AA300F78749 /* Observable+Response.swift in Sources */,
 				8EC76D8720760AA300F78749 /* Common.swift in Sources */,
+				8E1758D320823AD300D58DCE /* BankListModel.swift in Sources */,
+				8E4EFCFC2083988600798F99 /* XFlowTeamController.swift in Sources */,
+				8E7F1F6B20845325007C9D1A /* XMerReciptCodeController.swift in Sources */,
 				8EC76D9E20760AA300F78749 /* SNTableCellContent.swift in Sources */,
 				8EC76DAC2076256700F78749 /* XBannerCell.swift in Sources */,
+				8E4EFD0020839BA300798F99 /* XFlowMerController.swift in Sources */,
 				8EC76D8B20760AA300F78749 /* GestureRecognizer_Extension.swift in Sources */,
 				8EC76D7220760AA300F78749 /* UIImage+Extension.swift in Sources */,
 				8EC76D8A20760AA300F78749 /* UITableView_Extension.swift in Sources */,
 				8EA0E062207C5E4C0018232E /* PNGenericChart.swift in Sources */,
+				8E7F1F682083DEE1007C9D1A /* MerHeaderCell.swift in Sources */,
 				8EC76D7620760AA300F78749 /* UIAlertViewController.swift in Sources */,
 				8E7EDA5020774C5F00483ADC /* XButtonCell.swift in Sources */,
 				8EA0E085207CEF3A0018232E /* XEarningDayEndCell.swift in Sources */,
@@ -1462,35 +1647,48 @@
 				8EC76D9220760AA300F78749 /* SNStoreSectoiniModel.swift in Sources */,
 				8EA0E07B207C9FAA0018232E /* XEarningDetailController.swift in Sources */,
 				8EA0E06B207C6E690018232E /* XTotalEarningTopCell.swift in Sources */,
+				8E7F1F7820846C93007C9D1A /* XMerDataView.swift in Sources */,
 				8E110E3920812B1C002176F9 /* XOperatorTopCell.swift in Sources */,
+				8E4EFD102083CCC100798F99 /* MerHomeView.swift in Sources */,
+				8E7F1F6E20845D7F007C9D1A /* XMerDataController.swift in Sources */,
 				8EC76D9520760AA300F78749 /* DDZBasicTableVC.swift in Sources */,
 				8E0AC404207FD0050050BE7C /* XPrivateAccountFieldCell.swift in Sources */,
+				8E4EFCF8208359B100798F99 /* XServiceRoleController.swift in Sources */,
+				8E7F1F7620846C57007C9D1A /* XMerDataEndCell.swift in Sources */,
 				8EC76DA920760AE900F78749 /* XHomeController.swift in Sources */,
 				8EA0E05A207C5DFD0018232E /* PNPieChart.swift in Sources */,
 				8E0AC3FD207FC8DF0050BE7C /* XOpenAccountImgCell.swift in Sources */,
 				8EC76D9020760AA300F78749 /* UIImage_Extension.swift in Sources */,
+				8E4EFD0220839BD000798F99 /* XFlowMerCell.swift in Sources */,
 				8ED284D62081DBB5008ED5AE /* IndustyPiker.swift in Sources */,
-				8ED207EE207E055E006F441A /* XUpdateRoleCell.swift in Sources */,
+				8ED207EE207E055E006F441A /* XUpdateOperCell.swift in Sources */,
 				8E110E2F2080E19A002176F9 /* XLoginOutCell.swift in Sources */,
 				8EC76D8120760AA300F78749 /* DDZUploadBtn.swift in Sources */,
 				8E0AC406207FD04D0050BE7C /* XPrivateAccountImgCell.swift in Sources */,
 				8E7EDA3E2076800800483ADC /* XLoginController.swift in Sources */,
 				8ED207F8207E44FF006F441A /* XUploadBankController.swift in Sources */,
+				8E7F1F7020845EE3007C9D1A /* XMerActiveImgCell.swift in Sources */,
 				8EC76D8D20760AA300F78749 /* UIImageView_Extension.swift in Sources */,
 				8E110E3120812161002176F9 /* XForgetStepTwoController.swift in Sources */,
 				8EA0E083207CDE300018232E /* XEarningDayHeaderCell.swift in Sources */,
 				8EA0E05F207C5E130018232E /* PNColor.swift in Sources */,
+				8E4EFCEB2082566F00798F99 /* TokenModel.swift in Sources */,
 				8EC76D7020760AA300F78749 /* UISearchBarExtension.swift in Sources */,
 				8EC76D7420760AA300F78749 /* UIViewExtension.swift in Sources */,
 				8E0AC3FB207FC5840050BE7C /* XOpenAccountFieldCell.swift in Sources */,
+				8ED284DA208209E4008ED5AE /* BannerModel.swift in Sources */,
 				8EC76D8920760AA300F78749 /* CGRect_Extension.swift in Sources */,
 				8EC76D7320760AA300F78749 /* Extension_Then.swift in Sources */,
+				8E4EFCFA208388FF00798F99 /* bankCardPiker.swift in Sources */,
 				8EA0E063207C5E4C0018232E /* PNChartLabel.swift in Sources */,
 				8EA0E079207C98DB0018232E /* XTotalEarningsEndCell.swift in Sources */,
+				8E4EFD0420839F0A00798F99 /* FlowMerModel.swift in Sources */,
 				8EC76D9920760AA300F78749 /* SNTimerButton.swift in Sources */,
 				8EC76D7820760AA300F78749 /* Observable+SwiftyJSONMapper.swift in Sources */,
 				8EC76D8820760AA300F78749 /* Color_Extension.swift in Sources */,
 				8EC76DAE20762BC700F78749 /* XSpaceCell.swift in Sources */,
+				8E4EFD122083D91300798F99 /* MerHomeEndCell.swift in Sources */,
+				8E4EFCF42083232400798F99 /* ZJPayErCodeContetnView.swift in Sources */,
 				8EC76D9D20760AA300F78749 /* SNModelsContent.swift in Sources */,
 				8EC76D9A20760AA300F78749 /* SNBaseView.swift in Sources */,
 				8EA0E075207C82B80018232E /* PNBar.swift in Sources */,
@@ -1676,14 +1874,16 @@
 			baseConfigurationReference = 209C9F7DF401D23DFF095DA0 /* Pods-XHXMerchant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GS5MNVJVED;
 				INFOPLIST_FILE = XHXMerchant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CN.XHXMerchant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.merchant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1695,14 +1895,16 @@
 			baseConfigurationReference = 23FE2184717D0D16A737B640 /* Pods-XHXMerchant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GS5MNVJVED;
 				INFOPLIST_FILE = XHXMerchant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CN.XHXMerchant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.merchant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PGActionSheet
 
 class XRcmdController: SNBaseViewController {
     
@@ -17,11 +18,34 @@ class XRcmdController: SNBaseViewController {
         
         $0.separatorStyle = .none
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setNavigationBar()
+//        setNavigationBar()
+
     }
+    func saveImg(qrString : String ,icon : UIImage?){
+        let alervc = UIAlertController(title: nil, message: "是否保存图片", preferredStyle: .alert)
+        let actionCancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alervc.addAction(actionCancel)
+        let actionCertain = UIAlertAction(title: "确定", style: .default) { (action) in
+            UIImageWriteToSavedPhotosAlbum(ErCodeTool.creatQRCodeImage(text: qrString, size: fit(1000), icon: icon), self, #selector(self.saveFinshed(image:error:contextInfo:)), nil)
+        }
+        alervc.addAction(actionCertain)
+        //        present(alervc, animated: true, completion: nil)
+        //        jumpSubject.onNext(SNJumpType.present(vc: alervc, anmi: true))
+        self.present(alervc, animated: true, completion: nil)
+    }
+    @objc func saveFinshed(image : UIImage,error : NSError?,contextInfo : Any){
+        if error == nil{
+            
+            SZHUD("保存成功", type: .success, callBack: nil)
+        }else{
+            SZHUD("保存失败", type: .error, callBack: nil)
+        }
+    }
+    
     fileprivate func setupUI() {
         
         self.title = "推荐"
@@ -35,6 +59,7 @@ class XRcmdController: SNBaseViewController {
             make.bottom.equalToSuperview()
             make.right.equalToSuperview()
         }
+
     }
     fileprivate func setNavigationBar(){
         let barbutton = UIBarButtonItem.init(title: "推荐记录", imgName:"", target: self, action: #selector(login))
@@ -56,9 +81,28 @@ extension XRcmdController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         if indexPath.row == 0{
             let cell:XRecmdCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            
+            cell.ercodeView.btnClick.subscribe(onNext: {[unowned self] (url) in
+                self.saveImg(qrString: url, icon: nil)
+            }).disposed(by: disposeBag)
+            
+            
             cell.clickEvent = { [unowned self] (para) in
                 if para == 1{
-                    self.navigationController?.pushViewController(XMerBasicInfoController(), animated: true)
+                   let actionSheet =  PGActionSheet(cancelButton: true, buttonList: ["个体工商户", "企业单位"])
+                    actionSheet.textColor = Color(0x313131)
+                    actionSheet.textFont = Font(30)
+                    actionSheet.translucent = false
+                    actionSheet.actionSheetTranslucent = false
+                    self.present(actionSheet, animated: false, completion: nil)
+                    actionSheet.handler = {[unowned self] index in
+                        self.navigationController?.pushViewController(XMerBasicInfoController(), animated: true)
+                        if index == 0{
+                            XKeyChain.set("1", key: isConpany)
+                        }else{
+                            XKeyChain.set("0", key: isConpany)
+                        }
+                    }
                 }
                 if para == 2{
                       self.navigationController?.pushViewController(XRcmdOperatorController(), animated: true)
@@ -82,5 +126,4 @@ extension XRcmdController:UITableViewDelegate,UITableViewDataSource{
         }
         
     }
-    
 }

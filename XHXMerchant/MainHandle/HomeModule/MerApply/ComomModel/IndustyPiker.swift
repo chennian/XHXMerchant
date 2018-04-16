@@ -34,6 +34,7 @@ class IndustyPiker: UIView {
     fileprivate func setSubView(){
         
         addSubview(addressPiker)
+        
     }
     
     fileprivate func loadAddressData(){
@@ -131,7 +132,7 @@ extension IndustyPiker:UIPickerViewDelegate,UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         provinceString = provinceArray[0]
-        
+        cityString = cityArray[0]
         if component == 0 {
             cityArray.removeAll()
             countyArray.removeAll()

@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class XUploadFrontBankCell: SNBaseTableViewCell {
+    var imgTap = PublishSubject<(AliOssTransferProtocol)>()
+
+    var clickEvent:(()->())?
     
     let view = UIView().then{
         $0.backgroundColor = Color(0xffffff)
@@ -37,13 +41,26 @@ class XUploadFrontBankCell: SNBaseTableViewCell {
         $0.titleLabel?.font = Font(30)
     }
 
+    func bindEvent(){
+        submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
+        bankCardImg.rx.controlEvent(UIControlEvents.touchUpInside).asObservable().subscribe(onNext:{
+            [unowned self] () in
+            self.imgTap.onNext((self.bankCardImg))
+        }).disposed(by: disposeBag)
+    }
+    
+    @objc  func submit(){
+        guard let action  = clickEvent else{return}
+        action()
+    }
+    
     override func setupView() {
         contentView.addSubview(view)
         view.addSubview(bankCardLable)
         view.addSubview(bankCardImg)
         view.addSubview(notice)
         contentView.addSubview(submitButton)
-        
+        bindEvent()
         self.backgroundColor = Color(0xf5f5f5)
         
         view.snp.makeConstraints { (make) in

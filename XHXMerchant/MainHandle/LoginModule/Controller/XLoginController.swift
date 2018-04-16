@@ -9,9 +9,15 @@
 import UIKit
 import SVProgressHUD
 
+
 class XLoginController: SNBaseViewController
 {
     
+    var model :[TokenModel] = []
+    
+    var userModel : [UserModel] = []
+
+
     let imgViewOne = UIImageView().then{
         $0.image = UIImage(named: "logo")
     }
@@ -70,23 +76,44 @@ class XLoginController: SNBaseViewController
     }
     
   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+        
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        getUserInfo()
+        self.navigationController?.navigationBar.isHidden = false
+
+    }
+    
+    
     fileprivate func submitLogin(){
-        SNRequest(requestType: API.login(phone:phoneField.text!, password:passwordField.text!)).subscribe(onNext: {[unowned self] (result) in
+        SNRequest(requestType: API.login(phone:phoneField.text! , password: passwordField.text!), modelType: [TokenModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
-            case .success(let token):
+            case .success(let models):
                 SZHUDDismiss()
-                XKeyChain.set(token, key: TOKEN)
-                XKeyChain.set(LOGIN_TRUE, key: ISLOGIN)
-                SNMainTabBarController.shared.selectedIndex = 0
-                UIApplication.shared.keyWindow?.rootViewController = SNMainTabBarController.shared
-            case .fail(_,let msg):
+                self.model = models
+                let token = self.model.map({return $0.token})
+                let timestamp = self.model.map({return $0.timestamp})
+                XKeyChain.set("1", key: ISLOGIN)
+                XKeyChain.set(token[0], key: TOKEN)
+                XKeyChain.set(timestamp[0], key:TIMESTAMP)
+                self.getUserInfo()
+                
+            case .fail(let code,let msg):
+                SZHUDDismiss()
+                
                 UIAlertView(title: "提示", message: msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
-                SZHUDDismiss()
             default:
                 SZHUDDismiss()
+
                 break
             }
         }).disposed(by: disposeBag)
+        
     }
     @objc func loginAction(){
         
@@ -107,12 +134,47 @@ class XLoginController: SNBaseViewController
         
        
         let time: TimeInterval = 1.0
-        SZHUD("正在发送中...", type: .loading, callBack: nil)
+        SZHUD("登录中...", type: .loading, callBack: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             //code
             self.submitLogin()
         }
     }
+    
+    func getUserInfo(){
+        SNRequest(requestType: API.getUserInfo, modelType: [UserModel.self]).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .success(let models):
+                self.userModel = models
+                CNLog(models)
+                let phone = self.userModel.map({return $0.phone})
+                let isMer = self.userModel.map({return $0.isMer})
+                let isAgent = self.userModel.map({return $0.isAgent})
+                let roles = self.userModel.map({return $0.roles})
+                let nikeName = self.userModel.map({return $0.nickName})
+                let parentPhone = self.userModel.map({return $0.parent_phone})
+                let operater = self.userModel.map({return $0.operater})
+                let corporation = self.userModel.map({return $0.corporation})
+                
+                XKeyChain.set(phone[0], key:PHONE )
+                XKeyChain.set(isMer[0], key:IsMer )
+                XKeyChain.set(isAgent[0], key:IsAgent )
+                XKeyChain.set(roles[0], key:ROLE )
+                XKeyChain.set(nikeName[0], key:NickName)
+                XKeyChain.set(parentPhone[0], key:PARENTPHONE)
+                XKeyChain.set(operater[0], key:OPERATER)
+                XKeyChain.set(corporation[0], key:CORPORATION)
+                CNLog(XKeyChain.get(IsAgent) + XKeyChain.get(OPERATER) + XKeyChain.get(CORPORATION))
+                self.navigationController?.popViewController(animated: false)
+
+            case .fail(_,let msg):
+                SZHUD( msg ?? "获取个人信息失败", type: .error, callBack: nil)
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+    }
+    
     
     override func setupView() {
         self.view.backgroundColor = Color(0xffffff)

@@ -9,6 +9,14 @@
 import UIKit
 
 class XMyBankCardController: SNBaseViewController {
+    
+    var model :[BankCardModel] = []
+
+    var bank:String = ""
+    var name:String = ""
+    var bankNum:String = ""
+    var phone:String = ""
+
 
     var bankCardImg = UIView().then{
         $0.layer.cornerRadius = fit(10)
@@ -35,7 +43,59 @@ class XMyBankCardController: SNBaseViewController {
         $0.textColor = Color(0xfffff)
     }
     @objc func tapOne(){
-        self.navigationController?.pushViewController(XUploadBankController(), animated: true)
+        let vc =    XUploadBankController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func loadBankData(){
+        SNRequest(requestType: API.myBankCard, modelType: [BankCardModel.self]).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .success(let models):
+                CNLog(models)
+                self.model = models
+                if self.model.isEmpty {
+                    DispatchQueue.main.async {
+                      self.bankCardImg.isHidden = true
+                        self.notice.text = "                                      暂未绑定银行卡"
+                    }
+                }else{
+                    self.bank = self.model.map({return $0.bank_name})[0]
+                    self.name = self.model.map({return $0.real_name})[0]
+                    self.bankNum = self.model.map({return $0.bank_num})[0]
+                    self.phone = self.model.map({return $0.phone})[0]
+                    
+                    CNLog(self.bank + self.name + self.bankNum)
+                    DispatchQueue.main.async {
+                        self.bankName.text = self.bank
+                        self.cardholder.text = "姓名：\(self.name)"
+                        self.cardNum.text = "银行卡号：\(self.bankNum)"
+                    }
+                }
+             
+
+            case .fail(_ ,let msg):
+              SZHUD(msg! , type: .error, callBack: nil)
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+
+    }
+
+    func setUpRightBar(){
+        let button = UIButton(frame:CGRect(x:0, y:0, width:50, height:30))
+        button.setTitle("添加", for: UIControlState.normal)
+        button.setTitleColor(Color(0x313131), for: UIControlState.normal)
+        button.titleLabel?.font = Font(30)
+        button.addTarget(self, action: #selector(submit), for: UIControlEvents.touchUpInside)
+        let item = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem=item
+    }
+    @objc func submit(){
+        if model.isEmpty {
+            self.navigationController?.pushViewController(XUploadBankController(), animated: true)
+        }else{
+            SZHUD("只能绑定一张银行卡", type: .info, callBack: nil)
+        }
     }
     
     func setUI(){
@@ -43,8 +103,8 @@ class XMyBankCardController: SNBaseViewController {
         bankCardImg.frame  = CGRect(x: fit(30), y: fit(66), width: fit(690), height: fit(209))
         let gradientLayer = CAGradientLayer().shadowLayer()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOne))
-        bankCardImg.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOne))
+//        bankCardImg.addGestureRecognizer(tapGesture)
         
         gradientLayer.frame = CGRect(x: 0, y: 0, width: fit(690), height: fit(209))
         gradientLayer.cornerRadius = fit(10)
@@ -56,6 +116,8 @@ class XMyBankCardController: SNBaseViewController {
         bankCardImg.addSubview(cardholder)
         bankCardImg.addSubview(cardNum)
     
+ 
+        
         notice.snp.makeConstraints { (make) in
             make.left.equalTo(bankCardImg.snp.left)
             make.top.equalTo(bankCardImg.snp.bottom).snOffset(23)
@@ -72,11 +134,15 @@ class XMyBankCardController: SNBaseViewController {
             make.left.equalTo(bankName.snp.left)
             make.top.equalTo(bankName.snp.bottom).snOffset(38)
         }
+        
+    
     }
 
     
     override func setupView() {
+        loadBankData()
         setUI()
+        setUpRightBar()
     }
 }
 

@@ -81,7 +81,7 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         $0.borderStyle = .none
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
-        $0.placeholder = "有效日期格式"
+        $0.placeholder = "有效日期格式,如:20180420"
     }
     
     let view = UIView().then{

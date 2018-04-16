@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import  APJTextPickerView
+
 
 class XPrivateAccountFieldCell: SNBaseTableViewCell {
+    
+    var dataArray:[String] = []
+    
     private var line1 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
@@ -30,7 +35,7 @@ class XPrivateAccountFieldCell: SNBaseTableViewCell {
     
     
     var privateBankAccount = UILabel().then{
-        $0.text = "对公银行账户"
+        $0.text = "对私银行账户"
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
     }
@@ -38,18 +43,19 @@ class XPrivateAccountFieldCell: SNBaseTableViewCell {
         $0.borderStyle = .none
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
-        $0.placeholder = "请输入对公银行账号"
+        $0.placeholder = "请输入对私银行账号"
     }
     var privateBank = UILabel().then{
         $0.text = "开户行"
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
     }
-    var privateBankField = UITextField().then{
+    var privateBankField = APJTextPickerView().then{
         $0.borderStyle = .none
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
         $0.placeholder = "请选择开户行"
+        $0.type = .strings
     }
     
     var privateBankAddress = UILabel().then{
@@ -131,8 +137,21 @@ class XPrivateAccountFieldCell: SNBaseTableViewCell {
         $0.textColor = Color(0x9f9f9f)
         
     }
+    func loadBankList(){
+        SNRequest(requestType: API.bankList, modelType: [BankListModel.self]).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .success(let models):
+                 self.dataArray = models.map({return $0.bankName})
+            case .fail( _,let msg):
+                CNLog(msg)
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+    }
     
     override func setupView() {
+        loadBankList()
         contentView.addSubview(line1)
         contentView.addSubview(line2)
         contentView.addSubview(line3)
@@ -158,6 +177,9 @@ class XPrivateAccountFieldCell: SNBaseTableViewCell {
         contentView.addSubview(view)
         view.addSubview(notice)
 
+        privateBankField.pickerDelegate = self
+        privateBankField.dataSource = self
+        
         timeButton.setup("获取验证码", timeTitlePrefix: "", aTimeLength: 60)
 
         line1.snp.makeConstraints { (make) in
@@ -295,5 +317,14 @@ class XPrivateAccountFieldCell: SNBaseTableViewCell {
             make.top.equalToSuperview().snOffset(16)
         }
         
+    }
+}
+
+extension  XPrivateAccountFieldCell:APJTextPickerViewDelegate,APJTextPickerViewDataSource{
+    func textPickerView(_ textPickerView: APJTextPickerView, titleForRow row: Int) -> String? {
+        return dataArray[row]
+    }
+    func numberOfRows(in pickerView: APJTextPickerView) -> Int {
+        return dataArray.count
     }
 }

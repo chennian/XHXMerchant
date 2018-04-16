@@ -19,6 +19,12 @@ class XOpenAccountController: SNBaseViewController {
     var protocolObject : AliOssTransferProtocol?
     
     fileprivate var permitImagePath:String = ""
+    
+    fileprivate var bankProvince:String = ""
+    fileprivate var bankCity:String = ""
+    fileprivate var bankCounty:String = ""
+
+    fileprivate let addressPiker = AddressPiker(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 216))
 
     
     fileprivate let tableView:UITableView = UITableView().then{
@@ -50,7 +56,10 @@ class XOpenAccountController: SNBaseViewController {
         self.stepThreeModel?.branchnName = fieldCell.branchnNameField.text
         self.stepThreeModel?.openbankName = fieldCell.openbankNameField.text
         self.stepThreeModel?.leftPhone = fieldCell.leftPhoneField.text
-        
+        self.stepThreeModel?.bankProvince = self.bankProvince
+        self.stepThreeModel?.bankCity = self.bankCity
+        self.stepThreeModel?.bankCounty = self.bankCounty
+
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
         
     }
@@ -96,6 +105,13 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
         }else if indexPath.row == 1{
             let cell:XOpenAccountFieldCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             fieldCell = cell
+            fieldCell.openBankAddressField.inputView = addressPiker
+            addressPiker.selectValue = {[unowned self] (string,province,city,county) in
+                self.fieldCell.openBankAddressField.text = string
+                self.bankProvince = province
+                self.bankCity = city
+                self.bankCounty = county
+            }
             return cell
         }else if indexPath.row == 2{
             let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -134,11 +150,149 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
             let cell:XButtonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.submitBoutton.setTitle("下一步", for: .normal)
             cell.clickBtnEvent = {[unowned self](parameter) in
-                
+                self.verifyValue()
             }
             return cell
         }
     }
+    
+    func verifyValue(){
+        if fieldCell.openBankAccountField.text == ""{
+            UIAlertView(title: "提示", message: "请输入对公银行账号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.openBankField.text == ""{
+            UIAlertView(title: "提示", message: "请输入开户行", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.openBankAddress.text == ""{
+            UIAlertView(title: "提示", message: "请输入开户行坐在地", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.branchnNameField.text == ""{
+            UIAlertView(title: "提示", message: "请输入支行名称", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.openbankNameField.text == ""{
+            UIAlertView(title: "提示", message: "请输入银行开户名", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.leftPhoneField.text == ""{
+            UIAlertView(title: "提示", message: "请输入预留手机号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+
+        if stepThreeModel?.permitCard == nil {
+            UIAlertView(title: "提示", message: "请上传开户许可证", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        
+        uploadData()
+        //        self.navigationController?.pushViewController(XMerLicenseController(), animated: true)
+        
+    }
+    
+    
+    func uploadData(){
+        //获取第一步资料
+        let stepOneItem = ApplyModel.shareApplyModel.applySelfModel.stepOne
+        let cardtype:String =  XKeyChain.get(isConpany) //公司类型 0：个体 1：公司
+        let name :String = stepOneItem.principal ?? ""  //负责人姓名
+        let phone: String = stepOneItem.principalPhone ?? "" //负责人电话
+        let registerPhone: String = stepOneItem.registName ?? "" //注册手机号
+        let idCard: String = stepOneItem.idCard ?? ""  //证件号码
+        let validity: String = stepOneItem.validity ?? "" //证件有效期
+        let idcardone: String = stepOneItem.frontImage?.path ?? "" //正面照
+        let idcardtwo: String = stepOneItem.backImage?.path ?? ""  //反面照
+        
+        //获取第二步资料
+        let stepSecondeItem = ApplyModel.shareApplyModel.applySelfModel.stepTwo
+        
+        let entabb: String = stepSecondeItem.merShortName ?? ""  //企业简称
+        let entname: String = stepSecondeItem.licenseName ?? ""  //企业名称
+        let busregnum: String = stepSecondeItem.codeNum ?? ""  //统一社会信用代码
+        let enterpraiseLicenseTerm: String = stepSecondeItem.licenseTerm ?? "" // 营业执照有效期
+        let details: String = stepSecondeItem.detailAddress ?? ""    // 详细地址
+        let industryid: String = stepSecondeItem.industryType ?? ""  // 商家类型
+        let province: String = stepSecondeItem.province ?? ""  //省
+        let city: String = stepSecondeItem.city ?? ""          //市
+        let area: String = stepSecondeItem.county ?? ""        //区
+        
+        
+        let busregimg: String = stepSecondeItem.LicenseImage?.path ?? ""  //反面照
+        let gatepic: String = stepSecondeItem.doorImage?.path ?? ""  //反面照
+        let checkStandPic: String = stepSecondeItem.checkstand?.path ?? ""  //反面照
+        let storePic: String = stepSecondeItem.indoorImage?.path ?? ""  //反面照
+        
+        //获取第三步资料
+        let stepThreeItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
+        
+        let comaccnum: String = stepThreeItem.openBankAccount ?? "" //对私银行账号
+        let opnbank: String = stepThreeItem.openBank ?? ""//开户行
+        let ponaccname: String = stepThreeItem.branchnName ?? ""//支行名称
+        let accountName: String = stepThreeItem.openbankName ?? ""//私有银行开户行名
+        let cardphone: String = stepThreeItem.leftPhone ?? ""//预留手机号
+        
+        
+        let bankProvince: String = stepThreeItem.bankProvince ?? ""//省
+        let bankCity: String = stepThreeItem.bankCity ?? ""//市
+        let bankArea: String = stepThreeItem.bankCounty ?? ""//县
+        
+        let openlicense: String = stepThreeItem.permitCard?.path ?? ""  //反面照
+        
+        
+        let parameters:[String:Any] = [
+            "cardtype":cardtype,
+            "name":name,
+            "phone":phone,
+            "registerPhone":registerPhone,
+            "idcard":idCard,
+            "validterm":validity,
+            "idcardone":idcardone,
+            "idcardtwo":idcardtwo,
+            
+            "entabb":entabb,
+            "entname":entname,
+            "busregnum":busregnum,
+            "enterpraiseLicenseTerm":enterpraiseLicenseTerm,
+            "province":province,
+            "city":city,
+            "area":area,
+            "details":details,
+            "industryid":industryid,
+            "busregimg":busregimg,
+            "gatepic":gatepic,
+            "checkStandPic":checkStandPic,
+            "storePic":storePic,
+            
+            "comaccnum":comaccnum,
+            "opnbank":opnbank,
+            "ponaccname":ponaccname,
+            "accountName":accountName,
+            "cardphone":cardphone,
+            "bankProvince":bankProvince,
+            "bankCity":bankCity,
+            "bankArea":bankArea,
+            "openlicense":openlicense
+        ]
+        CNLog(parameters)
+        
+        SNRequestBool(requestType: API.insertMerchant(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .bool(_):
+                ApplyModelTool.removeModel()
+                SZHUD("上次成功", type: .info, callBack: nil)
+                self.navigationController?.popToRootViewController(animated: true)
+            case .fail(let res):
+                UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            default:
+                UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            }
+        }).disposed(by: disposeBag)
+        
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         

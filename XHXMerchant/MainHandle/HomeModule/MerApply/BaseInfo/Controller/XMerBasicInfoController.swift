@@ -154,12 +154,46 @@ extension XMerBasicInfoController:UITableViewDelegate,UITableViewDataSource{
             let cell:XButtonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.submitBoutton.setTitle("下一步", for: .normal)
             cell.clickBtnEvent = {[unowned self](parameter) in
-//                self.saveModel()
-                self.navigationController?.pushViewController(XMerLicenseController(), animated: true)
-                SNLog("保存成功")
+                
+                self.verifyValue()
+                
             }
             return cell
         }
+    }
+    
+    func verifyValue(){
+        if fieldCell.registNameField.text == ""{
+            UIAlertView(title: "提示", message: "请输入注册手机号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.principalField.text == ""{
+            UIAlertView(title: "提示", message: "请输入负责人信息", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.principalPhoneField.text == ""{
+            UIAlertView(title: "提示", message: "请输入注册手机号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.idCardField.text == ""{
+            UIAlertView(title: "提示", message: "请输入身份证号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.validityField.text == ""{
+            UIAlertView(title: "提示", message: "请输入身份证有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if stepOneModel?.frontImage == nil {
+            UIAlertView(title: "提示", message: "请上传身份证正面照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if stepOneModel?.backImage == nil {
+            UIAlertView(title: "提示", message: "请上传身份证反面照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        
+        self.navigationController?.pushViewController(XMerLicenseController(), animated: true)
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

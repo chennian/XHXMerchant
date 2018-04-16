@@ -43,6 +43,11 @@ public extension ObservableType where E == Response {
             return Observable.just(try response.mapToString())
         })
     }
+    public func mapToJson() -> Observable<SNMoyaResult<JSON>> {
+        return flatMap({ response -> Observable<SNMoyaResult<JSON>> in
+            return Observable.just(try response.mapToJson())
+        })
+    }
     
     public func mapToNetModel() -> Observable<SNMoyaResult<SNNetModel>> {
         return flatMap({ response -> Observable<SNMoyaResult<SNNetModel>> in

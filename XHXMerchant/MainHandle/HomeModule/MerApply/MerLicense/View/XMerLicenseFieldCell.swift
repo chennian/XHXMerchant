@@ -74,7 +74,7 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
         $0.borderStyle = .none
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
-        $0.placeholder = "请输入营业执照有效期"
+        $0.placeholder = "如20180404"
     }
     
     var area = UILabel().then{

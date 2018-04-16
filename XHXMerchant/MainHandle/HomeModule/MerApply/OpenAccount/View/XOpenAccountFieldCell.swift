@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import APJTextPickerView
 
 class XOpenAccountFieldCell: SNBaseTableViewCell {
+    var dataArray:[String] = []
+    
     private var line1 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
@@ -42,11 +45,12 @@ class XOpenAccountFieldCell: SNBaseTableViewCell {
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
     }
-    var openBankField = UITextField().then{
+    var openBankField = APJTextPickerView().then{
         $0.borderStyle = .none
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
         $0.placeholder = "请选择开户行"
+        $0.type = .strings
     }
     
     var openBankAddress = UILabel().then{
@@ -101,8 +105,21 @@ class XOpenAccountFieldCell: SNBaseTableViewCell {
         $0.placeholder = "请输入预留手机号"
     }
 
+    func loadBankList(){
+        SNRequest(requestType: API.bankList, modelType: [BankListModel.self]).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .success(let models):
+                self.dataArray = models.map({return $0.bankName})
+            case .fail( _,let msg):
+                CNLog(msg)
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+    }
     
     override func setupView() {
+        loadBankList()
         contentView.addSubview(line1)
         contentView.addSubview(line2)
         contentView.addSubview(line3)
@@ -122,7 +139,8 @@ class XOpenAccountFieldCell: SNBaseTableViewCell {
         contentView.addSubview(leftPhone)
         contentView.addSubview(leftPhoneField)
 
-        
+        openBankField.pickerDelegate = self
+        openBankField.dataSource = self
         
         line1.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -225,5 +243,13 @@ class XOpenAccountFieldCell: SNBaseTableViewCell {
             make.right.equalToSuperview().offset(fit(-100))
         }
         
+    }
+}
+extension  XOpenAccountFieldCell:APJTextPickerViewDelegate,APJTextPickerViewDataSource{
+    func textPickerView(_ textPickerView: APJTextPickerView, titleForRow row: Int) -> String? {
+        return dataArray[row]
+    }
+    func numberOfRows(in pickerView: APJTextPickerView) -> Int {
+        return dataArray.count
     }
 }

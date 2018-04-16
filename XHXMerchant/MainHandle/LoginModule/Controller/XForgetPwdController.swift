@@ -51,8 +51,50 @@ class XForgetPwdController: SNBaseViewController {
         $0.titleLabel?.font = Font(30)
     }
     @objc func verify(){
-        self.navigationController?.pushViewController(XForgetStepTwoController(), animated: true)
+        if self.phoneField.text == "" {
+            UIAlertView(title: "温馨提示", message:"请输入手机号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if self.codeField.text == "" {
+            UIAlertView(title: "温馨提示", message:"请输入验证码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        
+        
+        SNRequestBool(requestType: API.verifyCode(mobile: self.phoneField.text!,code:self.codeField.text!,vtype:"1")).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .bool(_):
+                
+                let vc = XForgetStepTwoController()
+                vc.mobile = self.phoneField.text!
+                vc.code =  self.codeField.text!
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .fail(let res):
+                UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            default:
+                UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            }
+        }).disposed(by: self.disposeBag)
     
+    }
+    func sendSMS(){
+        
+        if self.phoneField.text == "" {
+               UIAlertView(title: "温馨提示", message:"请输入手机号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+                return
+        }
+        
+            SNRequestBool(requestType: API.sendSMS(mobile: self.phoneField.text!,vtype:"1")).subscribe(onNext: {[unowned self] (result) in
+                switch result{
+                case .bool(_):
+                    SZHUD("发送成功", type: SZHUDType.success, callBack: nil)
+                case .fail(let res):
+                    UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+                default:
+                    UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+                }
+            }).disposed(by: self.disposeBag)
+            
     }
     override func setupView() {
         
@@ -69,6 +111,11 @@ class XForgetPwdController: SNBaseViewController {
         self.view.addSubview(submitButton)
 
         timeButton.setup("获取验证码", timeTitlePrefix: "", aTimeLength: 60)
+        timeButton.clickBtnEvent = { [unowned self] in
+            self.sendSMS()
+        }
+        
+      
         submitButton.addTarget(self, action: #selector(verify), for: .touchUpInside)
         
         viewOne.snp.makeConstraints { (make) in

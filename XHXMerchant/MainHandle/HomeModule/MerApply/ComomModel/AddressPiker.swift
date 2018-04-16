@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class AddressPiker: UIView {
-    var selectValue:((_ value:String)->())?
+    var selectValue:((_ all:String,_ province:String,_ city:String,_ county:String)->())?
     
     var provinceArray:[String] = []
     var cityArray:[String] = []
@@ -129,7 +129,7 @@ extension AddressPiker:UIPickerViewDelegate,UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         provinceString = provinceArray[0]
-
+        cityString = cityArray[0]
         if component == 0 {
             cityArray.removeAll()
             countyArray.removeAll()
@@ -167,7 +167,7 @@ extension AddressPiker:UIPickerViewDelegate,UIPickerViewDataSource{
         guard let selectVal = selectValue else {
             return
         }
-        selectVal(provinceString + cityString + countyString)
+        selectVal(provinceString + cityString + countyString,provinceString,cityString,countyString)
 
     }
 }

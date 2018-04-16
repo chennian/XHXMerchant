@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class XRecmdCell: SNBaseTableViewCell {
     
@@ -20,10 +21,14 @@ class XRecmdCell: SNBaseTableViewCell {
         $0.backgroundColor = Color(0x352e5d)
     }
     
-    let codeImage = UIImageView().then{
-        $0.backgroundColor = .clear
+    let codeImage = UIView().then{
+        $0.backgroundColor = Color(0xffffff)
     }
     
+    let ercodeView = ZJPayErCodeContetnView().then({
+        $0.layer.cornerRadius = fit(10)
+        
+    })
     let notice = UILabel().then{
         $0.text = "长按保存二维码"
         $0.textColor = Color(0xffffff)
@@ -49,7 +54,7 @@ class XRecmdCell: SNBaseTableViewCell {
     }
     
     let myRcmd = UILabel().then{
-        $0.text = "我的推荐人:1687272323"
+        $0.text = "我的推荐人:\(XKeyChain.get(PARENTPHONE))"
         $0.textColor = Color(0xdbe9e7)
         $0.font = Font(30)
         $0.backgroundColor = Color(0x2a2259)
@@ -77,7 +82,10 @@ class XRecmdCell: SNBaseTableViewCell {
         viewOne.addSubview(recmdMerBtn)
         viewOne.addSubview(recmdOperBtn)
         viewOne.addSubview(myRcmd)
+        codeImage.addSubview(ercodeView)
+
         bindEvent()
+        self.ercodeView.creatErcode()
 
         img.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
@@ -94,8 +102,14 @@ class XRecmdCell: SNBaseTableViewCell {
             make.width.height.snEqualTo(322)
         }
         
+        ercodeView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(codeImage.snp.centerX)
+            make.centerY.equalTo(codeImage.snp.centerY)
+            make.width.height.snEqualTo(314)
+        }
+        
         notice.snp.makeConstraints { (make) in
-            make.top.equalTo(codeImage).snOffset(24)
+            make.top.equalTo(codeImage.snp.bottom).snOffset(24)
             make.centerX.equalTo(codeImage.snp.centerX)
         }
         

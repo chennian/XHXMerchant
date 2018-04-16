@@ -24,17 +24,29 @@ class XOperatorEndCell: SNBaseTableViewCell {
     }
     
     var realName = UILabel().then{
-        $0.text = "真实姓名     名字"
+        $0.text = "真实姓名"
         $0.textColor = Color(0x313131)
         $0.font = Font(30)
     }
     
+    var realNameField = UITextField().then{
+        $0.borderStyle = .none
+        $0.font = Font(30)
+        $0.textColor = Color(0x313131)
+        $0.placeholder = "请输入真实姓名"
+    }
     var IDNum = UILabel().then{
-        $0.text = "身份证号     4200032321232323"
+        $0.text = "身份证号"
         $0.textColor = Color(0x313131)
         $0.font = Font(30)
     }
     
+    var IDNumField = UITextField().then{
+        $0.borderStyle = .none
+        $0.font = Font(30)
+        $0.textColor = Color(0x313131)
+        $0.placeholder = "请输入身份证号"
+    }
     var bankNumLable = UILabel().then{
         $0.text = "银行卡号"
         $0.textColor = Color(0x313131)
@@ -80,7 +92,9 @@ class XOperatorEndCell: SNBaseTableViewCell {
         contentView.addSubview(line4)
         
         contentView.addSubview(realName)
+        contentView.addSubview(realNameField)
         contentView.addSubview(IDNum)
+        contentView.addSubview(IDNumField)
         contentView.addSubview(bankNumLable)
         contentView.addSubview(bankNumField)
         contentView.addSubview(cardbankLable)
@@ -116,12 +130,21 @@ class XOperatorEndCell: SNBaseTableViewCell {
             make.left.equalToSuperview().snOffset(30)
             make.bottom.equalTo(line1.snp.top).snOffset(-30)
         }
+        realNameField.snp.makeConstraints { (make) in
+            make.left.equalTo(realName.snp.right).snOffset(32)
+            make.centerY.equalTo(realName.snp.centerY)
+            make.width.snEqualTo(300)
+        }
         
         IDNum.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
             make.bottom.equalTo(line2.snp.top).snOffset(-30)
         }
-        
+        IDNumField.snp.makeConstraints { (make) in
+            make.left.equalTo(IDNum.snp.right).snOffset(32)
+            make.centerY.equalTo(IDNum.snp.centerY)
+            make.width.snEqualTo(300)
+        }
         bankNumLable.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
             make.bottom.equalTo(line3.snp.top).snOffset(-30)

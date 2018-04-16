@@ -90,6 +90,22 @@ public extension Response {
         return SNMoyaResult.sp_success(mappedObjectsArray, code: jsonCode.int ?? 1000, msg: jsonMsg.string ?? "")//.success(mappedObjectsArray)
     }
     
+    public func mapToJson() throws -> SNMoyaResult<JSON> {
+        
+        let jsonData = JSON(data: self.data)
+        
+//        let jsonCode = jsonData[MOYA_RESULT_CODE]
+//        let jsonObj = jsonData[MOYA_RESULT_DATA]
+//        let jsonMsg = jsonData[MOYA_RESULT_MSG]
+//        
+//        guard jsonCode.int == 1000, let mappedString = jsonObj.string else {
+//            //throw SNMoyaError.fail(code: nil, msg: jsonMsg.string)
+//            return SNMoyaResult.fail(code: jsonCode.int, msg: jsonMsg.string)
+//        }
+        
+        return SNMoyaResult.success(jsonData)
+    }
+    
     
     
     public func mapToString() throws -> SNMoyaResult<String> {

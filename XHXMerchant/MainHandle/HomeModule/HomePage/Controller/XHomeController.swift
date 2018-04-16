@@ -8,6 +8,8 @@
 
 import UIKit
 class XHomeController: SNBaseViewController {
+    
+    var  model:[BannerModel] = []
 
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
@@ -33,9 +35,21 @@ class XHomeController: SNBaseViewController {
         }
       
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        CNLog(XKeyChain.get(ISLOGIN))
+        CNLog(XKeyChain.get(PHONE))
+        if XKeyChain.get(ISLOGIN) == "0" || XKeyChain.get(ISLOGIN).isEmpty {
+            self.navigationController?.pushViewController(XLoginController(), animated: false)
+            return
+        }
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
         setupUI()
     }
     fileprivate func setNavigationBar(){
@@ -44,7 +58,12 @@ class XHomeController: SNBaseViewController {
     }
     @objc fileprivate func login(){
         
-        navigationController?.pushViewController(XRcmdOperatorController(), animated: true)
+        if XKeyChain.get(ISLOGIN) == "0"{
+            navigationController?.pushViewController(XLoginController(), animated: true)
+        }else{
+             UIAlertView(title: "温馨提示", message: "你已经是登录状态", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,44 +83,29 @@ extension XHomeController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell:XBannerCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            CNLog(self.model)
+//            cell.models = self.model
             return cell
         }else if indexPath.row == 1 {
             let cell:XFunctionCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.clickEvent = { [unowned self] (para) in
                 if para == 1 {
-                    CNLog("收益")
+                    self.navigationController?.pushViewController(XPropertyController(), animated: true)
                 }else if para == 2{
-                    CNLog("店铺管理")
+                    self.navigationController?.pushViewController(XMerHomeController(), animated: true)
                 }else if para == 3{
-                    CNLog("流量团队")
+                     self.navigationController?.pushViewController(XFlowTeamController(), animated: true)
                 }else if para == 4{
-                    CNLog("流量店铺")
+                    self.navigationController?.pushViewController(XFlowMerController(), animated: true)
                 }else if para == 5{
                    self.navigationController?.pushViewController(XRcmdController(), animated: true)
+                }else if para == 6{
+                    self.navigationController?.pushViewController(XServiceRoleController(), animated: true)
                 }else{
-                    self.navigationController?.pushViewController(XRoleController(), animated: true)
+                    self.navigationController?.pushViewController(XOperRoleController(), animated: true)
+
                 }
             }
-            return cell
-        }else if indexPath.row == 2 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "收款码"
-            return cell
-        }else if indexPath.row == 3 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "店铺管理"
-            return cell
-        }else if indexPath.row == 4 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "收益"
-            return cell
-        }else if indexPath.row == 5 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "流量管理"
-            return cell
-        }else if indexPath.row == 6 {
-            let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.lable.text = "修改密码"
             return cell
         }else{
             let cell:XListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)

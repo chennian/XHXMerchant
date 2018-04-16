@@ -15,8 +15,8 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
     var clickEvent4: (() -> ())?
 
     var img = UIImageView().then{
-        $0.backgroundColor = .red
-//        $0.image = UIImage(named: "")
+        $0.backgroundColor = .clear
+        $0.image = UIImage(named: "earnings_today")
     }
     
     var todayLable = UILabel().then{
@@ -43,6 +43,9 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
     private var line4 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
+    private var line5 = UIView().then{
+        $0.backgroundColor = Color(0xe8e8e8)
+    }
     
     var view1 = UIView().then{
         $0.backgroundColor = .clear
@@ -59,7 +62,10 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
     var view4 = UIView().then{
         $0.backgroundColor = .clear
         $0.isUserInteractionEnabled = true
-
+    }
+    var view5 = UIView().then{
+        $0.backgroundColor = .clear
+        $0.isUserInteractionEnabled = true
     }
 
     var merPayment = UILabel().then{
@@ -78,7 +84,12 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
         $0.textColor = Color(0x313131)
     }
     var merFlow = UILabel().then{
-        $0.text = "商家倒流分润"
+        $0.text = "商家导流分润"
+        $0.font = Font(28)
+        $0.textColor = Color(0x313131)
+    }
+    var agentCenter = UILabel().then{
+        $0.text = "服务中心收益"
         $0.font = Font(28)
         $0.textColor = Color(0x313131)
     }
@@ -99,6 +110,11 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
         $0.textColor = Color(0x313131)
     }
     var merFlowLable = UILabel().then{
+        $0.text = "1000"
+        $0.font = Font(28)
+        $0.textColor = Color(0x313131)
+    }
+    var agentCenterLable = UILabel().then{
         $0.text = "1000"
         $0.font = Font(28)
         $0.textColor = Color(0x313131)
@@ -124,6 +140,11 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
         $0.font = Font(24)
         $0.textColor = Color(0x9ea3aa)
     }
+    var agentCenterDsc = UILabel().then{
+        $0.text = "共1000笔交易"
+        $0.font = Font(24)
+        $0.textColor = Color(0x9ea3aa)
+    }
     
     func bindEvent(){
         let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(tapOne))
@@ -137,6 +158,9 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
         
         let tapGesture4 = UITapGestureRecognizer(target: self, action: #selector(tapFour))
         view4.addGestureRecognizer(tapGesture4)
+        
+        let tapGesture5 = UITapGestureRecognizer(target: self, action: #selector(tapFive))
+        view4.addGestureRecognizer(tapGesture5)
     }
     
     @objc func tapOne()  {
@@ -158,6 +182,10 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
         guard let clickEvent = clickEvent4 else {return}
         clickEvent()
     }
+    @objc func tapFive()  {
+        guard let clickEvent = clickEvent4 else {return}
+        clickEvent()
+    }
     
     override func setupView() {
         contentView.addSubview(img)
@@ -168,11 +196,15 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
         contentView.addSubview(view2)
         contentView.addSubview(view3)
         contentView.addSubview(view4)
+        contentView.addSubview(view5)
+
         
         contentView.addSubview(line1)
         view1.addSubview(line2)
         view2.addSubview(line3)
         view3.addSubview(line4)
+        view4.addSubview(line5)
+
 
         view1.addSubview(merPayment)
         view1.addSubview(merPaymentDsc)
@@ -186,6 +218,9 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
         view4.addSubview(merFlow)
         view4.addSubview(merFlowDsc)
         view4.addSubview(merFlowLable)
+        view5.addSubview(agentCenter)
+        view5.addSubview(agentCenterLable)
+        view5.addSubview(agentCenterDsc)
         
         bindEvent()
     
@@ -209,6 +244,11 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
             make.height.snEqualTo(120)
             make.top.equalTo(view3.snp.bottom)
         }
+        view5.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.height.snEqualTo(120)
+            make.top.equalTo(view4.snp.bottom)
+        }
         
         line1.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -229,6 +269,12 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
             make.bottom.equalToSuperview()
         }
         line4.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().snOffset(30)
+            make.right.equalToSuperview().snOffset(-20)
+            make.height.snEqualTo(1)
+            make.bottom.equalToSuperview()
+        }
+        line5.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
             make.right.equalToSuperview().snOffset(-20)
             make.height.snEqualTo(1)
@@ -302,6 +348,21 @@ class XTotalEarningsMidCell: SNBaseTableViewCell {
             make.top.equalTo(merFlow.snp.bottom).snOffset(11)
 
         }
+        
+        agentCenter.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().snOffset(30)
+            make.centerY.equalToSuperview()
+        }
+        agentCenterLable.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().snOffset(-34)
+            make.top.equalToSuperview().snOffset(31)
+        }
+        agentCenterDsc.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().snOffset(-34)
+            make.top.equalTo(agentCenter.snp.bottom).snOffset(11)
+            
+        }
+        
 
     }
 

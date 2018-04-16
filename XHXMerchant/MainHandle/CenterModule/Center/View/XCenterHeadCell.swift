@@ -11,7 +11,8 @@ import UIKit
 class XCenterHeadCell: SNBaseTableViewCell {
         
     var headImg = UIImageView().then{
-        $0.backgroundColor = .red
+        $0.image = UIImage(named: "LBlogoIcon")
+        $0.backgroundColor = .lightGray
         $0.layer.cornerRadius = fit(60)
         $0.layer.masksToBounds = true
     }

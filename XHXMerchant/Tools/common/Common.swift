@@ -12,14 +12,23 @@ class common: NSObject {
     
 }
 //用户信息
+public let isConpany = "1"  //0:企业 1:个人
+
 public let PHONE = "phone"
+public let PARENTPHONE = "PARENTPHONE"
+public let OPERATER = "operater"
+public let CORPORATION = "corporation"
+
 public let NickName = "nickName"
 public let IsMer = "isMer"
 public let IsAgent = "isAgent"
-public let MERCID = "mercId"
-public let TOKEN = "token"
+public let ParentID = "parent_id"
+public let ROLE = "ROLE_USER"
 
-public let ISLOGIN = "user_login_status" // 用户登录状态  0 已登录 1 未登录
+public let TOKEN = "token"
+public let TIMESTAMP = "timestamp"
+
+public let ISLOGIN = "login" // 用户登录状态  0 未登录 1 登录
 public let LOGIN_TRUE = "0"
 public let LOGIN_FALSE = "1"
 

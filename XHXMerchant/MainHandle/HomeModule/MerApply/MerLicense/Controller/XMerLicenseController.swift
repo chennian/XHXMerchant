@@ -38,6 +38,11 @@ class XMerLicenseController: SNBaseViewController {
     fileprivate var checkstandPath:String = ""
     fileprivate var indoorImagePath:String = ""
     
+    fileprivate var province:String = ""
+    fileprivate var city:String = ""
+    fileprivate var county:String = ""
+
+    
     fileprivate let addressPiker = AddressPiker(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 216))
     fileprivate let industyPiker = IndustyPiker(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 216))
 
@@ -50,18 +55,6 @@ class XMerLicenseController: SNBaseViewController {
         $0.separatorStyle = .none
     }
     
-//    var addressPiker = UIPickerView().then{
-//        $0.backgroundColor = Color(0xffffff)
-//        $0.showsSelectionIndicator = true;
-//
-//    }
-//
-//    var toolBar = UIToolbar().then{
-//        $0.barTintColor = .red
-//        $0.isTranslucent = true
-//        $0.sizeToFit()
-//    }
-    
     fileprivate func setupUI() {
         stepTwoModel = ApplyModel.shareApplyModel.applySelfModel.stepTwo
 
@@ -73,54 +66,8 @@ class XMerLicenseController: SNBaseViewController {
         tableView.snp.makeConstraints { (make) in
             make.left.top.right.bottom.equalToSuperview()
         }
-//        addressPiker.snp.makeConstraints { (make) in
-//            make.left.right.bottom.equalToSuperview()
-//            make.width.equalTo(ScreenW)
-//            make.height.snEqualTo(400)
-//        }
-//
-//        addressPiker.delegate = self
-//        addressPiker.dataSource = self
-        
-//        let doneButton = UIBarButtonItem(title: "确定", style: UIBarButtonItemStyle.plain, target: self, action: #selector(selected))
-//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-//        let cancelButton = UIBarButtonItem(title: "取消", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancel))
-//        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-//        toolBar.isUserInteractionEnabled = true
-//        fieldCell.areaField.inputView = addressPiker
-//        fieldCell.areaField.inputAccessoryView = toolBar
-
 
     }
-    
-//   @objc fileprivate func selected(){
-//
-//    }
-//   @objc fileprivate func cancel(){
-//    }
-//    fileprivate func loadAddressData(){
-//        let JsonPath = Bundle.main.path(forResource: "province_data", ofType: "json")
-//        let url = URL(fileURLWithPath: JsonPath!)
-//        do {
-//            let data = try Data(contentsOf: url)
-//            jsonArr = JSON(data: data)
-//
-//            for (_,subJson):(String,JSON) in jsonArr {
-//                provinceArray.append(subJson["name"].string!)
-//
-//            }
-//            for (_,subJson):(String,JSON) in jsonArr[0]["sub"] {
-//                cityArray.append(subJson["name"].string!)
-//
-//            }
-//            for (_,subJson):(String,JSON) in jsonArr[0]["sub"][0]["sub"] {
-//                countyArray.append(subJson["name"].string!)
-//            }
-//
-//        } catch let error as Error? {
-//            print("读取本地数据出现错误!",error as Any)
-//        }
-//    }
     
     func saveModel(){
         
@@ -131,13 +78,15 @@ class XMerLicenseController: SNBaseViewController {
         self.stepTwoModel?.area = fieldCell.areaField.text
         self.stepTwoModel?.detailAddress = fieldCell.detailAddressField.text
         self.stepTwoModel?.industryType = fieldCell.industryTypeField.text
+        self.stepTwoModel?.province = self.province
+        self.stepTwoModel?.city = self.city
+        self.stepTwoModel?.county = self.county
 
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
         
     }
     override func setupView() {
         setupUI()
-//        loadAddressData()
 
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -200,15 +149,17 @@ extension XMerLicenseController:UITableViewDelegate,UITableViewDataSource{
             let cell:XMerLicenseFieldCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             fieldCell = cell
             fieldCell.areaField.inputView = addressPiker
-            addressPiker.selectValue = {[unowned self] (string) in
+            addressPiker.selectValue = {[unowned self] (string,province,city,county) in
                 self.fieldCell.areaField.text = string
+                self.province = province
+                self.city = city
+                self.county = county
             }
             
             fieldCell.industryTypeField.inputView = industyPiker
             industyPiker.selectValue = {[unowned self] (string) in
                 self.fieldCell.industryTypeField.text = string
             }
-            
             return cell
         }else if indexPath.row == 2{
             let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -248,9 +199,63 @@ extension XMerLicenseController:UITableViewDelegate,UITableViewDataSource{
             let cell:XButtonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.submitBoutton.setTitle("下一步", for: .normal)
             cell.clickBtnEvent = {[unowned self](parameter) in
-                self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
+              self.verifyValue()
             }
             return cell
+        }
+    }
+    
+    func verifyValue(){
+        if fieldCell.merShortNameField.text == ""{
+            UIAlertView(title: "提示", message: "请输入商户简称", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.licenseNameField.text == ""{
+            UIAlertView(title: "提示", message: "请输入营业执照名称", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.licenseTermField.text == ""{
+            UIAlertView(title: "提示", message: "请输入营业执照有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.codeNumField.text == ""{
+            UIAlertView(title: "提示", message: "请输入统一社会信用代码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.areaField.text == ""{
+            UIAlertView(title: "提示", message: "请输入所在区域", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.detailAddressField.text == ""{
+            UIAlertView(title: "提示", message: "请输入详细地址", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if fieldCell.industryTypeField.text == ""{
+            UIAlertView(title: "提示", message: "请输入行业类别", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if stepTwoModel?.LicenseImage == nil {
+            UIAlertView(title: "提示", message: "请上传营业执照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if stepTwoModel?.doorImage == nil {
+            UIAlertView(title: "提示", message: "请上传门头照照片", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if stepTwoModel?.checkstand == nil {
+            UIAlertView(title: "提示", message: "请上传收营台照片", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if stepTwoModel?.indoorImage == nil {
+            UIAlertView(title: "提示", message: "请上传店内照片", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        
+        if XKeyChain.get(isConpany) == "0"{
+            //0:企业
+            self.navigationController?.pushViewController(XOpenAccountController(), animated: true)
+        }else{
+            self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
         }
     }
     
@@ -335,100 +340,3 @@ extension XMerLicenseController:UITextFieldDelegate{
     }
     
 }
-//extension XMerLicenseController:UIPickerViewDelegate,UIPickerViewDataSource{
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 3
-//    }
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int,
-//                    forComponent component: Int, reusing view: UIView?) -> UIView {
-//        let label = UILabel()
-//        label.textAlignment = .center
-//        label.font = Font(26)
-//        label.textColor = Color(0x313131)
-//        label.text = pickerView.delegate?.pickerView!(pickerView, titleForRow: row, forComponent: component)
-//        label.frame = CGRect(x: 0, y: 0, width: fit(240), height: fit(30))
-//        return label
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        CNLog(provinceArray)
-//        if (component == 0) {
-//            return provinceArray.count;
-//        }
-//        if (component==1) {
-//            return  cityArray.count;
-//        }
-//        if (component==2) {
-//            return countyArray.count;
-//        }
-//        return 0;
-//    }
-//
-//    //设置列宽
-//    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-//        if component == 0 {
-//            return fit(240)
-//        }else if component == 1{
-//            return fit(240)
-//        }else{
-//            return fit(240)
-//        }
-//    }
-//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int)
-//        -> CGFloat {
-//            return fit(80)
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        if component == 0 {
-//            return provinceArray[row];
-//        }
-//        if component == 1 {
-//            return cityArray[row];
-//        }
-//        if component == 2 {
-//            return countyArray[row];
-//        }
-//        return nil;
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        if component == 0 {
-//            cityArray.removeAll()
-//            countyArray.removeAll()
-//            for (_,subJson):(String,JSON) in jsonArr[row]["sub"] {
-//                cityArray.append(subJson["name"].string!)
-//            }
-//            pickerView.reloadComponent(1)
-//            pickerView.selectRow(0, inComponent: 1, animated: false)
-//
-//            for (_,subJson):(String,JSON) in jsonArr[row]["sub"][0]["sub"] {
-//                countyArray.append(subJson["name"].string!)
-//            }
-//            pickerView.reloadComponent(2)
-//            pickerView.selectRow(0, inComponent: 2, animated: false)
-//
-//            self.counrentRow = row
-//
-//            provinceString = provinceArray[row]
-//            cityString = cityArray[0]
-//            countyString = countyArray[0]
-//        }
-//        if component == 1 {
-//            countyArray.removeAll()
-//            for (_,subJson):(String,JSON) in jsonArr[counrentRow]["sub"][row]["sub"] {
-//                countyArray.append(subJson["name"].string!)
-//            }
-//            pickerView.reloadComponent(2)
-//            pickerView.selectRow(0, inComponent: 2, animated: false)
-//            cityString = cityArray[row]
-//            countyString = countyArray[0]
-//        }
-//        if component == 2 {
-//           countyString = countyArray[row]
-//        }
-//        CNLog(provinceString + cityString + countyString)
-//    }
-//}
-
-

@@ -9,14 +9,13 @@
 import UIKit
 import SDCycleScrollView
 class XBannerCell: SNBaseTableViewCell {
-    
-    //    let didSelectPub = PublishSubject<BMPageJumpType>()
-    //    var models : [BMHomePageBannerModel] = []{
-    //        didSet{
-    //            let arry = models.map({return $0.logo})
-    //            sdScrollBanner.imageURLStringsGroup = arry
-    //        }
-    //    }
+    var model :[BannerModel] = []
+//    var models : [BannerModel] = []{
+//        didSet{
+//            let arry = models.map({return $0.site_url})
+//            sdScrollBanner.imageURLStringsGroup = arry
+//        }
+//    }
     
     override func setupView() {
         hidLine()
@@ -26,16 +25,29 @@ class XBannerCell: SNBaseTableViewCell {
             make.size.equalToSuperview()
             make.center.equalToSuperview()
         }
-        
+        loadBannerData()
     }
     
-    
+    fileprivate func loadBannerData(){
+        SNRequest(requestType: API.bannar, modelType: [BannerModel.self]).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .success(let models):
+                self.model = models
+                let dataArray = self.model.map({return $0.site_url + "@2x.png"})
+                CNLog(dataArray)
+                self.sdScrollBanner.imageURLStringsGroup = dataArray
+            case .fail(let code,let msg):
+                CNLog(msg)
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+    }
     lazy var sdScrollBanner : SDCycleScrollView = {
         let obj = SDCycleScrollView(frame: CGRect.zero, delegate: self, placeholderImage: UIImage())
         obj?.bannerImageViewContentMode = .scaleAspectFill
         obj?.pageDotColor = UIColor(white: 1.0, alpha: 0.6)
         obj?.currentPageDotColor = .white
-        obj?.imageURLStringsGroup = ["https://img4.duitang.com/uploads/item/201504/14/20150414H5313_NesGP.jpeg","https://img4.duitang.com/uploads/item/201504/14/20150414H5313_NesGP.jpeg","https://img4.duitang.com/uploads/item/201504/14/20150414H5313_NesGP.jpeg"]
         return obj!
     }()
     

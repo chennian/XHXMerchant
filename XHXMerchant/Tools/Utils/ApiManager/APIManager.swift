@@ -52,6 +52,11 @@ func SNRequest(requestType: API) -> Observable<SNMoyaResult<String>> {
     return BMProvider.request(requestType).asObservable().mapToString()
 }
 
+import SwiftyJSON
+func SNRequestJson(requestType: API) -> Observable<SNMoyaResult<JSON>> {
+    return BMProvider.request(requestType).asObservable().mapToJson()
+}
+
 //func shopNetData<T : SNSwiftyJSONAble>(requestType: API, modelType: T.Type) -> Observable<T> {
 //    return APIProvider.rx.request(requestType).asObservable().mapWeChatAccessToken(modelType.self)
 //}

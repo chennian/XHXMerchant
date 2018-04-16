@@ -67,6 +67,10 @@ protocol StepTwoProtocol {
     var area: String? { get set  }
     var detailAddress: String? { get set  }
     var industryType: String? { get set  }
+    var province: String? { get set  }
+    var city: String? { get set  }
+    var county: String? { get set  }
+
     
     var LicenseImage:ApplyImage? { get set }
     var doorImage:ApplyImage? { get set }
@@ -82,6 +86,9 @@ class StepTwo: NSObject,StepTwoProtocol,NSCoding {
     var area: String?
     var detailAddress: String?
     var industryType: String?
+    var province: String?
+    var city: String?
+    var county: String?
 
     var LicenseImage:ApplyImage?
     var doorImage:ApplyImage?
@@ -119,6 +126,10 @@ class StepTwo: NSObject,StepTwoProtocol,NSCoding {
 
 protocol StepThreeProtocol {
     
+    var bankProvince: String? { get set  }
+    var bankCity: String? { get set  }
+    var bankCounty: String? { get set  }
+    
     var openBankAccount:String? { get set  }
     var openBank: String? { get set  }
     var openBankAddress: String? { get set  }
@@ -140,6 +151,10 @@ protocol StepThreeProtocol {
 }
 
 class StepThree: NSObject,StepThreeProtocol,NSCoding {
+    var bankProvince: String?
+    var bankCity: String?
+    var bankCounty: String?
+
     //对公账户
     var openBankAccount: String?
     var openBank: String?
@@ -191,6 +206,14 @@ class StepThree: NSObject,StepThreeProtocol,NSCoding {
         aCoder.encode(branchName, forKey: "branchName")
         aCoder.encode(privatebankName, forKey: "privatebankName")
         aCoder.encode(leftMobile, forKey: "leftMobile")
+        
+        aCoder.encode(openBankAccount, forKey: "openBankAccount")
+        aCoder.encode(openBank, forKey: "openBank")
+        aCoder.encode(openBankAddress, forKey: "openBankAddress")
+        aCoder.encode(branchnName, forKey: "branchnName")
+        aCoder.encode(openbankName, forKey: "openbankName")
+        aCoder.encode(leftPhone, forKey: "leftPhone")
+
     }
 }
 
@@ -232,8 +255,48 @@ class ApplyModelTool {
             return
         }
         do {
+            let stepOneItem = ApplyModel.shareApplyModel.applySelfModel.stepOne
+            stepOneItem.backImage = nil
+            stepOneItem.frontImage  = nil
+            stepOneItem.idCard = nil
+            stepOneItem.principal = nil
+            stepOneItem.principalPhone = nil
+            stepOneItem.registName = nil
+            stepOneItem.validity = nil
+
+            let stepSecondeItem = ApplyModel.shareApplyModel.applySelfModel.stepTwo
+            stepSecondeItem.area = nil
+            stepSecondeItem.checkstand = nil
+            stepSecondeItem.city = nil
+            stepSecondeItem.LicenseImage = nil
+            stepSecondeItem.codeNum = nil
+            stepSecondeItem.county = nil
+            stepSecondeItem.detailAddress = nil
+            stepSecondeItem.doorImage = nil
+            stepSecondeItem.indoorImage = nil
+            stepSecondeItem.industryType = nil
+            stepSecondeItem.licenseName = nil
+            stepSecondeItem.licenseTerm = nil
+            stepSecondeItem.merShortName = nil
+            stepSecondeItem.province = nil
+
+            let stepThirItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
+
+            stepThirItem.privateBankAccount = nil
+            stepThirItem.privateBank = nil
+            stepThirItem.privatebankName = nil
+            stepThirItem.privateBankAddress = nil
+            stepThirItem.branchName = nil
+            stepThirItem.leftMobile = nil
             
-            try FileManager.default.removeItem(atPath: path!)
+            stepThirItem.openbankName = nil
+            stepThirItem.openBankAddress = nil
+            stepThirItem.openBankAccount = nil
+            stepThirItem.openBank = nil
+            stepThirItem.branchnName = nil
+            stepThirItem.leftPhone = nil
+            
+//            try FileManager.default.removeItem(atPath: path!)
             
         } catch let error {
             CNLog(error)

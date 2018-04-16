@@ -13,8 +13,8 @@ class XTotalEarningsEndCell: SNBaseTableViewCell {
     var btnClickEvent:(()->())?
 
     var img = UIImageView().then{
-        $0.backgroundColor = .red
-        //        $0.image = UIImage(named: "")
+        $0.backgroundColor = .clear
+        $0.image = UIImage(named: "earnings_history")
     }
     
     var historyLable = UILabel().then{
@@ -26,7 +26,7 @@ class XTotalEarningsEndCell: SNBaseTableViewCell {
         $0.setTitle("查看更多", for: .normal)
         $0.titleLabel?.font = Font(30)
         $0.setTitleColor(Color(0x313131), for: .normal)
-        $0.setImage(UIImage(named: "map_return1"), for:UIControlState.normal)
+        $0.setImage(UIImage(named: "return1"), for:UIControlState.normal)
         $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: fit(-270))
         
     }

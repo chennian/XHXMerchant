@@ -48,7 +48,7 @@ class XFunctionCell: SNBaseTableViewCell {
     let operatorRole = UIButton().then{
         $0.setImage(UIImage(named: "home_upgrade1"), for: .normal)
         $0.contentMode = .scaleAspectFill
-        $0.tag = 6
+        $0.tag = 7
     }
     
     let flowTeamLable = UILabel().then{

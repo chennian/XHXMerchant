@@ -30,8 +30,12 @@ class XPropertyController: SNBaseViewController {
             make.left.top.right.bottom.equalToSuperview()
         }
     }
+    override func loadData() {
+        
+    }
     override func setupView() {
         setupUI()
+        loadData()
     }
 }
 
@@ -78,7 +82,7 @@ extension XPropertyController:UITableViewDelegate,UITableViewDataSource{
             return fit(20)
 
         }else if indexPath.row == 2{
-            return fit(581)
+            return fit(701)
             
         }else if indexPath.row == 3{
             return fit(20)
