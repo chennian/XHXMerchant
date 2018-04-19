@@ -31,14 +31,14 @@ enum API {
     case myBankCard
     case addBankcard(paremeter:[String:Any])
     case recmdOperator(paremeter:[String:Any])
+    case recommendService(paremeter:[String:Any])
     case upgrade0perator(verifycode:String)
     case upgradeServer(verifycode:String,activatecode:String)
     case flowMer
     case flowTeam
     case monthTotalRevenue
     case shopHome
-
-
+    case uploadMerData(paremeter:[String:Any])
 
 }
 
@@ -99,6 +99,8 @@ extension API: JSONMappableTargetType {
             return "api/addBankcard"
         case .recmdOperator:
             return "api/recommendOperator"
+        case .recommendService:
+            return "api/recommendService"
         case .upgrade0perator:
             return "api/upgrade0perator"
         case .upgradeServer:
@@ -111,6 +113,8 @@ extension API: JSONMappableTargetType {
             return "api/monthTotalRevenue"
         case .shopHome:
             return "api/shopHome"
+        case .uploadMerData:
+            return "api/btnShopInfo"
         default:
             return ""
         }
@@ -155,6 +159,8 @@ extension API: JSONMappableTargetType {
             return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
         case .recmdOperator(let paremeter):
             return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .recommendService(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
         case .upgrade0perator(let verifycode):
             let para = ["verifycode":verifycode]
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
@@ -162,6 +168,8 @@ extension API: JSONMappableTargetType {
         case .upgradeServer(let verifycode,let activatecode):
             let para = ["verifycode":verifycode,"activatecode":activatecode]
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .uploadMerData(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
         default:
             return Task.requestPlain
         }

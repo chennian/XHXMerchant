@@ -99,6 +99,8 @@ class XLoginController: SNBaseViewController
                 let token = self.model.map({return $0.token})
                 let timestamp = self.model.map({return $0.timestamp})
                 XKeyChain.set("1", key: ISLOGIN)
+                XKeyChain.set(self.phoneField.text!, key:PHONE )
+                XKeyChain.set(self.passwordField.text!, key: PASSWORD)
                 XKeyChain.set(token[0], key: TOKEN)
                 XKeyChain.set(timestamp[0], key:TIMESTAMP)
                 self.getUserInfo()
@@ -156,7 +158,6 @@ class XLoginController: SNBaseViewController
                 let operater = self.userModel.map({return $0.operater})
                 let corporation = self.userModel.map({return $0.corporation})
                 
-                XKeyChain.set(phone[0], key:PHONE )
                 XKeyChain.set(isMer[0], key:IsMer )
                 XKeyChain.set(isAgent[0], key:IsAgent )
                 XKeyChain.set(roles[0], key:ROLE )

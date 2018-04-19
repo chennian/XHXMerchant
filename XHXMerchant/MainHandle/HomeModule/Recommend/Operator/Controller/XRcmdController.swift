@@ -82,9 +82,9 @@ extension XRcmdController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0{
             let cell:XRecmdCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             
-            cell.ercodeView.btnClick.subscribe(onNext: {[unowned self] (url) in
-                self.saveImg(qrString: url, icon: nil)
-            }).disposed(by: disposeBag)
+//            cell.ercodeView.btnClick.subscribe(onNext: {[unowned self] (url) in
+//                self.saveImg(qrString: url, icon: nil)
+//            }).disposed(by: disposeBag)
             
             
             cell.clickEvent = { [unowned self] (para) in
@@ -105,7 +105,22 @@ extension XRcmdController:UITableViewDelegate,UITableViewDataSource{
                     }
                 }
                 if para == 2{
-                      self.navigationController?.pushViewController(XRcmdOperatorController(), animated: true)
+                    
+                    let actionSheet =  PGActionSheet(cancelButton: true, buttonList: ["推荐运营商", "推荐服务商"])
+                    actionSheet.textColor = Color(0x313131)
+                    actionSheet.textFont = Font(30)
+                    actionSheet.translucent = false
+                    actionSheet.actionSheetTranslucent = false
+                    self.present(actionSheet, animated: false, completion: nil)
+                    actionSheet.handler = {[unowned self] index in
+                        if index == 0{
+                        self.navigationController?.pushViewController(XRcmdOperatorController(), animated: true)
+                        }else{
+                        self.navigationController?.pushViewController(XRecmdServiceController(), animated: true)
+                        }
+                    }
+                    
+                    
                 }
             }
             return cell

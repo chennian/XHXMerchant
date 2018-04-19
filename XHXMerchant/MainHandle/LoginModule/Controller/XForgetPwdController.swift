@@ -84,6 +84,11 @@ class XForgetPwdController: SNBaseViewController {
                 return
         }
         
+        if self.phoneField.text!.count != 11{
+            UIAlertView(title: "温馨提示", message:"请输入正确手机号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        
             SNRequestBool(requestType: API.sendSMS(mobile: self.phoneField.text!,vtype:"1")).subscribe(onNext: {[unowned self] (result) in
                 switch result{
                 case .bool(_):

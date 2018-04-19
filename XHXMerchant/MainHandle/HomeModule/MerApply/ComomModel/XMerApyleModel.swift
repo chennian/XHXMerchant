@@ -17,6 +17,10 @@ protocol StepOneProtocol {
     var validity: String? { get set  }
     var frontImage:ApplyImage? { get set }
     var backImage:ApplyImage? { get set }
+    var handImage:ApplyImage? { get set }
+    var term: String? { get set  }
+
+
 }
 
 class StepOne: NSObject,StepOneProtocol,NSCoding {
@@ -34,6 +38,12 @@ class StepOne: NSObject,StepOneProtocol,NSCoding {
     
     var backImage: ApplyImage?
     
+    var handImage: ApplyImage?
+    
+    var term: String?
+
+
+    
     override init() {
         super.init()
     }
@@ -44,7 +54,8 @@ class StepOne: NSObject,StepOneProtocol,NSCoding {
         principalPhone = aDecoder.decodeObject(forKey: "principalPhone") as? String
         idCard = aDecoder.decodeObject(forKey: "idCard") as? String
         validity = aDecoder.decodeObject(forKey: "validity") as? String
-      
+        term = aDecoder.decodeObject(forKey: "term") as? String
+
     }
     
     func encode(with aCoder: NSCoder) {
@@ -54,6 +65,8 @@ class StepOne: NSObject,StepOneProtocol,NSCoding {
         aCoder.encode(principalPhone, forKey: "principalPhone")
         aCoder.encode(idCard, forKey: "idCard")
         aCoder.encode(validity, forKey: "validity")
+        aCoder.encode(term, forKey: "term")
+
     }
 }
 
@@ -70,12 +83,14 @@ protocol StepTwoProtocol {
     var province: String? { get set  }
     var city: String? { get set  }
     var county: String? { get set  }
-
+    var term: String? { get set  }
     
     var LicenseImage:ApplyImage? { get set }
     var doorImage:ApplyImage? { get set }
     var checkstand:ApplyImage? { get set }
     var indoorImage:ApplyImage? { get set }
+    var indoorImage1:ApplyImage? { get set }
+
 }
 
 class StepTwo: NSObject,StepTwoProtocol,NSCoding {
@@ -89,12 +104,14 @@ class StepTwo: NSObject,StepTwoProtocol,NSCoding {
     var province: String?
     var city: String?
     var county: String?
+    var term: String?
 
     var LicenseImage:ApplyImage?
     var doorImage:ApplyImage?
     var checkstand:ApplyImage?
     var indoorImage:ApplyImage?
-    
+    var indoorImage1:ApplyImage?
+
     override init() {
         super.init()
     }
@@ -107,8 +124,11 @@ class StepTwo: NSObject,StepTwoProtocol,NSCoding {
         area = aDecoder.decodeObject(forKey: "area") as? String
         detailAddress = aDecoder.decodeObject(forKey: "detailAddress") as? String
         industryType = aDecoder.decodeObject(forKey: "industryType") as? String
+        province = aDecoder.decodeObject(forKey: "province") as? String
+        city = aDecoder.decodeObject(forKey: "city") as? String
+        county = aDecoder.decodeObject(forKey: "county") as? String
+        term = aDecoder.decodeObject(forKey: "term") as? String
 
-        
     }
     
     func encode(with aCoder: NSCoder) {
@@ -120,7 +140,10 @@ class StepTwo: NSObject,StepTwoProtocol,NSCoding {
         aCoder.encode(area, forKey: "area")
         aCoder.encode(detailAddress, forKey: "detailAddress")
         aCoder.encode(industryType, forKey: "industryType")
-
+        aCoder.encode(province, forKey: "province")
+        aCoder.encode(city, forKey: "city")
+        aCoder.encode(county, forKey: "county")
+        aCoder.encode(term, forKey: "term")
     }
 }
 
@@ -138,7 +161,7 @@ protocol StepThreeProtocol {
     var leftPhone: String? { get set  }
     
     var permitCard:ApplyImage? { get set }
-    
+
     
     var privateBankAccount: String?{ get set  }
     var privateBank: String?{ get set  }
@@ -148,6 +171,8 @@ protocol StepThreeProtocol {
     var leftMobile: String?{ get set  }
     
     var frontCard:ApplyImage?{ get set  }
+    var backCard:ApplyImage? { get set }
+
 }
 
 class StepThree: NSObject,StepThreeProtocol,NSCoding {
@@ -164,7 +189,7 @@ class StepThree: NSObject,StepThreeProtocol,NSCoding {
     var leftPhone: String?
     
     var permitCard:ApplyImage?
-    
+
     //对私账户
     var privateBankAccount: String?
     var privateBank: String?
@@ -174,7 +199,8 @@ class StepThree: NSObject,StepThreeProtocol,NSCoding {
     var leftMobile: String?
     
     var frontCard:ApplyImage?
-    
+    var backCard:ApplyImage?
+
 
     
     override init() {
@@ -195,6 +221,11 @@ class StepThree: NSObject,StepThreeProtocol,NSCoding {
         branchName = aDecoder.decodeObject(forKey: "branchName") as? String
         privatebankName = aDecoder.decodeObject(forKey: "privatebankName") as? String
         leftMobile = aDecoder.decodeObject(forKey: "leftMobile") as? String
+        
+        bankProvince = aDecoder.decodeObject(forKey: "bankProvince") as? String
+        bankCity = aDecoder.decodeObject(forKey: "bankCity") as? String
+        bankCounty = aDecoder.decodeObject(forKey: "bankCounty") as? String
+
         
     }
     
@@ -250,6 +281,36 @@ class ApplyModelTool {
         return model
     }
     
+    static func removeThreeModel(){
+        guard path != nil , FileManager.default.fileExists(atPath: path!) else {
+            return
+        }
+        do {
+            let stepThirItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
+            
+            stepThirItem.privateBankAccount = nil
+            stepThirItem.privateBank = nil
+            stepThirItem.privatebankName = nil
+            stepThirItem.privateBankAddress = nil
+            stepThirItem.branchName = nil
+            stepThirItem.leftMobile = nil
+            
+            stepThirItem.openbankName = nil
+            stepThirItem.openBankAddress = nil
+            stepThirItem.openBankAccount = nil
+            stepThirItem.openBank = nil
+            stepThirItem.branchnName = nil
+            stepThirItem.leftPhone = nil
+            stepThirItem.frontCard = nil
+            stepThirItem.backCard = nil
+            
+            //            try FileManager.default.removeItem(atPath: path!)
+            
+        } catch let error {
+            CNLog(error)
+        }
+    }
+    
     static func removeModel(){
         guard path != nil , FileManager.default.fileExists(atPath: path!) else {
             return
@@ -258,11 +319,14 @@ class ApplyModelTool {
             let stepOneItem = ApplyModel.shareApplyModel.applySelfModel.stepOne
             stepOneItem.backImage = nil
             stepOneItem.frontImage  = nil
+            stepOneItem.handImage  = nil
+
             stepOneItem.idCard = nil
             stepOneItem.principal = nil
             stepOneItem.principalPhone = nil
             stepOneItem.registName = nil
             stepOneItem.validity = nil
+            stepOneItem.term = nil
 
             let stepSecondeItem = ApplyModel.shareApplyModel.applySelfModel.stepTwo
             stepSecondeItem.area = nil
@@ -279,6 +343,8 @@ class ApplyModelTool {
             stepSecondeItem.licenseTerm = nil
             stepSecondeItem.merShortName = nil
             stepSecondeItem.province = nil
+            stepSecondeItem.term = nil
+            stepSecondeItem.indoorImage1 = nil
 
             let stepThirItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
 
@@ -295,6 +361,8 @@ class ApplyModelTool {
             stepThirItem.openBank = nil
             stepThirItem.branchnName = nil
             stepThirItem.leftPhone = nil
+            stepThirItem.frontCard = nil
+            stepThirItem.backCard = nil
             
 //            try FileManager.default.removeItem(atPath: path!)
             

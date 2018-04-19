@@ -63,7 +63,7 @@ class XCenterController: SNBaseViewController {
                     if XKeyChain.get(CORPORATION) == "1" {
                         topCell.phone.text = "运营商    服务中心"
                     }else{
-                        topCell.phone.text = "商家"
+                        topCell.phone.text = "运营商"
                     }
                 }else{
                     if XKeyChain.get(CORPORATION) == "1"{
@@ -151,7 +151,7 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
                         if XKeyChain.get(CORPORATION) == "1" {
                             cell.phone.text = "运营商    服务中心"
                         }else{
-                            cell.phone.text = "商家"
+                            cell.phone.text = "运营商"
                         }
                     }else{
                         if XKeyChain.get(CORPORATION) == "1"{
@@ -242,12 +242,15 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 2 {
-            navigationController?.pushViewController(XMyBankCardController(), animated: true)
+            SZHUD("正在开发中...", type: .info, callBack: nil)
+//            navigationController?.pushViewController(XMyBankCardController(), animated: true)
         }
         if indexPath.row == 3 {
             navigationController?.pushViewController(XForgetPwdController(), animated: true)
         }
         if indexPath.row == 4 {
+            SZHUD("正在开发中...", type: .info, callBack: nil)
+
 //            navigationController?.pushViewController(XPropertyController(), animated: true)
         }
     }

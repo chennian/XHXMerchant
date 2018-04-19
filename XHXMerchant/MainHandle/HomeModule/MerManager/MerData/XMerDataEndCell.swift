@@ -9,6 +9,8 @@
 import UIKit
 
 class XMerDataEndCell: SNBaseTableViewCell {
+    
+    var clickBlock:((_ para:String)->())?
 
     let viewOne = XMerDataView().then{
         $0.backgroundColor = Color(0xffffff)
@@ -35,12 +37,51 @@ class XMerDataEndCell: SNBaseTableViewCell {
         
     }
     
+    @objc func  tapOne(){
+        guard let action = clickBlock else{ return }
+        action("1")
+    }
+    @objc func  tapTwo(){
+        guard let action = clickBlock else{ return }
+        action("2")
+    }
+    @objc func  tapThree(){
+        guard let action = clickBlock else{ return }
+        action("3")
+    }
+    @objc func  tapFour(){
+        guard let action = clickBlock else{ return }
+        action("4")
+    }
+    @objc func  tapFive(){
+        guard let action = clickBlock else{ return }
+        action("5")
+    }
+    
+    func bindEvent(){
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(tapOne))
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(tapTwo))
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(tapThree))
+        let tap4 = UITapGestureRecognizer(target: self, action: #selector(tapFour))
+        let tap5 = UITapGestureRecognizer(target: self, action: #selector(tapFive))
+
+        
+        viewOne.addGestureRecognizer(tap1)
+        viewTwo.addGestureRecognizer(tap2)
+        viewThree.addGestureRecognizer(tap3)
+        viewFour.addGestureRecognizer(tap4)
+        viewFive.addGestureRecognizer(tap5)
+
+    }
+    
     override func setupView() {
         contentView.addSubview(viewOne)
         contentView.addSubview(viewTwo)
         contentView.addSubview(viewThree)
         contentView.addSubview(viewFour)
         contentView.addSubview(viewFive)
+        
+        bindEvent()
 
         
         viewOne.snp.makeConstraints { (make) in

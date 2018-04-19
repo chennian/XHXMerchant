@@ -150,7 +150,12 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
             let cell:XButtonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.submitBoutton.setTitle("下一步", for: .normal)
             cell.clickBtnEvent = {[unowned self](parameter) in
-                self.verifyValue()
+                if XKeyChain.get(isConpany) == "0"{
+                    //0:企业
+                    self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
+                }else{
+                    self.verifyValue()
+                }
             }
             return cell
         }
@@ -281,10 +286,13 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
             switch result{
             case .bool(_):
                 ApplyModelTool.removeModel()
-                SZHUD("上次成功", type: .info, callBack: nil)
+                SZHUD("上传成功", type: .info, callBack: nil)
                 self.navigationController?.popToRootViewController(animated: true)
-            case .fail(let res):
-                UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            case .fail(let code,let res):
+                SZHUD(res ?? "上传失败", type: .error, callBack: nil)
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
             default:
                 UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             }

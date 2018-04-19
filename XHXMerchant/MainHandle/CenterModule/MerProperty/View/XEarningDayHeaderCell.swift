@@ -62,12 +62,12 @@ class XEarningDayHeaderCell: SNBaseTableViewCell {
         $0.textColor = Color(0x75797d)
     }
     var threeLable = UILabel().then{
-        $0.text = "商家贷款  88888.88"
+        $0.text = "商家货款  88888.88"
         $0.font = Font(24)
         $0.textColor = Color(0x75797d)
     }
     var fourLable = UILabel().then{
-        $0.text = "商家倒流  88888.88"
+        $0.text = "商家导流  88888.88"
         $0.font = Font(24)
         $0.textColor = Color(0x75797d)
     }
@@ -90,13 +90,13 @@ class XEarningDayHeaderCell: SNBaseTableViewCell {
         var items:[PNPieChartDataItem] = []
         let item1 = PNPieChartDataItem(dateValue: 15, dateColor: Color(0x2894ff), description: "服务商")
         let item2 = PNPieChartDataItem(dateValue: 50, dateColor: Color(0xffcc00), description: "运营商")
-        let item3 = PNPieChartDataItem(dateValue: 40, dateColor: Color(0xff566e), description: "商家贷款")
+        let item3 = PNPieChartDataItem(dateValue: 40, dateColor: Color(0xff566e), description: "商家货款")
         let item4 = PNPieChartDataItem(dateValue: 10, dateColor: Color(0x0fdca0), description: "商家导流")
         let item5 = PNPieChartDataItem(dateValue: 10, dateColor: Color(0xff9c00), description: "服务中心")
 
         
         if item1.value! == CGFloatValue ,item2.value! == CGFloatValue,item3.value! == CGFloatValue,item4.value! == CGFloatValue{
-            let item = PNPieChartDataItem(dateValue: 1, dateColor:  PNLightGreen, description: "暂无数据")
+            let item = PNPieChartDataItem(dateValue: 1, dateColor:  .lightGray, description: "暂无数据")
             items = [item]
         }else{
             items = [item1, item2, item3,item4,item5]

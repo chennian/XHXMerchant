@@ -26,6 +26,8 @@ pod 'PagingMenuController'
 pod 'CryptoSwift', '~> 0.7.0'
 pod 'TZImagePickerController'
 pod 'PGActionSheet'
+pod 'Pgyer'
+pod 'PgyUpdate'
   target 'XHXMerchantTests' do
     inherit! :search_paths
     # Pods for testing

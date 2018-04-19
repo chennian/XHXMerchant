@@ -37,7 +37,8 @@ class XMerLicenseController: SNBaseViewController {
     fileprivate var doorImagePath:String = ""
     fileprivate var checkstandPath:String = ""
     fileprivate var indoorImagePath:String = ""
-    
+    fileprivate var indoorImagePath1:String = ""
+
     fileprivate var province:String = ""
     fileprivate var city:String = ""
     fileprivate var county:String = ""
@@ -131,6 +132,19 @@ class XMerLicenseController: SNBaseViewController {
         }else{
             imgCell.indoorImage.setImage(twoStep.indoorImage?.image, for: UIControlState.normal)
         }
+        if twoStep.indoorImage1?.image == nil {
+            imgCell.indoorImage1.setImage(UIImage(named:"shop_inside"), for: .normal)
+        }else{
+            imgCell.indoorImage1.setImage(twoStep.indoorImage1?.image, for: UIControlState.normal)
+        }
+        if twoStep.term == "1" || twoStep.term == nil{
+            fieldCell.longBtn.isSelected = true
+            fieldCell.shortBtn.isSelected = false
+            
+        }else{
+            fieldCell.shortBtn.isSelected = true
+            fieldCell.longBtn.isSelected = false
+        }
     }
 }
 extension XMerLicenseController:UITableViewDelegate,UITableViewDataSource{
@@ -144,6 +158,10 @@ extension XMerLicenseController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            fieldCell.block = {[unowned self] (para) in
+                self.stepTwoModel?.term = para
+                CNLog( self.stepTwoModel?.term)
+            }
             return cell
         }else if indexPath.row == 1{
             let cell:XMerLicenseFieldCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -214,10 +232,14 @@ extension XMerLicenseController:UITableViewDelegate,UITableViewDataSource{
             UIAlertView(title: "提示", message: "请输入营业执照名称", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
-        if fieldCell.licenseTermField.text == ""{
+        if !fieldCell.longBtn.isSelected {
             UIAlertView(title: "提示", message: "请输入营业执照有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
+//        if fieldCell.licenseTermField.text == ""{
+//            UIAlertView(title: "提示", message: "请输入营业执照有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+//            return
+//        }
         if fieldCell.codeNumField.text == ""{
             UIAlertView(title: "提示", message: "请输入统一社会信用代码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
@@ -250,10 +272,16 @@ extension XMerLicenseController:UITableViewDelegate,UITableViewDataSource{
             UIAlertView(title: "提示", message: "请上传店内照片", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
+        if stepTwoModel?.indoorImage1 == nil {
+            UIAlertView(title: "提示", message: "请上传第二张店内照片", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
         
         if XKeyChain.get(isConpany) == "0"{
             //0:企业
-            self.navigationController?.pushViewController(XOpenAccountController(), animated: true)
+            self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
+
+//            self.navigationController?.pushViewController(XOpenAccountController(), animated: true)
         }else{
             self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
         }
@@ -264,11 +292,11 @@ extension XMerLicenseController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0 {
             return fit(20)
         }else if indexPath.row == 1 {
-            return fit(636)
+            return fit(706)
         }else if indexPath.row == 2{
             return fit(20)
         }else if indexPath.row == 3{
-            return fit(1649)
+            return fit(2021)
         }else{
             return fit(254)
         }
@@ -312,10 +340,14 @@ extension  XMerLicenseController: TOCropViewControllerDelegate{
                         self.checkstandPath = frontUrl + obk
                         self.stepTwoModel?.checkstand = ApplyImage(image: image, path: self.checkstandPath)
                         self.imgCell.checkstandImage.setImage(image, for: .normal)
-                    }else{
+                    }else if self.fullName == "img4"{
                         self.indoorImagePath = frontUrl + obk
                         self.stepTwoModel?.indoorImage = ApplyImage(image: image, path: self.indoorImagePath)
                         self.imgCell.indoorImage.setImage(image, for: .normal)
+                    }else{
+                        self.indoorImagePath1 = frontUrl + obk
+                        self.stepTwoModel?.indoorImage1 = ApplyImage(image: image, path: self.indoorImagePath1)
+                        self.imgCell.indoorImage1.setImage(image, for: .normal)
                     }
                     
                     SZHUDDismiss()

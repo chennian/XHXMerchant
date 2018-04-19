@@ -163,6 +163,15 @@
 		8ED284D82081E2D7008ED5AE /* XKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D72081E2D7008ED5AE /* XKeyChain.swift */; };
 		8ED284DA208209E4008ED5AE /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D9208209E4008ED5AE /* BannerModel.swift */; };
 		8EF0C2F52084BEB10002340D /* ShopHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2F42084BEB10002340D /* ShopHomeModel.swift */; };
+		8EF0C2F72085A5770002340D /* XTotalEarningsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2F62085A5770002340D /* XTotalEarningsListCell.swift */; };
+		8EF0C2F92085AE530002340D /* XTotalEarningEndDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2F82085AE530002340D /* XTotalEarningEndDetailCell.swift */; };
+		8EF0C2FB2085B1090002340D /* historyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2FA2085B1090002340D /* historyModel.swift */; };
+		8EF0C2FD2085B4980002340D /* TotalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2FC2085B4980002340D /* TotalModel.swift */; };
+		8EF0C2FF2085B5450002340D /* todayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2FE2085B5450002340D /* todayModel.swift */; };
+		8EF0C3012085B6130002340D /* monthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C3002085B6130002340D /* monthModel.swift */; };
+		8EF0C3062085D8E20002340D /* XRecmdServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C3052085D8E20002340D /* XRecmdServiceController.swift */; };
+		8EF0C3082085D91D0002340D /* XServiceTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C3072085D91D0002340D /* XServiceTopCell.swift */; };
+		8EF0C30A2085F4730002340D /* XMerShortNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C3092085F4730002340D /* XMerShortNameController.swift */; };
 		D358378D924E0084BAED85F3 /* Pods_XHXMerchantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68DEA94657D0AAD5BFEDF18 /* Pods_XHXMerchantUITests.framework */; };
 		EF0073D9E415D4C20A15537F /* Pods_XHXMerchantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0322BAA131B8929A61E5F4 /* Pods_XHXMerchantTests.framework */; };
 /* End PBXBuildFile section */
@@ -353,6 +362,15 @@
 		8ED284D72081E2D7008ED5AE /* XKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XKeyChain.swift; sourceTree = "<group>"; };
 		8ED284D9208209E4008ED5AE /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		8EF0C2F42084BEB10002340D /* ShopHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopHomeModel.swift; sourceTree = "<group>"; };
+		8EF0C2F62085A5770002340D /* XTotalEarningsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTotalEarningsListCell.swift; sourceTree = "<group>"; };
+		8EF0C2F82085AE530002340D /* XTotalEarningEndDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTotalEarningEndDetailCell.swift; sourceTree = "<group>"; };
+		8EF0C2FA2085B1090002340D /* historyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = historyModel.swift; sourceTree = "<group>"; };
+		8EF0C2FC2085B4980002340D /* TotalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalModel.swift; sourceTree = "<group>"; };
+		8EF0C2FE2085B5450002340D /* todayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todayModel.swift; sourceTree = "<group>"; };
+		8EF0C3002085B6130002340D /* monthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = monthModel.swift; sourceTree = "<group>"; };
+		8EF0C3052085D8E20002340D /* XRecmdServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XRecmdServiceController.swift; sourceTree = "<group>"; };
+		8EF0C3072085D91D0002340D /* XServiceTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XServiceTopCell.swift; sourceTree = "<group>"; };
+		8EF0C3092085F4730002340D /* XMerShortNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerShortNameController.swift; sourceTree = "<group>"; };
 		B3A85545585FF99D0C908042 /* Pods-XHXMerchantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantTests/Pods-XHXMerchantTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D263DE3CC99C91AE754BE336 /* Pods-XHXMerchantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantUITests/Pods-XHXMerchantUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E68DEA94657D0AAD5BFEDF18 /* Pods_XHXMerchantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHXMerchantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -705,6 +723,7 @@
 		8E7F1F6C20845D2E007C9D1A /* MerData */ = {
 			isa = PBXGroup;
 			children = (
+				8EF0C3092085F4730002340D /* XMerShortNameController.swift */,
 				8E7F1F6D20845D7F007C9D1A /* XMerDataController.swift */,
 				8E7F1F6F20845EE3007C9D1A /* XMerActiveImgCell.swift */,
 				8E7F1F7120846258007C9D1A /* XMerLogoImgCell.swift */,
@@ -761,6 +780,10 @@
 		8EA0E066207C5F180018232E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8EF0C2FA2085B1090002340D /* historyModel.swift */,
+				8EF0C2FC2085B4980002340D /* TotalModel.swift */,
+				8EF0C2FE2085B5450002340D /* todayModel.swift */,
+				8EF0C3002085B6130002340D /* monthModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -776,6 +799,8 @@
 				8EA0E084207CEF3A0018232E /* XEarningDayEndCell.swift */,
 				8ED207E8207DD390006F441A /* XEarningDayDetailTCell.swift */,
 				8ED207EA207DDB2D006F441A /* XbarChartView.swift */,
+				8EF0C2F62085A5770002340D /* XTotalEarningsListCell.swift */,
+				8EF0C2F82085AE530002340D /* XTotalEarningEndDetailCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1161,6 +1186,7 @@
 		8ED20800207F3F35006F441A /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
+				8EF0C3042085D8C20002340D /* Service */,
 				8E110E3320812A76002176F9 /* Operator */,
 				8E110E3220812A5C002176F9 /* Record */,
 			);
@@ -1199,6 +1225,15 @@
 				8EF0C2F42084BEB10002340D /* ShopHomeModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8EF0C3042085D8C20002340D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8EF0C3052085D8E20002340D /* XRecmdServiceController.swift */,
+				8EF0C3072085D91D0002340D /* XServiceTopCell.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		C8E6596F4CEFF5F7014DB98E /* Frameworks */ = {
@@ -1561,6 +1596,7 @@
 				8ED207FC207EFE60006F441A /* XUploadFrontBankCell.swift in Sources */,
 				8E0AC3F9207FC54B0050BE7C /* XOpenAccountController.swift in Sources */,
 				8E4EFCED208264C300798F99 /* UserModel.swift in Sources */,
+				8EF0C2FD2085B4980002340D /* TotalModel.swift in Sources */,
 				8EC76D7920760AA300F78749 /* SNNetModel.swift in Sources */,
 				8E73858D207665B0003349B8 /* XCenterListCell.swift in Sources */,
 				8EC76D9420760AA300F78749 /* SNRXSectionModel.swift in Sources */,
@@ -1599,14 +1635,17 @@
 				8E7F1F7220846258007C9D1A /* XMerLogoImgCell.swift in Sources */,
 				8EA0E069207C5F890018232E /* XPropertyController.swift in Sources */,
 				8E110E3B20812F9B002176F9 /* XOperatorEndCell.swift in Sources */,
+				8EF0C2F92085AE530002340D /* XTotalEarningEndDetailCell.swift in Sources */,
 				8EC76D7D20760AA300F78749 /* VaporTestModel.swift in Sources */,
 				8ED2080D207F466D006F441A /* XRecmdUpdateCell.swift in Sources */,
+				8EF0C3062085D8E20002340D /* XRecmdServiceController.swift in Sources */,
 				8EA0E077207C85140018232E /* XTotalEarningsMidCell.swift in Sources */,
 				8ED284CE2081B3FD008ED5AE /* XRecmdCell.swift in Sources */,
 				8ED20802207F3F98006F441A /* XRecmdRecordController.swift in Sources */,
 				8E4EFD0C2083C52F00798F99 /* MerHomeTopCell.swift in Sources */,
 				8ED207EB207DDB2D006F441A /* XbarChartView.swift in Sources */,
 				8E4EFCEF2082FFA100798F99 /* BankCardModel.swift in Sources */,
+				8EF0C3012085B6130002340D /* monthModel.swift in Sources */,
 				8EC76D9620760AA300F78749 /* SNBaseViewController.swift in Sources */,
 				8EC76D9120760AA300F78749 /* UIView_Extension.swift in Sources */,
 				8ED207FF207F0B71006F441A /* XMyBankCardController.swift in Sources */,
@@ -1618,13 +1657,16 @@
 				8EC76D8520760AA300F78749 /* Single+Response.swift in Sources */,
 				8E4EFD0E2083C54F00798F99 /* XMerHomeController.swift in Sources */,
 				8ED284D82081E2D7008ED5AE /* XKeyChain.swift in Sources */,
+				8EF0C30A2085F4730002340D /* XMerShortNameController.swift in Sources */,
 				8E4EFCF62083575800798F99 /* XUpdateServiceCell.swift in Sources */,
 				8EC76D7A20760AA300F78749 /* APIManager.swift in Sources */,
 				8E4EFCF32083232400798F99 /* ErCodeTool.swift in Sources */,
+				8EF0C3082085D91D0002340D /* XServiceTopCell.swift in Sources */,
 				8EC76D9B20760AA300F78749 /* SNBaseTableView.swift in Sources */,
 				8EC76DB020762D4C00F78749 /* XListCell.swift in Sources */,
 				8EC76D8E20760AA300F78749 /* UINavigation_Extension.swift in Sources */,
 				8EC76D8320760AA300F78749 /* Observable+Response.swift in Sources */,
+				8EF0C2FB2085B1090002340D /* historyModel.swift in Sources */,
 				8EC76D8720760AA300F78749 /* Common.swift in Sources */,
 				8E1758D320823AD300D58DCE /* BankListModel.swift in Sources */,
 				8E4EFCFC2083988600798F99 /* XFlowTeamController.swift in Sources */,
@@ -1667,8 +1709,10 @@
 				8E0AC406207FD04D0050BE7C /* XPrivateAccountImgCell.swift in Sources */,
 				8E7EDA3E2076800800483ADC /* XLoginController.swift in Sources */,
 				8ED207F8207E44FF006F441A /* XUploadBankController.swift in Sources */,
+				8EF0C2FF2085B5450002340D /* todayModel.swift in Sources */,
 				8E7F1F7020845EE3007C9D1A /* XMerActiveImgCell.swift in Sources */,
 				8EC76D8D20760AA300F78749 /* UIImageView_Extension.swift in Sources */,
+				8EF0C2F72085A5770002340D /* XTotalEarningsListCell.swift in Sources */,
 				8E110E3120812161002176F9 /* XForgetStepTwoController.swift in Sources */,
 				8EA0E083207CDE300018232E /* XEarningDayHeaderCell.swift in Sources */,
 				8EA0E05F207C5E130018232E /* PNColor.swift in Sources */,

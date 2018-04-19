@@ -22,6 +22,7 @@ class XMerBasicInfoController: SNBaseViewController {
     
     fileprivate var frontImagePath:String = ""
     fileprivate var backImagePath:String = ""
+    fileprivate var handImagePath:String = ""
 
     var stepOneModel: StepOneProtocol?
     var protocolObject : AliOssTransferProtocol?
@@ -58,14 +59,12 @@ class XMerBasicInfoController: SNBaseViewController {
         fieldCell.principalPhoneField.text = oneStep.principalPhone
         fieldCell.idCardField.text = oneStep.idCard
         fieldCell.validityField.text = oneStep.validity
-        CNLog(oneStep.frontImage?.image)
         
         if oneStep.frontImage?.image == nil {
             imgCell.frontCard.setImage(UIImage(named:"papers_front"), for: .normal)
         }else{
             imgCell.frontCard.setImage(oneStep.frontImage?.image, for: UIControlState.normal)
 //            imgCell.frontCard.kf.setImage(with: URL(string: (oneStep.frontImage?.path)!), for: .normal)
-
         }
         if oneStep.backImage?.image == nil {
             imgCell.backCard.setImage(UIImage(named:"papers_contrary"), for: .normal)
@@ -73,6 +72,24 @@ class XMerBasicInfoController: SNBaseViewController {
             imgCell.backCard.setImage(oneStep.backImage?.image, for: UIControlState.normal)
 //            imgCell.frontCard.kf.setImage(with: URL(string: (oneStep.backImage?.path)!), for: .normal)
 
+        }
+        
+        if oneStep.handImage?.image == nil {
+            imgCell.handCard.setImage(UIImage(named:"papers_front"), for: .normal)
+        }else{
+            imgCell.handCard.setImage(oneStep.handImage?.image, for: UIControlState.normal)
+            //            imgCell.frontCard.kf.setImage(with: URL(string: (oneStep.backImage?.path)!), for: .normal)
+            
+        }
+        
+        CNLog(oneStep.term)
+        if oneStep.term == "1" || oneStep.term == nil{
+            fieldCell.longBtn.isSelected = true
+            fieldCell.shortBtn.isSelected = false
+
+        }else{
+            fieldCell.shortBtn.isSelected = true
+            fieldCell.longBtn.isSelected = false
         }
         
         
@@ -92,10 +109,12 @@ class XMerBasicInfoController: SNBaseViewController {
         
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
 
-
     }
     fileprivate func setupUI() {
         stepOneModel = ApplyModel.shareApplyModel.applySelfModel.stepOne
+        if XKeyChain.get("three") == "0" || XKeyChain.get("three").isEmpty {
+            ApplyModelTool.removeThreeModel()
+        }
         self.title = "负责人信息"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
@@ -118,6 +137,10 @@ extension XMerBasicInfoController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0 {
             let cell:XBasicInfoFieldCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             self.fieldCell = cell
+            fieldCell.block = {[unowned self] (para) in
+                self.stepOneModel?.term = para
+                CNLog( self.stepOneModel?.term)
+            }
             return cell
         }else if indexPath.row == 1{
             let cell:XIdCardImageCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -172,23 +195,31 @@ extension XMerBasicInfoController:UITableViewDelegate,UITableViewDataSource{
             return
         }
         if fieldCell.principalPhoneField.text == ""{
-            UIAlertView(title: "提示", message: "请输入注册手机号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            UIAlertView(title: "提示", message: "请输入负责人手机号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
         if fieldCell.idCardField.text == ""{
             UIAlertView(title: "提示", message: "请输入身份证号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
-        if fieldCell.validityField.text == ""{
+        if !fieldCell.longBtn.isSelected {
             UIAlertView(title: "提示", message: "请输入身份证有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
+//        if fieldCell.validityField.text == ""{
+//            UIAlertView(title: "提示", message: "请输入身份证有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+//            return
+//        }
         if stepOneModel?.frontImage == nil {
             UIAlertView(title: "提示", message: "请上传身份证正面照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
         if stepOneModel?.backImage == nil {
             UIAlertView(title: "提示", message: "请上传身份证反面照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if stepOneModel?.handImage == nil {
+            UIAlertView(title: "提示", message: "请上传身份证手持照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
         
@@ -199,9 +230,9 @@ extension XMerBasicInfoController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 {
-            return fit(530)
+            return fit(600)
         }else if indexPath.row == 1{
-            return fit(896)
+            return fit(1268)
         }else{
             return fit(254)
         }
@@ -238,10 +269,14 @@ extension  XMerBasicInfoController: TOCropViewControllerDelegate{
                         self.frontImagePath = frontUrl + obk
                         self.stepOneModel?.frontImage = ApplyImage(image: image, path: self.frontImagePath)
                         self.imgCell.frontCard.setImage(image, for: .normal)
-                    }else{
+                    }else if self.fullName == "img2"{
                         self.backImagePath = frontUrl + obk
                         self.stepOneModel?.backImage = ApplyImage(image: image, path: self.backImagePath)
                         self.imgCell.backCard.setImage(image, for: .normal)
+                    }else{
+                        self.handImagePath = frontUrl + obk
+                        self.stepOneModel?.handImage = ApplyImage(image: image, path: self.handImagePath)
+                        self.imgCell.handCard.setImage(image, for: .normal)
                     }
                     
                     SZHUDDismiss()

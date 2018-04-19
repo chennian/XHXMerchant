@@ -45,7 +45,7 @@ class XRecmdCell: SNBaseTableViewCell {
     }
     
     let recmdOperBtn = UIButton().then{
-        $0.setTitle("推荐运营商", for: .normal)
+        $0.setTitle("推荐用户", for: .normal)
         $0.setTitleColor(Color(0x333333), for: .normal)
         $0.backgroundColor = Color(0xffe402)
         $0.layer.cornerRadius = fit(4)

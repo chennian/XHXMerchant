@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 class XMerLogoImgCell: SNBaseTableViewCell {
-    var imgTap = PublishSubject<(AliOssTransferProtocol)>()
+    var imgTap = PublishSubject<(AliOssTransferProtocol,String)>()
     
     let imgLable = UILabel().then{
         $0.text = "店铺ogo图"
@@ -21,6 +21,7 @@ class XMerLogoImgCell: SNBaseTableViewCell {
     var logoImg = DDZUploadBtn().then{
         $0.setImage(UIImage(named:"shop_logo_uploading"),for:.normal)
         $0.imageView?.contentMode = .scaleAspectFill
+        $0.fuName = "2"
     }
     
     let permitCardNotice = UILabel().then{
@@ -32,7 +33,7 @@ class XMerLogoImgCell: SNBaseTableViewCell {
     func bindEvent() {
         logoImg.rx.controlEvent(UIControlEvents.touchUpInside).asObservable().subscribe(onNext:{
             [unowned self] () in
-            self.imgTap.onNext((self.logoImg))
+            self.imgTap.onNext((self.logoImg,self.logoImg.fuName))
         }).disposed(by: disposeBag)
     }
     
@@ -51,7 +52,7 @@ class XMerLogoImgCell: SNBaseTableViewCell {
         logoImg.snp.makeConstraints { (make) in
             make.top.equalTo(imgLable.snp.bottom).snOffset(60)
             make.centerX.equalToSuperview()
-            make.width.snEqualTo(509)
+            make.width.snEqualTo(232)
             make.height.snEqualTo(232)
         }
         

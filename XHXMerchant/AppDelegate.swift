@@ -18,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = .white
         self.window?.makeKeyAndVisible()
         window?.rootViewController = SNMainTabBarController.shared
+    
+//
+//        PgyManager.shared().start(withAppId: PGYer_ID)
+//        PgyManager.shared().isFeedbackEnabled = false
+//        PgyUpdateManager.sharedPgy().start(withAppId: PGYer_ID)
+//        PgyUpdateManager.sharedPgy().checkUpdate();
 
         return true
     }

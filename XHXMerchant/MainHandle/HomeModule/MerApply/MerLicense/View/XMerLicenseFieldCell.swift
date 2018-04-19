@@ -9,6 +9,8 @@
 import UIKit
 
 class XMerLicenseFieldCell: SNBaseTableViewCell {
+    var block:((_ bool:String)->())?
+
     private var line1 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
@@ -48,7 +50,7 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
         $0.borderStyle = .none
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
-        $0.placeholder = "请输入银业执照名称"
+        $0.placeholder = "请输入营业执照名称"
     }
     
     var codeNum = UILabel().then{
@@ -115,7 +117,44 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
         $0.textColor = Color(0x313131)
         $0.placeholder = "请选择行业类别"
     }
-
+    var longLable = UILabel().then{
+        $0.text = "长期"
+        $0.font = Font(30)
+        $0.textColor = Color(0x313131)
+    }
+    var shortLable = UILabel().then{
+        $0.text = "短期"
+        $0.font = Font(30)
+        $0.textColor = Color(0x313131)
+    }
+    let longBtn = UIButton().then{
+        $0.isSelected = true
+        $0.setImage(UIImage(named: "select"), for:.normal)
+        $0.setImage(UIImage(named: "select1"), for:.selected)
+    }
+    let shortBtn = UIButton().then{
+        $0.setImage(UIImage(named: "select"), for:.normal)
+        $0.setImage(UIImage(named: "select1"), for:.selected)
+    }
+    @objc  func clickOne(){
+        longBtn.isSelected =  shortBtn.isSelected
+        shortBtn.isSelected = !longBtn.isSelected
+        
+        guard  let action = block else {
+            return
+        }
+        action("1")
+        
+    }
+    @objc  func clickTwo(){
+        shortBtn.isSelected = longBtn.isSelected
+        longBtn.isSelected = !shortBtn.isSelected
+        
+        guard  let action = block else {
+            return
+        }
+        action("0")
+    }
     override func setupView() {
         contentView.addSubview(line1)
         contentView.addSubview(line2)
@@ -138,8 +177,13 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
         contentView.addSubview(detailAddressField)
         contentView.addSubview(industryType)
         contentView.addSubview(industryTypeField)
+        contentView.addSubview(shortBtn)
+        contentView.addSubview(longBtn)
+        contentView.addSubview(shortLable)
+        contentView.addSubview(longLable)
         
-        
+        longBtn.addTarget(self, action: #selector(clickOne), for: .touchUpInside)
+        shortBtn.addTarget(self, action: #selector(clickTwo), for: .touchUpInside)
         line1.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
@@ -156,7 +200,7 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
             make.left.equalToSuperview()
             make.right.equalToSuperview()
             make.height.snEqualTo(1)
-            make.top.equalTo(line2.snp.bottom).snOffset(90)
+            make.top.equalTo(line2.snp.bottom).snOffset(160)
         }
         line4.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
@@ -206,9 +250,9 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
         }
         
         licenseTermField.snp.makeConstraints { (make) in
-            make.left.snEqualTo(licenseTerm.snp.right).offset(10)
-            make.centerY.equalTo(licenseTerm.snp.centerY)
-            make.right.equalToSuperview().offset(fit(-100))
+            make.top.equalTo(licenseTerm.snp.bottom).snOffset(38)
+            make.left.snEqualTo(licenseTerm.snp.left)
+            make.width.snEqualTo(400)
         }
         codeNum.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
@@ -250,6 +294,23 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
             make.left.snEqualTo(industryType.snp.right).offset(10)
             make.centerY.equalTo(industryType.snp.centerY)
             make.right.equalToSuperview().offset(fit(-100))
+        }
+        longLable.snp.makeConstraints { (make) in
+            make.left.equalTo(licenseTerm.snp.right).snOffset(125)
+            make.centerY.equalTo(licenseTerm.snp.centerY)
+        }
+        longBtn.snp.makeConstraints { (make) in
+            make.centerY.equalTo(longLable.snp.centerY)
+            make.left.equalTo(longLable.snp.right).snOffset(16)
+            make.width.height.snEqualTo(34)
+        }
+        shortLable.snp.makeConstraints { (make) in
+            make.left.equalTo(longBtn.snp.right).snOffset(116)
+            make.centerY.equalTo(longBtn.snp.centerY)
+        }
+        shortBtn.snp.makeConstraints { (make) in
+            make.left.equalTo(shortLable.snp.right).snOffset(16)
+            make.centerY.equalTo(shortLable.snp.centerY)
         }
     }
 }

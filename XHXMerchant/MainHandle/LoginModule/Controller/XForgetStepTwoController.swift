@@ -51,7 +51,19 @@ class XForgetStepTwoController: SNBaseViewController {
         $0.titleLabel?.font = Font(30)
     }
     @objc func confirm(){
-        CNLog(mobile + code)
+        if self.pwdField.text == "" {
+            UIAlertView(title: "温馨提示", message:"请输入新密码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if  self.confirmField.text! == "" {
+            UIAlertView(title: "温馨提示", message:"请输入确认手机号码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if self.pwdField.text != self.confirmField.text{
+            UIAlertView(title: "温馨提示", message:"两次输入密码不一致", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+       
         SNRequestBool(requestType: API.alterAccountPwd(mobile: mobile, code: code, password: self.confirmField.text!)).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .bool(_):

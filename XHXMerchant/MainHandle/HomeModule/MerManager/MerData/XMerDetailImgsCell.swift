@@ -21,24 +21,22 @@ class XMerDetailImgsCell: SNBaseTableViewCell {
     var Img1 = DDZUploadBtn().then{
         $0.setImage(UIImage(named:"shop_particulars"),for:.normal)
         $0.imageView?.contentMode = .scaleAspectFill
-        $0.fuName = "1"
+        $0.fuName = "3"
 
     }
     var Img2 = DDZUploadBtn().then{
         $0.setImage(UIImage(named:"shop_particulars"),for:.normal)
         $0.imageView?.contentMode = .scaleAspectFill
-        $0.fuName = "2"
+        $0.fuName = "4"
 
     }
     var Img3 = DDZUploadBtn().then{
         $0.setImage(UIImage(named:"shop_particulars"),for:.normal)
         $0.imageView?.contentMode = .scaleAspectFill
-        $0.fuName = "3"
+        $0.fuName = "5"
 
     }
-    
-
-    
+        
     func bindEvent() {
         Img1.rx.controlEvent(UIControlEvents.touchUpInside).asObservable().subscribe(onNext:{
             [unowned self] () in

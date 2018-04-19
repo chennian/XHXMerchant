@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 class XMerActiveImgCell: SNBaseTableViewCell {
-    var imgTap = PublishSubject<(AliOssTransferProtocol)>()
+    var imgTap = PublishSubject<(AliOssTransferProtocol,String)>()
     
     let imgLable = UILabel().then{
         $0.text = "店铺展示图"
@@ -21,6 +21,7 @@ class XMerActiveImgCell: SNBaseTableViewCell {
     var activityImg = DDZUploadBtn().then{
         $0.setImage(UIImage(named:"shop_flat_patternmaking"),for:.normal)
         $0.imageView?.contentMode = .scaleAspectFill
+        $0.fuName = "1"
     }
     
     let permitCardNotice = UILabel().then{
@@ -32,7 +33,7 @@ class XMerActiveImgCell: SNBaseTableViewCell {
     func bindEvent() {
         activityImg.rx.controlEvent(UIControlEvents.touchUpInside).asObservable().subscribe(onNext:{
             [unowned self] () in
-            self.imgTap.onNext((self.activityImg))
+            self.imgTap.onNext((self.activityImg,self.activityImg.fuName))
         }).disposed(by: disposeBag)
     }
     

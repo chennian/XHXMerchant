@@ -9,6 +9,8 @@
 import UIKit
 
 class XBasicInfoFieldCell: SNBaseTableViewCell {
+    var block:((_ bool:String)->())?
+    
     private var line1 = UIView().then{
         $0.backgroundColor = Color(0xe8e8e8)
     }
@@ -77,6 +79,27 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         $0.textColor = Color(0x313131)
         
     }
+    var longLable = UILabel().then{
+        $0.text = "长期"
+        $0.font = Font(30)
+        $0.textColor = Color(0x313131)
+    }
+    var shortLable = UILabel().then{
+        $0.text = "短期"
+        $0.font = Font(30)
+        $0.textColor = Color(0x313131)
+    }
+    let longBtn = UIButton().then{
+        $0.isSelected = true
+        $0.setImage(UIImage(named: "select"), for:.normal)
+        $0.setImage(UIImage(named: "select1"), for:.selected)
+        
+    }
+    let shortBtn = UIButton().then{
+        $0.setImage(UIImage(named: "select"), for:.normal)
+        $0.setImage(UIImage(named: "select1"), for:.selected)
+    }
+  
     var validityField = UITextField().then{
         $0.borderStyle = .none
         $0.font = Font(30)
@@ -93,6 +116,27 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         $0.textColor = Color(0x9f9f9f)
         
     }
+    
+    @objc  func clickOne(){
+        longBtn.isSelected =  shortBtn.isSelected
+        shortBtn.isSelected = !longBtn.isSelected
+        
+        guard  let action = block else {
+            return
+        }
+        action("1")
+
+    }
+    @objc  func clickTwo(){
+        shortBtn.isSelected = longBtn.isSelected
+        longBtn.isSelected = !shortBtn.isSelected
+        
+        guard  let action = block else {
+            return
+        }
+        action("0")
+    }
+    
     override func setupView() {
         contentView.addSubview(line1)
         contentView.addSubview(line2)
@@ -108,9 +152,16 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         contentView.addSubview(idCard)
         contentView.addSubview(idCardField)
         contentView.addSubview(validity)
+        contentView.addSubview(shortBtn)
+        contentView.addSubview(longBtn)
+        contentView.addSubview(shortLable)
+        contentView.addSubview(longLable)
+
         contentView.addSubview(validityField)
         contentView.addSubview(view)
         view.addSubview(notice)
+        longBtn.addTarget(self, action: #selector(clickOne), for: .touchUpInside)
+        shortBtn.addTarget(self, action: #selector(clickTwo), for: .touchUpInside)
 
 
         line1.snp.makeConstraints { (make) in
@@ -191,19 +242,38 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         }
         
         validityField.snp.makeConstraints { (make) in
-            make.left.snEqualTo(validity.snp.right).offset(10)
-            make.centerY.equalTo(validity.snp.centerY)
-            make.right.equalToSuperview().offset(fit(-100))
+            make.left.snEqualTo(validity.snp.left)
+            make.top.snEqualTo(validity.snp.bottom).snOffset(38)
+            make.width.snEqualTo(400)
         }
+        
         view.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
-            make.top.equalTo(validity.snp.bottom).snOffset(32)
+            make.top.equalTo(validityField.snp.bottom).snOffset(32)
             make.height.snEqualTo(77)
         }
 
         notice.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().snOffset(28)
+            make.left.equalToSuperview().snOffset(30)
             make.top.equalToSuperview().snOffset(16)
+        }
+        
+        longLable.snp.makeConstraints { (make) in
+            make.left.equalTo(validity.snp.right).snOffset(125)
+            make.centerY.equalTo(validity.snp.centerY)
+        }
+        longBtn.snp.makeConstraints { (make) in
+            make.centerY.equalTo(longLable.snp.centerY)
+            make.left.equalTo(longLable.snp.right).snOffset(16)
+            make.width.height.snEqualTo(34)
+        }
+        shortLable.snp.makeConstraints { (make) in
+            make.left.equalTo(longBtn.snp.right).snOffset(116)
+            make.centerY.equalTo(longBtn.snp.centerY)
+        }
+        shortBtn.snp.makeConstraints { (make) in
+            make.left.equalTo(shortLable.snp.right).snOffset(16)
+            make.centerY.equalTo(shortLable.snp.centerY)
         }
     }
 }

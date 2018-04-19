@@ -30,6 +30,13 @@ class XIdCardImageCell: SNBaseTableViewCell {
         $0.imageView?.contentMode = .scaleAspectFill
     }
     
+    var handCard = DDZUploadBtn().then{
+        $0.setImage(UIImage(named:"papers_front"),for:.normal)
+        $0.fuName = "img3"
+        $0.imageView?.contentMode = .scaleAspectFill
+    }
+    
+    
     let frontNotice = UILabel().then{
         $0.text = "身份证正面照"
         $0.font = Font(30)
@@ -38,6 +45,12 @@ class XIdCardImageCell: SNBaseTableViewCell {
     
     let backNotice = UILabel().then{
         $0.text = "身份证反面照"
+        $0.font = Font(30)
+        $0.textColor = Color(0x9a9a9a)
+    }
+    
+    let handNotice = UILabel().then{
+        $0.text = "身份证手持照"
         $0.font = Font(30)
         $0.textColor = Color(0x9a9a9a)
     }
@@ -51,6 +64,10 @@ class XIdCardImageCell: SNBaseTableViewCell {
             [unowned self] in
             self.imgTap.onNext((self.backCard, self.backCard.fuName))
         }).disposed(by: disposeBag)
+        handCard.rx.controlEvent(UIControlEvents.touchUpInside).asObservable().subscribe(onNext:{
+            [unowned self] in
+            self.imgTap.onNext((self.handCard, self.handCard.fuName))
+        }).disposed(by: disposeBag)
     }
     
     override func setupView() {
@@ -59,6 +76,9 @@ class XIdCardImageCell: SNBaseTableViewCell {
         contentView.addSubview(backCard)
         contentView.addSubview(frontNotice)
         contentView.addSubview(backNotice)
+        contentView.addSubview(handCard)
+        contentView.addSubview(handNotice)
+
 
         bindEvent()
         
@@ -80,6 +100,13 @@ class XIdCardImageCell: SNBaseTableViewCell {
             make.width.snEqualTo(483)
             make.height.snEqualTo(260)
         }
+        
+        handCard.snp.makeConstraints { (make) in
+            make.top.equalTo(backCard.snp.bottom).snOffset(112)
+            make.centerX.equalToSuperview()
+            make.width.snEqualTo(483)
+            make.height.snEqualTo(260)
+        }
         frontNotice.snp.makeConstraints { (make) in
             make.top.equalTo(frontCard.snp.bottom).snOffset(21)
             make.centerX.equalTo(frontCard.snp.centerX)
@@ -88,7 +115,10 @@ class XIdCardImageCell: SNBaseTableViewCell {
             make.top.equalTo(backCard.snp.bottom).snOffset(21)
             make.centerX.equalTo(backCard.snp.centerX)
         }
-
+        handNotice.snp.makeConstraints { (make) in
+            make.top.equalTo(handCard.snp.bottom).snOffset(21)
+            make.centerX.equalTo(handCard.snp.centerX)
+        }
         
     }
 

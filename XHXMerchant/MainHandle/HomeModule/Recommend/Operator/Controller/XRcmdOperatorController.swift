@@ -111,8 +111,11 @@ class XRcmdOperatorController: SNBaseViewController {
             switch result{
             case .bool(_):
                 SZHUD("发送成功", type: SZHUDType.success, callBack: nil)
-            case .fail(let res):
-                UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            case .fail(let code,let res):
+                SZHUD(res ?? "上传失败", type: .error, callBack: nil)
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
             default:
                 UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             }

@@ -39,6 +39,11 @@ class XMerLicenseImgCell: SNBaseTableViewCell {
         $0.fuName = "img4"
         $0.imageView?.contentMode = .scaleAspectFill
     }
+    var indoorImage1 = DDZUploadBtn().then{
+        $0.setImage(UIImage(named:"shop_inside"),for:.normal)
+        $0.fuName = "img5"
+        $0.imageView?.contentMode = .scaleAspectFill
+    }
     
     let LicenseNotice = UILabel().then{
         $0.text = "营业执照照片"
@@ -58,7 +63,12 @@ class XMerLicenseImgCell: SNBaseTableViewCell {
     }
     
     let indoorNotice = UILabel().then{
-        $0.text = "店内照片"
+        $0.text = "第一张店内照片"
+        $0.font = Font(30)
+        $0.textColor = Color(0x9a9a9a)
+    }
+    let indoorNotice1 = UILabel().then{
+        $0.text = "第二张店内照片"
         $0.font = Font(30)
         $0.textColor = Color(0x9a9a9a)
     }
@@ -81,6 +91,10 @@ class XMerLicenseImgCell: SNBaseTableViewCell {
             [unowned self] in
             self.imgTap.onNext((self.indoorImage, self.indoorImage.fuName))
         }).disposed(by: disposeBag)
+        indoorImage1.rx.controlEvent(UIControlEvents.touchUpInside).asObservable().subscribe(onNext:{
+            [unowned self] in
+            self.imgTap.onNext((self.indoorImage1, self.indoorImage1.fuName))
+        }).disposed(by: disposeBag)
     }
     
     override func setupView() {
@@ -89,11 +103,13 @@ class XMerLicenseImgCell: SNBaseTableViewCell {
         contentView.addSubview(doorImage)
         contentView.addSubview(checkstandImage)
         contentView.addSubview(indoorImage)
+        contentView.addSubview(indoorImage1)
 
         contentView.addSubview(LicenseNotice)
         contentView.addSubview(doorNotice)
         contentView.addSubview(checkstandNotice)
         contentView.addSubview(indoorNotice)
+        contentView.addSubview(indoorNotice1)
 
         
         bindEvent()
@@ -130,6 +146,13 @@ class XMerLicenseImgCell: SNBaseTableViewCell {
             make.height.snEqualTo(260)
         }
         
+        indoorImage1.snp.makeConstraints { (make) in
+            make.top.equalTo(indoorImage.snp.bottom).snOffset(112)
+            make.centerX.equalToSuperview()
+            make.width.snEqualTo(483)
+            make.height.snEqualTo(260)
+        }
+        
         LicenseNotice.snp.makeConstraints { (make) in
             make.top.equalTo(LicenseImage.snp.bottom).snOffset(21)
             make.centerX.equalTo(LicenseImage.snp.centerX)
@@ -145,6 +168,10 @@ class XMerLicenseImgCell: SNBaseTableViewCell {
         indoorNotice.snp.makeConstraints { (make) in
             make.top.equalTo(indoorImage.snp.bottom).snOffset(21)
             make.centerX.equalTo(indoorImage.snp.centerX)
+        }
+        indoorNotice1.snp.makeConstraints { (make) in
+            make.top.equalTo(indoorImage1.snp.bottom).snOffset(21)
+            make.centerX.equalTo(indoorImage1.snp.centerX)
         }
         
     }

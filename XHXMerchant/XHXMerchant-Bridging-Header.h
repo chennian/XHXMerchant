@@ -7,3 +7,8 @@
 //
 
 
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <PgySDK/PgyManager.h>
+#import <PgyUpdate/PgyUpdateManager.h>
+
+#endif

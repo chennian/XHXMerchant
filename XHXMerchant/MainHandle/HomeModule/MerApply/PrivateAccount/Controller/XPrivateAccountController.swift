@@ -19,11 +19,16 @@ class XPrivateAccountController: SNBaseViewController {
     
     var protocolObject : AliOssTransferProtocol?
     
+    var temp :String = "1"
+    
     fileprivate var bankProvince:String = ""
     fileprivate var bankCity:String = ""
     fileprivate var bankCounty:String = ""
     
     fileprivate var cardImagePath:String = ""
+    fileprivate var backImagePath:String = ""
+    var fullname:String = ""
+
     
     fileprivate let addressPiker = AddressPiker(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 216))
 
@@ -69,6 +74,7 @@ class XPrivateAccountController: SNBaseViewController {
     func sendSMS(){
         if fieldCell.leftMobileField.text! == ""{
              UIAlertView(title: "温馨提示", message: "请填写银行预留手机号码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
         }
         
         SNRequestBool(requestType: API.sendSMS(mobile:fieldCell.leftMobileField.text!,vtype:"4")).subscribe(onNext: {[unowned self] (result) in
@@ -102,11 +108,17 @@ class XPrivateAccountController: SNBaseViewController {
         fieldCell.branchNameField.text = threeStep.branchName
         fieldCell.privatebankNameField.text = threeStep.privatebankName
         fieldCell.leftMobileField.text = threeStep.leftMobile
-        
-        if threeStep.permitCard?.image == nil {
+
+        if threeStep.frontCard?.image == nil {
             imgCell.bankCard.setImage(UIImage(named:"bank_card"), for: .normal)
         }else{
             imgCell.bankCard.setImage(threeStep.frontCard?.image, for: UIControlState.normal)
+        }
+       
+        if threeStep.backCard?.image == nil {
+            imgCell.bankCardBack.setImage(UIImage(named:"bank_card"), for: .normal)
+        }else{
+            imgCell.bankCardBack.setImage(threeStep.backCard?.image, for: UIControlState.normal)
         }
         
     }
@@ -145,8 +157,9 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
         }else if indexPath.row == 3{
             let cell:XPrivateAccountImgCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             self.imgCell = cell
-            cell.imgTap.subscribe(onNext: {[unowned self] (btn) in
+            cell.imgTap.subscribe(onNext: {[unowned self] (btn,fullname) in
                 self.protocolObject = btn
+                self.fullname = fullname
                 let alertView = DDZCamerationController()
                 let picker = DDZImagePickerVC()
                 picker.delegate = self
@@ -193,7 +206,7 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
             return
         }
         if fieldCell.privateBankAddressField.text == ""{
-            UIAlertView(title: "提示", message: "请输入开户行坐在地", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            UIAlertView(title: "提示", message: "请输入开户行所在地", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
         if fieldCell.branchNameField.text == ""{
@@ -216,6 +229,10 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
             UIAlertView(title: "提示", message: "请上传银行卡正面照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
+        if stepThreeModel?.backCard == nil {
+            UIAlertView(title: "提示", message: "请上传银行卡反面照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
         
         uploadData()
         
@@ -234,6 +251,10 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
         let validity: String = stepOneItem.validity ?? "" //证件有效期
         let idcardone: String = stepOneItem.frontImage?.path ?? "" //正面照
         let idcardtwo: String = stepOneItem.backImage?.path ?? ""  //反面照
+        let idcardThird: String = stepOneItem.handImage?.path ?? ""  //反面照
+        let iDterm: String = stepOneItem.term ?? "1" //省份证有效期
+
+
         
         //获取第二步资料
         let stepSecondeItem = ApplyModel.shareApplyModel.applySelfModel.stepTwo
@@ -247,13 +268,15 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
         let province: String = stepSecondeItem.province ?? ""  //省
         let city: String = stepSecondeItem.city ?? ""          //市
         let area: String = stepSecondeItem.county ?? ""        //区
+        let licenseTerm: String = stepSecondeItem.licenseTerm ?? "1"        //有效期
 
         
         let busregimg: String = stepSecondeItem.LicenseImage?.path ?? ""  //反面照
         let gatepic: String = stepSecondeItem.doorImage?.path ?? ""  //反面照
         let checkStandPic: String = stepSecondeItem.checkstand?.path ?? ""  //反面照
         let storePic: String = stepSecondeItem.indoorImage?.path ?? ""  //反面照
-        
+        let storePic2: String = stepSecondeItem.indoorImage1?.path ?? ""  //反面照
+
         //获取第三步资料
         let stepThreeItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
         
@@ -266,7 +289,8 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
         let bankCity: String = stepThreeItem.bankCity ?? ""//预留手机号
         let bankArea: String = stepThreeItem.bankCounty ?? ""//预留手机号
 
-        let balancecardone: String = stepThreeItem.frontCard?.path ?? ""  //反面照
+        let balancecardone: String = stepThreeItem.frontCard?.path ?? ""  //正面照
+        let balancecardtwo: String = stepThreeItem.backCard?.path ?? ""  //反面照
 
         
         let parameters:[String:Any] = [
@@ -278,7 +302,9 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
             "validterm":validity,
             "idcardone":idcardone,
             "idcardtwo":idcardtwo,
-            
+            "idcardThird":idcardThird,
+            "term":iDterm,
+
             "entabb":entabb,
             "entname":entname,
             "busregnum":busregnum,
@@ -292,7 +318,9 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
             "gatepic":gatepic,
             "checkStandPic":checkStandPic,
             "storePic":storePic,
-            
+            "storePic2":storePic2,
+            "licenseTerm":licenseTerm,
+
             "priaccount":priaccount,
             "opnbank":opnbank,
             "ponaccname":ponaccname,
@@ -302,7 +330,8 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
             "bankProvince":bankProvince,
             "bankCity":bankCity,
             "bankArea":bankArea,
-            "verifycode":fieldCell.codeLableField.text!
+            "verifycode":fieldCell.codeLableField.text!,
+            "balancecardtwo":balancecardtwo
 
         ]
         CNLog(parameters)
@@ -311,10 +340,15 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
             switch result{
             case .bool(_):
                 ApplyModelTool.removeModel()
-                SZHUD("上次成功", type: .success, callBack: nil)
+                SZHUD("上传成功", type: .success, callBack: nil)
+                XKeyChain.set("0", key: "three")
                 self.navigationController?.popToRootViewController(animated: true)
-            case .fail(let res):
-                UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            case .fail(let code,let res):
+                SZHUD(res ?? "上传失败", type: .error, callBack: nil)
+                XKeyChain.set("1", key: "three")
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
             default:
                 UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             }
@@ -331,7 +365,7 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
         }else if indexPath.row == 2{
             return fit(20)
         }else if indexPath.row == 3{
-            return fit(497)
+            return fit(869)
         }else{
             return fit(239)
         }
@@ -363,10 +397,15 @@ extension  XPrivateAccountController: TOCropViewControllerDelegate{
                     guard let obk = self.protocolObject?.obkVar.value else{
                         return
                     }
-                    self.cardImagePath = frontUrl + obk
-                    self.stepThreeModel?.frontCard = ApplyImage(image: image, path: self.cardImagePath)
-                    self.imgCell.bankCard.setImage(image, for: .normal)
-                    
+                    if self.fullname == "1"{
+                        self.cardImagePath = frontUrl + obk
+                        self.stepThreeModel?.frontCard = ApplyImage(image: image, path: self.cardImagePath)
+                        self.imgCell.bankCard.setImage(image, for: .normal)
+                    }else{
+                        self.backImagePath = frontUrl + obk
+                        self.stepThreeModel?.backCard = ApplyImage(image: image, path: self.backImagePath)
+                        self.imgCell.bankCardBack.setImage(image, for: .normal)
+                    }
                     
                     SZHUDDismiss()
                 }

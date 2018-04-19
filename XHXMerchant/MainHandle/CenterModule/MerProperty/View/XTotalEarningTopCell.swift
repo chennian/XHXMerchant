@@ -9,6 +9,41 @@
 import UIKit
 
 class XTotalEarningTopCell: SNBaseTableViewCell {
+    
+    var models:monthModel?{
+        didSet{
+            guard let model = models else {
+                return
+            }
+            self.totalLable.text = model.credit
+            if model.service_total == ""{
+                model.service_total = "0"
+            }
+            if model.operator_total == ""{
+                model.service_total = "0"
+            }
+            if model.flowmeter_total == ""{
+                model.service_total = "0"
+            }
+            if model.merchant_total == ""{
+                model.service_total = "0"
+            }
+            if model.corporation_total == ""{
+                model.service_total = "0"
+            }
+            self.oneLable.text = "服务商       \(model.service_total)"
+            self.twoLable.text = "运营商       \(model.operator_total)"
+            self.threeLable.text = "商家导流       \(model.flowmeter_total)"
+            self.threeLable.text = "商家货款       \(model.merchant_total)"
+            self.threeLable.text = "服务中心       \(model.corporation_total)"
+            item1.value = 26
+            item2.value = 26
+            item3.value = 26
+            item4.value = 26
+            item5.value = 26
+
+        }
+    }
   
     var totalLable = UILabel().then{
 
@@ -73,24 +108,36 @@ class XTotalEarningTopCell: SNBaseTableViewCell {
         $0.font = Font(24)
         $0.textColor = Color(0x75797d)
     }
+    var item1 = PNPieChartDataItem(dateColor: Color(0x2894ff), description: "") //"服务商")
+    var item2 = PNPieChartDataItem(dateColor: Color(0xffcc00), description: "")//"运营商")
+    var item3 = PNPieChartDataItem(dateColor: Color(0xff566e), description: "")//"商家货款")
+    var item4 = PNPieChartDataItem(dateColor: Color(0x0fdca0), description: "")//"商家导流")
+    var item5 = PNPieChartDataItem(dateColor: Color(0xff9c00), description: "")//"服务中心")
 
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        item1.value = 0
+        item2.value = 0
+        item3.value = 0
+        item4.value = 0
+        item5.value = 0
+    }
   //圆饼图
     private func setPieChart(){
-        let number = 0
-        let CGFloatValue = CGFloat(number)
         var items:[PNPieChartDataItem] = []
-        let item1 = PNPieChartDataItem(dateValue: 15, dateColor: Color(0x2894ff), description: "服务商")
-        let item2 = PNPieChartDataItem(dateValue: 50, dateColor: Color(0xffcc00), description: "运营商")
-        let item3 = PNPieChartDataItem(dateValue: 40, dateColor: Color(0xff566e), description: "商家货款")
-        let item4 = PNPieChartDataItem(dateValue: 10, dateColor: Color(0x0fdca0), description: "商家导流")
-        let item5 = PNPieChartDataItem(dateValue: 10, dateColor: Color(0xff9c00), description: "服务中心")
+    
+        item1.value = 10
+        item2.value = 20
+        item3.value = 30
+        item4.value = 0
+        item5.value = 0
         
-        if item1.value! == CGFloatValue ,item2.value! == CGFloatValue,item3.value! == CGFloatValue,item4.value! == CGFloatValue{
+        if item1.value == 0 ,item2.value == 0,item3.value == 0,item4.value == 0,item5.value == 0{
             let item = PNPieChartDataItem(dateValue: 1, dateColor:  .lightGray, description: "暂无数据")
             items = [item]
         }else{
             items = [item1, item2, item3,item4,item5]
-
         }
         
         let pieChart = PNPieChart(frame:.zero, items: items)
@@ -104,10 +151,6 @@ class XTotalEarningTopCell: SNBaseTableViewCell {
             make.right.equalToSuperview().snOffset(-79)
             make.height.width.snEqualTo(227)
         }
-    }
-    
-    func getData(){
-        
     }
     override func setupView() {
         contentView.addSubview(totalLable)

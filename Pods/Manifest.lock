@@ -20,6 +20,8 @@ PODS:
     - RxSwift (~> 4.0)
   - PagingMenuController (2.2.0)
   - PGActionSheet (1.0.10)
+  - Pgyer (2.8.9)
+  - PgyUpdate (1.5)
   - Result (3.2.4)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
@@ -53,6 +55,8 @@ DEPENDENCIES:
   - Moya/RxSwift (~> 10.0)
   - PagingMenuController
   - PGActionSheet
+  - Pgyer
+  - PgyUpdate
   - RxDataSources (~> 3.0)
   - SDCycleScrollView
   - SnapKit (~> 4.0.0)
@@ -77,6 +81,8 @@ SPEC CHECKSUMS:
   Moya: 2b0531a9fef318e0bc484030c3db1e6f279ccb66
   PagingMenuController: 6176618987bb170096664f2da097313e45ed9c31
   PGActionSheet: 4384fd5e6d723a70ae86de801d8d964b741e9efd
+  Pgyer: 830654e51e23f754cce5d8b3ea9ba72be68452eb
+  PgyUpdate: bad71685b91bba4aa520b7fe29356a476700fdf2
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
@@ -90,6 +96,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 9bf89512bb6de53e87897f2e17e607c126a199d6
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: af88ff6afb95e17d86f1fe99ac37d4249f142981
+PODFILE CHECKSUM: 61f0f0dab7902dd05569d1910068ab2bcf96a283
 
 COCOAPODS: 1.4.0

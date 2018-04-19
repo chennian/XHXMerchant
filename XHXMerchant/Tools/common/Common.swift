@@ -15,6 +15,8 @@ class common: NSObject {
 public let isConpany = "1"  //0:企业 1:个人
 
 public let PHONE = "phone"
+public let PASSWORD = "password"
+
 public let PARENTPHONE = "PARENTPHONE"
 public let OPERATER = "operater"
 public let CORPORATION = "corporation"
@@ -31,6 +33,8 @@ public let TIMESTAMP = "timestamp"
 public let ISLOGIN = "login" // 用户登录状态  0 未登录 1 登录
 public let LOGIN_TRUE = "0"
 public let LOGIN_FALSE = "1"
+
+public let PGYer_ID: String = "48511d269791e0a561ff8392d072b72c"
 
 //oss
 let OSSAccessKey = "LTAI6rTfz7ikikTG"

@@ -16,11 +16,11 @@ class XFlowMerController: SNBaseViewController {
         $0.backgroundColor = color_bg_gray_f5
         $0.register(XFlowMerCell.self)
         $0.register(XSpaceCell.self)
-        $0.separatorStyle = .none
+        $0.tableFooterView = UIView()
     }
     
     fileprivate func setupUI() {
-        self.title = "我的流量用户"
+        self.title = "我的流量店铺"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
         tableView.delegate = self
@@ -35,8 +35,11 @@ class XFlowMerController: SNBaseViewController {
             case .success(let models):
                 self.model = models
                 self.tableView.reloadData()
-            case .fail(_,let msg):
+            case .fail(let code,let msg):
                 SZHUD(msg ?? "请求数据失败", type: .error, callBack: nil)
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
             default:
                 break
             }
