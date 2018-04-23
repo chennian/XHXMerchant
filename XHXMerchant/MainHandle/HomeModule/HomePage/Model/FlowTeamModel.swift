@@ -15,12 +15,16 @@ class FlowTeamModel:SNSwiftyJSONAble {
     var corporation : String
     var headImg : String
     var nickName : String
+    var phone : String
+
     required init?(jsonData: JSON) {
         self.isAgent = jsonData["isAgent"].stringValue
         self.operater = jsonData["operater"].stringValue
         self.corporation = jsonData["corporation"].stringValue
         self.headImg = jsonData["headImg"].stringValue
         self.nickName = jsonData["nickName"].stringValue
+        self.phone = jsonData["phone"].stringValue
+
     }
     
 }

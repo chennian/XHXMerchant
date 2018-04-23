@@ -132,5 +132,13 @@ extension UIView {
 		}
 		return y
 	}
+    func addCorner(roundingCorners: UIRectCorner, cornerSize: CGSize) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: roundingCorners, cornerRadii: cornerSize)
+        let cornerLayer = CAShapeLayer()
+        cornerLayer.frame = bounds
+        cornerLayer.path = path.cgPath
+        
+        layer.mask = cornerLayer
+    }
 
 }

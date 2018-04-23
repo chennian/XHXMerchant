@@ -5,6 +5,7 @@ PODS:
   - Alamofire (4.7.0)
   - AliyunOSSiOS (2.9.2)
   - APJTextPickerView (0.0.7)
+  - BaiduMapKit (3.4.4)
   - CryptoSwift (0.7.2)
   - Differentiator (3.0.2)
   - DZNEmptyDataSet (1.8.1)
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - Action
   - AliyunOSSiOS
   - APJTextPickerView
+  - BaiduMapKit
   - CryptoSwift (~> 0.7.0)
   - DZNEmptyDataSet
   - IQKeyboardManager
@@ -71,6 +73,7 @@ SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   AliyunOSSiOS: 0396d0483f7c83edc34e748b0ae17ffa0d7adc8d
   APJTextPickerView: 2c2b6ca0f2a8076b8e10e3d6f2e92add429118e5
+  BaiduMapKit: 4ac88f5a363500760392825b69709f4a0125f81e
   CryptoSwift: cd2158be2bf639aabc63ec804707c7137c90157c
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
@@ -96,6 +99,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 9bf89512bb6de53e87897f2e17e607c126a199d6
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 61f0f0dab7902dd05569d1910068ab2bcf96a283
+PODFILE CHECKSUM: 8700b8e78e0ddf56c438f1a743ecfa31ccdbd352
 
 COCOAPODS: 1.4.0

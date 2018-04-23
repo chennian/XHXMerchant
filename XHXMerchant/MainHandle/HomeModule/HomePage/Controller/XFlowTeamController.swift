@@ -60,6 +60,7 @@ extension XFlowTeamController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:XFlowTeamCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.models = self.model[indexPath.row]
         return cell
         
         

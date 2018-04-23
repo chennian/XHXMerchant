@@ -28,7 +28,9 @@ pod 'TZImagePickerController'
 pod 'PGActionSheet'
 pod 'Pgyer'
 pod 'PgyUpdate'
-  target 'XHXMerchantTests' do
+pod 'BaiduMapKit'
+
+target 'XHXMerchantTests' do
     inherit! :search_paths
     # Pods for testing
   end

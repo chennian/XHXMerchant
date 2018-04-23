@@ -37,8 +37,26 @@ enum API {
     case flowMer
     case flowTeam
     case monthTotalRevenue
-    case shopHome
+    case shopHome(shopId:String)
     case uploadMerData(paremeter:[String:Any])
+    case shopList
+    case shopCategory
+    case submitShopDate(paremeter:[String:Any])
+    case getShopEmployeeList(shop_id:String)
+    case shopAddEmployee(paremeter:[String:Any])
+    case deleteShopEmployee(id:String,shopId:String)
+    case shopEditEmployee(paremeter:[String:Any])
+    case addBranchShop(paremeter:[String:Any])
+    case merchantAddShop(paremeter:[String:Any])
+    case myRecommendMerchantList(status:String)
+    case myRecommendUserList(status:String)
+    case historyRevenue //历史收益
+    case todayTotalRevenue //今日收益
+    case flowMeterRevenue(start_date:String,end_date:String) //导流收益
+    case corporationRevenue(start_date:String,end_date:String) //服务中心收益
+    case merchantRevenue(start_date:String,end_date:String) //货款收益
+    case operatorRevenue(start_date:String,end_date:String) //运营商收益
+    case serviceRevenue(start_date:String,end_date:String) //服务商收益
 
 }
 
@@ -115,8 +133,42 @@ extension API: JSONMappableTargetType {
             return "api/shopHome"
         case .uploadMerData:
             return "api/btnShopInfo"
-        default:
-            return ""
+        case .shopList:
+            return "api/getShopList"
+        case .shopCategory:
+            return "commom/getShopCategory"
+        case .submitShopDate:
+            return "api/btnShopInfo"
+        case .getShopEmployeeList:
+            return "api/getShopEmployeeList"
+        case .shopAddEmployee:
+            return "api/shopAddEmployee"
+        case .deleteShopEmployee:
+            return "api/deleteShopEmployee"
+        case .shopEditEmployee:
+            return "api/shopEditEmployee"
+        case .addBranchShop:
+            return "api/addBranchShop"
+        case .merchantAddShop:
+            return "api/merchantAddShop"
+        case .myRecommendMerchantList:
+            return "api/myRecommendMerchantList"
+        case .myRecommendUserList:
+            return "api/myRecommendUserList"
+        case .historyRevenue:
+            return "api/historyRevenue"
+        case .todayTotalRevenue:
+            return "api/todayTotalRevenue"
+        case .flowMeterRevenue:
+            return "api/flowMeterRevenue"
+        case .corporationRevenue:
+            return "api/corporationRevenue"
+        case .merchantRevenue:
+            return "api/merchantRevenue"
+        case .operatorRevenue:
+            return "api/operatorRevenue"
+        case .serviceRevenue:
+            return "api/serviceRevenue"
         }
     }
     
@@ -164,12 +216,51 @@ extension API: JSONMappableTargetType {
         case .upgrade0perator(let verifycode):
             let para = ["verifycode":verifycode]
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
-            
         case .upgradeServer(let verifycode,let activatecode):
             let para = ["verifycode":verifycode,"activatecode":activatecode]
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .shopHome(let shopId):
+            let para = ["shop_id":shopId]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
         case .uploadMerData(let paremeter):
             return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .submitShopDate(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .getShopEmployeeList(let shop_id):
+            let para = ["shopId":shop_id]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .shopAddEmployee(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .deleteShopEmployee(let id,let shopId):
+            let para = ["id":id,"shopId":shopId]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .shopEditEmployee(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .addBranchShop(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .merchantAddShop(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .myRecommendMerchantList(let status):
+            let para = ["status":status]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .myRecommendUserList(let status):
+            let para = ["status":status]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .flowMeterRevenue(let start_date,let end_date):
+            let para = ["start_date":start_date,"end_date":end_date]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .corporationRevenue(let start_date,let end_date):
+            let para = ["start_date":start_date,"end_date":end_date]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .merchantRevenue(let start_date,let end_date):
+            let para = ["start_date":start_date,"end_date":end_date]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .operatorRevenue(let start_date,let end_date):
+            let para = ["start_date":start_date,"end_date":end_date]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .serviceRevenue(let start_date,let end_date):
+            let para = ["start_date":start_date,"end_date":end_date]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
         default:
             return Task.requestPlain
         }

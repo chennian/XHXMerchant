@@ -9,6 +9,21 @@
 import UIKit
 
 class MerHeaderCell: SNBaseTableViewCell {
+    
+    var model:XMerListModel?{
+        didSet{
+            guard let cellModel = model else {
+                return
+            }
+            self.merName.text = cellModel.shopName
+            self.staffNum.text = "员工数量:\(cellModel.personal)"
+            self.userNum.text = "会员数量\(cellModel.flow_num)"
+            self.merHeaderImg.kf.setImage(with: URL(string: cellModel.logo))
+            self.backImg.kf.setImage(with: URL(string: cellModel.logo))
+//            createFrostBackground(img:UIImage(named: "home_earnings")!, view: self.backImg)
+        }
+    }
+    
     let backImg = UIImageView().then{
         $0.image = UIImage(named: "")
     }
@@ -33,6 +48,7 @@ class MerHeaderCell: SNBaseTableViewCell {
     
     let merHeaderImg  = UIImageView().then{
         $0.backgroundColor = .clear
+        $0.layer.cornerRadius = fit(10)
     }
     override func setupView() {
         contentView.addSubview(backImg)
@@ -42,6 +58,12 @@ class MerHeaderCell: SNBaseTableViewCell {
         view.addSubview(staffNum)
         contentView.addSubview(merHeaderImg)
         
+        let blurEffet = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: blurEffet)
+        blurView.frame.size = CGSize(width: fit(750), height: fit(240))
+        backImg.addSubview(blurView)
+        
+                
         backImg.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
             make.height.snEqualTo(240)
@@ -70,5 +92,23 @@ class MerHeaderCell: SNBaseTableViewCell {
             make.width.snEqualTo(200)
         }
 
+    }
+}
+extension MerHeaderCell{
+    //创建毛玻璃效果的背景
+    func createFrostBackground (img:UIImage,view:UIView) {
+        let w = self.backImg.frame.width
+        let h = self.backImg.frame.height
+        let blurImageView = UIImageView(frame: CGRect(x: -w/2, y: -h/2, width: 2*w, height: 2*h))
+        // let blurImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: w, height: h))
+        //模糊背景是界面的4倍大小
+        blurImageView.contentMode = .scaleAspectFill
+        blurImageView.image = img
+        //创建毛玻璃效果层
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light)) as UIVisualEffectView
+        visualEffectView.frame = blurImageView.frame
+        //添加毛玻璃效果层
+        blurImageView.addSubview(visualEffectView)
+        self.backImg.insertSubview(blurImageView, belowSubview: view)
     }
 }

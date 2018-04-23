@@ -10,6 +10,7 @@ import UIKit
 
 class XRecmdUpdateController: SNBaseViewController {
 
+    var model :[XRecmdUserModel] = []
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
         $0.register(XRecmdUpdateCell.self)
@@ -27,6 +28,22 @@ class XRecmdUpdateController: SNBaseViewController {
             make.left.top.right.bottom.equalToSuperview()
         }
     }
+    override func loadData() {
+        SNRequest(requestType: API.myRecommendUserList(status:"0"), modelType: [XRecmdUserModel.self]).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .success(let models):
+                self.model = models
+                self.tableView.reloadData()
+            case .fail(let code,let msg):
+                SZHUD(msg ?? "请求数据失败", type: .error, callBack: nil)
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+    }
     override func setupView() {
         setupUI()
     }
@@ -34,12 +51,13 @@ class XRecmdUpdateController: SNBaseViewController {
 
 extension XRecmdUpdateController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:XRecmdUpdateCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.model = self.model[indexPath.row]
         return cell
         
     }

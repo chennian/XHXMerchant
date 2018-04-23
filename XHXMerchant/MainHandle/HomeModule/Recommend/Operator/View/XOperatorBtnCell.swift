@@ -30,6 +30,7 @@ class XOperatorBtnCell: SNBaseTableViewCell {
     override func setupView() {
         self.backgroundColor = .clear
         contentView.addSubview(submitBtn)
+        line.isHidden = true
         
         submitBtn.addTarget(self, action: #selector(click), for: .touchUpInside)
         submitBtn.snp.makeConstraints { (make) in

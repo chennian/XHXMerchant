@@ -268,7 +268,7 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
         let province: String = stepSecondeItem.province ?? ""  //省
         let city: String = stepSecondeItem.city ?? ""          //市
         let area: String = stepSecondeItem.county ?? ""        //区
-        let licenseTerm: String = stepSecondeItem.licenseTerm ?? "1"        //有效期
+        let licenseTerm: String = stepSecondeItem.term ?? "1"        //有效期
 
         
         let busregimg: String = stepSecondeItem.LicenseImage?.path ?? ""  //反面照
@@ -340,7 +340,7 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
             switch result{
             case .bool(_):
                 ApplyModelTool.removeModel()
-                SZHUD("上传成功", type: .success, callBack: nil)
+                UIAlertView(title: "提示", message: "上传成功", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
                 XKeyChain.set("0", key: "three")
                 self.navigationController?.popToRootViewController(animated: true)
             case .fail(let code,let res):

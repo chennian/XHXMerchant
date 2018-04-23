@@ -123,6 +123,7 @@ class XFunctionCell: SNBaseTableViewCell {
         contentView.addSubview(managerLable)
         
         bindEvent()
+        hidLine()
         
         profit.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(20)

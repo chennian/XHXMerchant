@@ -95,7 +95,7 @@ protocol StepTwoProtocol {
 
 class StepTwo: NSObject,StepTwoProtocol,NSCoding {
     var merShortName: String?
-    var licenseName: String?
+    var licenseName: String? 
     var licenseTerm: String?
     var codeNum: String?
     var area: String?
@@ -104,7 +104,7 @@ class StepTwo: NSObject,StepTwoProtocol,NSCoding {
     var province: String?
     var city: String?
     var county: String?
-    var term: String?
+    var term: String?    //有效期  0短期 1长期
 
     var LicenseImage:ApplyImage?
     var doorImage:ApplyImage?

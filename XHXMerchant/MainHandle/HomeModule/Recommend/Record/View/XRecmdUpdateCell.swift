@@ -9,10 +9,45 @@
 import UIKit
 
 class XRecmdUpdateCell: SNBaseTableViewCell {
+    
+    var model : XRecmdUserModel?{
+        didSet{
+            guard let cellModel = model else {return}
+            var currentString:String = ""
+            if cellModel.current_role == "0" {
+                currentString = "普通用户"
+            }else if cellModel.current_role == "1"{
+                currentString = "商家"
+            }else{
+                currentString = "服务商"
+            }
+            
+            var upgrateString:String = ""
+            if cellModel.current_role == "1"{
+                upgrateString = "服务商"
+            }else{
+                upgrateString = "运营商"
+            }
+            self.lableClass.text = "我的等级:\(currentString)"
+            self.account.text = "用户账号:\(cellModel.phone)"
+            self.updateTime.text = "升级时间:\(cellModel.add_time)"
+            self.updateType.text = "升级方式:\(currentString)-\(upgrateString)"
+            if cellModel.status == "1" {
+                self.status.text = "审核中"
+                self.status.textColor = Color(0x00bc54)
+            }else if cellModel.status == "2"{
+                self.status.text = "失败"
+                self.status.textColor = Color(0xff0000)
+            }else{
+                self.status.text = "成功"
+                self.status.textColor = Color(0x006cff)
+            }
+        }
+    }
+    
     var img = UIImageView().then{
-        $0.backgroundColor = .red
-        $0.layer.cornerRadius = fit(35)
-        $0.clipsToBounds = true
+        $0.backgroundColor = .clear
+        $0.image = UIImage(named: "LBlogoIcon")
     }
     
     var lableClass = UILabel().then{
@@ -28,7 +63,7 @@ class XRecmdUpdateCell: SNBaseTableViewCell {
     }
     
     var updateType = UILabel().then{
-        $0.font = Font(24)
+        $0.font = Font(26)
         $0.text = "推荐时间:2018-01-11"
         $0.textColor = Color(0x313131)
     }

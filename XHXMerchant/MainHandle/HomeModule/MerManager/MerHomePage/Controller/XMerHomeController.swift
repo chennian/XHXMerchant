@@ -9,8 +9,15 @@
 import UIKit
 
 class XMerHomeController: SNBaseViewController {
+    var shopID:String = ""
+    var logo:String = ""
+    var shopName:String = ""
+    var personal:String = ""
+    var flow_num:String = ""
     
-    var model:[ShopHomeModel] = []
+    var merListModel:XMerListModel?
+    
+    var model:[XMerListModel] = []
     let headerCell:MerHeaderCell = MerHeaderCell()
     
     fileprivate let tableView:UITableView = UITableView().then{
@@ -18,8 +25,6 @@ class XMerHomeController: SNBaseViewController {
         $0.register(MerHomeTopCell.self)
         $0.register(MerHomeEndCell.self)
         $0.register(MerHeaderCell.self)
-
-
         $0.register(XSpaceCell.self)
         $0.separatorStyle = .none
     }
@@ -35,12 +40,12 @@ class XMerHomeController: SNBaseViewController {
         }
     }
 
-    
     override func loadData() {
-        SNRequest(requestType: API.shopHome, modelType: [ShopHomeModel.self]).subscribe(onNext: {[unowned self] (result) in
+        SNRequest(requestType: API.shopHome(shopId:shopID), modelType: [XMerListModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .success(let models):
                 self.model = models
+                self.tableView.reloadData()
             case .fail(_ ,let msg):
                 SZHUD(msg ?? "获取数据失败", type:.error, callBack: nil)
             default:
@@ -56,22 +61,15 @@ class XMerHomeController: SNBaseViewController {
 extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell:MerHeaderCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            if self.model.isEmpty{
-                cell.merName.text = "暂无店铺"
-                cell.staffNum.text = "员工数量:0"
-                cell.userNum.text = "会员数量:0"
-            }else{
-                cell.merName.text = self.model[0].shopName
-                cell.staffNum.text = self.model[0].personal
-                cell.userNum.text = self.model[0].flow_num
+            if !self.model.isEmpty{
+                cell.model = self.model[0]
             }
-           
             return cell
         }else if indexPath.row == 1{
             let cell:MerHomeTopCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -79,27 +77,42 @@ extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
                 if para == "1"{
                     self.navigationController?.pushViewController(XMerReciptCodeController(), animated: true)
                 }else if para == "2"{
-                    self.navigationController?.pushViewController(XMerDataController(), animated: true)
+                    let vc = XMerDataController()
+                    CNLog((self.merListModel?.shop_id)!)
+                    vc.shopId = (self.merListModel?.shop_id)!
+                    vc.model = self.model
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            return cell
+        }else if indexPath.row == 2 {
+            let cell:MerHomeEndCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.clickEvent = {[unowned self] (para) in
+                if para == "1"{
+                    self.navigationController?.pushViewController(XMerReciptCodeController(), animated: true)
+                }else if para == "2"{
+                    let vc = XMerStaffListController()
+                    vc.shop_id = (self.merListModel?.shop_id)!
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
             return cell
         }else{
-            let cell:MerHomeEndCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             return cell
         }
-        
-        
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
             return fit(450)
-
         }else if indexPath.row == 1{
             return fit(430)
-        }else{
+        }else if indexPath.row == 2{
             return fit(430)
+        }else{
+            return fit(20)
         }
     }
     

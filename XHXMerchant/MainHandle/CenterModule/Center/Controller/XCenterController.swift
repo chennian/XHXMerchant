@@ -80,13 +80,14 @@ class XCenterController: SNBaseViewController {
         
         
         navigationController?.navigationBar.barTintColor = Color(0xff8518)
+        
         (navigationController as! SNBaseNaviController).hindShadowImage()
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Color(0xffffff)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Color(0xffffff),NSAttributedStringKey.font:Font(36)]
     }
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.barTintColor = Color(0xffffff)
         (navigationController as! SNBaseNaviController).resetShadowImage()
-         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Color(0x313131)]
+         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:Color(0x313131),NSAttributedStringKey.font:Font(36)]
     }
 
     func setupUI() {
@@ -94,6 +95,7 @@ class XCenterController: SNBaseViewController {
         
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
+        tableView.isScrollEnabled = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.snp.makeConstraints { (make) in

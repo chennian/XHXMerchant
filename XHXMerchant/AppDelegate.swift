@@ -12,19 +12,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var _mapManager:BMKMapManager?
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = .white
-        self.window?.makeKeyAndVisible()
-        window?.rootViewController = SNMainTabBarController.shared
-    
-//
-//        PgyManager.shared().start(withAppId: PGYer_ID)
-//        PgyManager.shared().isFeedbackEnabled = false
-//        PgyUpdateManager.sharedPgy().start(withAppId: PGYer_ID)
-//        PgyUpdateManager.sharedPgy().checkUpdate();
+        
+//        XLocationManager.shareUserInfonManager.startUpLocation()
 
+        //百度地图
+        configBaidumap()
+        //蒲公英更新
+        PgyManager.shared().start(withAppId: PGYer_ID)
+        PgyManager.shared().isFeedbackEnabled = false
+        PgyUpdateManager.sharedPgy().start(withAppId: PGYer_ID)
+        PgyUpdateManager.sharedPgy().checkUpdate();
+
+        
+        window?.rootViewController = SNMainTabBarController.shared
+        self.window?.makeKeyAndVisible()
         return true
     }
 
@@ -52,4 +59,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
+extension AppDelegate:BMKGeneralDelegate{
+    
+    func configBaidumap() {
+        _mapManager = BMKMapManager()
+        let ret = _mapManager?.start(AK, generalDelegate: self)
+        if ret == false {
+            CNLog("manager start failed!")
+        }
+    }
+    func onGetNetworkState(iError: Int32) {
+        if (0 == iError) {
+            CNLog("联网成功");
+        }
+        else{
+            CNLog("联网失败，错误代码：Error\(iError)");
+        }
+    }
+    func onGetPermissionState(iError: Int32) {
+        if (0 == iError) {
+            CNLog("授权成功");
+        }
+        else{
+            CNLog("授权失败，错误代码：Error\(iError)");
+        }
+    }
+    
+}

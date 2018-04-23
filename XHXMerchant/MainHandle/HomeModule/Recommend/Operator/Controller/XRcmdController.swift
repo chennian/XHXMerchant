@@ -18,12 +18,12 @@ class XRcmdController: SNBaseViewController {
         
         $0.separatorStyle = .none
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-//        setNavigationBar()
-
+        setNavigationBar()
+        
     }
     func saveImg(qrString : String ,icon : UIImage?){
         let alervc = UIAlertController(title: nil, message: "是否保存图片", preferredStyle: .alert)
@@ -59,7 +59,7 @@ class XRcmdController: SNBaseViewController {
             make.bottom.equalToSuperview()
             make.right.equalToSuperview()
         }
-
+        
     }
     fileprivate func setNavigationBar(){
         let barbutton = UIBarButtonItem.init(title: "推荐记录", imgName:"", target: self, action: #selector(login))
@@ -82,25 +82,26 @@ extension XRcmdController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0{
             let cell:XRecmdCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             
-//            cell.ercodeView.btnClick.subscribe(onNext: {[unowned self] (url) in
-//                self.saveImg(qrString: url, icon: nil)
-//            }).disposed(by: disposeBag)
+            //            cell.ercodeView.btnClick.subscribe(onNext: {[unowned self] (url) in
+            //                self.saveImg(qrString: url, icon: nil)
+            //            }).disposed(by: disposeBag)
             
             
             cell.clickEvent = { [unowned self] (para) in
                 if para == 1{
-                   let actionSheet =  PGActionSheet(cancelButton: true, buttonList: ["个体工商户", "企业单位"])
+                    let actionSheet =  PGActionSheet(cancelButton: true, buttonList: ["个体工商户", "企业单位"])
                     actionSheet.textColor = Color(0x313131)
                     actionSheet.textFont = Font(30)
                     actionSheet.translucent = false
                     actionSheet.actionSheetTranslucent = false
                     self.present(actionSheet, animated: false, completion: nil)
                     actionSheet.handler = {[unowned self] index in
+                        //1:企业 2:个人
                         self.navigationController?.pushViewController(XMerBasicInfoController(), animated: true)
                         if index == 0{
-                            XKeyChain.set("1", key: isConpany)
+                            XKeyChain.set("2", key: isConpany)
                         }else{
-                            XKeyChain.set("0", key: isConpany)
+                            XKeyChain.set("1", key: isConpany)
                         }
                     }
                 }
@@ -114,9 +115,9 @@ extension XRcmdController:UITableViewDelegate,UITableViewDataSource{
                     self.present(actionSheet, animated: false, completion: nil)
                     actionSheet.handler = {[unowned self] index in
                         if index == 0{
-                        self.navigationController?.pushViewController(XRcmdOperatorController(), animated: true)
+                            self.navigationController?.pushViewController(XRcmdOperatorController(), animated: true)
                         }else{
-                        self.navigationController?.pushViewController(XRecmdServiceController(), animated: true)
+                            self.navigationController?.pushViewController(XRecmdServiceController(), animated: true)
                         }
                     }
                     

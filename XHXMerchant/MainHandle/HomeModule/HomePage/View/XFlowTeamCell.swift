@@ -15,7 +15,12 @@ class XFlowTeamCell: SNBaseTableViewCell {
             guard let model = models else {
                 return
             }
-            nameLable.text  = model.nickName
+            if model.nickName == ""{
+                nameLable.text = model.phone
+            }else{
+                nameLable.text  = model.nickName
+
+            }
             if model.corporation == "1"{
                 rank.text = "当前等级:服务中心"
             }else{

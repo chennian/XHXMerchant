@@ -66,7 +66,7 @@ class XRecmdRecordController: SNBaseViewController {
 
     override func setupView() {
         setUpUI()
-        setNavBar()
+//        setNavBar()
         
     }
     func setNavBar(){

@@ -15,6 +15,11 @@ class XMerDataView: SNBaseView {
         $0.font = Font(30)
     }
     
+    let nameLable = UILabel().then{
+        $0.textColor = Color(0x737373)
+        $0.font = Font(30)
+    }
+    
     let returnImg = UIImageView().then{
         $0.image = UIImage(named: "return1")
     }
@@ -25,12 +30,16 @@ class XMerDataView: SNBaseView {
     override func setupView() {
         self.addSubview(name)
         self.addSubview(returnImg)
+        self.addSubview(nameLable)
         self.addSubview(line)
         name.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
             make.centerY.equalToSuperview()
         }
-        
+        nameLable.snp.makeConstraints { (make) in
+            make.left.equalTo(name.snp.right).snOffset(24)
+            make.centerY.equalTo(name.snp.centerY)
+        }
         returnImg.snp.makeConstraints { (make) in
             make.right.equalToSuperview().snOffset(-30)
             make.centerY.equalToSuperview()

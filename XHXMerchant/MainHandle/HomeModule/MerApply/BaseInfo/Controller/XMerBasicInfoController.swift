@@ -75,7 +75,7 @@ class XMerBasicInfoController: SNBaseViewController {
         }
         
         if oneStep.handImage?.image == nil {
-            imgCell.handCard.setImage(UIImage(named:"papers_front"), for: .normal)
+            imgCell.handCard.setImage(UIImage(named:"autonym_hand"), for: .normal)
         }else{
             imgCell.handCard.setImage(oneStep.handImage?.image, for: UIControlState.normal)
             //            imgCell.frontCard.kf.setImage(with: URL(string: (oneStep.backImage?.path)!), for: .normal)

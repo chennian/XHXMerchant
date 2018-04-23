@@ -81,6 +81,7 @@ class XMerDataEndCell: SNBaseTableViewCell {
         contentView.addSubview(viewFour)
         contentView.addSubview(viewFive)
         
+        hidLine()
         bindEvent()
 
         

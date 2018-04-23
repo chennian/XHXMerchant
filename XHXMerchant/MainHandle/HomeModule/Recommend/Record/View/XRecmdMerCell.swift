@@ -10,10 +10,29 @@ import UIKit
 
 class XRecmdMerCell: SNBaseTableViewCell {
     
+    var model:XRecmdMerModel?{
+        didSet{
+            guard let cellModel = model else {return}
+            self.nameLable.text = cellModel.shopName
+            self.principal.text = "负责人:\(cellModel.name)"
+            self.recmdTime.text = "推荐时间:\(cellModel.add_time)"
+            if cellModel.state == "1" {
+                self.status.text = "审核中"
+                self.status.textColor = Color(0x00bc54)
+            }else if cellModel.state == "2"{
+                self.status.text = "失败"
+                self.status.textColor = Color(0xff0000)
+            }else{
+                self.status.text = "成功"
+                self.status.textColor = Color(0x006cff)
+            }
+        }
+    }
+    
+    
     var img = UIImageView().then{
-        $0.backgroundColor = .red
-        $0.layer.cornerRadius = fit(35)
-        $0.clipsToBounds = true
+        $0.backgroundColor = .clear
+        $0.image = UIImage(named: "earnings_merchant")
     }
     
     var nameLable = UILabel().then{
@@ -24,14 +43,14 @@ class XRecmdMerCell: SNBaseTableViewCell {
     
     var principal = UILabel().then{
         $0.text = "负责人:尤泽清"
-        $0.font = BoldFont(24)
-        $0.textColor = Color(0x818181)
+        $0.font = Font(24)
+        $0.textColor = Color(0x313131)
     }
     
     var recmdTime = UILabel().then{
         $0.font = Font(24)
         $0.text = "推荐时间:2018-01-11"
-        $0.textColor = Color(0x818181)
+        $0.textColor = Color(0x313131)
     }
     
     var status = UILabel().then{

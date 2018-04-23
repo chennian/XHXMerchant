@@ -31,6 +31,7 @@ class XButtonCell: SNBaseTableViewCell {
         self.backgroundColor = Color(0xf5f5f5)
         contentView.addSubview(submitBoutton)
         bindEvent()
+        hidLine()
         submitBoutton.snp.makeConstraints { (make) in
             make.top.equalToSuperview().snOffset(87)
             make.left.equalToSuperview().snOffset(30)

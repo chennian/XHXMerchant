@@ -37,7 +37,7 @@ fileprivate extension SNMainTabBarController {
         
         let home = navi(XHomeController(), title: "首页", image: "home_homepage", selectedImage: "home_homepage1")
         let center = navi(XCenterController(), title: "我的", image: "home_personal_center", selectedImage: "home_personal_center-1")
-//        let shopCart = navi(BMHShoppingCartVC(), title: "购物车", image: "home_shopping_trolley", selectedImage: "home_shopping_trolley1")
+//        let notice = navi(XNoticeListController(), title: "到账记录", image: "notes", selectedImage: "notes1")
 //        let me = navi(BMMeViewController(), title: "我的", image: "home_personal_center", selectedImage: "home_personal_center1")
 //
         self.viewControllers = [home,center]
@@ -63,11 +63,14 @@ fileprivate extension SNMainTabBarController {
         
         return bar
     }
-    
+
+}
+
+extension SNMainTabBarController{
     func navi(_ vClass: UIViewController, title: String, image: String, selectedImage: String) -> UIViewController {
         
         vClass.tabBarItem = customTabbarItem(title: nil, image: image, selectedImage: selectedImage)
-//        vClass.tabBarItem.title = title
+        //        vClass.tabBarItem.title = title
         vClass.title = title
         
         let selAttr = [
@@ -82,14 +85,10 @@ fileprivate extension SNMainTabBarController {
         vClass.tabBarItem.setTitleTextAttributes(selAttr, for: .selected)
         
         let navi = SNBaseNaviController(rootViewController: vClass)
-        navi.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font : Font(30)]
+        navi.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.black, NSAttributedStringKey.font : Font(36)]
         return navi
     }
-    
-
 }
-
-
 extension SNMainTabBarController : UITabBarControllerDelegate {
     
 

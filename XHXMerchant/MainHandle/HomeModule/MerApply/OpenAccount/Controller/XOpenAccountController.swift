@@ -197,7 +197,6 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
         
     }
     
-    
     func uploadData(){
         //获取第一步资料
         let stepOneItem = ApplyModel.shareApplyModel.applySelfModel.stepOne
@@ -209,6 +208,8 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
         let validity: String = stepOneItem.validity ?? "" //证件有效期
         let idcardone: String = stepOneItem.frontImage?.path ?? "" //正面照
         let idcardtwo: String = stepOneItem.backImage?.path ?? ""  //反面照
+        let idcardThird: String = stepOneItem.handImage?.path ?? ""  //反面照
+        let iDterm: String = stepOneItem.term ?? "1" //省份证有效期
         
         //获取第二步资料
         let stepSecondeItem = ApplyModel.shareApplyModel.applySelfModel.stepTwo
@@ -222,13 +223,15 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
         let province: String = stepSecondeItem.province ?? ""  //省
         let city: String = stepSecondeItem.city ?? ""          //市
         let area: String = stepSecondeItem.county ?? ""        //区
-        
+        let licenseTerm: String = stepSecondeItem.term ?? "1"        //有效期
+
         
         let busregimg: String = stepSecondeItem.LicenseImage?.path ?? ""  //反面照
         let gatepic: String = stepSecondeItem.doorImage?.path ?? ""  //反面照
         let checkStandPic: String = stepSecondeItem.checkstand?.path ?? ""  //反面照
         let storePic: String = stepSecondeItem.indoorImage?.path ?? ""  //反面照
-        
+        let storePic2: String = stepSecondeItem.indoorImage1?.path ?? ""  //反面照
+
         //获取第三步资料
         let stepThreeItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
         
@@ -244,7 +247,7 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
         let bankArea: String = stepThreeItem.bankCounty ?? ""//县
         
         let openlicense: String = stepThreeItem.permitCard?.path ?? ""  //反面照
-        
+
         
         let parameters:[String:Any] = [
             "cardtype":cardtype,
@@ -255,6 +258,8 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
             "validterm":validity,
             "idcardone":idcardone,
             "idcardtwo":idcardtwo,
+            "idcardThird":idcardThird,
+            "term":iDterm,
             
             "entabb":entabb,
             "entname":entname,
@@ -269,6 +274,8 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
             "gatepic":gatepic,
             "checkStandPic":checkStandPic,
             "storePic":storePic,
+            "storePic2":storePic2,
+            "licenseTerm":licenseTerm,
             
             "comaccnum":comaccnum,
             "opnbank":opnbank,

@@ -13,7 +13,7 @@ class XMerDetailImgsCell: SNBaseTableViewCell {
     var imgTap = PublishSubject<(AliOssTransferProtocol,String)>()
     
     let imgLable = UILabel().then{
-        $0.text = "店铺ogo图"
+        $0.text = "店铺详情图"
         $0.font = Font(30)
         $0.textColor = Color(0x313131)
     }

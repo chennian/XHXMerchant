@@ -12,10 +12,14 @@ import SwiftyJSON
 class TokenModel: SNSwiftyJSONAble {
     var timestamp : String
     var token : String
+    var employee : String
+
    
     required init?(jsonData: JSON) {
         self.timestamp = jsonData["timestamp"].stringValue
         self.token = jsonData["token"].stringValue
+        self.employee = jsonData["employee"].stringValue
+
     }
     
     

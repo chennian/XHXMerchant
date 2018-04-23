@@ -9,6 +9,8 @@
 import UIKit
 
 class XRecmdMerController: SNBaseViewController {
+    
+    var model:[XRecmdMerModel] = []
 
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
@@ -23,9 +25,26 @@ class XRecmdMerController: SNBaseViewController {
         self.view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+
         tableView.snp.makeConstraints { (make) in
             make.left.top.right.bottom.equalToSuperview()
         }
+    }
+    override func loadData() {
+        SNRequest(requestType: API.myRecommendMerchantList(status:"0"), modelType: [XRecmdMerModel.self]).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .success(let models):
+                self.model = models
+                self.tableView.reloadData()
+            case .fail(let code,let msg):
+                SZHUD(msg ?? "请求数据失败", type: .error, callBack: nil)
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
     }
     override func setupView() {
         setupUI()
@@ -34,12 +53,13 @@ class XRecmdMerController: SNBaseViewController {
 
 extension XRecmdMerController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:XRecmdMerCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.model = self.model[indexPath.row]
         return cell
         
         
@@ -50,3 +70,4 @@ extension XRecmdMerController:UITableViewDelegate,UITableViewDataSource{
     }
     
 }
+

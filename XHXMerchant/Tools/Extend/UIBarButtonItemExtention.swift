@@ -10,7 +10,7 @@ import UIKit
 
 extension UIBarButtonItem {
 	
-	convenience init(title: String,imgName:String, fontSize: CGFloat = fit(30), target: AnyObject?, action: Selector) {
+	convenience init(title: String,imgName:String, fontSize: CGFloat = fit(32), target: AnyObject?, action: Selector) {
 		
 		let btn = UIButton()
 		btn.setTitleColor(Color(0x313131), for: .normal)

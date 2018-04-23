@@ -20,6 +20,13 @@ class ZJPayErCodeContetnView: SNBaseView {
         ercodeBtn.setImage(img, for: UIControlState.normal)
     }
     
+    func creatErcodeStaff(){
+        let mercId = "123"
+        let url = "http://pay.xiaoheixiong.net/public/getOpenid_uid?mer_id=" + mercId
+        let img = ErCodeTool.creatQRCodeImage(text: url, size: fit(448), icon: nil)
+        ercodeBtn.setImage(img, for: UIControlState.normal)
+    }
+    
     override func bindEvent() {
         ercodeBtn.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: {[unowned self] () in
             let mercId = "123"

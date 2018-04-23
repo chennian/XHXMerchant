@@ -31,7 +31,7 @@ class XIdCardImageCell: SNBaseTableViewCell {
     }
     
     var handCard = DDZUploadBtn().then{
-        $0.setImage(UIImage(named:"papers_front"),for:.normal)
+        $0.setImage(UIImage(named:"autonym_hand"),for:.normal)
         $0.fuName = "img3"
         $0.imageView?.contentMode = .scaleAspectFill
     }

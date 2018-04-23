@@ -10,7 +10,6 @@ import UIKit
 
 class XMerShortNameController: SNBaseViewController {
     
-    var block:((_ para:String)->())?
 
     let mainView = UIView().then{
         $0.backgroundColor = Color(0xffffff)
@@ -28,35 +27,33 @@ class XMerShortNameController: SNBaseViewController {
     }
     
     @objc  func  submitData(){
-        guard let action = block else {
-            return
-        }
-        
-        if  textfield.text! == "" {
-            SZHUD("请填写店铺简称", type: .info, callBack: nil)
-            return
-        }
-        action(textfield.text!)
-        
+        let NotifMycation = NSNotification.Name(rawValue:"shopName")
+         NotificationCenter.default.post(name: NotifMycation, object: self.textfield.text)
         self.navigationController?.popViewController(animated: true)
-        
     }
     override func setupView() {
+        self.title = "店铺简称"
         view.addSubview(mainView)
         mainView.addSubview(textfield)
         view.addSubview(submit)
         
+        submit.addTarget(self, action: #selector(submitData), for: .touchUpInside)
+        
         mainView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalToSuperview().snOffset(20)
+            make.height.snEqualTo(100)
         }
         textfield.snp.makeConstraints { (make) in
-            make.left.right.bottom.top.equalToSuperview()
+            make.bottom.top.equalToSuperview()
+            make.left.equalToSuperview().snOffset(30)
+            make.right.equalToSuperview().snOffset(-30)
+            
         }
         
         submit.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
-            make.right.equalToSuperview().snOffset(30)
+            make.right.equalToSuperview().snOffset(-30)
             make.top.equalTo(mainView.snp.bottom).snOffset(96)
             make.height.snEqualTo(100)
         }

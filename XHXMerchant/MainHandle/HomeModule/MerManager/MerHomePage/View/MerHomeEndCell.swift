@@ -10,6 +10,8 @@ import UIKit
 
 class MerHomeEndCell: SNBaseTableViewCell {
     
+    var clickEvent:((_ para :String)->())?
+
     let mainView = UIView().then{
         $0.layer.cornerRadius = fit(8)
         $0.backgroundColor = Color(0xffffff)
@@ -40,6 +42,35 @@ class MerHomeEndCell: SNBaseTableViewCell {
         $0.lable.text = "商品分类"
     }
     
+    @objc func tapOne(_ view:UIView){
+        guard let action = clickEvent else{return}
+        action("1")
+    }
+    @objc func tapTwo(_ view:UIView){
+        guard let action = clickEvent else{return}
+        action("2")
+    }
+    @objc func tapThree(_ view:UIView){
+        guard let action = clickEvent else{return}
+        action("3")
+    }
+    @objc func tapFour(_ view:UIView){
+        guard let action = clickEvent else{return}
+        action("4")
+    }
+    
+    func bindEvent(){
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(tapOne))
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(tapTwo))
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(tapThree))
+        let tap4 = UITapGestureRecognizer(target: self, action: #selector(tapFour))
+        
+        viewOne.addGestureRecognizer(tap1)
+        viewTwo.addGestureRecognizer(tap2)
+        viewThree.addGestureRecognizer(tap3)
+        viewFour.addGestureRecognizer(tap4)
+    }
+    
     override func setupView() {
         contentView.addSubview(mainView)
         mainView.addSubview(viewOne)
@@ -48,6 +79,7 @@ class MerHomeEndCell: SNBaseTableViewCell {
         mainView.addSubview(viewFour)
         self.contentView.backgroundColor = Color(0xf5f5f5)
         line.isHidden = true
+        bindEvent()
         
         mainView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)

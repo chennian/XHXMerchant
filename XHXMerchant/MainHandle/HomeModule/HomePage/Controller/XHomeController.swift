@@ -15,7 +15,7 @@ class XHomeController: SNBaseViewController {
     var userModel : [UserModel] = []
 
     fileprivate let tableView:UITableView = UITableView().then{
-        $0.backgroundColor = color_bg_gray_f5
+        $0.backgroundColor = Color(0xffffff)
         $0.register(XBannerCell.self)
         $0.register(XSpaceCell.self)
         $0.register(XListCell.self)
@@ -26,7 +26,7 @@ class XHomeController: SNBaseViewController {
     
     fileprivate func setupUI() {
         
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = Color(0xffffff)
         self.view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,6 +57,21 @@ class XHomeController: SNBaseViewController {
         super.viewDidLoad()
         setupUI()
     }
+    //根据角色更换root
+    fileprivate func selectRoot(){
+        let tabbarController = SNMainTabBarController.shared
+        let notice = XNoticeListController()
+        let noticevc = notice.setUp(XNoticeListController(), title: "到账记录", image: "notes", selectedImage: "notes1")
+        
+        let home = XReceiveCodeController()
+        let homevc = home.setUp(XReceiveCodeController(), title: "首页", image: "home_homepage", selectedImage: "home_homepage1")
+        
+        let center = XCenterController()
+        let centervc = center.setUp(XCenterController(), title: "我的", image: "home_personal_center", selectedImage: "home_personal_center-1")
+        tabbarController.selectedIndex = 0
+        
+        tabbarController.setViewControllers([homevc,noticevc,centervc], animated: false)
+    }
     
     fileprivate func submitLogin(){
         SNRequest(requestType: API.login(phone:XKeyChain.get(PHONE) , password:XKeyChain.get(PASSWORD)), modelType: [TokenModel.self]).subscribe(onNext: {[unowned self] (result) in
@@ -70,6 +85,12 @@ class XHomeController: SNBaseViewController {
  
                 XKeyChain.set(token[0], key: TOKEN)
                 XKeyChain.set(timestamp[0], key:TIMESTAMP)
+                
+                let employee = self.tokenModel.map({return $0.employee})
+                if employee[0] == "1"{
+                    self.selectRoot()
+                }
+                
                 self.getUserInfo()
                 
             case .fail(let code,let msg):
@@ -163,7 +184,7 @@ extension XHomeController:UITableViewDelegate,UITableViewDataSource{
 //                    self.navigationController?.pushViewController(XPropertyController(), animated: true)
                 }else if para == 2{
                     SZHUD("正在开发中...", type: .info, callBack: nil)
-//                    self.navigationController?.pushViewController(XMerHomeController(), animated: true)
+//                    self.navigationController?.pushViewController(XMerListController(), animated: true)
                 }else if para == 3{
                     if XKeyChain.get(IsAgent) == "0" && XKeyChain.get(CORPORATION) == "0" && XKeyChain.get(OPERATER) == "0" {
                         SZHUD("无权限", type: .info, callBack: nil)

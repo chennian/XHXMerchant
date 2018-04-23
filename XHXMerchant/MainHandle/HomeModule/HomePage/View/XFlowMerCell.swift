@@ -16,6 +16,7 @@ class XFlowMerCell: SNBaseTableViewCell {
                 nameLable.text = model.shopName
                 principal.text = "负责人:\(model.realName)"
                 address.text = "地址:\(model.address)"
+                member.text = "会员数量:\(model.user_num)"
             }
         }
     
