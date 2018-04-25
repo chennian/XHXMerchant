@@ -98,16 +98,26 @@ class XLoginController: SNBaseViewController
                 self.model = models
                 let token = self.model.map({return $0.token})
                 let timestamp = self.model.map({return $0.timestamp})
-                let employee =  self.model.map({return $0.employee})
+                let employee =  self.model.map({return $0.isEmployee})
+                XKeyChain.set(employee[0], key: isStaff)
+
+                if employee[0] == "1"{
+                    let name =  self.model.map({return $0.names})
+                    XKeyChain.set(name[0], key: STAFFNAME)
+                }
+                
                 XKeyChain.set("1", key: ISLOGIN)
                 XKeyChain.set(self.phoneField.text!, key:PHONE )
                 XKeyChain.set(self.passwordField.text!, key: PASSWORD)
                 XKeyChain.set(token[0], key: TOKEN)
                 XKeyChain.set(timestamp[0], key:TIMESTAMP)
-                if employee[0] == "1"{
-                    self.selectRoot()
+                
+                if employee[0] == "0"{
+                    self.getUserInfo()
+                }else{
+                    self.selectEmployeeRoot()
                 }
-                self.getUserInfo()
+            
                 
             case .fail(let code,let msg):
                 SZHUDDismiss()
@@ -169,6 +179,8 @@ class XLoginController: SNBaseViewController
                 XKeyChain.set(operater[0], key:OPERATER)
                 XKeyChain.set(corporation[0], key:CORPORATION)
                 CNLog(XKeyChain.get(IsAgent) + XKeyChain.get(OPERATER) + XKeyChain.get(CORPORATION))
+                
+                self.selectRoot()
 
                 self.navigationController?.popViewController(animated: false)
 
@@ -181,7 +193,7 @@ class XLoginController: SNBaseViewController
     }
     
     //根据角色更换root
-    fileprivate func selectRoot(){
+    fileprivate func selectEmployeeRoot(){
         let tabbarController = SNMainTabBarController.shared
         let notice = XNoticeListController()
         let noticevc = notice.setUp(XNoticeListController(), title: "到账记录", image: "notes", selectedImage: "notes1")
@@ -189,11 +201,25 @@ class XLoginController: SNBaseViewController
         let home = XReceiveCodeController()
         let homevc = home.setUp(XReceiveCodeController(), title: "首页", image: "home_homepage", selectedImage: "home_homepage1")
         
+        let center = XStaffCenterController()
+        let centervc = center.setUp(XStaffCenterController(), title: "我的", image: "home_personal_center", selectedImage: "home_personal_center-1")
+        tabbarController.selectedIndex = 0
+        
+        tabbarController.setViewControllers([homevc,noticevc,centervc], animated: false)
+    }
+    
+    //商家角色
+    fileprivate func selectRoot(){
+        let tabbarController = SNMainTabBarController.shared
+        
+        let home = XHomeController()
+        let homevc = home.setUp(XHomeController(), title: "首页", image: "home_homepage", selectedImage: "home_homepage1")
+        
         let center = XCenterController()
         let centervc = center.setUp(XCenterController(), title: "我的", image: "home_personal_center", selectedImage: "home_personal_center-1")
         tabbarController.selectedIndex = 0
         
-        tabbarController.setViewControllers([homevc,noticevc,centervc], animated: false)
+        tabbarController.setViewControllers([homevc,centervc], animated: false)
     }
     override func setupView() {
         self.view.backgroundColor = Color(0xffffff)

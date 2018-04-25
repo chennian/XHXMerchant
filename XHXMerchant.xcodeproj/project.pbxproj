@@ -104,6 +104,8 @@
 		8EA0E081207CDD570018232E /* XDayEarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA0E080207CDD570018232E /* XDayEarningController.swift */; };
 		8EA0E083207CDE300018232E /* XEarningDayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA0E082207CDE300018232E /* XEarningDayHeaderCell.swift */; };
 		8EA0E085207CEF3A0018232E /* XEarningDayEndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA0E084207CEF3A0018232E /* XEarningDayEndCell.swift */; };
+		8EAA701D208E6D4A004FA0F8 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EAA701B208E6D49004FA0F8 /* libcrypto.a */; };
+		8EAA701E208E6D4A004FA0F8 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EAA701C208E6D49004FA0F8 /* libssl.a */; };
 		8EAC3A2D2089BD6A005C8489 /* XLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC3A2C2089BD6A005C8489 /* XLocationManager.swift */; };
 		8EAC3A2F2089D62F005C8489 /* XMerAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC3A2E2089D62F005C8489 /* XMerAddressCell.swift */; };
 		8EAC3A322089FCC0005C8489 /* XMerStaffList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC3A312089FCC0005C8489 /* XMerStaffList.swift */; };
@@ -206,6 +208,8 @@
 		8EF0C30A2085F4730002340D /* XMerShortNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C3092085F4730002340D /* XMerShortNameController.swift */; };
 		8EF0C30E20886AC90002340D /* XMerListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C30D20886AC90002340D /* XMerListController.swift */; };
 		8EF0C31020886AFD0002340D /* XMerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C30F20886AFD0002340D /* XMerListCell.swift */; };
+		8EF30806208F0D1800752FED /* XStaffCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF30805208F0D1800752FED /* XStaffCenterController.swift */; };
+		8EF30808208F18DB00752FED /* XLincensePiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF30807208F18DB00752FED /* XLincensePiker.swift */; };
 		D358378D924E0084BAED85F3 /* Pods_XHXMerchantUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68DEA94657D0AAD5BFEDF18 /* Pods_XHXMerchantUITests.framework */; };
 		EF0073D9E415D4C20A15537F /* Pods_XHXMerchantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0322BAA131B8929A61E5F4 /* Pods_XHXMerchantTests.framework */; };
 /* End PBXBuildFile section */
@@ -331,6 +335,8 @@
 		8EA0E080207CDD570018232E /* XDayEarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDayEarningController.swift; sourceTree = "<group>"; };
 		8EA0E082207CDE300018232E /* XEarningDayHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEarningDayHeaderCell.swift; sourceTree = "<group>"; };
 		8EA0E084207CEF3A0018232E /* XEarningDayEndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEarningDayEndCell.swift; sourceTree = "<group>"; };
+		8EAA701B208E6D49004FA0F8 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		8EAA701C208E6D49004FA0F8 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		8EAC3A2C2089BD6A005C8489 /* XLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLocationManager.swift; sourceTree = "<group>"; };
 		8EAC3A2E2089D62F005C8489 /* XMerAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerAddressCell.swift; sourceTree = "<group>"; };
 		8EAC3A312089FCC0005C8489 /* XMerStaffList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerStaffList.swift; sourceTree = "<group>"; };
@@ -439,6 +445,8 @@
 		8EF0C3092085F4730002340D /* XMerShortNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerShortNameController.swift; sourceTree = "<group>"; };
 		8EF0C30D20886AC90002340D /* XMerListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerListController.swift; sourceTree = "<group>"; };
 		8EF0C30F20886AFD0002340D /* XMerListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerListCell.swift; sourceTree = "<group>"; };
+		8EF30805208F0D1800752FED /* XStaffCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XStaffCenterController.swift; sourceTree = "<group>"; };
+		8EF30807208F18DB00752FED /* XLincensePiker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLincensePiker.swift; sourceTree = "<group>"; };
 		B3A85545585FF99D0C908042 /* Pods-XHXMerchantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantTests/Pods-XHXMerchantTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D263DE3CC99C91AE754BE336 /* Pods-XHXMerchantUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XHXMerchantUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XHXMerchantUITests/Pods-XHXMerchantUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E68DEA94657D0AAD5BFEDF18 /* Pods_XHXMerchantUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XHXMerchantUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -449,7 +457,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EAA701D208E6D4A004FA0F8 /* libcrypto.a in Frameworks */,
 				8DB56FDE9A990F93FD82B0C1 /* Pods_XHXMerchant.framework in Frameworks */,
+				8EAA701E208E6D4A004FA0F8 /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +718,7 @@
 				8E7357442088757F00DB53CB /* XAddMerController.swift */,
 				8EAC3A33208B31E9005C8489 /* XAddMerBaseInfoController.swift */,
 				8EAC3A35208B3467005C8489 /* XAddMerLinceseInfoController.swift */,
+				8EF30807208F18DB00752FED /* XLincensePiker.swift */,
 			);
 			path = AddMer;
 			sourceTree = "<group>";
@@ -865,6 +876,7 @@
 		8EA0E056207C5D4C0018232E /* ThreeSource */ = {
 			isa = PBXGroup;
 			children = (
+				8EAA701A208E6D49004FA0F8 /* thirdlibs */,
 				8EA0E057207C5D7D0018232E /* Chart */,
 			);
 			path = ThreeSource;
@@ -940,9 +952,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8EAA701A208E6D49004FA0F8 /* thirdlibs */ = {
+			isa = PBXGroup;
+			children = (
+				8EAA701B208E6D49004FA0F8 /* libcrypto.a */,
+				8EAA701C208E6D49004FA0F8 /* libssl.a */,
+			);
+			path = thirdlibs;
+			sourceTree = "<group>";
+		};
 		8EAC3A3F208C386B005C8489 /* StaffUI */ = {
 			isa = PBXGroup;
 			children = (
+				8EF30804208F0CD800752FED /* Cneter */,
 				8EAC3A40208C3884005C8489 /* HomeStaff */,
 				8E73574F2088919800DB53CB /* NoticeRecord */,
 			);
@@ -1403,6 +1425,14 @@
 			path = MerList;
 			sourceTree = "<group>";
 		};
+		8EF30804208F0CD800752FED /* Cneter */ = {
+			isa = PBXGroup;
+			children = (
+				8EF30805208F0D1800752FED /* XStaffCenterController.swift */,
+			);
+			path = Cneter;
+			sourceTree = "<group>";
+		};
 		C8E6596F4CEFF5F7014DB98E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1767,6 +1797,7 @@
 				8ED207FC207EFE60006F441A /* XUploadFrontBankCell.swift in Sources */,
 				8E0AC3F9207FC54B0050BE7C /* XOpenAccountController.swift in Sources */,
 				8E4EFCED208264C300798F99 /* UserModel.swift in Sources */,
+				8EF30806208F0D1800752FED /* XStaffCenterController.swift in Sources */,
 				8EF0C2FD2085B4980002340D /* TotalModel.swift in Sources */,
 				8EC76D7920760AA300F78749 /* SNNetModel.swift in Sources */,
 				8E73858D207665B0003349B8 /* XCenterListCell.swift in Sources */,
@@ -1875,6 +1906,7 @@
 				8EAC3A2D2089BD6A005C8489 /* XLocationManager.swift in Sources */,
 				8EA0E085207CEF3A0018232E /* XEarningDayEndCell.swift in Sources */,
 				8ED284D02081BF61008ED5AE /* XOperatorBtnCell.swift in Sources */,
+				8EF30808208F18DB00752FED /* XLincensePiker.swift in Sources */,
 				8E543366208DB6E200364246 /* XOperRevenueController.swift in Sources */,
 				8EC76D8220760AA300F78749 /* DDZOssManager.swift in Sources */,
 				8E543360208DB62600364246 /* XFlowRevenueController.swift in Sources */,
@@ -2127,11 +2159,17 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GS5MNVJVED;
+				ENABLE_BITCODE = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				INFOPLIST_FILE = XHXMerchant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XHXMerchant/Tools/ThreeSource/thirdlibs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.merchant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2151,11 +2189,17 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GS5MNVJVED;
+				ENABLE_BITCODE = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				INFOPLIST_FILE = XHXMerchant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XHXMerchant/Tools/ThreeSource/thirdlibs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.merchant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2178,6 +2222,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/XHXMerchant/Tools/ThreeSource/thirdlibs\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = CN.XHXMerchantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -2198,6 +2246,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/XHXMerchant/Tools/ThreeSource/thirdlibs\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CN.XHXMerchantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

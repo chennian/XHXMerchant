@@ -14,6 +14,8 @@ class XOpenAccountController: SNBaseViewController {
     fileprivate var fieldCell:XOpenAccountFieldCell = XOpenAccountFieldCell()
     fileprivate var imgCell:XOpenAccountImgCell = XOpenAccountImgCell()
     
+    var verifyCode : String = ""
+    
     var stepThreeModel: StepThreeProtocol?
     
     var protocolObject : AliOssTransferProtocol?
@@ -50,15 +52,15 @@ class XOpenAccountController: SNBaseViewController {
     
     func saveModel(){
         
+        CNLog(self.bankProvince +  self.bankCity + self.bankCounty)
+        
         self.stepThreeModel?.openBankAccount = fieldCell.openBankAccountField.text
         self.stepThreeModel?.openBank = fieldCell.openBankField.text
         self.stepThreeModel?.openBankAddress = fieldCell.openBankAddressField.text
         self.stepThreeModel?.branchnName = fieldCell.branchnNameField.text
         self.stepThreeModel?.openbankName = fieldCell.openbankNameField.text
         self.stepThreeModel?.leftPhone = fieldCell.leftPhoneField.text
-        self.stepThreeModel?.bankProvince = self.bankProvince
-        self.stepThreeModel?.bankCity = self.bankCity
-        self.stepThreeModel?.bankCounty = self.bankCounty
+      
 
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
         
@@ -111,6 +113,11 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
                 self.bankProvince = province
                 self.bankCity = city
                 self.bankCounty = county
+                self.stepThreeModel?.openBankProvince = self.bankProvince
+                self.stepThreeModel?.openBankCity = self.bankCity
+                self.stepThreeModel?.openBankCounty = self.bankCounty
+                ApplyModelTool.save(model: ApplyModel.shareApplyModel)
+
             }
             return cell
         }else if indexPath.row == 2{
@@ -235,16 +242,33 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
         //获取第三步资料
         let stepThreeItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
         
-        let comaccnum: String = stepThreeItem.openBankAccount ?? "" //对私银行账号
-        let opnbank: String = stepThreeItem.openBank ?? ""//开户行
-        let ponaccname: String = stepThreeItem.branchnName ?? ""//支行名称
-        let accountName: String = stepThreeItem.openbankName ?? ""//私有银行开户行名
-        let cardphone: String = stepThreeItem.leftPhone ?? ""//预留手机号
+        
+        /*----------------------------对私----------------------------------------------*/
+        
+        let priaccount: String = stepThreeItem.privateBankAccount ?? "" //对私银行账号
+        let opnbank: String = stepThreeItem.privateBank ?? ""//开户行
+        let ponaccname: String = stepThreeItem.branchName ?? ""//支行名称
+        let accountName: String = stepThreeItem.privatebankName ?? ""//私有银行开户行名
+        let cardphone: String = stepThreeItem.leftMobile ?? ""//预留手机号
+        let bankProvince: String = stepThreeItem.bankProvince ?? ""//预留手机号
+        let bankCity: String = stepThreeItem.bankCity ?? ""//预留手机号
+        let bankArea: String = stepThreeItem.bankCounty ?? ""//预留手机号
+        
+        let balancecardone: String = stepThreeItem.frontCard?.path ?? ""  //正面照
+        let balancecardtwo: String = stepThreeItem.backCard?.path ?? ""  //反面照
+        
+        /*----------------------------对公----------------------------------------------*/
+
+        let comaccnum: String = stepThreeItem.openBankAccount ?? "" //对公银行账号
+        let publicOpnbank: String = stepThreeItem.openBank ?? ""//开户行
+        let publicPonaccname: String = stepThreeItem.branchnName ?? ""//支行名称
+        let publicAccountName: String = stepThreeItem.openbankName ?? ""//对公银行开户行名
+        let publicCardphone: String = stepThreeItem.leftPhone ?? ""//预留手机号
         
         
-        let bankProvince: String = stepThreeItem.bankProvince ?? ""//省
-        let bankCity: String = stepThreeItem.bankCity ?? ""//市
-        let bankArea: String = stepThreeItem.bankCounty ?? ""//县
+        let publicBankProvince: String = stepThreeItem.openBankProvince ?? ""//省
+        let publicBankCity: String = stepThreeItem.openBankCity ?? ""//市
+        let publicBankArea: String = stepThreeItem.openBankCounty ?? ""//县
         
         let openlicense: String = stepThreeItem.permitCard?.path ?? ""  //反面照
 
@@ -277,14 +301,28 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
             "storePic2":storePic2,
             "licenseTerm":licenseTerm,
             
-            "comaccnum":comaccnum,
+            
+            "priaccount":priaccount,
             "opnbank":opnbank,
             "ponaccname":ponaccname,
             "accountName":accountName,
             "cardphone":cardphone,
+            "balancecardone":balancecardone,
             "bankProvince":bankProvince,
             "bankCity":bankCity,
             "bankArea":bankArea,
+            "verifycode":self.verifyCode,
+            "balancecardtwo":balancecardtwo,
+            
+            
+            "comaccnum":comaccnum,
+            "publicOpnbank":publicOpnbank,
+            "publicPonaccname":publicPonaccname,
+            "publicAccountName":publicAccountName,
+            "publicCardphone":publicCardphone,
+            "publicBankProvince":publicBankProvince,
+            "publicBankCity":publicBankCity,
+            "publicBankArea":publicBankArea,
             "openlicense":openlicense
         ]
         CNLog(parameters)

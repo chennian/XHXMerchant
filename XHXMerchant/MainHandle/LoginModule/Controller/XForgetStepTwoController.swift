@@ -67,6 +67,7 @@ class XForgetStepTwoController: SNBaseViewController {
         SNRequestBool(requestType: API.alterAccountPwd(mobile: mobile, code: code, password: self.confirmField.text!)).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .bool(_):
+                UIAlertView(title: "温馨提示", message: "修改成功，请重新登录", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
                 self.navigationController?.popToRootViewController(animated: false)
             case .fail(let res):
                 UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()

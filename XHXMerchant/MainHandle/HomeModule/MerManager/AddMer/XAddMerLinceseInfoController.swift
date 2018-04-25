@@ -67,9 +67,7 @@ class XAddMerLinceseInfoController: SNBaseViewController {
         self.stepTwoModel?.area = fieldCell.areaField.text
         self.stepTwoModel?.detailAddress = fieldCell.detailAddressField.text
         self.stepTwoModel?.industryType = fieldCell.industryTypeField.text
-        self.stepTwoModel?.province = self.province
-        self.stepTwoModel?.city = self.city
-        self.stepTwoModel?.county = self.county
+       
         
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
         
@@ -159,11 +157,20 @@ extension XAddMerLinceseInfoController:UITableViewDelegate,UITableViewDataSource
                 self.province = province
                 self.city = city
                 self.county = county
+                
+                self.stepTwoModel?.province = self.province
+                self.stepTwoModel?.city = self.city
+                self.stepTwoModel?.county = self.county
+                ApplyModelTool.save(model: ApplyModel.shareApplyModel)
+
             }
             
             fieldCell.industryTypeField.inputView = industyPiker
-            industyPiker.selectValue = {[unowned self] (string) in
+            industyPiker.selectValue = {[unowned self] (string,id) in
                 self.fieldCell.industryTypeField.text = string
+                self.stepTwoModel?.industryID = "\(id)"
+                ApplyModelTool.save(model: ApplyModel.shareApplyModel)
+
             }
             return cell
         }else if indexPath.row == 2{

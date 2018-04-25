@@ -57,7 +57,8 @@ enum API {
     case merchantRevenue(start_date:String,end_date:String) //货款收益
     case operatorRevenue(start_date:String,end_date:String) //运营商收益
     case serviceRevenue(start_date:String,end_date:String) //服务商收益
-
+    case shopPayAuthority(shop_id:String)  //生成收款码权限
+    case getLicenseList
 }
 
 
@@ -84,8 +85,8 @@ extension API: JSONMappableTargetType {
     var baseURL: URL {
         switch self {
         default:
-            return URL(string: "http://merchant.xiaoheixiong.net/")!
-//        return URL(string: "http://192.168.0.3:8016/")!
+//            return URL(string: "http://merchant.xiaoheixiong.net/")!
+        return URL(string: "http://192.168.0.3:8016/")!
 
         }
         
@@ -169,6 +170,10 @@ extension API: JSONMappableTargetType {
             return "api/operatorRevenue"
         case .serviceRevenue:
             return "api/serviceRevenue"
+        case .shopPayAuthority:
+            return "commom/shopPayAuthority"
+        case .getLicenseList:
+            return "api/getLicenseList"
         }
     }
     
@@ -260,6 +265,9 @@ extension API: JSONMappableTargetType {
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
         case .serviceRevenue(let start_date,let end_date):
             let para = ["start_date":start_date,"end_date":end_date]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .shopPayAuthority(let shop_id):
+            let para = ["shop_id":shop_id]
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
         default:
             return Task.requestPlain

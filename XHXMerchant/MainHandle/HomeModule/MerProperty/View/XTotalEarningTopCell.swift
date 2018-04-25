@@ -147,6 +147,7 @@ class XTotalEarningTopCell: SNBaseTableViewCell {
         }else{
             items = [item1, item2, item3,item4,item5]
         }
+
         
         let pieChart = PNPieChart(frame:.zero, items: items)
         pieChart.descriptionTextColor = UIColor.white

@@ -52,7 +52,7 @@ class XReceiveCodeController: SNBaseViewController {
         self.view.backgroundColor = Color(0x554dff)
         navigationItem.titleView = titleView
 
-        self.codeView.creatErcodeStaff()
+        self.codeView.creatErcodeStaff("100000")
         
         self.view.addSubview(mainView)
         mainView.addSubview(noticeOne)

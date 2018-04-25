@@ -24,7 +24,7 @@ class SNBaseNaviController: UINavigationController {
 //            button.sizeToFit()
             button.setTitle("返回", for: UIControlState.normal)
             button.setTitleColor(.black, for: .normal)
-            button.frame = CGRect(x: 0, y: 0, width: fit(40), height: fit(40))
+            button.frame = CGRect(x: 0, y: 0, width: 40,height:40)
             button.titleLabel?.font = Font(32)
             button.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0)
             button.addTarget(self, action: #selector(backUp), for: .touchUpInside)

@@ -75,7 +75,9 @@ extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
             let cell:MerHomeTopCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.clickEvent = {[unowned self] (para) in
                 if para == "1"{
-                    self.navigationController?.pushViewController(XMerReciptCodeController(), animated: true)
+                    let vc  = XMerReciptCodeController()
+                    vc.shop_ID = self.shopID
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }else if para == "2"{
                     let vc = XMerDataController()
                     CNLog((self.merListModel?.shop_id)!)
@@ -89,7 +91,8 @@ extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
             let cell:MerHomeEndCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.clickEvent = {[unowned self] (para) in
                 if para == "1"{
-                    self.navigationController?.pushViewController(XMerReciptCodeController(), animated: true)
+                    //会员管理
+//                   self.navigationController?.pushViewController(XMerReciptCodeController(), animated: true)
                 }else if para == "2"{
                     let vc = XMerStaffListController()
                     vc.shop_id = (self.merListModel?.shop_id)!

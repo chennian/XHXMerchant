@@ -218,6 +218,8 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
                     XKeyChain.set("", key:PARENTPHONE)
                     XKeyChain.set("", key:OPERATER)
                     XKeyChain.set("", key:CORPORATION)
+                    XKeyChain.set("", key:isStaff)
+
                 }
                 
                 self.navigationController?.pushViewController(XLoginController(), animated: true)

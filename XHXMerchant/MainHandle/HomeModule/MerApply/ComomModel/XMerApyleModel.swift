@@ -72,7 +72,8 @@ class StepOne: NSObject,StepOneProtocol,NSCoding {
 
 
 protocol StepTwoProtocol {
-    
+    var industryID:String? { get set  }
+
     var merShortName:String? { get set  }
     var licenseName: String? { get set  }
     var licenseTerm: String? { get set  }
@@ -94,6 +95,8 @@ protocol StepTwoProtocol {
 }
 
 class StepTwo: NSObject,StepTwoProtocol,NSCoding {
+    var industryID:String?
+
     var merShortName: String?
     var licenseName: String? 
     var licenseTerm: String?
@@ -117,6 +120,8 @@ class StepTwo: NSObject,StepTwoProtocol,NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        industryID = aDecoder.decodeObject(forKey: "industryID") as? String
+
         merShortName = aDecoder.decodeObject(forKey: "merShortName") as? String
         licenseName = aDecoder.decodeObject(forKey: "licenseName") as? String
         licenseTerm = aDecoder.decodeObject(forKey: "licenseTerm") as? String
@@ -132,7 +137,8 @@ class StepTwo: NSObject,StepTwoProtocol,NSCoding {
     }
     
     func encode(with aCoder: NSCoder) {
-        
+        aCoder.encode(industryID, forKey: "industryID")
+
         aCoder.encode(merShortName, forKey: "merShortName")
         aCoder.encode(licenseName, forKey: "licenseName")
         aCoder.encode(licenseTerm, forKey: "licenseTerm")
@@ -152,6 +158,10 @@ protocol StepThreeProtocol {
     var bankProvince: String? { get set  }
     var bankCity: String? { get set  }
     var bankCounty: String? { get set  }
+    
+    var openBankProvince: String? { get set  }
+    var openBankCity: String? { get set  }
+    var openBankCounty: String? { get set  }
     
     var openBankAccount:String? { get set  }
     var openBank: String? { get set  }
@@ -179,6 +189,11 @@ class StepThree: NSObject,StepThreeProtocol,NSCoding {
     var bankProvince: String?
     var bankCity: String?
     var bankCounty: String?
+    
+    //对公
+    var openBankProvince: String?
+    var openBankCity: String?
+    var openBankCounty: String?
 
     //对公账户
     var openBankAccount: String?
@@ -226,6 +241,9 @@ class StepThree: NSObject,StepThreeProtocol,NSCoding {
         bankCity = aDecoder.decodeObject(forKey: "bankCity") as? String
         bankCounty = aDecoder.decodeObject(forKey: "bankCounty") as? String
 
+        openBankProvince = aDecoder.decodeObject(forKey: "openBankProvince") as? String
+        openBankCity = aDecoder.decodeObject(forKey: "openBankCity") as? String
+        openBankCounty = aDecoder.decodeObject(forKey: "openBankCounty") as? String
         
     }
     
@@ -244,7 +262,14 @@ class StepThree: NSObject,StepThreeProtocol,NSCoding {
         aCoder.encode(branchnName, forKey: "branchnName")
         aCoder.encode(openbankName, forKey: "openbankName")
         aCoder.encode(leftPhone, forKey: "leftPhone")
+        
+        aCoder.encode(bankProvince, forKey: "bankProvince")
+        aCoder.encode(bankCity, forKey: "bankCity")
+        aCoder.encode(bankCounty, forKey: "bankCounty")
 
+        aCoder.encode(openBankProvince, forKey: "openBankProvince")
+        aCoder.encode(openBankCity, forKey: "openBankCity")
+        aCoder.encode(openBankCounty, forKey: "openBankCounty")
     }
 }
 

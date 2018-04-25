@@ -9,6 +9,14 @@
 import UIKit
 
 class XAddMerController: SNBaseViewController {
+    fileprivate let addressPiker = AddressPiker(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 216))
+    fileprivate let lincensePiker = XLincensePiker(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 216))
+    
+    var lincenseName:String = ""
+
+    var  Province:String = ""
+    var  City:String = ""
+    var  County:String = ""
     
     var cell :XAddMerCell = XAddMerCell()
     fileprivate let tableView:UITableView = UITableView().then{
@@ -20,7 +28,7 @@ class XAddMerController: SNBaseViewController {
     }
     
     fileprivate func setupUI() {
-        self.title = "店铺列表"
+        self.title = "新增分店"
         self.view.backgroundColor = Color(0xffffff)
         self.view.addSubview(tableView)
         tableView.separatorStyle = .none
@@ -83,6 +91,20 @@ extension XAddMerController:UITableViewDelegate,UITableViewDataSource{
         }else if indexPath.row == 1{
             let cell:XAddMerCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             self.cell = cell
+            self.cell.addressField.inputView = addressPiker
+            addressPiker.selectValue = {[unowned self] (string,province,city,county) in
+                self.cell.addressField.text = string
+                self.Province = province
+                self.City = city
+                self.County = county
+            }
+            
+            self.cell.LicenseNameField.inputView = lincensePiker
+            lincensePiker.selectValue = {[unowned self] (string) in
+                self.lincenseName = string
+                self.cell.LicenseNameField.text = string
+            }
+            
             return cell
         }else{
             let cell:XOperatorBtnCell = tableView.dequeueReusableCell(forIndexPath: indexPath)

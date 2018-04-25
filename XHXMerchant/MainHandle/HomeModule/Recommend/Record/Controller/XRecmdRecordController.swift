@@ -91,7 +91,7 @@ class XRecmdRecordController: SNBaseViewController {
      }
     
     func setUpUI() {
-        self.title = "店铺管理"
+        self.title = "推荐记录"
         let options = PagingMenuOptions()
         let pagingMenuController = PagingMenuController(options: options)
         pagingMenuController.view.frame.origin.y += fit(20)

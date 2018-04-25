@@ -14,6 +14,9 @@ class common: NSObject {
 //用户信息
 public let isConpany = "1"  //0:企业 1:个人
 public let isStaff = "isStaff" //0:商家,1:员工
+public let STAFFNAME = "STAFFNAME" //0:商家,1:员工
+public let TEMP = "temp" //0:商家,1:员工
+
 
 
 public let PHONE = "phone"

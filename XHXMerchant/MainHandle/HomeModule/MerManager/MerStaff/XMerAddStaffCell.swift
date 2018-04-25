@@ -45,6 +45,12 @@ class XMerAddStaffCell: SNBaseTableViewCell {
         $0.textColor = Color(0x313131)
         $0.placeholder = "请输入员工账号"
     }
+    
+    var staffAccountDes = UILabel().then{
+        $0.textColor = Color(0x313131)
+        $0.font = Font(30)
+    }
+    
     var password = UILabel().then{
         $0.text = "密码"
         $0.textColor = Color(0x313131)
@@ -67,6 +73,8 @@ class XMerAddStaffCell: SNBaseTableViewCell {
         contentView.addSubview(staffNameField)
         contentView.addSubview(staffAccount)
         contentView.addSubview(staffAccountField)
+        contentView.addSubview(staffAccountDes)
+
         contentView.addSubview(password)
         contentView.addSubview(passwordField)
         
@@ -104,7 +112,12 @@ class XMerAddStaffCell: SNBaseTableViewCell {
         staffAccountField.snp.makeConstraints { (make) in
             make.left.equalTo(staffAccount.snp.right).snOffset(20)
             make.centerY.equalTo(staffAccount.snp.centerY)
-            make.right.equalToSuperview().snOffset(-80)
+            make.width.snEqualTo(235)
+        }
+        
+        staffAccountDes.snp.makeConstraints { (make) in
+            make.centerY.equalTo(staffAccountField.snp.centerY)
+            make.left.equalTo(staffAccountField.snp.right).snOffset(10)
         }
         password.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)

@@ -21,8 +21,16 @@ class XMerStaffListCell: SNBaseTableViewCell {
     }
 
     let imgview = UIImageView().then{
-        $0.backgroundColor = .red
+        $0.backgroundColor = .clear
+        $0.layer.cornerRadius = fit(35)
+        $0.clipsToBounds = true
     }
+    
+    let num = UILabel().then{
+        $0.font = Font(37)
+        $0.textColor = Color(0xffffff)
+    }
+    
     let name = UILabel().then{
         $0.font = BoldFont(32)
         $0.text = "贱人"
@@ -35,6 +43,7 @@ class XMerStaffListCell: SNBaseTableViewCell {
     }
     override func setupView() {
         contentView.addSubview(imgview)
+        imgview.addSubview(num)
         contentView.addSubview(name)
         contentView.addSubview(accountName)
         hidLine()
@@ -42,6 +51,11 @@ class XMerStaffListCell: SNBaseTableViewCell {
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().snOffset(30)
             make.width.height.snEqualTo(70)
+        }
+        
+        num.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
         
         name.snp.makeConstraints { (make) in

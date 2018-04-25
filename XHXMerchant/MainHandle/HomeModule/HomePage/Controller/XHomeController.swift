@@ -13,7 +13,7 @@ class XHomeController: SNBaseViewController {
     
     var  tokenModel :[TokenModel] = []    
     var userModel : [UserModel] = []
-
+    
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = Color(0xffffff)
         $0.register(XBannerCell.self)
@@ -42,23 +42,34 @@ class XHomeController: SNBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         CNLog(XKeyChain.get(ISLOGIN))
-        CNLog(XKeyChain.get(PHONE))
         if XKeyChain.get(ISLOGIN) == "0" || XKeyChain.get(ISLOGIN).isEmpty {
-            self.navigationController?.pushViewController(XLoginController(), animated: false)
-            return
-        }else{
-            self.submitLogin()
+            self.navigationController?.pushViewController(XLoginController(), animated: true)
         }
-
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        CNLog(XKeyChain.get(isStaff))
+        if XKeyChain.get(isStaff) == "1"{
+            if XKeyChain.get(TEMP) == "0"{  //解决死循环
+                selectEmployeeRoot()
+            }
+        }else{
+            if XKeyChain.get(TEMP) == "0"{
+                selectRoot()
+            }
+        }
+        
+//        else{
+//            self.submitLogin()
+//        }
     }
-    //根据角色更换root
-    fileprivate func selectRoot(){
+    //员工角色root
+    fileprivate func selectEmployeeRoot(){
+        
+        XKeyChain.set("1", key: TEMP)
+        
         let tabbarController = SNMainTabBarController.shared
         let notice = XNoticeListController()
         let noticevc = notice.setUp(XNoticeListController(), title: "到账记录", image: "notes", selectedImage: "notes1")
@@ -66,18 +77,34 @@ class XHomeController: SNBaseViewController {
         let home = XReceiveCodeController()
         let homevc = home.setUp(XReceiveCodeController(), title: "首页", image: "home_homepage", selectedImage: "home_homepage1")
         
+        let center = XStaffCenterController()
+        let centervc = center.setUp(XStaffCenterController(), title: "我的", image: "home_personal_center", selectedImage: "home_personal_center-1")
+        tabbarController.selectedIndex = 0
+        
+        tabbarController.setViewControllers([homevc,noticevc,centervc], animated: false)
+    }
+    
+    //商家角色
+    fileprivate func selectRoot(){
+        
+        XKeyChain.set("1", key: TEMP)
+
+        let tabbarController = SNMainTabBarController.shared
+        
+        let home = XHomeController()
+        let homevc = home.setUp(XHomeController(), title: "首页", image: "home_homepage", selectedImage: "home_homepage1")
+        
         let center = XCenterController()
         let centervc = center.setUp(XCenterController(), title: "我的", image: "home_personal_center", selectedImage: "home_personal_center-1")
         tabbarController.selectedIndex = 0
         
-        tabbarController.setViewControllers([homevc,noticevc,centervc], animated: false)
+        tabbarController.setViewControllers([homevc,centervc], animated: false)
     }
     
     fileprivate func submitLogin(){
         SNRequest(requestType: API.login(phone:XKeyChain.get(PHONE) , password:XKeyChain.get(PASSWORD)), modelType: [TokenModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .success(let models):
-                SZHUDDismiss()
                 self.tokenModel = models
                 let token = self.tokenModel.map({return $0.token})
                 let timestamp = self.tokenModel.map({return $0.timestamp})
@@ -86,11 +113,13 @@ class XHomeController: SNBaseViewController {
                 XKeyChain.set(token[0], key: TOKEN)
                 XKeyChain.set(timestamp[0], key:TIMESTAMP)
                 
-                let employee = self.tokenModel.map({return $0.employee})
+                let employee = self.tokenModel.map({return $0.isEmployee})
                 if employee[0] == "1"{
+                    self.selectEmployeeRoot()
+                }else{
                     self.selectRoot()
                 }
-                
+
                 self.getUserInfo()
                 
             case .fail(let code,let msg):
@@ -129,7 +158,6 @@ class XHomeController: SNBaseViewController {
                 XKeyChain.set(operater[0], key:OPERATER)
                 XKeyChain.set(corporation[0], key:CORPORATION)
                 CNLog(XKeyChain.get(IsAgent) + XKeyChain.get(OPERATER) + XKeyChain.get(CORPORATION))
-                self.navigationController?.popViewController(animated: false)
                 
             case .fail(_,let msg):
                 SZHUD( msg ?? "获取个人信息失败", type: .error, callBack: nil)
@@ -139,20 +167,6 @@ class XHomeController: SNBaseViewController {
         }).disposed(by: disposeBag)
     }
     
-    fileprivate func setNavigationBar(){
-        let barbutton = UIBarButtonItem.init(title: "登录", imgName:"", target: self, action: #selector(login))
-        navigationItem.rightBarButtonItem = barbutton
-    }
-    @objc fileprivate func login(){
-        
-        if XKeyChain.get(ISLOGIN) == "0" || XKeyChain.get(ISLOGIN).isEmpty {
-            navigationController?.pushViewController(XLoginController(), animated: true)
-        }else{
-             UIAlertView(title: "温馨提示", message: "你已经是登录状态", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
-        }
-
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -183,8 +197,8 @@ extension XHomeController:UITableViewDelegate,UITableViewDataSource{
                     SZHUD("正在开发中...", type: .info, callBack: nil)
 //                    self.navigationController?.pushViewController(XPropertyController(), animated: true)
                 }else if para == 2{
-                    SZHUD("正在开发中...", type: .info, callBack: nil)
-//                    self.navigationController?.pushViewController(XMerListController(), animated: true)
+//                    SZHUD("正在开发中...", type: .info, callBack: nil)
+                    self.navigationController?.pushViewController(XMerListController(), animated: true)
                 }else if para == 3{
                     if XKeyChain.get(IsAgent) == "0" && XKeyChain.get(CORPORATION) == "0" && XKeyChain.get(OPERATER) == "0" {
                         SZHUD("无权限", type: .info, callBack: nil)

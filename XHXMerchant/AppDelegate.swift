@@ -29,8 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PgyUpdateManager.sharedPgy().start(withAppId: PGYer_ID)
         PgyUpdateManager.sharedPgy().checkUpdate();
 
-        
+        XKeyChain.set("0", key: TEMP)
+
         window?.rootViewController = SNMainTabBarController.shared
+        
         self.window?.makeKeyAndVisible()
         return true
     }

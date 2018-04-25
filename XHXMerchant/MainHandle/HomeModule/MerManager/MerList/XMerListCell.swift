@@ -18,7 +18,12 @@ class XMerListCell: SNBaseTableViewCell {
             self.merName.text = cellModel.shopName
             self.userNum.text = "会员数量:\(cellModel.flow_num)"
             self.merAddress.text = cellModel.address
-            self.imgview.kf.setImage(with: URL(string: cellModel.logo))
+            
+            if cellModel.logo == ""{
+                self.imgview.image = UIImage(named:"store_logo")
+            }else{
+                self.imgview.kf.setImage(with: URL(string: cellModel.logo))
+            }
         }
     }
     

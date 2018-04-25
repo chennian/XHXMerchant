@@ -13,6 +13,7 @@ class XMerAddStaffController:SNBaseViewController {
     var cell :XMerAddStaffCell = XMerAddStaffCell()
     var shop_id:String = ""
     var temp:String = ""
+    var pwdType:String = ""
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
         $0.register(XMerAddStaffCell.self)
@@ -76,11 +77,21 @@ class XMerAddStaffController:SNBaseViewController {
             UIAlertView(title: "温馨提示", message: "请输入员工密码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
+        
+        
+        if  cell.passwordField.text != self.model?.password {
+            self.pwdType = "1"
+        }else{
+            self.pwdType = "0"
+        }
+        
         CNLog(shop_id)
-        let paremeters:[String:Any] = ["shopId":self.shop_id,
+        let paremeters:[String:Any] = ["id":(self.model?.id)!,
+                                       "shopId":self.shop_id,
                                        "names":cell.staffNameField.text!,
                                        "employee":cell.staffAccountField.text!,
-                                       "password":cell.passwordField.text!]
+                                       "password":cell.passwordField.text!,
+                                       "pwdType":self.pwdType]
         
         SNRequestBool(requestType: API.shopEditEmployee(paremeter: paremeters)).subscribe(onNext: {[unowned self] (result) in
             switch result{
@@ -118,7 +129,7 @@ class XMerAddStaffController:SNBaseViewController {
         CNLog(shop_id)
         let paremeters:[String:Any] = ["shopId":self.shop_id,
                                        "names":cell.staffNameField.text!,
-                                       "employee":cell.staffAccountField.text!,
+                                       "employee":cell.staffAccountField.text! + "@\(self.shop_id)",
                                        "password":cell.passwordField.text!]
         
         SNRequestBool(requestType: API.shopAddEmployee(paremeter: paremeters)).subscribe(onNext: {[unowned self] (result) in
@@ -155,6 +166,11 @@ extension XMerAddStaffController:UITableViewDelegate,UITableViewDataSource{
         }else if indexPath.row == 1{
             let cell:XMerAddStaffCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             self.cell = cell
+            if self.temp == "1"{
+                cell.staffAccountDes.isHidden = true
+            }else{
+                cell.staffAccountDes.text = "@\(self.shop_id)"
+            }
             cell.staffNameField.text = model?.names
             cell.staffAccountField.text = model?.employee
             cell.passwordField.text = model?.password

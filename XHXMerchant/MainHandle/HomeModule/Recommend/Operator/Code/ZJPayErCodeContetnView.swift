@@ -15,14 +15,19 @@ class ZJPayErCodeContetnView: SNBaseView {
     
     func creatErcode(){
         let mercId = "123"
-        let url = "http://pay.xiaoheixiong.net/public/getOpenid_uid?mer_id=" + mercId
+        let url = "http://frontend.xiaoheixiong.net?mer_id=" + mercId
         let img = ErCodeTool.creatQRCodeImage(text: url, size: fit(400), icon: nil)
         ercodeBtn.setImage(img, for: UIControlState.normal)
     }
     
-    func creatErcodeStaff(){
-        let mercId = "123"
-        let url = "http://pay.xiaoheixiong.net/public/getOpenid_uid?mer_id=" + mercId
+    func creatReceiveErcode(_ shopId:String){
+        let url = "http://pay.xiaoheixiong.net/public/getOpenid_uid?shop_id=" + shopId
+        let img = ErCodeTool.creatQRCodeImage(text: url, size: fit(448), icon: nil)
+        ercodeBtn.setImage(img, for: UIControlState.normal)
+    }
+    
+    func creatErcodeStaff(_ shopId:String){
+        let url = "http://pay.xiaoheixiong.net/public/code?shop_id=" + shopId
         let img = ErCodeTool.creatQRCodeImage(text: url, size: fit(448), icon: nil)
         ercodeBtn.setImage(img, for: UIControlState.normal)
     }

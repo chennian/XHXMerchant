@@ -10,15 +10,18 @@ import UIKit
 import SwiftyJSON
 
 class IndustyPiker: UIView {
-    var selectValue:((_ value:String)->())?
+    var selectValue:((_ value:String,_ id:Int)->())?
     
     var provinceArray:[String] = []
     var cityArray:[String] = []
     var countyArray:[String] = []
-    
+    var countyArrayID:[Int] = []
+
     var provinceString:String = ""
     var cityString:String = ""
     var countyString:String = ""
+    var countyIDString:Int = 0
+
     
     var jsonArr:JSON = []
     
@@ -56,6 +59,7 @@ class IndustyPiker: UIView {
             }
             for (_,subJson):(String,JSON) in jsonArr[0]["list"][0]["list"] {
                 countyArray.append(subJson["name"].string!)
+                countyArrayID.append(subJson["id"].int!)
             }
             
         } catch let error as Error? {
@@ -136,6 +140,7 @@ extension IndustyPiker:UIPickerViewDelegate,UIPickerViewDataSource{
         if component == 0 {
             cityArray.removeAll()
             countyArray.removeAll()
+            countyArrayID.removeAll()
             for (_,subJson):(String,JSON) in jsonArr[row]["list"] {
                 cityArray.append(subJson["name"].string!)
             }
@@ -144,6 +149,8 @@ extension IndustyPiker:UIPickerViewDelegate,UIPickerViewDataSource{
             
             for (_,subJson):(String,JSON) in jsonArr[row]["list"][0]["list"] {
                 countyArray.append(subJson["name"].string!)
+                countyArrayID.append(subJson["id"].int!)
+
             }
             pickerView.reloadComponent(2)
             pickerView.selectRow(0, inComponent: 2, animated: false)
@@ -153,24 +160,29 @@ extension IndustyPiker:UIPickerViewDelegate,UIPickerViewDataSource{
             provinceString = provinceArray[row]
             cityString = cityArray[0]
             countyString = countyArray[0]
+            countyIDString = countyArrayID[0]
         }
         if component == 1 {
             countyArray.removeAll()
+            countyArrayID.removeAll()
             for (_,subJson):(String,JSON) in jsonArr[counrentRow]["list"][row]["list"] {
                 countyArray.append(subJson["name"].string!)
+                countyArrayID.append(subJson["id"].int!)
             }
             pickerView.reloadComponent(2)
             pickerView.selectRow(0, inComponent: 2, animated: false)
             cityString = cityArray[row]
             countyString = countyArray[0]
+            countyIDString = countyArrayID[0]
         }
         if component == 2 {
             countyString = countyArray[row]
+            countyIDString = countyArrayID[row]
         }
         guard let selectVal = selectValue else {
             return
         }
-        selectVal(provinceString + cityString + countyString)
+        selectVal(provinceString + cityString + countyString,countyIDString)
         
     }
 }

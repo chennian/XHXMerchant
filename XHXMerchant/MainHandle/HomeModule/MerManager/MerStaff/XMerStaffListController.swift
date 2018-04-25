@@ -71,6 +71,12 @@ extension XMerStaffListController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:XMerStaffListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.num.text = "\(indexPath.row + 1)"
+        if indexPath.row % 2 == 0{
+            cell.imgview.backgroundColor = Color(0xff566e)
+        }else{
+            cell.imgview.backgroundColor = Color(0x2c7bff)
+        }
         cell.model = self.models[indexPath.row]
         return cell
     }

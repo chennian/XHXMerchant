@@ -18,8 +18,13 @@ class MerHeaderCell: SNBaseTableViewCell {
             self.merName.text = cellModel.shopName
             self.staffNum.text = "员工数量:\(cellModel.personal)"
             self.userNum.text = "会员数量\(cellModel.flow_num)"
-            self.merHeaderImg.kf.setImage(with: URL(string: cellModel.logo))
-            self.backImg.kf.setImage(with: URL(string: cellModel.logo))
+            if cellModel.logo == ""{
+                self.merHeaderImg.image = UIImage(named: "store_logo")
+                self.backImg.image = UIImage(named:"store_logo")
+            }else{
+                self.merHeaderImg.kf.setImage(with: URL(string: cellModel.logo))
+                self.backImg.kf.setImage(with: URL(string: cellModel.logo))
+            }
 //            createFrostBackground(img:UIImage(named: "home_earnings")!, view: self.backImg)
         }
     }

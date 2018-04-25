@@ -10,6 +10,8 @@ import UIKit
 
 class XMerReciptCodeController: SNBaseViewController {
     
+    var shop_ID :String = ""
+    
     let mainView = UIView().then{
         $0.backgroundColor = Color(0xffffff)
         $0.layer.cornerRadius = fit(10)
@@ -40,11 +42,24 @@ class XMerReciptCodeController: SNBaseViewController {
         $0.textColor = Color(0xffffff)
     }
     
+    override func loadData() {
+        SNRequestBool(requestType: API.shopPayAuthority(shop_id: shop_ID)).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .bool(let msg):
+                DispatchQueue.main.async {
+                    self.codeView.creatReceiveErcode(self.shop_ID)
+                }
+            case .fail(let res):
+                UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            default:
+                UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            }
+        }).disposed(by: disposeBag)
+    }
     
     func setUpUI(){
         self.title = "收款码"
         self.view.backgroundColor = ColorRGB(red: 183, green: 174, blue: 0)
-        self.codeView.creatErcode()
         
         self.view.addSubview(mainView)
         self.view.addSubview(noticeThree)

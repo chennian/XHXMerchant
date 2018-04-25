@@ -55,16 +55,15 @@ class XPrivateAccountController: SNBaseViewController {
     }
     
     func saveModel(){
-        
+        CNLog(self.bankProvince +  self.bankCity + self.bankCounty)
+
         self.stepThreeModel?.privateBankAccount = fieldCell.privateBankAccountField.text
         self.stepThreeModel?.privateBank = fieldCell.privateBankField.text
         self.stepThreeModel?.privateBankAddress = fieldCell.privateBankAddressField.text
         self.stepThreeModel?.branchName = fieldCell.branchNameField.text
         self.stepThreeModel?.privatebankName = fieldCell.privatebankNameField.text
         self.stepThreeModel?.leftMobile = fieldCell.leftMobileField.text
-        self.stepThreeModel?.bankProvince = self.bankProvince
-        self.stepThreeModel?.bankCity = self.bankCity
-        self.stepThreeModel?.bankCounty = self.bankCounty
+       
 
         
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
@@ -148,6 +147,12 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
                 self.bankProvince = province
                 self.bankCity = city
                 self.bankCounty = county
+                
+                self.stepThreeModel?.bankProvince = self.bankProvince
+                self.stepThreeModel?.bankCity = self.bankCity
+                self.stepThreeModel?.bankCounty = self.bankCounty
+
+                ApplyModelTool.save(model: ApplyModel.shareApplyModel)
                 
             }
             return cell
@@ -234,9 +239,14 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
             return
         }
         
-        uploadData()
-        
-//        self.navigationController?.pushViewController(XMerLicenseController(), animated: true)
+        //1:企业 2:个人
+        if XKeyChain.get(isConpany) == "1"{
+            let vc = XOpenAccountController()
+            vc.verifyCode = fieldCell.codeLableField.text!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            uploadData()
+        }
         
     }
     
@@ -264,7 +274,7 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
         let busregnum: String = stepSecondeItem.codeNum ?? ""  //统一社会信用代码
         let enterpraiseLicenseTerm: String = stepSecondeItem.licenseTerm ?? "" // 营业执照有效期
         let details: String = stepSecondeItem.detailAddress ?? ""    // 详细地址
-        let industryid: String = stepSecondeItem.industryType ?? ""  // 商家类型
+        let industryid: String = stepSecondeItem.industryID ?? ""  // 商家类型
         let province: String = stepSecondeItem.province ?? ""  //省
         let city: String = stepSecondeItem.city ?? ""          //市
         let area: String = stepSecondeItem.county ?? ""        //区
