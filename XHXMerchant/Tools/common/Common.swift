@@ -15,8 +15,10 @@ class common: NSObject {
 public let isConpany = "1"  //0:企业 1:个人
 public let isStaff = "isStaff" //0:商家,1:员工
 public let STAFFNAME = "STAFFNAME" //0:商家,1:员工
+public let STAFFID = "STAFFID"
 public let TEMP = "temp" //0:商家,1:员工
 
+public let SHOPID = "SHOPID" //0:商家,1:员工
 
 
 public let PHONE = "phone"
@@ -41,7 +43,7 @@ public let LOGIN_FALSE = "1"
 
 public let PGYer_ID: String = "48511d269791e0a561ff8392d072b72c"
 
-
+public let JPushAppKey:String = "17136a19280c877559e49f24"
 //百度
 public let AK: String = "Lov9Xi9mBvMyQwpYMkKAA8fXQpAWkwcC"
 

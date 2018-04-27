@@ -226,7 +226,7 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
         let busregnum: String = stepSecondeItem.codeNum ?? ""  //统一社会信用代码
         let enterpraiseLicenseTerm: String = stepSecondeItem.licenseTerm ?? "" // 营业执照有效期
         let details: String = stepSecondeItem.detailAddress ?? ""    // 详细地址
-        let industryid: String = stepSecondeItem.industryType ?? ""  // 商家类型
+        let industryid: String = stepSecondeItem.industryID ?? ""  // 商家类型
         let province: String = stepSecondeItem.province ?? ""  //省
         let city: String = stepSecondeItem.city ?? ""          //市
         let area: String = stepSecondeItem.county ?? ""        //区

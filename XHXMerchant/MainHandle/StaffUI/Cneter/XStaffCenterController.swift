@@ -176,9 +176,10 @@ extension XStaffCenterController:UITableViewDelegate,UITableViewDataSource{
             navigationController?.pushViewController(XForgetPwdController(), animated: true)
         }
         if indexPath.row == 3 {
-            SZHUD("正在开发中...", type: .info, callBack: nil)
-            
-            //            navigationController?.pushViewController(XPropertyController(), animated: true)
+            navigationController?.pushViewController(XPushController(), animated: true)
+        }
+        if indexPath.row == 4 {
+            navigationController?.pushViewController(XAboutBearController(), animated: true)
         }
     }
 }

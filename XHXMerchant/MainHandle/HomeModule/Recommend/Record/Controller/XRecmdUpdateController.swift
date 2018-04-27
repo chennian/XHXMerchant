@@ -63,7 +63,7 @@ extension XRecmdUpdateController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return fit(214)
+        return fit(235)
     }
     
 }

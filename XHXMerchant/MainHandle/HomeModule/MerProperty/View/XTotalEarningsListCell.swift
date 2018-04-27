@@ -15,7 +15,7 @@ class XTotalEarningsListCell: SNBaseTableViewCell {
             guard  let model = models  else {
                 return
             }
-            timelable.text = "2018-10-09" //model.add_time
+            timelable.text = model.add_time
             moneyLable.text = model.credit
             desLable.text = "共\(model.num)笔交易"
         }

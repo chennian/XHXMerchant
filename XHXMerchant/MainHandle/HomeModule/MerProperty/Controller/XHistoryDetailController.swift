@@ -69,4 +69,11 @@ extension XHistoryDetailController:UITableViewDelegate,UITableViewDataSource{
         return fit(121)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = XDayEarningController()
+        vc.time = self.model[indexPath.row].add_time
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 }

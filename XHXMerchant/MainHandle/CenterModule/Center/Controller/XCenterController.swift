@@ -246,16 +246,20 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 2 {
-            SZHUD("正在开发中...", type: .info, callBack: nil)
-//            navigationController?.pushViewController(XMyBankCardController(), animated: true)
+//            SZHUD("正在开发中...", type: .info, callBack: nil)
+            navigationController?.pushViewController(XMyBankCardController(), animated: true)
         }
         if indexPath.row == 3 {
             navigationController?.pushViewController(XForgetPwdController(), animated: true)
         }
         if indexPath.row == 4 {
-            SZHUD("正在开发中...", type: .info, callBack: nil)
+//            SZHUD("正在开发中...", type: .info, callBack: nil)
 
-//            navigationController?.pushViewController(XPropertyController(), animated: true)
+            navigationController?.pushViewController(XMerPushSwitchController(), animated: true)
+        }
+        if indexPath.row == 5 {
+            
+            navigationController?.pushViewController(XAboutBearController(), animated: true)
         }
     }
 }

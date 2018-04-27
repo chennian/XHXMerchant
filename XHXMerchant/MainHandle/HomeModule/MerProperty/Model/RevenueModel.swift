@@ -12,16 +12,18 @@ import SwiftyJSON
 //导流收益, 货款收益
 class oneRevenueModel: SNSwiftyJSONAble {
     var credit : String
-    var shopName : String
+    var nickName : String
     var money : String
     var add_time:String
+    var shopName:String
     
     required init?(jsonData: JSON) {
         self.credit = jsonData["credit"].stringValue
-        self.shopName = jsonData["shopName"].stringValue
+        self.nickName = jsonData["nickName"].stringValue
         self.money = jsonData["money"].stringValue
         self.add_time = jsonData["add_time"].stringValue
-        
+        self.shopName = jsonData["shopName"].stringValue
+
     }
 }
 //服务中心收益,运营商收益,服务商收益

@@ -46,8 +46,11 @@ class XMerHomeController: SNBaseViewController {
             case .success(let models):
                 self.model = models
                 self.tableView.reloadData()
-            case .fail(_ ,let msg):
+            case .fail(let code ,let msg):
                 SZHUD(msg ?? "获取数据失败", type:.error, callBack: nil)
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
             default:
                 break
             }
@@ -84,6 +87,11 @@ extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
                     vc.shopId = (self.merListModel?.shop_id)!
                     vc.model = self.model
                     self.navigationController?.pushViewController(vc, animated: true)
+                }else if para == "3"{
+                    let vc = XAddSeckillListController()
+                    vc.shopid = (self.merListModel?.shop_id)!
+                    self.navigationController?.pushViewController(vc, animated: true)
+
                 }
             }
             return cell
@@ -92,7 +100,10 @@ extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
             cell.clickEvent = {[unowned self] (para) in
                 if para == "1"{
                     //会员管理
-//                   self.navigationController?.pushViewController(XMerReciptCodeController(), animated: true)
+                    
+                    let vc = XMenberListController()
+                    vc.shopid = (self.merListModel?.shop_id)!
+                   self.navigationController?.pushViewController(vc, animated: true)
                 }else if para == "2"{
                     let vc = XMerStaffListController()
                     vc.shop_id = (self.merListModel?.shop_id)!

@@ -10,6 +10,9 @@ PODS:
   - Differentiator (3.0.2)
   - DZNEmptyDataSet (1.8.1)
   - IQKeyboardManager (5.0.8)
+  - JCore (1.1.7)
+  - JPush (3.0.8):
+    - JCore (~> 1.1.7)
   - KeychainAccess (3.1.0)
   - Kingfisher (4.6.4)
   - MJRefresh (3.1.15.3)
@@ -51,6 +54,7 @@ DEPENDENCIES:
   - CryptoSwift (~> 0.7.0)
   - DZNEmptyDataSet
   - IQKeyboardManager
+  - JPush
   - KeychainAccess
   - Kingfisher (~> 4.0)
   - MJRefresh
@@ -78,6 +82,8 @@ SPEC CHECKSUMS:
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
+  JCore: f7459c81c135281a874a6beafdd321666adcc834
+  JPush: 9574d072cc37e93fa293ba69b43ce763c440943a
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   Kingfisher: 68498a706e46c2a050b0c9572f100e5db407f6e0
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
@@ -99,6 +105,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: 9bf89512bb6de53e87897f2e17e607c126a199d6
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 8700b8e78e0ddf56c438f1a743ecfa31ccdbd352
+PODFILE CHECKSUM: e2edbc48586d373643caf169afe6136775a285e4
 
 COCOAPODS: 1.4.0

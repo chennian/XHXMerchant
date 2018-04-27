@@ -54,7 +54,7 @@ class XLoginController: SNBaseViewController
         $0.backgroundColor = Color(0xe8e8e8)
     }
     let  line3  = UIView().then{
-        $0.backgroundColor = Color(0xe8e8e8)
+        $0.backgroundColor = Color(0x5b5b5b)
     }
     
     let submitBtn = UIButton().then{
@@ -70,6 +70,16 @@ class XLoginController: SNBaseViewController
         $0.titleLabel?.font = Font(26)
         $0.setTitleColor(Color(0x504e4e), for: .normal)
         $0.backgroundColor = Color(0xffffff)
+    }
+    let imgleft = UIView().then{
+        $0.backgroundColor = Color(0x5b5b5b)
+        $0.layer.cornerRadius = fit(5)
+        $0.clipsToBounds = true
+    }
+    let imgright = UIView().then{
+        $0.backgroundColor = Color(0x5b5b5b)
+        $0.layer.cornerRadius = fit(5)
+        $0.clipsToBounds = true
     }
     @objc func findPwd() {
         self.navigationController?.pushViewController(XForgetPwdController(), animated: true)
@@ -103,14 +113,20 @@ class XLoginController: SNBaseViewController
 
                 if employee[0] == "1"{
                     let name =  self.model.map({return $0.names})
+                    let shop_id = self.model.map({return $0.shop_id})
+                    let id = self.model.map({return $0.id})
                     XKeyChain.set(name[0], key: STAFFNAME)
+                    XKeyChain.set(shop_id[0], key: SHOPID)
+                    XKeyChain.set(id[0], key: STAFFID)
                 }
-                
                 XKeyChain.set("1", key: ISLOGIN)
                 XKeyChain.set(self.phoneField.text!, key:PHONE )
                 XKeyChain.set(self.passwordField.text!, key: PASSWORD)
                 XKeyChain.set(token[0], key: TOKEN)
                 XKeyChain.set(timestamp[0], key:TIMESTAMP)
+                //发送通知设置别名
+                let NotifMycation = NSNotification.Name(rawValue:"TAG")
+                NotificationCenter.default.post(name: NotifMycation, object:XKeyChain.get(PHONE))
                 
                 if employee[0] == "0"{
                     self.getUserInfo()
@@ -233,6 +249,9 @@ class XLoginController: SNBaseViewController
         self.view.addSubview(line2)
         self.view.addSubview(line3)
         self.view.addSubview(notice)
+        self.view.addSubview(imgleft)
+        self.view.addSubview(imgright)
+
         self.view.addSubview(submitBtn)
         
         notice.addTarget(self, action: #selector(findPwd), for: .touchUpInside)
@@ -306,6 +325,17 @@ class XLoginController: SNBaseViewController
             make.centerY.equalTo(line3.snp.centerY)
             make.centerX.equalTo(line3.snp.centerX)
             make.width.snEqualTo(130)
+        }
+        
+        imgleft.snp.makeConstraints { (make) in
+            make.right.equalTo(notice.snp.left)
+            make.centerY.equalTo(notice.snp.centerY)
+            make.width.height.snEqualTo(10)
+        }
+        imgright.snp.makeConstraints { (make) in
+            make.left.equalTo(notice.snp.right)
+            make.centerY.equalTo(notice.snp.centerY)
+            make.width.height.snEqualTo(10)
         }
 
     }

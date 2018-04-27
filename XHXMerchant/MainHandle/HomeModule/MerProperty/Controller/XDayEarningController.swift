@@ -12,6 +12,7 @@ class XDayEarningController: SNBaseViewController {
     
     var total:String = ""
     var model:[todayModel] = []
+    var time:String = ""
     
     var cellType:[propertyType] = []
     
@@ -22,7 +23,6 @@ class XDayEarningController: SNBaseViewController {
         $0.textAlignment = .center
         $0.backgroundColor = Color(0xffffff)
         $0.layer.cornerRadius = fit(4)
-        $0.text = "2018-10-28"
         $0.datePicker?.datePickerMode = .date
         $0.dateFormatter.dateFormat = "yyyy-MM-dd"
     }
@@ -48,17 +48,20 @@ class XDayEarningController: SNBaseViewController {
     }
     
     override func loadData() {
-        
-        SNRequest(requestType: API.todayTotalRevenue, modelType: [todayModel.self]).subscribe(onNext: {[unowned self] (result) in
+         let paramert:[String:String] = ["add_time":self.time]
+        SNRequest(requestType: API.dayTotalRevenue(paremeter:paramert), modelType: [todayModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .success(let models):
                 self.model = models
-                self.cellType.append(.space)
-                self.cellType.append(.todayHead(self.model[0]))
-                self.cellType.append(.space)
-                self.cellType.append(.todayEnd(self.model[0]))
-                self.cellType.append(.space)
-                self.tableView.reloadData()
+                if !self.model.isEmpty{
+                    self.cellType.append(.space)
+                    self.cellType.append(.todayHead(self.model[0]))
+                    self.cellType.append(.space)
+                    self.cellType.append(.todayEnd(self.model[0]))
+                    self.cellType.append(.space)
+                    self.tableView.reloadData()
+                }
+               
             case .fail(let code,let msg):
                 SZHUD(msg ?? "请求数据失败", type: .error, callBack: nil)
                 
@@ -88,7 +91,7 @@ extension XDayEarningController:UITableViewDelegate,UITableViewDataSource{
         switch cellType[indexPath.row] {
         case  .todayHead(let model):
              let cell:XEarningDayHeaderCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-             cell.totalLable.text = self.total
+             cell.totalLable.text = model.credit
              cell.models = model
              return cell
         case  .todayEnd(let model):
@@ -123,6 +126,8 @@ extension XDayEarningController:UITableViewDelegate,UITableViewDataSource{
 extension XDayEarningController{
     func setNavBar() {
         navigationItem.titleView = titleField
+        titleField.text = self.time
+        titleField.isEnabled = false
         let  rightView  = UIView().then{
             $0.backgroundColor = .red
         }

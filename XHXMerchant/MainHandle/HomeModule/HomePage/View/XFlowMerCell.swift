@@ -59,7 +59,7 @@ class XFlowMerCell: SNBaseTableViewCell {
         contentView.addSubview(address)
         contentView.addSubview(member)
         
-        //        line.isHidden = true
+                line.isHidden = true
         
         img.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)

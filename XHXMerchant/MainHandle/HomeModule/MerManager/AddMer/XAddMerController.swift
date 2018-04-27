@@ -57,9 +57,9 @@ class XAddMerController: SNBaseViewController {
             return
         }
         
-         let parameters:[String:Any] = ["shopName":cell.LicenseNameField.text!,
+         let parameters:[String:Any] = ["shopName":cell.merShortNameField.text!,
                                         "address":cell.addressField.text! + cell.detailAddressField.text!,
-                                        "entname":cell.merShortNameField.text!]
+                                        "entname":cell.LicenseNameField.text!]
         CNLog(parameters)
         
         SNRequestBool(requestType: API.addBranchShop(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in

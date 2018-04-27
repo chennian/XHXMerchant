@@ -33,10 +33,15 @@ class XCenterHeadCell: SNBaseTableViewCell {
 
     }
     
+    var backgrundimg = UIImageView().then{
+        $0.image = UIImage(named: "my_shade")
+    }
+    
     override func setupView() {
-        contentView.addSubview(headImg)
-        contentView.addSubview(name)
-        contentView.addSubview(phone)
+        contentView.addSubview(backgrundimg)
+        backgrundimg.addSubview(headImg)
+        backgrundimg.addSubview(name)
+        backgrundimg.addSubview(phone)
         contentView.addSubview(timeButton)
         
         self.backgroundColor = Color(0xff8518)
@@ -44,6 +49,10 @@ class XCenterHeadCell: SNBaseTableViewCell {
         timeButton.setup("获取验证码", timeTitlePrefix: "", aTimeLength: 60)
 
         timeButton.isHidden = true
+        
+        backgrundimg.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalToSuperview()
+        }
         
         headImg.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(57)

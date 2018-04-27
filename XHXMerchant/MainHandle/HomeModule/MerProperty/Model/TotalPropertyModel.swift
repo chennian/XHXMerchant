@@ -33,7 +33,8 @@ class todayModel:SNSwiftyJSONAble {
     var corporation : String
     var corporation_num : String
     var money : String
-    
+    var credit : String
+    var totalNum : String
     
     required init?(jsonData: JSON) {
         self.flowmeter = jsonData["flowmeter"].stringValue
@@ -47,6 +48,41 @@ class todayModel:SNSwiftyJSONAble {
         self.corporation = jsonData["corporation"].stringValue
         self.corporation_num = jsonData["corporation_num"].stringValue
         self.money = jsonData["money"].stringValue
+        self.credit = jsonData["credit"].stringValue
+        self.totalNum = jsonData["totalNum"].stringValue
+
+    }
+}
+
+class dayModel:SNSwiftyJSONAble {
+    var flowmeter : String
+    var flow_num : String
+    var merchant : String
+    var merchant_num : String
+    var service : String
+    var service_num : String
+    var operater : String
+    var operator_num:String
+    var corporation : String
+    var corporation_num : String
+    var credit : String
+    var totalNum : String
+
+    
+    required init?(jsonData: JSON) {
+        self.flowmeter = jsonData["flowmeter"].stringValue
+        self.flow_num = jsonData["flow_num"].stringValue
+        self.merchant = jsonData["merchant"].stringValue
+        self.merchant_num = jsonData["merchant_num"].stringValue
+        self.service = jsonData["service"].stringValue
+        self.service_num = jsonData["service_num"].stringValue
+        self.operater = jsonData["operator"].stringValue
+        self.operator_num = jsonData["operator_num"].stringValue
+        self.corporation = jsonData["corporation"].stringValue
+        self.corporation_num = jsonData["corporation_num"].stringValue
+        self.credit = jsonData["credit"].stringValue
+        self.totalNum = jsonData["totalNum"].stringValue
+
     }
 }
 

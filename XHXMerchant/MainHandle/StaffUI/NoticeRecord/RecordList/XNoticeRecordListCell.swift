@@ -9,6 +9,18 @@
 import UIKit
 
 class XNoticeRecordListCell: SNBaseTableViewCell {
+    
+    
+    var model:RecordListModel?{
+        didSet{
+            guard let model = self.model else {
+                return
+            }
+            noticeLable.text = "接受支付金额\(model.money)"
+            timeLable.text = model.add_time
+        }
+    }
+    
 
     let imgview = UIImageView().then{
         $0.image = UIImage(named: "push")

@@ -16,7 +16,7 @@ class TokenModel: SNSwiftyJSONAble {
     var id : String
     var names : String
     var employee : String
-
+    var shop_id: String
    
     required init?(jsonData: JSON) {
         self.timestamp = jsonData["timestamp"].stringValue
@@ -25,7 +25,7 @@ class TokenModel: SNSwiftyJSONAble {
         self.id = jsonData["id"].stringValue
         self.names = jsonData["names"].stringValue
         self.employee = jsonData["employee"].stringValue
-
+        self.shop_id = jsonData["shop_id"].stringValue
     }
     
     

@@ -139,11 +139,27 @@ class XbarChartView: UIView {
       
         CNLog(realHeight)
         
-        self.lableOne.text   = "\(dataArray[0])"
-        self.lableTwo.text   = "\(dataArray[1])"
-        self.lableThree.text = "\(dataArray[2])"
-        self.lableFour.text  = "\(dataArray[3])"
-        self.lableFive.text  = "\(dataArray[4])"
+        self.lableOne.text   = "\(Int(dataArray[0]))"
+        self.lableTwo.text   = "\(Int(dataArray[1]))"
+        self.lableThree.text = "\(Int(dataArray[2]))"
+        self.lableFour.text  = "\(Int(dataArray[3]))"
+        self.lableFive.text  = "\(Int(dataArray[4]))"
+        
+        if dataArray[0] == 0{
+            self.lableOne.isHidden = true
+        }
+        if dataArray[1] == 0{
+            self.lableTwo.isHidden = true
+        }
+        if dataArray[2] == 0{
+            self.lableThree.isHidden = true
+        }
+        if dataArray[3] == 0{
+            self.lableFour.isHidden = true
+        }
+        if dataArray[4] == 0{
+            self.lableFive.isHidden = true
+        }
         
         imgOneHeight = realHeight[0]
         imgTwoHeight = realHeight[1]

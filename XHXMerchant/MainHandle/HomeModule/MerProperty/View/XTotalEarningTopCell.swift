@@ -42,12 +42,12 @@ class XTotalEarningTopCell: SNBaseTableViewCell {
                 item2.value = 0
             }
             if !model.merchant_total.isEmpty{
-                 chartArray.append(.merchantFlow(profit:StringToFloat(str: model.flowmeter_total),color:Color(0xff566e), name:"商家货款"))
+                 chartArray.append(.merchantFlow(profit:StringToFloat(str: model.merchant_total),color:Color(0xff566e), name:"商家货款"))
             }else{
                 item3.value = 0
             }
             if !model.flowmeter_total.isEmpty{
-                chartArray.append(.merchant(profit:StringToFloat(str: model.merchant_total),color:Color(0x0fdca0), name:"商家导流"))
+                chartArray.append(.merchant(profit:StringToFloat(str: model.flowmeter_total),color:Color(0x0fdca0), name:"商家导流"))
             }else{
                 item4.value = 0
             }

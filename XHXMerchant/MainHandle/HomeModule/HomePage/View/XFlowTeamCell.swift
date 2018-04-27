@@ -58,7 +58,7 @@ class XFlowTeamCell: SNBaseTableViewCell {
         contentView.addSubview(nameLable)
         contentView.addSubview(rank)
         
-        //        line.isHidden = true
+        line.isHidden = true
         
         img.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)

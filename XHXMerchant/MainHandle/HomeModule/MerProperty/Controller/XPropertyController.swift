@@ -82,8 +82,11 @@
                 CNLog(self.cellType.count)
                 
                 self.tableView.reloadData()
-            case .fail(_ ,let msg):
+            case .fail(let code,let msg):
                 SZHUD(msg ?? "获取数据失败", type: .error, callBack: nil)
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
             default:
                 break
             }
@@ -91,7 +94,6 @@
     }
     override func setupView() {
         setupUI()
-        loadData()
     }
    }
    
@@ -152,10 +154,10 @@
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         CNLog(self.cellType[indexPath.row])
         switch self.cellType[indexPath.row] {
-        case let .todayHead(model):
-            let vc = XDayEarningController()
-            vc.total = model.money
-            navigationController?.pushViewController(vc, animated: true)
+//        case let .todayHead(model):
+//            let vc = XDayEarningController()
+//            vc.total = model.money
+//            navigationController?.pushViewController(vc, animated: true)
         case .merchant:
             navigationController?.pushViewController(XMerRevenueController(), animated: true)
         case .merchantFlow:
@@ -168,6 +170,10 @@
             navigationController?.pushViewController(XCenterRevenueController(), animated: true)
         case .historyHead:
             navigationController?.pushViewController(XHistoryDetailController(), animated: true)
+        case let .history(model):
+            let vc = XDayEarningController()
+            vc.time = model.add_time
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

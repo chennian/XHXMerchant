@@ -33,8 +33,8 @@ class XRcmdController: SNBaseViewController {
             UIImageWriteToSavedPhotosAlbum(ErCodeTool.creatQRCodeImage(text: qrString, size: fit(1000), icon: icon), self, #selector(self.saveFinshed(image:error:contextInfo:)), nil)
         }
         alervc.addAction(actionCertain)
-        //        present(alervc, animated: true, completion: nil)
-        //        jumpSubject.onNext(SNJumpType.present(vc: alervc, anmi: true))
+//                present(alervc, animated: true, completion: nil)
+//                jumpSubject.onNext(SNJumpType.present(vc: alervc, anmi: true))
         self.present(alervc, animated: true, completion: nil)
     }
     @objc func saveFinshed(image : UIImage,error : NSError?,contextInfo : Any){
@@ -82,9 +82,9 @@ extension XRcmdController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0{
             let cell:XRecmdCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             
-            //            cell.ercodeView.btnClick.subscribe(onNext: {[unowned self] (url) in
-            //                self.saveImg(qrString: url, icon: nil)
-            //            }).disposed(by: disposeBag)
+//                        cell.ercodeView.btnClick.subscribe(onNext: {[unowned self] (url) in
+//                            self.saveImg(qrString: url, icon: nil)
+//                        }).disposed(by: disposeBag)
             
             
             cell.clickEvent = { [unowned self] (para) in

@@ -10,6 +10,8 @@ import UIKit
 
 class XNoticeListController: SNBaseViewController {
     
+    var model :[RecordListModel] = []
+    
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
         $0.register(XNoticeRecordListCell.self)
@@ -29,10 +31,12 @@ class XNoticeListController: SNBaseViewController {
             make.left.top.right.bottom.equalToSuperview()
         }
     }
-    func getData(){
-        SNRequest(requestType: API.flowMer, modelType: [FlowMerModel.self]).subscribe(onNext: {[unowned self] (result) in
+    
+    override func loadData() {
+        SNRequest(requestType: API.getShopEmployeeGatheList(employee_id: XKeyChain.get(STAFFID)), modelType: [RecordListModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .success(let models):
+                self.model = models
                 self.tableView.reloadData()
             case .fail(let code,let msg):
                 SZHUD(msg ?? "请求数据失败", type: .error, callBack: nil)
@@ -46,18 +50,20 @@ class XNoticeListController: SNBaseViewController {
     }
     override func setupView() {
         setupUI()
+        
     }
 
 }
 
 extension XNoticeListController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:XNoticeRecordListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.model = self.model[indexPath.row]
         return cell
         
         
@@ -67,9 +73,6 @@ extension XNoticeListController:UITableViewDelegate,UITableViewDataSource{
         return fit(180)
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-        self.navigationController?.pushViewController(XMerHomeController(), animated: true)
         
     }
     

@@ -15,7 +15,11 @@ class XEarningDayDetailTwoCell: SNBaseTableViewCell {
             guard let cellModel = model else {
                 return
             }
-            self.nameLable.text = cellModel.shopName
+            if cellModel.nickName == ""{
+                self.nameLable.text =  cellModel.shopName
+            }else{
+                self.nameLable.text =  cellModel.nickName
+            }
             self.profit.text = cellModel.money
             self.des.text = "跨店消费:\(cellModel.credit)"
             self.timeLable.text = cellModel.add_time

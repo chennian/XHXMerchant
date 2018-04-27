@@ -194,8 +194,8 @@ extension XHomeController:UITableViewDelegate,UITableViewDataSource{
                 CNLog(XKeyChain.get(IsAgent) + XKeyChain.get(CORPORATION) + XKeyChain.get(OPERATER))
                 
                 if para == 1 {
-                    SZHUD("正在开发中...", type: .info, callBack: nil)
-//                    self.navigationController?.pushViewController(XPropertyController(), animated: true)
+//                    SZHUD("正在开发中...", type: .info, callBack: nil)
+                    self.navigationController?.pushViewController(XPropertyController(), animated: true)
                 }else if para == 2{
 //                    SZHUD("正在开发中...", type: .info, callBack: nil)
                     self.navigationController?.pushViewController(XMerListController(), animated: true)

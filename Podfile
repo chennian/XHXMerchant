@@ -29,6 +29,7 @@ pod 'PGActionSheet'
 pod 'Pgyer'
 pod 'PgyUpdate'
 pod 'BaiduMapKit'
+pod 'JPush'
 
 target 'XHXMerchantTests' do
     inherit! :search_paths

@@ -37,7 +37,7 @@ class AddressPiker: UIView {
     }
 
     fileprivate func loadAddressData(){
-        let JsonPath = Bundle.main.path(forResource: "province_data", ofType: "json")
+        let JsonPath = Bundle.main.path(forResource: "citys", ofType: "json")
         let url = URL(fileURLWithPath: JsonPath!)
         do {
             let data = try Data(contentsOf: url)

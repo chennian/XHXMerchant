@@ -52,6 +52,7 @@ enum API {
     case myRecommendUserList(status:String)
     case historyRevenue //历史收益
     case todayTotalRevenue //今日收益
+    case dayTotalRevenue(paremeter:[String:Any]) //每日收益
     case flowMeterRevenue(start_date:String,end_date:String) //导流收益
     case corporationRevenue(start_date:String,end_date:String) //服务中心收益
     case merchantRevenue(start_date:String,end_date:String) //货款收益
@@ -59,6 +60,13 @@ enum API {
     case serviceRevenue(start_date:String,end_date:String) //服务商收益
     case shopPayAuthority(shop_id:String)  //生成收款码权限
     case getLicenseList
+    case addSecond(paremeter:[String:Any]) //上传秒秒
+    case deleteSecond(paremeter:[String:Any]) //删除秒秒
+    case getKillList(paremeter:[String:Any]) //获取秒杀列表
+    case editShopKill(paremeter:[String:Any])//编辑
+    case getShopMemberList(shopId:String)
+    case getShopEmployeeGatheList(employee_id:String)
+
 }
 
 
@@ -85,8 +93,8 @@ extension API: JSONMappableTargetType {
     var baseURL: URL {
         switch self {
         default:
-//            return URL(string: "http://merchant.xiaoheixiong.net/")!
-        return URL(string: "http://192.168.0.3:8016/")!
+            return URL(string: "http://merchant.xiaoheixiong.net/")!
+//        return URL(string: "http://192.168.0.3:8016/")!
 
         }
         
@@ -160,6 +168,8 @@ extension API: JSONMappableTargetType {
             return "api/historyRevenue"
         case .todayTotalRevenue:
             return "api/todayTotalRevenue"
+        case .dayTotalRevenue:
+            return "api/theDayRevenue"
         case .flowMeterRevenue:
             return "api/flowMeterRevenue"
         case .corporationRevenue:
@@ -174,6 +184,18 @@ extension API: JSONMappableTargetType {
             return "commom/shopPayAuthority"
         case .getLicenseList:
             return "api/getLicenseList"
+        case .addSecond:
+            return "api/addShopKill"
+        case .deleteSecond:
+            return "api/deleteShopKill"
+        case .getKillList:
+            return "api/getKillList"
+        case .editShopKill:
+            return "api/editShopKill"
+        case .getShopMemberList:
+            return "api/getShopMemberList"
+        case .getShopEmployeeGatheList:
+            return "commom/getShopEmployeeGatheList"
         }
     }
     
@@ -268,6 +290,22 @@ extension API: JSONMappableTargetType {
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
         case .shopPayAuthority(let shop_id):
             let para = ["shop_id":shop_id]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .addSecond(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .deleteSecond(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .getKillList(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .editShopKill(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .dayTotalRevenue(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .getShopMemberList(let shopId):
+            let para = ["shopId":shopId]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .getShopEmployeeGatheList(let employee_id):
+            let para = ["employee_id":employee_id]
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
         default:
             return Task.requestPlain

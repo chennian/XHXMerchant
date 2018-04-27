@@ -33,7 +33,7 @@ class MerHomeEndCell: SNBaseTableViewCell {
         $0.backgroundColor = Color(0xffffff)
         $0.img.image = UIImage(named: "shop_coupon")
         $0.noticeImg.image = UIImage(named: "return1")
-        $0.lable.text = "卡卷核销"
+        $0.lable.text = "卡劵核销"
     }
     let viewFour = MerHomeView().then{
         $0.backgroundColor = Color(0xffffff)

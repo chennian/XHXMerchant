@@ -16,7 +16,7 @@ class XReceiveCodeController: SNBaseViewController {
     }
     
     let noticeOne = UILabel().then{
-        $0.text = "员工：陈贱人(xiaoheixiong@qqc)"
+        $0.text = "员工：\(XKeyChain.get(STAFFNAME))(\(XKeyChain.get(PHONE)))"
         $0.font = Font(30)
         $0.textColor = Color(0x272727)
     }
@@ -43,7 +43,7 @@ class XReceiveCodeController: SNBaseViewController {
     }
     
     let nameLable = UILabel().then{
-        $0.text = "陈"
+        $0.text  = XKeyChain.get(STAFFNAME)
         $0.font = Font(81)
         $0.textColor = Color(0x554dff)
     }
@@ -52,7 +52,11 @@ class XReceiveCodeController: SNBaseViewController {
         self.view.backgroundColor = Color(0x554dff)
         navigationItem.titleView = titleView
 
-        self.codeView.creatErcodeStaff("100000")
+        let name = XKeyChain.get(STAFFNAME)
+        let index = name.index(name.startIndex, offsetBy:1)
+        let result = name.substring(to: index)
+        nameLable.text = result
+        self.codeView.creatErcodeStaff(XKeyChain.get(SHOPID))
         
         self.view.addSubview(mainView)
         mainView.addSubview(noticeOne)

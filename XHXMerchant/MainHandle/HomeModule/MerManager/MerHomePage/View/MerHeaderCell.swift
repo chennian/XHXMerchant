@@ -17,7 +17,7 @@ class MerHeaderCell: SNBaseTableViewCell {
             }
             self.merName.text = cellModel.shopName
             self.staffNum.text = "员工数量:\(cellModel.personal)"
-            self.userNum.text = "会员数量\(cellModel.flow_num)"
+            self.userNum.text = "会员数量:\(cellModel.flow_num)"
             if cellModel.logo == ""{
                 self.merHeaderImg.image = UIImage(named: "store_logo")
                 self.backImg.image = UIImage(named:"store_logo")

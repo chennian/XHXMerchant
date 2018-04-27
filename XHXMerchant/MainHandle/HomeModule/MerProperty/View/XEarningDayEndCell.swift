@@ -53,7 +53,7 @@ class XEarningDayEndCell: SNBaseTableViewCell {
             for i in itemArray {
                 total += i
             }
-            self.numberLable.text =  "\(total)"
+            self.numberLable.text =  model.totalNum
             setBarChart(itemArray)
             setupBottom(chartArray)
             
@@ -61,7 +61,7 @@ class XEarningDayEndCell: SNBaseTableViewCell {
     }
     func setupBottom(_ chartArray:[merType]){
         
-        bottomBaseView.frame = CGRect(x: fit(100), y: fit(520), width: fit(575), height:fit(115))
+        bottomBaseView.frame = CGRect(x: fit(100), y: fit(640), width: fit(575), height:fit(115))
         self.contentView.addSubview(bottomBaseView)
         
         item.removeAll()
@@ -69,6 +69,7 @@ class XEarningDayEndCell: SNBaseTableViewCell {
             
             if i % 2 == 0{
                 let view = XTotalProfitView.init(frame: CGRect(x:0, y: fit(20)*CGFloat(i), width: fit(226), height:fit(20)))
+                view.profit.isHidden = true
                 switch  chartArray[i]{
                 case .service(let profit,let color,let name):
                     view.profit.text = String(format:"%.2f",profit)
@@ -95,6 +96,7 @@ class XEarningDayEndCell: SNBaseTableViewCell {
                 bottomBaseView.addSubview(view)
             }else{
                 let view = XTotalProfitView.init(frame: CGRect(x:fit(335), y: fit(20)*CGFloat(i - 1), width: fit(226), height:fit(20)))
+                view.profit.isHidden = true
                 switch  chartArray[i]{
                 case .service(let profit,let color,let name):
                     view.profit.text = String(format:"%.2f",profit)
