@@ -70,10 +70,11 @@ class XMyBankCardController: SNBaseViewController {
                         self.cardNum.text = "银行卡号：\(self.bankNum)"
                     }
                 }
-             
-
-            case .fail(_ ,let msg):
+            case .fail(let code ,let msg):
               SZHUD(msg! , type: .error, callBack: nil)
+              if code == 1006 {
+                self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
             default:
                 break
             }

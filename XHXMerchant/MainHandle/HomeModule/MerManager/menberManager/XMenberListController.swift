@@ -39,10 +39,16 @@ class XMenberListController: SNBaseViewController {
             switch result{
             case .success(let models):
                 self.alipayModel = models[0].alipay
+                if !self.alipayModel.isEmpty{
+                    for item in self.alipayModel{
+                        item.temp = "1"
+                    }
+                }
                 self.weixinModel = models[0].weichat
                 if !models[0].weichat.isEmpty{
                     for item in self.weixinModel{
                         self.alipayModel.append(item)
+                        item.temp = "2"
                     }
                 }
                

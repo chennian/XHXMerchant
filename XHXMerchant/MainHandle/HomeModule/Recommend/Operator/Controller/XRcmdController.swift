@@ -25,27 +25,7 @@ class XRcmdController: SNBaseViewController {
         setNavigationBar()
         
     }
-    func saveImg(qrString : String ,icon : UIImage?){
-        let alervc = UIAlertController(title: nil, message: "是否保存图片", preferredStyle: .alert)
-        let actionCancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        alervc.addAction(actionCancel)
-        let actionCertain = UIAlertAction(title: "确定", style: .default) { (action) in
-            UIImageWriteToSavedPhotosAlbum(ErCodeTool.creatQRCodeImage(text: qrString, size: fit(1000), icon: icon), self, #selector(self.saveFinshed(image:error:contextInfo:)), nil)
-        }
-        alervc.addAction(actionCertain)
-//                present(alervc, animated: true, completion: nil)
-//                jumpSubject.onNext(SNJumpType.present(vc: alervc, anmi: true))
-        self.present(alervc, animated: true, completion: nil)
-    }
-    @objc func saveFinshed(image : UIImage,error : NSError?,contextInfo : Any){
-        if error == nil{
-            
-            SZHUD("保存成功", type: .success, callBack: nil)
-        }else{
-            SZHUD("保存失败", type: .error, callBack: nil)
-        }
-    }
-    
+
     fileprivate func setupUI() {
         
         self.title = "推荐"
@@ -80,12 +60,7 @@ extension XRcmdController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         if indexPath.row == 0{
-            let cell:XRecmdCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            
-//                        cell.ercodeView.btnClick.subscribe(onNext: {[unowned self] (url) in
-//                            self.saveImg(qrString: url, icon: nil)
-//                        }).disposed(by: disposeBag)
-            
+            let cell:XRecmdCell = tableView.dequeueReusableCell(forIndexPath: indexPath)            
             
             cell.clickEvent = { [unowned self] (para) in
                 if para == 1{

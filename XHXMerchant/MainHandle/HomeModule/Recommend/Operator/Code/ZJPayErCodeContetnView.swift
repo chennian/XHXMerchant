@@ -9,10 +9,6 @@
 import UIKit
 import RxSwift
 class ZJPayErCodeContetnView: SNBaseView {
-
-    
-    let btnClick = PublishSubject<String>()
-    
     func creatErcode(){
         let phone = XKeyChain.get(PHONE)
         let url = "http://frontend.xiaoheixiong.net/public/recommend?phone=" + phone
@@ -32,15 +28,6 @@ class ZJPayErCodeContetnView: SNBaseView {
         ercodeBtn.setImage(img, for: UIControlState.normal)
     }
     
-    override func bindEvent() {
-        ercodeBtn.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: {[unowned self] () in
-            let mercId = "123"
-            let url = "http://pay.xiaoheixiong.net/public/getOpenid_uid?mer_id=" + mercId
-//            let img = ErCodeTool.creatQRCodeImage(text: url, size: fit(400), icon: nil)
-            self.btnClick.onNext(url)
-        }).disposed(by: disposeBag)
-    }
-   
     let ercodeBtn = UIButton()
     
     override func setupView() {

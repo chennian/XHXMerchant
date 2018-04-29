@@ -35,28 +35,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         let NotifyOne = NSNotification.Name(rawValue:"TAG")
         NotificationCenter.default.addObserver(self, selector: #selector(setTag(notify:)), name: NotifyOne, object: nil)
         
+        let NotifyTwo = NSNotification.Name(rawValue:"DELETE")
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteTag(notify:)), name: NotifyTwo, object: nil)
+        
         window?.rootViewController = SNMainTabBarController.shared
         self.window?.makeKeyAndVisible()
         return true
     }
- 
-    func receivePush(_ userInfo : Dictionary<String,Any>) {
-        //根据服务器返回的字段判断
-        CNLog(userInfo)
-      }
-
     
     @objc func setTag(notify:NSNotification){
         guard let text: String = notify.object as! String? else { return }
+        CNLog(text)
         JPUSHService.setTags([text], completion: nil, seq: 0)
         
-        let userInfo = notify.userInfo
-        
-        CNLog(userInfo)
-        
+    }
+    
+    deinit {
         NotificationCenter.default.removeObserver(self)
-        
-
+    }
+    
+    @objc func deleteTag(notify:NSNotification){
+        guard let text: String = notify.object as! String? else { return }
+        CNLog(text)
+        JPUSHService.deleteTags([text], completion: nil, seq: 0)
+//        NotificationCenter.default.removeObserver(self)
     }
     fileprivate func startTranslattion(_ string:String){
         //1. 创建需要合成的声音类型
@@ -115,9 +117,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         let registrationID = JPUSHService.registrationID()
         UserDefaults.standard.set(registrationID, forKey: "registrationID")
         UserDefaults.standard.set(registrationID, forKey: "deviceToken")
-        
-        if XKeyChain.get(PHONE) != "" && XKeyChain.get(PHONE).isEmpty{
-        }
         JPUSHService.setAlias(registrationID, callbackSelector: nil, object: nil)
         CNLog("JPUSHService.registrationID=\(JPUSHService.registrationID())")
     }
@@ -127,12 +126,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         JPUSHService.handleRemoteNotification(userInfo)
         let aps = userInfo["aps"] as! NSDictionary
         let alert = aps["alert"] as! String
-
         startTranslattion(alert)
         completionHandler(.newData)
         
     }
-    
     
 }
 extension AppDelegate:BMKGeneralDelegate{
@@ -200,10 +197,16 @@ extension AppDelegate:JPUSHRegisterDelegate{
         let userInfo = notification.request.content.userInfo
         if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))! {
             JPUSHService.handleRemoteNotification(userInfo)
+            CNLog(notification.request.content.body)
+            CNLog(notification.request.content.title)
+            CNLog(notification.request.content.subtitle)
+            CNLog(notification.request.content.userInfo)
             let aps = userInfo["aps"] as! NSDictionary
             let alert = aps["alert"] as! String
+            let sound = aps["sound"] as! String
+            print(sound)
             startTranslattion(alert)
-
+         
 
         } else {// 本地通知
             

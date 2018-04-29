@@ -14,7 +14,7 @@ class XMenberListModel: NSObject {
     var user_id : String
     var id : String
     var create_time : String
-
+    var temp:String
     
     required init?(jsonData: JSON) {
         self.username = jsonData["username"].stringValue
@@ -22,6 +22,7 @@ class XMenberListModel: NSObject {
         self.user_id = jsonData["user_id"].stringValue
         self.id = jsonData["id"].stringValue
         self.create_time = jsonData["create_time"].stringValue
+        self.temp = ""
 
     }
 }

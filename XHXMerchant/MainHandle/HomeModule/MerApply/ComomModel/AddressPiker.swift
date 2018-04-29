@@ -23,6 +23,8 @@ class AddressPiker: UIView {
     var jsonArr:JSON = []
     
     var counrentRow:Int = 0
+    var counrentRow2:Int = 0
+
     
     fileprivate lazy var addressPiker: UIPickerView! = { [unowned self] in
         let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: ScreenW, height: 216))
@@ -158,10 +160,14 @@ extension AddressPiker:UIPickerViewDelegate,UIPickerViewDataSource{
             }
             pickerView.reloadComponent(2)
             pickerView.selectRow(0, inComponent: 2, animated: false)
+            provinceString = provinceArray[counrentRow]
             cityString = cityArray[row]
             countyString = countyArray[0]
+            counrentRow2 = row
         }
         if component == 2 {
+            provinceString = provinceArray[counrentRow]
+            cityString = cityArray[counrentRow2]
             countyString = countyArray[row]
         }
         guard let selectVal = selectValue else {

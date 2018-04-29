@@ -263,6 +263,7 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
         let idcardtwo: String = stepOneItem.backImage?.path ?? ""  //反面照
         let idcardThird: String = stepOneItem.handImage?.path ?? ""  //反面照
         let iDterm: String = stepOneItem.term ?? "1" //省份证有效期
+        let email: String = stepOneItem.email ?? "" //邮箱号码
 
 
         
@@ -314,7 +315,8 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
             "idcardtwo":idcardtwo,
             "idcardThird":idcardThird,
             "term":iDterm,
-
+            "email":email,
+            
             "entabb":entabb,
             "entname":entname,
             "busregnum":busregnum,

@@ -134,8 +134,6 @@ class XRecmdCell: SNBaseTableViewCell {
             make.height.snEqualTo(120)
         }
         
-        
-        
     }
 
 

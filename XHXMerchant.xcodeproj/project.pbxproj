@@ -126,6 +126,10 @@
 		8EAC3A3C208B56CA005C8489 /* SNMainTabBarStaffController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC3A3B208B56CA005C8489 /* SNMainTabBarStaffController.swift */; };
 		8EAC3A3E208BA93D005C8489 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC3A3D208BA93D005C8489 /* UIViewController+Extension.swift */; };
 		8EAC3A42208C38D1005C8489 /* XReceiveCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC3A41208C38D1005C8489 /* XReceiveCodeController.swift */; };
+		8EC4D7D92094D934007488D0 /* XCouponCancerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4D7D82094D934007488D0 /* XCouponCancerController.swift */; };
+		8EC4D7DB20956A76007488D0 /* XInputCouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4D7DA20956A76007488D0 /* XInputCouponController.swift */; };
+		8EC4D7DD20958B5E007488D0 /* XCouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4D7DC20958B5E007488D0 /* XCouponController.swift */; };
+		8EC4D7DF2095AABA007488D0 /* CouponModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4D7DE2095AABA007488D0 /* CouponModel.swift */; };
 		8EC76D002076092A00F78749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76CFF2076092A00F78749 /* AppDelegate.swift */; };
 		8EC76D022076092A00F78749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC76D012076092A00F78749 /* ViewController.swift */; };
 		8EC76D052076092A00F78749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC76D032076092A00F78749 /* Main.storyboard */; };
@@ -387,6 +391,10 @@
 		8EAC3A3B208B56CA005C8489 /* SNMainTabBarStaffController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNMainTabBarStaffController.swift; sourceTree = "<group>"; };
 		8EAC3A3D208BA93D005C8489 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		8EAC3A41208C38D1005C8489 /* XReceiveCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XReceiveCodeController.swift; sourceTree = "<group>"; };
+		8EC4D7D82094D934007488D0 /* XCouponCancerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCouponCancerController.swift; sourceTree = "<group>"; };
+		8EC4D7DA20956A76007488D0 /* XInputCouponController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XInputCouponController.swift; sourceTree = "<group>"; };
+		8EC4D7DC20958B5E007488D0 /* XCouponController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCouponController.swift; sourceTree = "<group>"; };
+		8EC4D7DE2095AABA007488D0 /* CouponModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponModel.swift; sourceTree = "<group>"; };
 		8EC76CFC2076092A00F78749 /* XHXMerchant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHXMerchant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC76CFF2076092A00F78749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC76D012076092A00F78749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -752,6 +760,7 @@
 		8E4EFD072083C3B800798F99 /* MerManager */ = {
 			isa = PBXGroup;
 			children = (
+				8EC4D7D72094D8F6007488D0 /* CouponCancer */,
 				8E0B68182091706B00C698FF /* menberManager */,
 				8EF308462090C86C00752FED /* MerSecend */,
 				8E735746208882B100DB53CB /* MerStaff */,
@@ -1059,6 +1068,17 @@
 				8EAC3A41208C38D1005C8489 /* XReceiveCodeController.swift */,
 			);
 			path = HomeStaff;
+			sourceTree = "<group>";
+		};
+		8EC4D7D72094D8F6007488D0 /* CouponCancer */ = {
+			isa = PBXGroup;
+			children = (
+				8EC4D7D82094D934007488D0 /* XCouponCancerController.swift */,
+				8EC4D7DA20956A76007488D0 /* XInputCouponController.swift */,
+				8EC4D7DC20958B5E007488D0 /* XCouponController.swift */,
+				8EC4D7DE2095AABA007488D0 /* CouponModel.swift */,
+			);
+			path = CouponCancer;
 			sourceTree = "<group>";
 		};
 		8EC76CF32076092A00F78749 = {
@@ -1945,6 +1965,7 @@
 				8EC76D7520760AA300F78749 /* SnapKit_Extension.swift in Sources */,
 				8ED284D22081CE56008ED5AE /* AddressPiker.swift in Sources */,
 				8EC76DA020760AA300F78749 /* SNBaseNaviController.swift in Sources */,
+				8EC4D7DB20956A76007488D0 /* XInputCouponController.swift in Sources */,
 				8EC76D9320760AA300F78749 /* SNBaseViewModel.swift in Sources */,
 				8ED20807207F4165006F441A /* XRecmdMerController.swift in Sources */,
 				8EA0E074207C82B80018232E /* PNBarChart.swift in Sources */,
@@ -1979,6 +2000,7 @@
 				8ED2080D207F466D006F441A /* XRecmdUpdateCell.swift in Sources */,
 				8E54335E208DA18900364246 /* RevenueModel.swift in Sources */,
 				8EF0C3062085D8E20002340D /* XRecmdServiceController.swift in Sources */,
+				8EC4D7D92094D934007488D0 /* XCouponCancerController.swift in Sources */,
 				8E735748208882DC00DB53CB /* XMerStaffListController.swift in Sources */,
 				8EF0C31020886AFD0002340D /* XMerListCell.swift in Sources */,
 				8EF308542090C8B700752FED /* LBAddSeckillController.swift in Sources */,
@@ -2011,6 +2033,7 @@
 				8EF0C3082085D91D0002340D /* XServiceTopCell.swift in Sources */,
 				8EC76D9B20760AA300F78749 /* SNBaseTableView.swift in Sources */,
 				8EF3084F2090C8B700752FED /* SLTextView.swift in Sources */,
+				8EC4D7DF2095AABA007488D0 /* CouponModel.swift in Sources */,
 				8EAC3A322089FCC0005C8489 /* XMerStaffList.swift in Sources */,
 				8EC76DB020762D4C00F78749 /* XListCell.swift in Sources */,
 				8EAC3A3E208BA93D005C8489 /* UIViewController+Extension.swift in Sources */,
@@ -2044,6 +2067,7 @@
 				8ED284D02081BF61008ED5AE /* XOperatorBtnCell.swift in Sources */,
 				8EF30808208F18DB00752FED /* XLincensePiker.swift in Sources */,
 				8E543366208DB6E200364246 /* XOperRevenueController.swift in Sources */,
+				8EC4D7DD20958B5E007488D0 /* XCouponController.swift in Sources */,
 				8EC76D8220760AA300F78749 /* DDZOssManager.swift in Sources */,
 				8E543360208DB62600364246 /* XFlowRevenueController.swift in Sources */,
 				8EC76D002076092A00F78749 /* AppDelegate.swift in Sources */,

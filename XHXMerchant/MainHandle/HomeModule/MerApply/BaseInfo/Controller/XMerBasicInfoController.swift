@@ -19,6 +19,8 @@ class XMerBasicInfoController: SNBaseViewController {
     fileprivate var principalPhone :String?
     fileprivate var idCard :String?
     fileprivate var validity :String?
+    fileprivate var email :String?
+
     
     fileprivate var frontImagePath:String = ""
     fileprivate var backImagePath:String = ""
@@ -59,6 +61,7 @@ class XMerBasicInfoController: SNBaseViewController {
         fieldCell.principalPhoneField.text = oneStep.principalPhone
         fieldCell.idCardField.text = oneStep.idCard
         fieldCell.validityField.text = oneStep.validity
+        fieldCell.emailField.text = oneStep.email
         
         if oneStep.frontImage?.image == nil {
             imgCell.frontCard.setImage(UIImage(named:"papers_front"), for: .normal)
@@ -100,13 +103,15 @@ class XMerBasicInfoController: SNBaseViewController {
         principalPhone = fieldCell.principalPhoneField.text
         idCard = fieldCell.idCardField.text
         validity = fieldCell.validityField.text
+        email = fieldCell.emailField.text
         
         self.stepOneModel?.registName = registName
         self.stepOneModel?.principal = principal
         self.stepOneModel?.principalPhone = principalPhone
         self.stepOneModel?.idCard = idCard
         self.stepOneModel?.validity = validity
-        
+        self.stepOneModel?.email = email
+
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
 
     }
@@ -202,6 +207,10 @@ extension XMerBasicInfoController:UITableViewDelegate,UITableViewDataSource{
             UIAlertView(title: "提示", message: "请输入身份证号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
+        if fieldCell.emailField.text == ""{
+            UIAlertView(title: "提示", message: "请输入邮箱账号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
         if !fieldCell.longBtn.isSelected {
             UIAlertView(title: "提示", message: "请输入身份证有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
@@ -230,7 +239,7 @@ extension XMerBasicInfoController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 {
-            return fit(600)
+            return fit(690)
         }else if indexPath.row == 1{
             return fit(1268)
         }else{

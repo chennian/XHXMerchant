@@ -18,6 +18,12 @@ class XMenberListCell: SNBaseTableViewCell {
             name.text = cellModel.username
             type.text = cellModel.detail
             time.text = cellModel.create_time
+            
+            if  cellModel.temp == "1" {  //支付宝
+                img.image = UIImage(named: "zhifubao")
+            }else{ //微信
+                img.image = UIImage(named: "weixin")
+            }
         }
     }
     

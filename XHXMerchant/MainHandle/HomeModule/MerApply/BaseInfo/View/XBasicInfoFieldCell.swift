@@ -24,6 +24,9 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         $0.backgroundColor = Color(0xe8e8e8)
     }
 
+    private var line5 = UIView().then{
+        $0.backgroundColor = Color(0xe8e8e8)
+    }
     var registName = UILabel().then{
         $0.text = "注册手机号"
         $0.font = Font(30)
@@ -117,6 +120,19 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         
     }
     
+    var email = UILabel().then{
+        $0.text = "邮箱账号"
+        $0.font = Font(30)
+        $0.textColor = Color(0x313131)
+        
+    }
+    var emailField = UITextField().then{
+        $0.borderStyle = .none
+        $0.font = Font(30)
+        $0.textColor = Color(0x313131)
+        $0.placeholder = "请填写邮箱账号"
+    }
+    
     @objc  func clickOne(){
         longBtn.isSelected =  shortBtn.isSelected
         shortBtn.isSelected = !longBtn.isSelected
@@ -142,7 +158,8 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         contentView.addSubview(line2)
         contentView.addSubview(line3)
         contentView.addSubview(line4)
-        
+        contentView.addSubview(line5)
+
         contentView.addSubview(registName)
         contentView.addSubview(registNameField)
         contentView.addSubview(principal)
@@ -156,6 +173,8 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         contentView.addSubview(longBtn)
         contentView.addSubview(shortLable)
         contentView.addSubview(longLable)
+        contentView.addSubview(email)
+        contentView.addSubview(emailField)
 
         contentView.addSubview(validityField)
         contentView.addSubview(view)
@@ -187,6 +206,13 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
             make.right.equalToSuperview()
             make.height.snEqualTo(1)
             make.top.equalTo(line3.snp.bottom).snOffset(90)
+        }
+        
+        line5.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.snEqualTo(1)
+            make.top.equalTo(line4.snp.bottom).snOffset(90)
         }
 
         registName.snp.makeConstraints { (make) in
@@ -235,9 +261,23 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
             make.centerY.equalTo(idCard.snp.centerY)
             make.right.equalToSuperview().offset(fit(-100))
         }
-        validity.snp.makeConstraints { (make) in
+        
+        email.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
             make.top.equalTo(line4.snp.bottom).snOffset(30)
+            make.width.snEqualTo(195)
+        }
+        
+        emailField.snp.makeConstraints { (make) in
+            make.left.snEqualTo(email.snp.right).offset(10)
+            make.centerY.equalTo(email.snp.centerY)
+            make.right.equalToSuperview().offset(fit(-100))
+        }
+        
+        
+        validity.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().snOffset(30)
+            make.top.equalTo(line5.snp.bottom).snOffset(30)
             make.width.snEqualTo(195)
         }
         

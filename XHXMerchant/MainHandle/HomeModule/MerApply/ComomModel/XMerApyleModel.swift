@@ -19,8 +19,7 @@ protocol StepOneProtocol {
     var backImage:ApplyImage? { get set }
     var handImage:ApplyImage? { get set }
     var term: String? { get set  }
-
-
+    var email: String? { get set  }
 }
 
 class StepOne: NSObject,StepOneProtocol,NSCoding {
@@ -42,8 +41,8 @@ class StepOne: NSObject,StepOneProtocol,NSCoding {
     
     var term: String?
 
+    var email: String?
 
-    
     override init() {
         super.init()
     }
@@ -55,6 +54,8 @@ class StepOne: NSObject,StepOneProtocol,NSCoding {
         idCard = aDecoder.decodeObject(forKey: "idCard") as? String
         validity = aDecoder.decodeObject(forKey: "validity") as? String
         term = aDecoder.decodeObject(forKey: "term") as? String
+        email = aDecoder.decodeObject(forKey: "email") as? String
+
 
     }
     
@@ -66,7 +67,7 @@ class StepOne: NSObject,StepOneProtocol,NSCoding {
         aCoder.encode(idCard, forKey: "idCard")
         aCoder.encode(validity, forKey: "validity")
         aCoder.encode(term, forKey: "term")
-
+        aCoder.encode(email, forKey: "email")
     }
 }
 
@@ -352,7 +353,8 @@ class ApplyModelTool {
             stepOneItem.registName = nil
             stepOneItem.validity = nil
             stepOneItem.term = nil
-
+            stepOneItem.email = nil
+            
             let stepSecondeItem = ApplyModel.shareApplyModel.applySelfModel.stepTwo
             stepSecondeItem.area = nil
             stepSecondeItem.checkstand = nil

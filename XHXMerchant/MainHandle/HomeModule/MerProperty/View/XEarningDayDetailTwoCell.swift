@@ -21,7 +21,7 @@ class XEarningDayDetailTwoCell: SNBaseTableViewCell {
                 self.nameLable.text =  cellModel.nickName
             }
             self.profit.text = cellModel.money
-            self.des.text = "跨店消费:\(cellModel.credit)"
+            self.des.text =    cellModel.credit
             self.timeLable.text = cellModel.add_time
         }
     }

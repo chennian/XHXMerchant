@@ -108,6 +108,9 @@ extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
                     let vc = XMerStaffListController()
                     vc.shop_id = (self.merListModel?.shop_id)!
                     self.navigationController?.pushViewController(vc, animated: true)
+                }else if para == "3"{
+                    let vc = XCouponCancerController()
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
             return cell

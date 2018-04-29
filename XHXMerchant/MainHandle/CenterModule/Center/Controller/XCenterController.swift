@@ -208,6 +208,11 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
             self.loginoutCell = cell
             cell.clickEvent = {[unowned self] in
                 
+                let NotifMycation = NSNotification.Name(rawValue:"DELETE")
+                NotificationCenter.default.post(name: NotifMycation, object:XKeyChain.get(PHONE))
+                
+                
+                
                 if XKeyChain.get(ISLOGIN) == "1"{
                     XKeyChain.set("0", key: ISLOGIN)
                     XKeyChain.set("", key: PHONE)

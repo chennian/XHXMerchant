@@ -66,6 +66,8 @@ enum API {
     case editShopKill(paremeter:[String:Any])//编辑
     case getShopMemberList(shopId:String)
     case getShopEmployeeGatheList(employee_id:String)
+    case couponCancel(code:String)
+    case getUserMiaoMiaoDetal(code:String)
 
 }
 
@@ -196,6 +198,10 @@ extension API: JSONMappableTargetType {
             return "api/getShopMemberList"
         case .getShopEmployeeGatheList:
             return "commom/getShopEmployeeGatheList"
+        case .couponCancel:
+            return "api/cancelcoupon"
+        case .getUserMiaoMiaoDetal:
+            return "api/getUserMiaoMiaoDetal"
         }
     }
     
@@ -306,6 +312,12 @@ extension API: JSONMappableTargetType {
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
         case .getShopEmployeeGatheList(let employee_id):
             let para = ["employee_id":employee_id]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .couponCancel(let code):
+            let para = ["verfifyCode":code]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .getUserMiaoMiaoDetal(let code):
+            let para = ["verfifyCode":code]
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
         default:
             return Task.requestPlain
