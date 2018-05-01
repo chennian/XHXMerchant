@@ -186,11 +186,14 @@ class XLoginController: SNBaseViewController
                 let parentPhone = self.userModel.map({return $0.parent_phone})
                 let operater = self.userModel.map({return $0.operater})
                 let corporation = self.userModel.map({return $0.corporation})
+                let headImg = self.userModel.map({return $0.headImg})
                 
                 XKeyChain.set(isMer[0], key:IsMer )
                 XKeyChain.set(isAgent[0], key:IsAgent )
                 XKeyChain.set(roles[0], key:ROLE )
                 XKeyChain.set(nikeName[0], key:NickName)
+                XKeyChain.set(headImg[0], key:HEADIMG)
+
                 XKeyChain.set(parentPhone[0], key:PARENTPHONE)
                 XKeyChain.set(operater[0], key:OPERATER)
                 XKeyChain.set(corporation[0], key:CORPORATION)

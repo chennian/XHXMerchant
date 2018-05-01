@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import RxSwift
 
 class XCenterHeadCell: SNBaseTableViewCell {
-        
-    var headImg = UIImageView().then{
-        $0.image = UIImage(named: "LBlogoIcon")
-        $0.backgroundColor = .lightGray
+    
+    var imgTap = PublishSubject<(AliOssTransferProtocol)>()
+
+    var headImg = DDZUploadBtn().then{
+        $0.setImage(UIImage(named: "LBlogoIcon"), for: .normal)
         $0.layer.cornerRadius = fit(60)
         $0.layer.masksToBounds = true
+        $0.imageView?.contentMode = .scaleAspectFill
     }
     var name = UILabel().then{
         $0.text = "17603078066"
@@ -35,6 +38,14 @@ class XCenterHeadCell: SNBaseTableViewCell {
     
     var backgrundimg = UIImageView().then{
         $0.image = UIImage(named: "my_shade")
+        $0.isUserInteractionEnabled = true
+    }
+    
+    func bindEvernt(){
+        headImg.rx.controlEvent(UIControlEvents.touchUpInside).asObservable().subscribe(onNext:{
+            [unowned self] () in
+            self.imgTap.onNext((self.headImg))
+        }).disposed(by: disposeBag)
     }
     
     override func setupView() {
@@ -43,8 +54,10 @@ class XCenterHeadCell: SNBaseTableViewCell {
         backgrundimg.addSubview(name)
         backgrundimg.addSubview(phone)
         contentView.addSubview(timeButton)
-        
+    
         self.backgroundColor = Color(0xff8518)
+        
+        bindEvernt()
         
         timeButton.setup("获取验证码", timeTitlePrefix: "", aTimeLength: 60)
 

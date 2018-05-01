@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import TOCropViewController
+import TZImagePickerController
 
 class XCenterController: SNBaseViewController {
     fileprivate var topCell:XCenterHeadCell = XCenterHeadCell()
     fileprivate var loginoutCell:XLoginOutCell = XLoginOutCell()
-
+    var protocolObject : AliOssTransferProtocol?
+    var imgPath:String = ""
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
         $0.register(XCenterHeadCell.self)
@@ -28,7 +31,7 @@ class XCenterController: SNBaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+       
         
         if XKeyChain.get(PHONE) == ""{
             topCell.name.text = "未登录"
@@ -123,6 +126,36 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0 {
             let cell:XCenterHeadCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             topCell = cell
+            if XKeyChain.get(HEADIMG) != ""{
+                topCell.headImg.kf.setImage(with: URL(string:XKeyChain.get(HEADIMG)), for: .normal)
+            }
+            cell.imgTap.subscribe(onNext: {[unowned self] (btn) in
+                self.protocolObject = btn
+                let alertView = DDZCamerationController()
+                let picker = DDZImagePickerVC()
+                picker.delegate = self
+                if UIImagePickerController.isSourceTypeAvailable(.camera){
+                    let action = UIAlertAction(title: "拍照", style: .default, handler: { (action) in
+                        picker.sourceType = .camera
+                        self.present(picker, animated: true, completion: nil)
+                    })
+                    alertView.addAction(action)
+                }
+                
+                if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+                    let action = UIAlertAction(title: "图库", style: .default, handler: { (action) in
+                        picker.sourceType = .savedPhotosAlbum
+                        self.present(picker, animated: true, completion: nil)
+                        
+                    })
+                    alertView.addAction(action)
+                }
+                let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+                alertView.addAction(cancelAction)
+                
+                self.present(alertView, animated: true, completion: nil)
+            }).disposed(by: cell.disposeBag)
+            
             if XKeyChain.get(PHONE) == ""{
                 cell.name.text = "未登录"
             }else{
@@ -268,3 +301,53 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
         }
     }
 }
+extension XCenterController : UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let img = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let cropVC = TOCropViewController(croppingStyle: .default, image: img)
+        cropVC.customAspectRatio = CGSize(width:fit(122),height:fit(122))
+        cropVC.delegate = self
+        picker.dismiss(animated: true) {
+            self.present(cropVC, animated: true, completion: nil)
+        }
+    }
+}
+
+extension  XCenterController: TOCropViewControllerDelegate{
+    func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {
+        unowned let weakself = self
+        cropViewController.dismiss(animated: false) {
+            weakself.protocolObject?.setPalceImg(img: image, fineshed: { (res) in
+                if res{//上传oss成功
+                    guard let obk = self.protocolObject?.obkVar.value else{
+                        return
+                    }
+                    self.imgPath = frontUrl + obk
+                    self.topCell.headImg.kf.setImage(with: URL(string:self.imgPath ), for: .normal)
+                    if self.imgPath != ""{
+                        SNRequestBool(requestType: API.updateHeadPic(headImg: self.imgPath)).subscribe(onNext: {[unowned self] (result) in
+                            switch result{
+                            case .bool(let msg):
+                                SZHUD(msg, type: .success, callBack: nil)
+                                XKeyChain.set(self.imgPath, key: HEADIMG)
+                            case .fail(let res):
+                                UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+                            default:
+                                UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+                            }
+                        }).disposed(by: self.disposeBag)
+                    }
+                    
+                    SZHUDDismiss()
+                }
+            })
+            
+        }
+        
+    }
+}
+
+

@@ -68,6 +68,7 @@ enum API {
     case getShopEmployeeGatheList(employee_id:String)
     case couponCancel(code:String)
     case getUserMiaoMiaoDetal(code:String)
+    case updateHeadPic(headImg:String)
 
 }
 
@@ -202,6 +203,8 @@ extension API: JSONMappableTargetType {
             return "api/cancelcoupon"
         case .getUserMiaoMiaoDetal:
             return "api/getUserMiaoMiaoDetal"
+        case .updateHeadPic:
+            return "api/updateHeadPic"
         }
     }
     
@@ -226,6 +229,9 @@ extension API: JSONMappableTargetType {
     var task: Task {
         
         switch self {
+        case .updateHeadPic(let headImg):
+            let para = ["headImg": headImg]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
         case .forgetPass(let mobile,let code,let password):
             let para = ["mobile": mobile,"code":code,"password":password]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)

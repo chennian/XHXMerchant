@@ -27,7 +27,7 @@ public let PASSWORD = "password"
 public let PARENTPHONE = "PARENTPHONE"
 public let OPERATER = "operater"
 public let CORPORATION = "corporation"
-
+public let HEADIMG = "HEADIMG"
 public let NickName = "nickName"
 public let IsMer = "isMer"
 public let IsAgent = "isAgent"
