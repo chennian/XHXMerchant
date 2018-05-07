@@ -17,7 +17,12 @@ class XAddMerController: SNBaseViewController {
     var  Province:String = ""
     var  City:String = ""
     var  County:String = ""
+
     
+    let searcher = BMKGeoCodeSearch()
+    let searcherOption = BMKGeoCodeSearchOption()
+    var location:CLLocationCoordinate2D?
+
     var cell :XAddMerCell = XAddMerCell()
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
@@ -59,7 +64,9 @@ class XAddMerController: SNBaseViewController {
         
          let parameters:[String:Any] = ["shopName":cell.merShortNameField.text!,
                                         "address":cell.addressField.text! + cell.detailAddressField.text!,
-                                        "entname":cell.LicenseNameField.text!]
+                                        "entname":cell.LicenseNameField.text!,
+                                        "longitude":"\(String(describing: self.location?.longitude))",
+                                        "latitude":"\(String(describing: self.location?.latitude))"]
         CNLog(parameters)
         
         SNRequestBool(requestType: API.addBranchShop(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
@@ -76,6 +83,26 @@ class XAddMerController: SNBaseViewController {
     }
     override func setupView() {
         setupUI()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //定位
+        XLocationManager.shareUserInfonManager.startUpLocation()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        XLocationManager.shareUserInfonManager.stopUpLocation()
+    }
+    func geoCode(_ address:String){
+        searcher.delegate = self
+        searcherOption.address = address
+        searcherOption.city = XKeyChain.get("CITY")
+        let flag: Bool = searcher.geoCode(searcherOption)
+        if flag {
+            print("geo检索发送成功")
+        } else {
+            print("geo检索发送失败")
+        }
     }
 }
 
@@ -97,6 +124,8 @@ extension XAddMerController:UITableViewDelegate,UITableViewDataSource{
                 self.Province = province
                 self.City = city
                 self.County = county
+                
+                self.geoCode(string)
             }
             
             self.cell.LicenseNameField.inputView = lincensePiker
@@ -130,4 +159,14 @@ extension XAddMerController:UITableViewDelegate,UITableViewDataSource{
         
     }
     
+}
+extension XAddMerController:BMKGeoCodeSearchDelegate{
+    func onGetReverseGeoCodeResult(_ searcher: BMKGeoCodeSearch!, result: BMKReverseGeoCodeResult!, errorCode error: BMKSearchErrorCode) {
+        if error == BMK_SEARCH_NO_ERROR {
+            CNLog("正常")
+            self.location = result.location
+        }else{
+            CNLog("未找到结果")
+        }
+    }
 }

@@ -231,7 +231,7 @@ extension XHomeController:UITableViewDelegate,UITableViewDataSource{
                         return
                     }
                     self.navigationController?.pushViewController(XServiceRoleController(), animated: true)
-                }else{
+                }else if para == 7{
                     if XKeyChain.get(OPERATER) == "1"{
                         SZHUD("无权限", type: .info, callBack: nil)
                         return
@@ -241,7 +241,8 @@ extension XHomeController:UITableViewDelegate,UITableViewDataSource{
                         return
                     }
                     self.navigationController?.pushViewController(XOperRoleController(), animated: true)
-
+                }else{
+                    self.navigationController?.pushViewController(XCashController(), animated: true)
                 }
             }
             return cell

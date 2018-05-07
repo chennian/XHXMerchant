@@ -20,9 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = .white
-        
         configJupsh(launchOptions: launchOptions)
-
         //百度地图
         configBaidumap()
         //蒲公英更新
@@ -32,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         PgyUpdateManager.sharedPgy().checkUpdate();
         
         XKeyChain.set("0", key: TEMP)//解决死循环
+        
         let NotifyOne = NSNotification.Name(rawValue:"TAG")
         NotificationCenter.default.addObserver(self, selector: #selector(setTag(notify:)), name: NotifyOne, object: nil)
         

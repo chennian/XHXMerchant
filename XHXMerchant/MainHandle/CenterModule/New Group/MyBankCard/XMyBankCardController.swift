@@ -23,7 +23,7 @@ class XMyBankCardController: SNBaseViewController {
     }
     
     let notice = UILabel().then{
-        $0.text = "注：此银行卡用于分润收款"
+        $0.text = "注：此银行卡用于分红收款"
         $0.font = Font(24)
         $0.textColor = Color(0x6c6c6c)
     }

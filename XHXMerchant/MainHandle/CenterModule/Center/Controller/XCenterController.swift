@@ -292,6 +292,7 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
         }
         if indexPath.row == 4 {
 //            SZHUD("正在开发中...", type: .info, callBack: nil)
+//            navigationController?.pushViewController(XCashController(), animated: true)
 
             navigationController?.pushViewController(XMerPushSwitchController(), animated: true)
         }

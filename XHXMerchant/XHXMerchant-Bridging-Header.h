@@ -11,8 +11,7 @@
 #import <BaiduMapAPI_Radar/BMKRadarComponent.h>//引入周边雷达功能所有的头文件
 
 #import "JPUSHService.h"
-
-
+#import <IQKeyboardManager/IQKeyboardManager.h>
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #import <PgySDK/PgyManager.h>

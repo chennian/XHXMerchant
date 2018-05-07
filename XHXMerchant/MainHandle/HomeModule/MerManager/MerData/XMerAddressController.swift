@@ -17,6 +17,7 @@ class XMerAddressController: SNBaseViewController {
     }
     
     
+    
     let service   = BMKLocationService()
     let poiSearch = BMKPoiSearch()
     let option = BMKNearbySearchOption()
@@ -76,6 +77,7 @@ class XMerAddressController: SNBaseViewController {
         SZHUD("加载中...", type:.loading, callBack: nil)
       
     }
+    
     override func setupView() {
         setup()
         setMapService()
@@ -107,7 +109,7 @@ extension XMerAddressController:BMKPoiSearchDelegate,BMKLocationServiceDelegate{
         poiSearch.delegate = self
         option.pageIndex = 0
         option.pageCapacity =  20
-        option.radius = 1000
+        option.radius = 10000
         option.keyword = self.key
         CNLog(self.key)
         option.location = userLocation.location.coordinate
@@ -151,3 +153,4 @@ extension XMerAddressController:UITextFieldDelegate{
     }
     
 }
+

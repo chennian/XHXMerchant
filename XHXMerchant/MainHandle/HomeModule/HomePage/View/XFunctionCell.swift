@@ -50,14 +50,20 @@ class XFunctionCell: SNBaseTableViewCell {
         $0.contentMode = .scaleAspectFill
         $0.tag = 7
     }
+    let cashMoneyRole = UIButton().then{
+        $0.setImage(UIImage(named: "home_withdraw_deposit"), for: .normal)
+        $0.contentMode = .scaleAspectFill
+        $0.tag = 8
+        $0.isHidden = true
+    }
     
     let flowTeamLable = UILabel().then{
-        $0.text = "我的流量团队"
+        $0.text = "团队流量"
         $0.textColor = Color(0x313131)
         $0.font = Font(30)
     }
     let flowMerLable = UILabel().then{
-        $0.text = "我的流量店铺"
+        $0.text = "商家流量"
         $0.textColor = Color(0x313131)
         $0.font = Font(30)
     }
@@ -75,6 +81,12 @@ class XFunctionCell: SNBaseTableViewCell {
         $0.text = "升级运营商"
         $0.textColor = Color(0x313131)
         $0.font = Font(30)
+    }
+    let cashMoney = UILabel().then{
+        $0.text = "提现"
+        $0.textColor = Color(0x313131)
+        $0.font = Font(30)
+        $0.isHidden = true
     }
     let profitLable = UILabel().then{
         $0.text = "收益"
@@ -101,6 +113,7 @@ class XFunctionCell: SNBaseTableViewCell {
          recommend.addTarget(self, action: #selector(click), for: .touchUpInside)
          uploadRole.addTarget(self, action: #selector(click), for: .touchUpInside)
          operatorRole.addTarget(self, action: #selector(click), for: .touchUpInside)
+         cashMoneyRole.addTarget(self, action: #selector(click), for: .touchUpInside)
 
     }
     override func setupView() {
@@ -112,15 +125,19 @@ class XFunctionCell: SNBaseTableViewCell {
         contentView.addSubview(recommend)
         contentView.addSubview(uploadRole)
         contentView.addSubview(operatorRole)
+        contentView.addSubview(cashMoneyRole)
 
         contentView.addSubview(flowTeamLable)
         contentView.addSubview(flowMerLable)
         contentView.addSubview(recommendLable)
         contentView.addSubview(uploadRoleLable)
         contentView.addSubview(operatorRoleLable)
+        contentView.addSubview(cashMoney)
+
 
         contentView.addSubview(profitLable)
         contentView.addSubview(managerLable)
+    
         
         bindEvent()
         hidLine()
@@ -162,6 +179,11 @@ class XFunctionCell: SNBaseTableViewCell {
             make.top.equalTo(uploadRole.snp.top)
             make.width.height.snEqualTo(150)
         }
+        cashMoneyRole.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().snOffset(-60)
+            make.centerY.equalTo(operatorRole.snp.centerY)
+            make.width.height.snEqualTo(150)
+        }
         
         flowTeamLable.snp.makeConstraints { (make) in
             make.centerX.equalTo(flowTeam.snp.centerX)
@@ -182,6 +204,10 @@ class XFunctionCell: SNBaseTableViewCell {
         operatorRoleLable.snp.makeConstraints { (make) in
             make.centerX.equalTo(operatorRole.snp.centerX)
             make.top.equalTo(operatorRole.snp.bottom).snOffset(5)
+        }
+        cashMoney.snp.makeConstraints { (make) in
+            make.centerX.equalTo(cashMoneyRole.snp.centerX)
+            make.top.equalTo(cashMoneyRole.snp.bottom).snOffset(5)
         }
         profitLable.snp.makeConstraints { (make) in
             make.right.equalTo(profit.snp.right).snOffset(-60)

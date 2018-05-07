@@ -16,6 +16,18 @@ class XEarningDayEndCell: SNBaseTableViewCell {
         didSet{
             guard let model = models else {return}
             chartArray.removeAll()
+            if !model.merchant.isEmpty{
+                chartArray.append(.merchantFlow(profit:StringToFloat(str: model.merchant_num),color:Color(0xff566e), name:"商家货款"))
+                itemArray[2] = StringToFloat(str: model.merchant_num)
+            }else{
+                itemArray[2] = 0
+            }
+            if !model.flowmeter.isEmpty{
+                chartArray.append(.merchant(profit:StringToFloat(str: model.flow_num),color:Color(0x0fdca0), name:"跨店分红"))
+                itemArray[3] = StringToFloat(str: model.flow_num)
+            }else{
+                itemArray[3] = 0
+            }
             if !model.service.isEmpty{
                 chartArray.append(.service(profit:StringToFloat(str: model.service_num), color:Color(0x2894ff), name:"服务商"))
                 itemArray[0] = StringToFloat(str: model.service_num)
@@ -28,19 +40,7 @@ class XEarningDayEndCell: SNBaseTableViewCell {
             }else{
                 itemArray[1] = 0
             }
-            if !model.merchant.isEmpty{
-                chartArray.append(.merchantFlow(profit:StringToFloat(str: model.merchant_num),color:Color(0xff566e), name:"商家货款"))
-                itemArray[2] = StringToFloat(str: model.merchant_num)
-            }else{
-                itemArray[2] = 0
-            }
-            if !model.flowmeter.isEmpty{
-                chartArray.append(.merchant(profit:StringToFloat(str: model.flow_num),color:Color(0x0fdca0), name:"商家导流"))
-                itemArray[3] = StringToFloat(str: model.flow_num)
-            }else{
-                itemArray[3] = 0
-            }
-            
+
             if !model.corporation.isEmpty{
                 chartArray.append(.center(profit:StringToFloat(str: model.corporation_num),color:Color(0xff9c00), name:"服务中心"))
                 itemArray[4] = StringToFloat(str: model.corporation_num)

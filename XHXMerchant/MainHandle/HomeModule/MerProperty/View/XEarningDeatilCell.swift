@@ -23,7 +23,7 @@ class XEarningDeatilCell: SNBaseTableViewCell {
     }
     
     var des = UILabel().then{
-        $0.text = "1234笔分润"
+        $0.text = "1234笔分红"
     }
 
     override func setupView() {

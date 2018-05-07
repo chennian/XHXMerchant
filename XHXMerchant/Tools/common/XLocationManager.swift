@@ -27,6 +27,9 @@ class XLocationManager: NSObject{
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
+    func stopUpLocation(){
+        locationManager.stopUpdatingLocation()
+    }
     class var shareUserInfonManager:XLocationManager{
         return sharedInstance
     }
@@ -64,7 +67,7 @@ extension XLocationManager:CLLocationManagerDelegate{
             let address = city! + subLocality! + are! + name!
             CNLog(address)
             XKeyChain.set(address, key: "ADDRESS")
-            
+            XKeyChain.set(city!, key: "CITY")
             
             guard are != nil  else {return}
             

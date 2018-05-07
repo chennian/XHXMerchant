@@ -15,6 +15,17 @@ class XEarningDayHeaderCell: SNBaseTableViewCell {
         didSet{
             guard let model = models else {return}
             chartArray.removeAll()
+          
+            if !model.merchant.isEmpty{
+                chartArray.append(.merchantFlow(profit:StringToFloat(str: model.merchant),color:Color(0xff566e), name:"商家货款"))
+            }else{
+                item3.value = 0
+            }
+            if !model.flowmeter.isEmpty{
+                chartArray.append(.merchant(profit:StringToFloat(str: model.flowmeter),color:Color(0x0fdca0), name:"跨店分红"))
+            }else{
+                item4.value = 0
+            }
             if !model.service.isEmpty{
                 chartArray.append(.service(profit:StringToFloat(str: model.service), color:Color(0x2894ff), name:"服务商"))
             }else{
@@ -24,16 +35,6 @@ class XEarningDayHeaderCell: SNBaseTableViewCell {
                 chartArray.append(.operation(profit:StringToFloat(str: model.operater),color:Color(0xffcc00), name:"运营商"))
             }else{
                 item2.value = 0
-            }
-            if !model.merchant.isEmpty{
-                chartArray.append(.merchantFlow(profit:StringToFloat(str: model.merchant),color:Color(0xff566e), name:"商家货款"))
-            }else{
-                item3.value = 0
-            }
-            if !model.flowmeter.isEmpty{
-                chartArray.append(.merchant(profit:StringToFloat(str: model.flowmeter),color:Color(0x0fdca0), name:"商家导流"))
-            }else{
-                item4.value = 0
             }
             
             if !model.corporation.isEmpty{
@@ -82,7 +83,7 @@ class XEarningDayHeaderCell: SNBaseTableViewCell {
     var item1 = PNPieChartDataItem(dateColor: Color(0x2894ff), description: "") //"服务商")
     var item2 = PNPieChartDataItem(dateColor: Color(0xffcc00), description: "")//"运营商")
     var item3 = PNPieChartDataItem(dateColor: Color(0xff566e), description: "")//"商家货款")
-    var item4 = PNPieChartDataItem(dateColor: Color(0x0fdca0), description: "")//"商家导流")
+    var item4 = PNPieChartDataItem(dateColor: Color(0x0fdca0), description: "")//"跨店分红")
     var item5 = PNPieChartDataItem(dateColor: Color(0xff9c00), description: "")//"服务中心")
     //圆饼图
     private func setPieChart(_ chartArray:[merType]){

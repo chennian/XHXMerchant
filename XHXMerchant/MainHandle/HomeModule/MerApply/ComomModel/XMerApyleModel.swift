@@ -381,6 +381,7 @@ class ApplyModelTool {
             stepThirItem.privateBankAddress = nil
             stepThirItem.branchName = nil
             stepThirItem.leftMobile = nil
+            stepThirItem.permitCard = nil
             
             stepThirItem.openbankName = nil
             stepThirItem.openBankAddress = nil

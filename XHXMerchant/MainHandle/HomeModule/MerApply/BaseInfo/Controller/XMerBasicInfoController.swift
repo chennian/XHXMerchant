@@ -89,10 +89,12 @@ class XMerBasicInfoController: SNBaseViewController {
         if oneStep.term == "1" || oneStep.term == nil{
             fieldCell.longBtn.isSelected = true
             fieldCell.shortBtn.isSelected = false
+            fieldCell.validityField.isUserInteractionEnabled  = false
 
         }else{
             fieldCell.shortBtn.isSelected = true
             fieldCell.longBtn.isSelected = false
+            fieldCell.validityField.isUserInteractionEnabled  = true
         }
         
         
@@ -211,7 +213,7 @@ extension XMerBasicInfoController:UITableViewDelegate,UITableViewDataSource{
             UIAlertView(title: "提示", message: "请输入邮箱账号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
-        if !fieldCell.longBtn.isSelected {
+        if !fieldCell.longBtn.isSelected && fieldCell.validityField.text == ""{
             UIAlertView(title: "提示", message: "请输入身份证有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
@@ -256,7 +258,7 @@ extension XMerBasicInfoController : UIImagePickerControllerDelegate,UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let img = info[UIImagePickerControllerOriginalImage] as! UIImage
         let cropVC = TOCropViewController(croppingStyle: .default, image: img)
-        cropVC.customAspectRatio = CGSize(width:fit(483),height:fit(260))
+//        cropVC.customAspectRatio = CGSize(width:fit(483),height:fit(260))
         cropVC.delegate = self
         picker.dismiss(animated: true) {
             self.present(cropVC, animated: true, completion: nil)

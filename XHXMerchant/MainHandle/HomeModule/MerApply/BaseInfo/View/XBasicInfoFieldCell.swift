@@ -137,6 +137,10 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         longBtn.isSelected =  shortBtn.isSelected
         shortBtn.isSelected = !longBtn.isSelected
         
+        if longBtn.isSelected {
+            validityField.isUserInteractionEnabled = false
+        }
+        
         guard  let action = block else {
             return
         }
@@ -146,6 +150,10 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
     @objc  func clickTwo(){
         shortBtn.isSelected = longBtn.isSelected
         longBtn.isSelected = !shortBtn.isSelected
+        
+        if shortBtn.isSelected {
+            validityField.isUserInteractionEnabled = true
+        }
         
         guard  let action = block else {
             return
@@ -181,7 +189,6 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         view.addSubview(notice)
         longBtn.addTarget(self, action: #selector(clickOne), for: .touchUpInside)
         shortBtn.addTarget(self, action: #selector(clickTwo), for: .touchUpInside)
-
 
         line1.snp.makeConstraints { (make) in
             make.left.equalToSuperview()

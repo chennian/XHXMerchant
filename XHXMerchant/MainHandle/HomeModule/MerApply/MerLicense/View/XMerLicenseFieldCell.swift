@@ -139,7 +139,9 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
     @objc  func clickOne(){
         longBtn.isSelected =  shortBtn.isSelected
         shortBtn.isSelected = !longBtn.isSelected
-        
+        if longBtn.isSelected {
+            licenseTermField.isUserInteractionEnabled = false
+        }
         guard  let action = block else {
             return
         }
@@ -149,6 +151,10 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
     @objc  func clickTwo(){
         shortBtn.isSelected = longBtn.isSelected
         longBtn.isSelected = !shortBtn.isSelected
+        
+        if shortBtn.isSelected {
+            licenseTermField.isUserInteractionEnabled = true
+        }
         
         guard  let action = block else {
             return

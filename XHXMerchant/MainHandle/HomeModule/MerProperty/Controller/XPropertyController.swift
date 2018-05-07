@@ -57,17 +57,18 @@
                 if !self.todayModel[0].merchant.isEmpty{
                     self.cellType.append(.merchant(["商家货款",self.todayModel[0].merchant,self.todayModel[0].merchant_num]))
                 }
+                if !self.todayModel[0].flowmeter.isEmpty{
+                    self.cellType.append(.merchantFlow(["跨店分红",self.todayModel[0].flowmeter,self.todayModel[0].flow_num]))
+                }
                 if !self.todayModel[0].service.isEmpty{
-                     self.cellType.append(.service(["服务商分润",self.todayModel[0].service,self.todayModel[0].service_num]))
+                     self.cellType.append(.service(["服务商分红",self.todayModel[0].service,self.todayModel[0].service_num]))
                 }
                 if !self.todayModel[0].operater.isEmpty{
-                    self.cellType.append(.operation(["运营商分润",self.todayModel[0].operater,self.todayModel[0].operator_num]))
+                    self.cellType.append(.operation(["运营商分红",self.todayModel[0].operater,self.todayModel[0].operator_num]))
                 }
-                if !self.todayModel[0].flowmeter.isEmpty{
-                    self.cellType.append(.merchantFlow(["商家导流分润",self.todayModel[0].flowmeter,self.todayModel[0].flow_num]))
-                }
+              
                 if !self.todayModel[0].corporation.isEmpty{
-                    self.cellType.append(.center(["服务中心分润",self.todayModel[0].corporation,self.todayModel[0].corporation_num]))
+                    self.cellType.append(.center(["服务中心分红",self.todayModel[0].corporation,self.todayModel[0].corporation_num]))
                 }
                 
                 self.cellType.append(.space)

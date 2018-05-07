@@ -20,6 +20,12 @@ class XMerDataController: SNBaseViewController {
     var shortName:String = ""
     var shopId : String = ""
     var model:[XMerListModel] = []
+    
+    
+    let searcher = BMKGeoCodeSearch()
+    let searcherOption = BMKGeoCodeSearchOption()
+    var location:CLLocationCoordinate2D?
+
 
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
@@ -32,6 +38,7 @@ class XMerDataController: SNBaseViewController {
         $0.register(XSpaceCell.self)
         $0.separatorStyle = .none
     }
+ 
     
     //接受通知
     func receiveNotify(){
@@ -77,7 +84,23 @@ class XMerDataController: SNBaseViewController {
     @objc func getShopAddress(notify: NSNotification) {
         guard let text: String = notify.object as! String? else { return }
         self.endCell.viewFive.nameLable.text = text
+        
+        //地理编码
+        geoCode(text)
+        
     }
+    func geoCode(_ address:String){
+        searcher.delegate = self
+        searcherOption.address = address
+        searcherOption.city = XKeyChain.get("CITY")
+        let flag: Bool = searcher.geoCode(searcherOption)
+        if flag {
+            print("geo检索发送成功")
+        } else {
+            print("geo检索发送失败")
+        }
+    }
+
     fileprivate func submit(){
         if !detailImgs.isEmpty {
             self.detailImgPath = detailImgs.joined(separator:"|")
@@ -126,7 +149,9 @@ class XMerDataController: SNBaseViewController {
                                        "detail":self.detailImgPath,
                                        "tab":self.endCell.viewFour.nameLable.text!,
                                        "address":self.endCell.viewFive.nameLable.text!,
-                                       "phone":self.endCell.viewTwo.nameLable.text!]
+                                       "phone":self.endCell.viewTwo.nameLable.text!,
+                                       "longitude":"\(String(describing: self.location?.longitude))",
+                                       "latitude":"\(String(describing: self.location?.latitude))"]
         
         CNLog(parameters)
         SNRequestBool(requestType: API.submitShopDate(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
@@ -149,8 +174,15 @@ class XMerDataController: SNBaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-     
+        //定位
+        XLocationManager.shareUserInfonManager.startUpLocation()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        XLocationManager.shareUserInfonManager.stopUpLocation()
+        searcher.delegate = nil;
+    }
+    
     func loadShopData() {
         SNRequest(requestType: API.shopHome(shopId:self.shopId), modelType: [XMerListModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
@@ -327,5 +359,13 @@ extension  XMerDataController: TOCropViewControllerDelegate{
     }
 }
 
-
+extension XMerDataController:BMKGeoCodeSearchDelegate{
+    func onGetReverseGeoCodeResult(_ searcher: BMKGeoCodeSearch!, result: BMKReverseGeoCodeResult!, errorCode error: BMKSearchErrorCode) {
+        if error == BMK_SEARCH_NO_ERROR {
+          self.location = result.location
+        }else{
+            CNLog("未找到结果")
+        }
+    }
+}
 

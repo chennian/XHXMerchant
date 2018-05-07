@@ -329,7 +329,7 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
         ]
         CNLog(parameters)
         
-        SNRequestBool(requestType: API.insertMerchant(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
+        SNRequestBool(requestType: API.merchantAddPublic(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .bool(_):
                 ApplyModelTool.removeModel()
@@ -372,7 +372,7 @@ extension XOpenAccountController : UIImagePickerControllerDelegate,UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let img = info[UIImagePickerControllerOriginalImage] as! UIImage
         let cropVC = TOCropViewController(croppingStyle: .default, image: img)
-        cropVC.customAspectRatio = CGSize(width:fit(483),height:fit(260))
+//        cropVC.customAspectRatio = CGSize(width:fit(483),height:fit(260))
         cropVC.delegate = self
         picker.dismiss(animated: true) {
             self.present(cropVC, animated: true, completion: nil)

@@ -139,10 +139,11 @@ class XMerLicenseController: SNBaseViewController {
         if twoStep.term == "1" || twoStep.term == nil{
             fieldCell.longBtn.isSelected = true
             fieldCell.shortBtn.isSelected = false
-            
+            fieldCell.licenseTermField.isUserInteractionEnabled  = false
         }else{
             fieldCell.shortBtn.isSelected = true
             fieldCell.longBtn.isSelected = false
+            fieldCell.licenseTermField.isUserInteractionEnabled  = true
         }
     }
 }
@@ -240,7 +241,7 @@ extension XMerLicenseController:UITableViewDelegate,UITableViewDataSource{
             UIAlertView(title: "提示", message: "请输入营业执照名称", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
-        if !fieldCell.longBtn.isSelected {
+        if !fieldCell.longBtn.isSelected && fieldCell.licenseTermField.text == ""{
             UIAlertView(title: "提示", message: "请输入营业执照有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
@@ -318,7 +319,7 @@ extension XMerLicenseController : UIImagePickerControllerDelegate,UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let img = info[UIImagePickerControllerOriginalImage] as! UIImage
         let cropVC = TOCropViewController(croppingStyle: .default, image: img)
-        cropVC.customAspectRatio = CGSize(width:fit(483),height:fit(260))
+//        cropVC.customAspectRatio = CGSize(width:fit(483),height:fit(260))
         cropVC.delegate = self
         picker.dismiss(animated: true) {
             self.present(cropVC, animated: true, completion: nil)

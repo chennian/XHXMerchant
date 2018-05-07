@@ -25,6 +25,7 @@ enum API {
     case bannar
     case bankList
     case insertMerchant(paremeter:[String:Any])
+    case merchantAddPublic(paremeter:[String:Any])
     case sendSMS(mobile:String,vtype:String)
     case verifyCode(mobile:String,code:String,vtype:String)
     case alterAccountPwd(mobile:String,code:String,password:String)
@@ -84,8 +85,6 @@ extension API: JSONMappableTargetType {
             CNLog(token + timestamp)
             return ["X-AUTH-TOKEN":token,"X-AUTH-TIMESTAMP":timestamp]
         }
-        
-        
     }
     
     var responseType: SNSwiftyJSONAble.Type {
@@ -117,6 +116,8 @@ extension API: JSONMappableTargetType {
             return "commom/getBankList"
         case .insertMerchant:
             return "api/merchantAdd"
+        case .merchantAddPublic:
+            return "api/merchantAddPublic"
         case .sendSMS:
             return "commom/sendSMS"
         case .verifyCode:
@@ -236,6 +237,8 @@ extension API: JSONMappableTargetType {
             let para = ["mobile": mobile,"code":code,"password":password]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)
         case .insertMerchant(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .merchantAddPublic(let paremeter):
             return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
         case .sendSMS(let mobile,let vtype):
             let para = ["mobile": mobile,"vtype":vtype]
