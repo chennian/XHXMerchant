@@ -20,6 +20,12 @@ class XEarningDayDetailTwoCell: SNBaseTableViewCell {
             }else{
                 self.nameLable.text =  cellModel.nickName
             }
+            if cellModel.pass_pay == "1" {
+                self.img.image = UIImage(named: "weixin")
+            }else if cellModel.pass_pay == "2"{
+                self.img.image = UIImage(named: "zhifubao")
+            }
+            
             self.profit.text = cellModel.money
             self.des.text =    cellModel.credit
             self.timeLable.text = cellModel.add_time
@@ -72,7 +78,7 @@ class XEarningDayDetailTwoCell: SNBaseTableViewCell {
         }
         nameLable.snp.makeConstraints { (make) in
             make.left.equalTo(img.snp.right).snOffset(18)
-            make.top.equalTo(img.snp.top).snOffset(10)
+            make.top.equalTo(img.snp.top)
         }
         profit.snp.makeConstraints { (make) in
             make.right.equalToSuperview().snOffset(-27)
@@ -82,7 +88,7 @@ class XEarningDayDetailTwoCell: SNBaseTableViewCell {
         
         timeLable.snp.makeConstraints { (make) in
             make.left.equalTo(img.snp.right).snOffset(18)
-            make.top.equalTo(profit.snp.bottom).snOffset(20)
+            make.top.equalTo(profit.snp.bottom).snOffset(10)
         }
         des.snp.makeConstraints { (make) in
             make.right.equalToSuperview().snOffset(-27)

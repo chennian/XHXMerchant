@@ -23,12 +23,12 @@ class XRecmdUpdateCell: SNBaseTableViewCell {
             }
             
             var upgrateString:String = ""
-            if cellModel.current_role == "1"{
+            if cellModel.upgrate_role == "1"{
                 upgrateString = "服务商"
             }else{
                 upgrateString = "运营商"
             }
-            self.lableClass.text = "我的等级:\(currentString)"
+            self.lableClass.text = "我的等级:\(cellModel.parent_role)"
             self.account.text = "用户账号:\(cellModel.phone)"
             self.updateTime.text = "升级时间:\(cellModel.add_time)"
             self.updateType.text = "升级方式:\(currentString)-\(upgrateString)"

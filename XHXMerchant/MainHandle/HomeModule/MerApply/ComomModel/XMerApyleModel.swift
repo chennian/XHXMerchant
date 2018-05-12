@@ -314,19 +314,13 @@ class ApplyModelTool {
         do {
             let stepThirItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
             
+           
             stepThirItem.privateBankAccount = nil
             stepThirItem.privateBank = nil
             stepThirItem.privatebankName = nil
             stepThirItem.privateBankAddress = nil
             stepThirItem.branchName = nil
             stepThirItem.leftMobile = nil
-            
-            stepThirItem.openbankName = nil
-            stepThirItem.openBankAddress = nil
-            stepThirItem.openBankAccount = nil
-            stepThirItem.openBank = nil
-            stepThirItem.branchnName = nil
-            stepThirItem.leftPhone = nil
             stepThirItem.frontCard = nil
             stepThirItem.backCard = nil
             

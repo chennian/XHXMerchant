@@ -59,6 +59,11 @@ class XMerHomeController: SNBaseViewController {
     override func setupView() {
         setupUI()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+    }
 }
 
 extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
@@ -91,6 +96,11 @@ extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
                     let vc = XAddSeckillListController()
                     vc.shopid = (self.merListModel?.shop_id)!
                     self.navigationController?.pushViewController(vc, animated: true)
+                }else{
+                    let vc = XGoodListController()
+                    vc.shopid = (self.merListModel?.shop_id)!
+                    XKeyChain.set((self.merListModel?.shop_id)!, key: "SHOPID")
+                    self.navigationController?.pushViewController(vc, animated: true)
 
                 }
             }
@@ -111,6 +121,8 @@ extension XMerHomeController:UITableViewDelegate,UITableViewDataSource{
                 }else if para == "3"{
                     let vc = XCouponCancerController()
                     self.navigationController?.pushViewController(vc, animated: true)
+                }else{
+                    self.navigationController?.pushViewController(XGoodCateListController(), animated: true)
                 }
             }
             return cell

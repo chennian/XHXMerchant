@@ -88,6 +88,11 @@
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
+		<key>NotificationExtention.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>32</integer>
+		</dict>
 		<key>PGActionSheet.xcscheme</key>
 		<dict>
 			<key>isShown</key>

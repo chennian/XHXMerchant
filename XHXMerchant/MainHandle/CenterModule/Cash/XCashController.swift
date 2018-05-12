@@ -9,7 +9,9 @@
 import UIKit
 
 class XCashController: SNBaseViewController {
-    
+    var model:[CashInfoModel] = []
+    var needCashMoney:String = ""
+    var intMoney :Int = 0
     let imglogo = UIImageView().then{
         $0.image = UIImage(named: "money")
     }
@@ -61,7 +63,7 @@ class XCashController: SNBaseViewController {
     let noticeTwo = UILabel().then{
         $0.font = Font(28)
         $0.textColor = Color(0xa2a2a2)
-        $0.text = "兑换金额必须是100的整数倍，每笔扣除20%的税及手续费5赞分"
+        $0.text = "兑换金额必须是100的整数倍，每笔扣除5%的手续费"
         $0.numberOfLines = 0
     }
     
@@ -123,15 +125,47 @@ class XCashController: SNBaseViewController {
     }
     @objc func deleteBack(){
         passwordView.textField.resignFirstResponder()
+        passwordView.textFieldText = ""
+        passwordView.textField.text = ""
+        passwordView.view1.isHidden = true
+        passwordView.view2.isHidden = true
+        passwordView.view3.isHidden = true
+        passwordView.view4.isHidden = true
+        passwordView.view5.isHidden = true
+        passwordView.view6.isHidden = true
         mainView.removeFromSuperview()
         mask.removeFromSuperview()
 
     }
     @objc func cash(){
+        if self.cashMoney.text! == ""{
+              UIAlertView(title: "温馨提示", message: "请输入提现金额", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
         setPasswordView()
+    }
+    override func loadData() {
+        SNRequest(requestType: API.getExchangeInfo, modelType: [CashInfoModel.self]).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .success(let models):
+                self.model = models
+                DispatchQueue.main.async {
+                    self.totalMoney.text = self.model[0].account
+                    self.cashBank.text = self.model[0].bankname
+                }
+            case .fail(let code,let msg):
+                SZHUD(msg ?? "请求数据失败", type: .error, callBack: nil)
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
     }
 
     override func setupView() {
+        
         setUI()
     }
     
@@ -142,7 +176,10 @@ class XCashController: SNBaseViewController {
             make.left.top.right.bottom.equalToSuperview()
         }
         CNLog(self.cashMoney.text!)
-        moneyLable.text =   String(format: "%.2f", self.cashMoney.text!)
+        let money =  Float(self.cashMoney.text!)
+        self.intMoney = Int(self.cashMoney.text!)!
+        moneyLable.text =   String(format: "%.2f", money!)
+        self.needCashMoney = String(format: "%.2f", money!)
         
         self.view.addSubview(mainView)
         mainView.addSubview(deleteBtn)
@@ -203,6 +240,39 @@ class XCashController: SNBaseViewController {
     @objc func cashRecord(){
         self.navigationController?.pushViewController(XCashRecordController(), animated: true)
     }
+    
+    func exchange(_ password:String){
+        
+        if self.intMoney % 100  != 0 {
+            self.deleteBack()
+            UIAlertView(title: "温馨提示", message: "提现金额请输入100的整数倍", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        let parameters:[String:Any] = ["money":self.needCashMoney,
+                                       "verifySecret":password]
+        CNLog(parameters)
+        
+        SNRequestBool(requestType: API.exchange(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .bool(let msg):
+                SZHUD(msg, type: .success, callBack: nil)
+                DispatchQueue.main.async {
+                    self.deleteBack()
+                }
+                self.navigationController?.popViewController(animated: true)
+            case .fail(let res):
+                DispatchQueue.main.async {
+                    self.deleteBack()
+                }
+                UIAlertController.showConfirmPay(message: "支付密码错误") { (_) in
+                    self.navigationController?.pushViewController(XPayPasswordStepOneController(), animated: true)
+                }
+            default:
+                UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            }
+        }).disposed(by: disposeBag)
+    }
+    
     func setUI(){
         setNavigationBar()
         self.title = "提现"
@@ -288,6 +358,8 @@ class XCashController: SNBaseViewController {
 
 extension XCashController:PassWordFieldDelegate{
     func inputTradePasswordFinish(tradePasswordView: PassWordField, password: String) {
+     
+        exchange(password)
         CNLog(password)
     }
     

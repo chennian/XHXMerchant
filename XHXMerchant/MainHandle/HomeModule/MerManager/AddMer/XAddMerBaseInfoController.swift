@@ -87,10 +87,11 @@ class XAddMerBaseInfoController: SNBaseViewController {
         if oneStep.term == "1" || oneStep.term == nil{
             fieldCell.longBtn.isSelected = true
             fieldCell.shortBtn.isSelected = false
-            
+            fieldCell.validityField.isUserInteractionEnabled  = false
         }else{
             fieldCell.shortBtn.isSelected = true
             fieldCell.longBtn.isSelected = false
+            fieldCell.validityField.isUserInteractionEnabled  = true
         }
         
         
@@ -109,14 +110,18 @@ class XAddMerBaseInfoController: SNBaseViewController {
         self.stepOneModel?.idCard = idCard
         self.stepOneModel?.validity = validity
         self.stepOneModel?.email = email
-
+        if fieldCell.longBtn.isSelected{
+            self.stepOneModel?.term = "1"
+        }else{
+            self.stepOneModel?.term = "0"
+        }
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
         
     }
     fileprivate func setupUI() {
         stepOneModel = ApplyModel.shareApplyModel.applySelfModel.stepOne
         if XKeyChain.get("three") == "0" || XKeyChain.get("three").isEmpty {
-            ApplyModelTool.removeThreeModel()
+            ApplyModelTool.removeModel()
         }
         self.title = "负责人信息"
         self.view.backgroundColor = UIColor.white
@@ -182,7 +187,7 @@ extension XAddMerBaseInfoController:UITableViewDelegate,UITableViewDataSource{
             let cell:XButtonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.submitBoutton.setTitle("下一步", for: .normal)
             cell.clickBtnEvent = {[unowned self](parameter) in
-                
+                self.saveModel()
                 self.verifyValue()
                 
             }
@@ -211,7 +216,7 @@ extension XAddMerBaseInfoController:UITableViewDelegate,UITableViewDataSource{
             UIAlertView(title: "提示", message: "请输入邮箱账号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
-        if !fieldCell.longBtn.isSelected {
+        if !fieldCell.longBtn.isSelected && fieldCell.validityField.text == ""{
             UIAlertView(title: "提示", message: "请输入身份证有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }

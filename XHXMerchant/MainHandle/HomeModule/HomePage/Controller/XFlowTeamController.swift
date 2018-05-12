@@ -7,67 +7,68 @@
 //
 
 import UIKit
+import PagingMenuController
 
-class XFlowTeamController: SNBaseViewController {
+//分页菜单配置
+private struct PagingMenuOptions: PagingMenuControllerCustomizable {
+    //第1个子视图控制器
+    private let viewController1 = XServiceFlowController()
+    //第2个子视图控制器
+    private let viewController2 = XOperationFlowController()
     
-    var model :[FlowTeamModel] = []
-    
-    fileprivate let tableView:UITableView = UITableView().then{
-        $0.backgroundColor = color_bg_gray_f5
-        $0.register(XFlowTeamCell.self)
-        $0.register(XSpaceCell.self)
-        $0.tableFooterView = UIView()
+    //组件类型
+    fileprivate var componentType: ComponentType {
+        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
     }
     
-    fileprivate func setupUI() {
-        self.title = "我的流量用户"
-        self.view.backgroundColor = UIColor.white
-        self.view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.snp.makeConstraints { (make) in
-            make.left.top.right.bottom.equalToSuperview()
+    //所有子视图控制器
+    fileprivate var pagingControllers: [UIViewController] {
+        return [viewController1, viewController2]
+    }
+    
+    //菜单配置项
+    fileprivate struct MenuOptions: MenuViewCustomizable {
+        //菜单显示模式
+        var displayMode: MenuDisplayMode {
+            return .segmentedControl
+        }
+        //菜单项
+        var itemsOptions: [MenuItemViewCustomizable] {
+            return [MenuItem1(), MenuItem2()]
         }
     }
-    func getData(){
-        SNRequest(requestType: API.flowTeam, modelType: [FlowTeamModel.self]).subscribe(onNext: {[unowned self] (result) in
-            switch result{
-            case .success(let models):
-                self.model = models
-                self.tableView.reloadData()
-            case .fail(let code,let msg):
-                SZHUD(msg ?? "请求数据失败", type: .error, callBack: nil)
-                if code == 1006 {
-                    self.navigationController?.pushViewController(XLoginController(), animated: true)
-                }
-            default:
-                break
-            }
-        }).disposed(by: disposeBag)
+    
+    //第1个菜单项
+    fileprivate struct MenuItem1: MenuItemViewCustomizable {
+        //自定义菜单项名称
+        var displayMode: MenuItemDisplayMode {
+            return .text(title: MenuItemText(text: "服务商"))
+        }
     }
-
-    override func setupView() {
-        getData()
-        setupUI()
+    
+    //第2个菜单项
+    fileprivate struct MenuItem2: MenuItemViewCustomizable {
+        //自定义菜单项名称
+        var displayMode: MenuItemDisplayMode {
+            return .text(title: MenuItemText(text: "运营商"))
+        }
     }
 }
 
-extension XFlowTeamController:UITableViewDelegate,UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
-    }
+class XFlowTeamController: SNBaseViewController {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell:XFlowTeamCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.models = self.model[indexPath.row]
-        return cell
-        
-        
+    func setupUI() {
+        self.title = "团队流量"
+        let options = PagingMenuOptions()
+        let pagingMenuController = PagingMenuController(options: options)
+        pagingMenuController.view.frame.origin.y += fit(20)
+        //        pagingMenuController.view.frame.size.height -= 64
+        addChildViewController(pagingMenuController)
+        view.addSubview(pagingMenuController.view)
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return fit(128)
+  
+
+    override func setupView() {
+        setupUI()
     }
-    
 }

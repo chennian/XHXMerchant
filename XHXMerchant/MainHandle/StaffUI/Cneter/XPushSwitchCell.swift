@@ -9,6 +9,8 @@
 import UIKit
 
 class XPushSwitchCell: SNBaseTableViewCell {
+    
+    var clickEvent:((_ sender:UISwitch)->())?
 
     let name = UILabel().then{
         $0.text = "推送开发"
@@ -16,13 +18,24 @@ class XPushSwitchCell: SNBaseTableViewCell {
         $0.font = Font(30)
     }
     
-    let pushSwitch = UISwitch().then{
-        $0.isOn = true
+    let pushSwitch = UISwitch()
+    
+    func  bindEvent(){
+        pushSwitch.addTarget(self, action: #selector(isSwitch), for: UIControlEvents.valueChanged)
     }
+    
+    @objc func isSwitch(sender:UISwitch){
+        guard let action = clickEvent else {
+            return
+        }
+        action(self.pushSwitch)
+    }
+    
     override func setupView() {
         contentView.addSubview(name)
         contentView.addSubview(pushSwitch)
         hidLine()
+        bindEvent()
         name.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
             make.centerY.equalToSuperview()

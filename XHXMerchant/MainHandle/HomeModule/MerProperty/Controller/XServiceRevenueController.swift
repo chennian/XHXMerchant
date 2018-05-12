@@ -75,7 +75,7 @@ class XServiceRevenueController: SNBaseViewController {
     
     fileprivate func setupUI() {
         
-        self.title = "服务商收益"
+        self.title = "服务商分红"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
         startDateField.delegate = self

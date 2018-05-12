@@ -75,7 +75,7 @@ class XOperRevenueController: SNBaseViewController {
     
     fileprivate func setupUI() {
         
-        self.title = "运营商收益"
+        self.title = "运营商分红"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
         startDateField.delegate = self

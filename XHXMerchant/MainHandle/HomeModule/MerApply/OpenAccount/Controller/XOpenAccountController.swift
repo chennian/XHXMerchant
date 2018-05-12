@@ -157,12 +157,13 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
             let cell:XButtonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.submitBoutton.setTitle("下一步", for: .normal)
             cell.clickBtnEvent = {[unowned self](parameter) in
-                if XKeyChain.get(isConpany) == "0"{
-                    //0:企业
-                    self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
-                }else{
-                    self.verifyValue()
-                }
+//                if XKeyChain.get(isConpany) == "0"{
+//                    //0:企业
+//                    self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
+//                }else{
+                self.saveModel()
+                self.verifyValue()
+//                }
             }
             return cell
         }
@@ -199,8 +200,8 @@ extension XOpenAccountController:UITableViewDelegate,UITableViewDataSource{
             return
         }
         
-        uploadData()
-        //        self.navigationController?.pushViewController(XMerLicenseController(), animated: true)
+//        uploadData()
+        self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
         
     }
     

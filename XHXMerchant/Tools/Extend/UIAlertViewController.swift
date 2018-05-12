@@ -31,10 +31,29 @@ extension UIViewController{
         viewController.present(alert, animated: true)
     }
     
+    //在指定视图控制器上弹出确认框
+    static func showConfirmPay(message: String, in viewController: UIViewController,
+                            confirm: ((UIAlertAction)->Void)?) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let actionTwo = UIAlertAction(title: "忘记密码", style: .default, handler: confirm)
+        alert.addAction(actionTwo)
+        actionTwo.setValue(Color(0xff0000), forKey:"titleTextColor")
+        viewController.present(alert, animated: true)
+        let actionOne = UIAlertAction(title: "重试", style: .cancel)
+        alert.addAction(actionOne)
+        actionOne.setValue(Color(0xff0000), forKey:"titleTextColor")
+       
+    }
+    
     //在根视图控制器上弹出确认框
     static func showConfirm(message: String, confirm: ((UIAlertAction)->Void)?) {
         if let vc = UIApplication.shared.keyWindow?.rootViewController {
             showConfirm(message: message, in: vc, confirm: confirm)
+        }
+    }
+    static func showConfirmPay(message: String, confirm: ((UIAlertAction)->Void)?) {
+        if let vc = UIApplication.shared.keyWindow?.rootViewController {
+            showConfirmPay(message: message, in: vc, confirm: confirm)
         }
     }
 }

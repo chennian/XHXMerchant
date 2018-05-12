@@ -17,6 +17,8 @@ class XUploadBankController: SNBaseViewController {
     var bankName :String = ""      //银行
     var bankId :String = ""      //银行id
 
+    var model : BankCardModel?
+    var temp:String = ""
 
     fileprivate var fieldCell:XUpdateBankHeaderCell = XUpdateBankHeaderCell()
     fileprivate var imgCell:XUploadFrontBankCell = XUploadFrontBankCell()
@@ -45,7 +47,6 @@ class XUploadBankController: SNBaseViewController {
             make.right.equalToSuperview()
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -63,6 +64,16 @@ extension XUploadBankController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0{
             let cell:XUpdateBankHeaderCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             self.fieldCell = cell
+
+            if let cellModel = self.model{
+                cell.phoneLableField.text = cellModel.phone
+                cell.cardholderField.text = cellModel.real_name
+                cell.IDCardField.text = cellModel.real_card
+                cell.bankNumField.text = cellModel.bank_num
+                cell.cardBankField.text = cellModel.bank_name
+                cell.cardBranchBankField.text = cellModel.subbranch
+            }
+            
             cell.cardBankField.inputView = self.bankPiker
             bankPiker.selectValue = {[unowned self] (name,id) in
                 self.fieldCell.cardBankField.text = name
@@ -92,8 +103,15 @@ extension XUploadBankController:UITableViewDelegate,UITableViewDataSource{
         }else{
             let cell:XUploadFrontBankCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             self.imgCell = cell
+            if let cellModel = self.model{
+                cell.bankCardImg.kf.setImage(with: URL(string:cellModel.bank_logo), for: .normal)
+            }
             cell.clickEvent = { [unowned self] in
-                self.upLoadData()
+                if self.temp == "1"{
+                  self.updateData()
+                }else{
+                    self.upLoadData()
+                }
             }
             cell.imgTap.subscribe(onNext: {[unowned self] (btn) in
                 self.protocolObject = btn
@@ -124,28 +142,108 @@ extension XUploadBankController:UITableViewDelegate,UITableViewDataSource{
             return cell
         }
     }
+    func updateData(){
+        if  fieldCell.phoneLableField.text! == ""{
+            UIAlertView(title: "提示", message: "请输入手机号码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if  fieldCell.cardholderField.text! == ""{
+            UIAlertView(title: "提示", message: "请输入持卡人", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if  fieldCell.bankNumField.text! == ""{
+            UIAlertView(title: "提示", message: "请输入银行卡号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if  fieldCell.cardBankField.text! == ""{
+            UIAlertView(title: "提示", message: "请输入开卡银行", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if  fieldCell.cardBranchBankField.text! == ""{
+            UIAlertView(title: "提示", message: "请输入开卡支行", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        if  fieldCell.codeLableField.text! == ""{
+            UIAlertView(title: "提示", message: "请输入验证码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
+        
+//
+//        if  self.cardImg  == ""{
+//            UIAlertView(title: "提示", message: "请上传银行卡正面照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+//            return
+//        }
+        
+        var tempBankId:String = ""
+        
+        if self.bankId == ""{
+            tempBankId = (self.model?.bank_id)!
+        }else{
+            tempBankId = self.bankId
+        }
+        
+        var tempCardImg = ""
+        if cardImg == "" {
+            tempCardImg = (self.model?.bank_logo)!
+        }else{
+            tempCardImg = self.cardImg
+        }
+        
+        let parameters:[String:Any] = [
+            "phone":self.fieldCell.phoneLableField.text!,
+            "code":self.fieldCell.codeLableField.text!,
+            "real_name":self.fieldCell.cardholderField.text!,
+            "real_card":self.fieldCell.IDCardField.text!,
+            "bank_num":fieldCell.bankNumField.text!,
+            "bank_id":tempBankId,
+            "bank_name":self.fieldCell.cardBankField.text!,
+            "subbranch":fieldCell.cardBranchBankField.text!,
+            "bank_logo":tempCardImg
+        ]
+        
+        CNLog(parameters)
+        
+        SNRequestBool(requestType: API.updateBank(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .bool(_):
+                SZHUD("更新成功", type: .success, callBack: nil)
+                self.navigationController?.popToRootViewController(animated: true)
+            case .fail(let res):
+                UIAlertView(title: "温馨提示", message: res.msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            default:
+                UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            }
+        }).disposed(by: disposeBag)
+    }
     
     func upLoadData(){
         if  fieldCell.phoneLableField.text! == ""{
             UIAlertView(title: "提示", message: "请输入手机号码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
         }
         if  fieldCell.cardholderField.text! == ""{
             UIAlertView(title: "提示", message: "请输入持卡人", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
         }
         if  fieldCell.bankNumField.text! == ""{
              UIAlertView(title: "提示", message: "请输入银行卡号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
         }
         if  fieldCell.cardBankField.text! == ""{
             UIAlertView(title: "提示", message: "请输入开卡银行", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
         }
         if  fieldCell.cardBranchBankField.text! == ""{
             UIAlertView(title: "提示", message: "请输入开卡支行", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
         }
         if  fieldCell.codeLableField.text! == ""{
             UIAlertView(title: "提示", message: "请输入验证码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
         }
         if  self.cardImg  == ""{
             UIAlertView(title: "提示", message: "请上传银行卡正面照", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
         }
         let parameters:[String:Any] = [
             "phone":self.fieldCell.phoneLableField.text!,

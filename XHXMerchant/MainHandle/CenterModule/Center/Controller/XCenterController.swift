@@ -119,7 +119,7 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -220,20 +220,28 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
             cell.accessoryType = .disclosureIndicator
 
             return cell
-        }else if indexPath.row == 4 {
+        }
+        else if indexPath.row == 4 {
+            let cell:XCenterListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.lable.text = "支付密码"
+            cell.img.image = UIImage(named: "my_Secondary_Password")
+            cell.accessoryType = .disclosureIndicator
+            
+            return cell
+        }else if indexPath.row == 5 {
             let cell:XCenterListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.lable.text = "推送开关"
             cell.img.image = UIImage(named: "my_switch")
             cell.accessoryType = .disclosureIndicator
 
             return cell
-        }else if indexPath.row == 5 {
+        }else if indexPath.row == 6 {
             let cell:XCenterListCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.lable.text = "关于小黑熊商家版"
             cell.img.image = UIImage(named: "mu_regard")
             cell.accessoryType = .disclosureIndicator
             return cell
-        }else if indexPath.row == 6{
+        }else if indexPath.row == 7{
             let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             return cell
         }else{
@@ -275,7 +283,7 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
             return fit(203)
         }else if indexPath.row == 1{
             return fit(20)
-        }else if indexPath.row == 7{
+        }else if indexPath.row == 8{
             return fit(100)
         }else{
             return fit(90)
@@ -291,12 +299,15 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
             navigationController?.pushViewController(XForgetPwdController(), animated: true)
         }
         if indexPath.row == 4 {
+            navigationController?.pushViewController(XForgetPwdController(), animated: true)
+        }
+        if indexPath.row == 5 {
 //            SZHUD("正在开发中...", type: .info, callBack: nil)
 //            navigationController?.pushViewController(XCashController(), animated: true)
 
             navigationController?.pushViewController(XMerPushSwitchController(), animated: true)
         }
-        if indexPath.row == 5 {
+        if indexPath.row == 6 {
             
             navigationController?.pushViewController(XAboutBearController(), animated: true)
         }

@@ -17,12 +17,12 @@ class XEarningDayHeaderCell: SNBaseTableViewCell {
             chartArray.removeAll()
           
             if !model.merchant.isEmpty{
-                chartArray.append(.merchantFlow(profit:StringToFloat(str: model.merchant),color:Color(0xff566e), name:"商家货款"))
+                chartArray.append(.merchant(profit:StringToFloat(str: model.merchant),color:Color(0xff566e), name:"商家货款"))
             }else{
                 item3.value = 0
             }
             if !model.flowmeter.isEmpty{
-                chartArray.append(.merchant(profit:StringToFloat(str: model.flowmeter),color:Color(0x0fdca0), name:"跨店分红"))
+                chartArray.append(.merchantFlow(profit:StringToFloat(str: model.flowmeter),color:Color(0x0fdca0), name:"跨店分红"))
             }else{
                 item4.value = 0
             }

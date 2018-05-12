@@ -59,62 +59,47 @@ extension XRcmdController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        if indexPath.row == 0{
-            let cell:XRecmdCell = tableView.dequeueReusableCell(forIndexPath: indexPath)            
-            
-            cell.clickEvent = { [unowned self] (para) in
-                if para == 1{
-                    let actionSheet =  PGActionSheet(cancelButton: true, buttonList: ["个体工商户", "企业单位"])
-                    actionSheet.textColor = Color(0x313131)
-                    actionSheet.textFont = Font(30)
-                    actionSheet.translucent = false
-                    actionSheet.actionSheetTranslucent = false
-                    self.present(actionSheet, animated: false, completion: nil)
-                    actionSheet.handler = {[unowned self] index in
-                        //1:企业 2:个人
-                        self.navigationController?.pushViewController(XMerBasicInfoController(), animated: true)
-                        if index == 0{
-                            XKeyChain.set("2", key: isConpany)
-                        }else{
-                            XKeyChain.set("1", key: isConpany)
-                        }
+        let cell:XRecmdCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        
+        cell.clickEvent = { [unowned self] (para) in
+            if para == 1{
+                let actionSheet =  PGActionSheet(cancelButton: true, buttonList: ["个体工商户", "企业单位"])
+                actionSheet.textColor = Color(0x313131)
+                actionSheet.textFont = Font(30)
+                actionSheet.translucent = false
+                actionSheet.actionSheetTranslucent = false
+                self.present(actionSheet, animated: false, completion: nil)
+                actionSheet.handler = {[unowned self] index in
+                    //1:企业 2:个人
+                    self.navigationController?.pushViewController(XMerBasicInfoController(), animated: true)
+                    if index == 0{
+                        XKeyChain.set("2", key: isConpany)
+                    }else{
+                        XKeyChain.set("1", key: isConpany)
                     }
-                }
-                if para == 2{
-                    
-                    let actionSheet =  PGActionSheet(cancelButton: true, buttonList: ["推荐运营商", "推荐服务商"])
-                    actionSheet.textColor = Color(0x313131)
-                    actionSheet.textFont = Font(30)
-                    actionSheet.translucent = false
-                    actionSheet.actionSheetTranslucent = false
-                    self.present(actionSheet, animated: false, completion: nil)
-                    actionSheet.handler = {[unowned self] index in
-                        if index == 0{
-                            self.navigationController?.pushViewController(XRcmdOperatorController(), animated: true)
-                        }else{
-                            self.navigationController?.pushViewController(XRecmdServiceController(), animated: true)
-                        }
-                    }
-                    
-                    
                 }
             }
-            return cell
-        }else{
-            let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            return cell
+            if para == 2{
+                
+                let actionSheet =  PGActionSheet(cancelButton: true, buttonList: ["推荐运营商", "推荐服务商"])
+                actionSheet.textColor = Color(0x313131)
+                actionSheet.textFont = Font(30)
+                actionSheet.translucent = false
+                actionSheet.actionSheetTranslucent = false
+                self.present(actionSheet, animated: false, completion: nil)
+                actionSheet.handler = {[unowned self] index in
+                    if index == 0{
+                        self.navigationController?.pushViewController(XRcmdOperatorController(), animated: true)
+                    }else{
+                        self.navigationController?.pushViewController(XRecmdServiceController(), animated: true)
+                    }
+                }
+            }
         }
-        
-        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if indexPath.row == 0 {
-            return fit(1594)
-        }else{
-            return fit(20)
-        }
-        
+        return ScreenH - LL_StatusBarAndNavigationBarHeight
     }
 }

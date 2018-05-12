@@ -11,65 +11,38 @@ import UIKit
 class XMyBankCardController: SNBaseViewController {
     
     var model :[BankCardModel] = []
-
-    var bank:String = ""
-    var name:String = ""
-    var bankNum:String = ""
-    var phone:String = ""
-
-
-    var bankCardImg = UIView().then{
-        $0.layer.cornerRadius = fit(10)
+    
+    fileprivate let tableView:UITableView = UITableView().then{
+        $0.backgroundColor = color_bg_gray_f5
+        $0.register(XMyBankCell.self)
+        $0.register(XSpaceCell.self)
+        $0.tableFooterView = UIView()
     }
     
-    let notice = UILabel().then{
-        $0.text = "注：此银行卡用于分红收款"
-        $0.font = Font(24)
-        $0.textColor = Color(0x6c6c6c)
+    fileprivate func setupUI() {
+        self.title = "我的银行卡"
+        self.view.backgroundColor = Color(0xf5f5f5)
+        tableView.separatorStyle = .none
+        self.view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.snp.makeConstraints { (make) in
+            make.left.top.right.bottom.equalToSuperview()
+        }
     }
-    var  bankName = UILabel().then{
-        $0.text = "招商银行"
-        $0.font = Font(44)
-        $0.textColor = Color(0xfffff)
-    }
-    var cardholder = UILabel().then{
-        $0.text = "姓名：尤泽钦"
-        $0.font = Font(28)
-        $0.textColor = Color(0xfffff)
-    }
-    var cardNum = UILabel().then{
-        $0.text = "银行卡号：475******3047"
-        $0.font = Font(28)
-        $0.textColor = Color(0xfffff)
-    }
+    
+    
     @objc func tapOne(){
         let vc =    XUploadBankController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    func loadBankData(){
+    override func loadData(){
         SNRequest(requestType: API.myBankCard, modelType: [BankCardModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .success(let models):
                 CNLog(models)
                 self.model = models
-                if self.model.isEmpty {
-                    DispatchQueue.main.async {
-                      self.bankCardImg.isHidden = true
-                        self.notice.text = "                                      暂未绑定银行卡"
-                    }
-                }else{
-                    self.bank = self.model.map({return $0.bank_name})[0]
-                    self.name = self.model.map({return $0.real_name})[0]
-                    self.bankNum = self.model.map({return $0.bank_num})[0]
-                    self.phone = self.model.map({return $0.phone})[0]
-                    
-                    CNLog(self.bank + self.name + self.bankNum)
-                    DispatchQueue.main.async {
-                        self.bankName.text = self.bank
-                        self.cardholder.text = "姓名：\(self.name)"
-                        self.cardNum.text = "银行卡号：\(self.bankNum)"
-                    }
-                }
+                self.tableView.reloadData()
             case .fail(let code ,let msg):
               SZHUD(msg! , type: .error, callBack: nil)
               if code == 1006 {
@@ -98,75 +71,32 @@ class XMyBankCardController: SNBaseViewController {
             SZHUD("只能绑定一张银行卡", type: .info, callBack: nil)
         }
     }
-    
-    func setUI(){
-        self.title = "我的银行卡"
-        bankCardImg.frame  = CGRect(x: fit(30), y: fit(66), width: fit(690), height: fit(209))
-        let gradientLayer = CAGradientLayer().shadowLayer()
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOne))
-//        bankCardImg.addGestureRecognizer(tapGesture)
-        
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: fit(690), height: fit(209))
-        gradientLayer.cornerRadius = fit(10)
-        bankCardImg.layer.insertSublayer(gradientLayer, at:0)
-        
-        self.view.addSubview(bankCardImg)
-        self.view.addSubview(notice)
-        bankCardImg.addSubview(bankName)
-        bankCardImg.addSubview(cardholder)
-        bankCardImg.addSubview(cardNum)
-        bankCardImg.bringSubview(toFront:bankName)
-        bankCardImg.bringSubview(toFront:cardholder)
-        bankCardImg.bringSubview(toFront:cardNum)
-
- 
-        
-        notice.snp.makeConstraints { (make) in
-            make.left.equalTo(bankCardImg.snp.left)
-            make.top.equalTo(bankCardImg.snp.bottom).snOffset(23)
-        }
-        bankName.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().snOffset(25)
-            make.top.equalToSuperview().snOffset(53)
-        }
-        cardholder.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().snOffset(-27)
-            make.centerY.equalTo(bankName.snp.centerY)
-        }
-        cardNum.snp.makeConstraints { (make) in
-            make.left.equalTo(bankName.snp.left)
-            make.top.equalTo(bankName.snp.bottom).snOffset(38)
-        }
-        
-    
-    }
-
-    
     override func setupView() {
-        loadBankData()
-        setUI()
+        setupUI()
         setUpRightBar()
     }
 }
-
-extension CAGradientLayer {
-    
-    func shadowLayer() -> CAGradientLayer {
-        
-        let gradientColors = [Color(0xfd4f02).cgColor,Color(0xff7f02).cgColor]
-        
-        //定义每种颜色所在的位置
-        let gradientLocations:[NSNumber] = [0.0, 1.0]
-        
-        //创建CAGradientLayer对象并设置参数
-        self.colors = gradientColors
-        self.locations = gradientLocations
-        
-        //设置渲染的起始结束位置（横向渐变）
-        self.startPoint = CGPoint(x: 0, y: 0)
-        self.endPoint = CGPoint(x: 1, y: 0)
-        
-        return self
+extension XMyBankCardController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell:XMyBankCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.model = self.model[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return fit(350)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc  = XUploadBankController()
+        vc.model = self.model[indexPath.row]
+        vc.temp = "1"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

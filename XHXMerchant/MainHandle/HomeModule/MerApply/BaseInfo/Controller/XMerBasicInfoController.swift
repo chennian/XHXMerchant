@@ -113,6 +113,11 @@ class XMerBasicInfoController: SNBaseViewController {
         self.stepOneModel?.idCard = idCard
         self.stepOneModel?.validity = validity
         self.stepOneModel?.email = email
+        if fieldCell.longBtn.isSelected{
+            self.stepOneModel?.term = "1"
+        }else{
+            self.stepOneModel?.term = "0"
+        }
 
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
 

@@ -56,11 +56,9 @@ class XRecmdCell: SNBaseTableViewCell {
     
     let myRcmd = UILabel().then{
         $0.text = "我的推荐人:\(XKeyChain.get(PARENTPHONE))"
-        $0.textColor = Color(0xdbe9e7)
-        $0.font = Font(30)
-        $0.backgroundColor = Color(0x2a2259)
+        $0.textColor = Color(0x9488d6)
+        $0.font = Font(24)
         $0.textAlignment = .center
-        $0.layer.cornerRadius = fit(10)
     }
     
     func bindEvent(){
@@ -121,7 +119,7 @@ class XRecmdCell: SNBaseTableViewCell {
 
         img.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            make.height.snEqualTo(534)
+            make.height.snEqualTo(401)
         }
         viewOne.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
@@ -131,7 +129,7 @@ class XRecmdCell: SNBaseTableViewCell {
         codeImage.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().snOffset(27)
-            make.width.height.snEqualTo(322)
+            make.width.height.snEqualTo(330)
         }
         
         ercodeView.snp.makeConstraints { (make) in
@@ -147,25 +145,22 @@ class XRecmdCell: SNBaseTableViewCell {
         
         recmdMerBtn.snp.makeConstraints { (make) in
             make.centerX.equalTo(codeImage.snp.centerX)
-            make.top.equalTo(codeImage.snp.bottom).snOffset(156)
+            make.top.equalTo(codeImage.snp.bottom).snOffset(130)
             make.height.snEqualTo(90)
             make.width.snEqualTo(600)
         }
         
         recmdOperBtn.snp.makeConstraints { (make) in
             make.centerX.equalTo(recmdMerBtn.snp.centerX)
-            make.top.equalTo(recmdMerBtn.snp.bottom).snOffset(56)
+            make.top.equalTo(recmdMerBtn.snp.bottom).snOffset(36)
             make.height.snEqualTo(90)
             make.width.snEqualTo(600)
         }
         
         myRcmd.snp.makeConstraints { (make) in
-            make.top.equalTo(recmdOperBtn.snp.bottom).snOffset(94)
+            make.top.equalTo(recmdOperBtn.snp.bottom).snOffset(51)
             make.centerX.equalTo(recmdOperBtn.snp.centerX)
-            make.width.snEqualTo(560)
-            make.height.snEqualTo(120)
         }
-        
     }
 
 

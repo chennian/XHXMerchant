@@ -29,17 +29,26 @@ class XMerPushSwitchController: SNBaseViewController {
         }
     }
     func getData(){
-        SNRequest(requestType: API.flowTeam, modelType: [FlowTeamModel.self]).subscribe(onNext: {[unowned self] (result) in
+        
+        let parameters:[String:Any] = ["mobile":"",
+                                       "merchant":"",
+                                       "flowmeter":"",
+                                       "service":"",
+                                       "operator":"",
+                                       "corporation":"",
+                                       "employee":""]
+        
+        SNRequestBool(requestType: API.setPushSwitch(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
             switch result{
-            case .success(let models):
-                self.tableView.reloadData()
-            case .fail(let code,let msg):
-                SZHUD(msg ?? "请求数据失败", type: .error, callBack: nil)
+            case .bool(_):
+                SZHUD("上传成功", type: .info, callBack: nil)
+            case .fail(let code,let res):
+                SZHUD(res ?? "上传失败", type: .error, callBack: nil)
                 if code == 1006 {
                     self.navigationController?.pushViewController(XLoginController(), animated: true)
                 }
             default:
-                break
+                UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             }
         }).disposed(by: disposeBag)
     }
@@ -61,16 +70,54 @@ extension XMerPushSwitchController:UITableViewDelegate,UITableViewDataSource{
             return cell
         }else if indexPath.row == 1{
             let cell:XPushSwitchCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.pushSwitch.tag = 1
+            if XKeyChain.get("corporation") == "1"{
+                cell.pushSwitch.isOn = true
+            }else{
+                cell.pushSwitch.isOn = false
+            }
             cell.name.text = "服务中心"
+            cell.clickEvent = {[unowned self] (sender) in
+                if sender.isOn {
+                    XKeyChain.set("1", key: "corporation")
+                }else{
+                    XKeyChain.set("0", key: "corporation")
+                }
+            }
             return cell
         }else if indexPath.row == 2{
             let cell:XPushSwitchCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            if XKeyChain.get("operator") == "1"{
+                cell.pushSwitch.isOn = true
+            }else{
+                cell.pushSwitch.isOn = false
+            }
             cell.name.text = "运营商"
+            cell.pushSwitch.tag = 2
+            cell.clickEvent = {[unowned self] (sender) in
+                if sender.isOn {
+                    XKeyChain.set("1", key: "operator")
+                }else{
+                    XKeyChain.set("0", key: "operator")
+                }
+            }
             return cell
         }else if indexPath.row == 3{
             let cell:XPushSwitchCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            if XKeyChain.get("service") == "1"{
+                cell.pushSwitch.isOn = true
+            }else{
+                cell.pushSwitch.isOn = false
+            }
             cell.name.text = "服务商"
-
+            cell.pushSwitch.tag = 3
+            cell.clickEvent = {[unowned self] (sender) in
+                if sender.isOn {
+                    XKeyChain.set("1", key: "service")
+                }else{
+                    XKeyChain.set("0", key: "service")
+                }
+            }
             return cell
         }else if indexPath.row == 4{
             let cell:XSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -78,13 +125,37 @@ extension XMerPushSwitchController:UITableViewDelegate,UITableViewDataSource{
             return cell
         }else if indexPath.row == 5{
             let cell:XPushSwitchCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            if XKeyChain.get("merchant") == "1"{
+                cell.pushSwitch.isOn = true
+            }else{
+                cell.pushSwitch.isOn = false
+            }
             cell.name.text = "商家货款"
+            cell.pushSwitch.tag = 4
+            cell.clickEvent = {[unowned self] (sender) in
+                if sender.isOn {
+                    XKeyChain.set("1", key: "merchant")
+                }else{
+                    XKeyChain.set("0", key: "merchant")
+                }
+            }
             
             return cell
         }else{
             let cell:XPushSwitchCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.name.text = "商家倒流"
-            
+            if XKeyChain.get("flowmeter") == "1"{
+                cell.pushSwitch.isOn = true
+            }else{
+                cell.pushSwitch.isOn = false
+            }
+            cell.name.text = "商家导流"
+            cell.pushSwitch.tag = 5
+            cell.clickEvent = {[unowned self] (sender) in
+                if sender.isOn {
+                    XKeyChain.set("1", key: "flowmeter")
+                }else{
+                    XKeyChain.set("0", key: "flowmeter")
+                }            }
             return cell
         }
         

@@ -29,7 +29,7 @@ class XPushController: SNBaseViewController {
         }
     }
     func getData(){
-        SNRequest(requestType: API.flowTeam, modelType: [FlowTeamModel.self]).subscribe(onNext: {[unowned self] (result) in
+        SNRequest(requestType: API.flowTeam(role: "1"), modelType: [FlowTeamModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .success(let models):
                 self.tableView.reloadData()
@@ -61,6 +61,19 @@ extension XPushController:UITableViewDelegate,UITableViewDataSource{
             return cell
         }else{
             let cell:XPushSwitchCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            if XKeyChain.get("employee") == "1"{
+                cell.pushSwitch.isOn = true
+            }else{
+                cell.pushSwitch.isOn = false
+            }
+            cell.name.text = "推送开关"
+            cell.pushSwitch.tag = 5
+            cell.clickEvent = {[unowned self] (sender) in
+                if sender.isOn {
+                    XKeyChain.set("1", key: "employee")
+                }else{
+                    XKeyChain.set("0", key: "employee")
+                }            }
             return cell
         }
     }

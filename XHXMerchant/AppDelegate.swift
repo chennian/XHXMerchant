@@ -29,6 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         PgyUpdateManager.sharedPgy().start(withAppId: PGYer_ID)
         PgyUpdateManager.sharedPgy().checkUpdate();
         
+        XKeyChain.set("1", key: "merchant")
+        XKeyChain.set("1", key: "flowmeter")
+        XKeyChain.set("1", key: "service")
+        XKeyChain.set("1", key: "operator")
+        XKeyChain.set("1", key: "corporation")
+        XKeyChain.set("1", key: "employee")
+
         XKeyChain.set("0", key: TEMP)//解决死循环
         
         let NotifyOne = NSNotification.Name(rawValue:"TAG")
@@ -74,11 +81,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         avSpeech.speak(utterance)
     }
     func applicationWillResignActive(_ application: UIApplication) {
+       
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
+        
+     
+ 
+      
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
@@ -99,10 +111,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     //*-------------------------------RemoteNotifications--------------------------------*/
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        
+      
         JPUSHService.handleRemoteNotification(userInfo)
         let aps = userInfo["aps"] as! NSDictionary
         let alert = aps["alert"] as! String
@@ -121,13 +134,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//
+//        let session = AVAudioSession.sharedInstance()
+//        try? session.setActive(true)
+//        try? session.setCategory(AVAudioSessionCategoryPlayback)
         
         JPUSHService.handleRemoteNotification(userInfo)
         let aps = userInfo["aps"] as! NSDictionary
         let alert = aps["alert"] as! String
         startTranslattion(alert)
         completionHandler(.newData)
-        
     }
     
 }
@@ -196,15 +212,15 @@ extension AppDelegate:JPUSHRegisterDelegate{
         let userInfo = notification.request.content.userInfo
         if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))! {
             JPUSHService.handleRemoteNotification(userInfo)
-            CNLog(notification.request.content.body)
-            CNLog(notification.request.content.title)
-            CNLog(notification.request.content.subtitle)
-            CNLog(notification.request.content.userInfo)
-            let aps = userInfo["aps"] as! NSDictionary
-            let alert = aps["alert"] as! String
-            let sound = aps["sound"] as! String
-            print(sound)
-            startTranslattion(alert)
+//            CNLog(notification.request.content.body)
+//            CNLog(notification.request.content.title)
+//            CNLog(notification.request.content.subtitle)
+//            CNLog(notification.request.content.userInfo)
+//            let aps = userInfo["aps"] as! NSDictionary
+//            let alert = aps["alert"] as! String
+//            let sound = aps["sound"] as! String
+//            print(sound)
+//            startTranslattion(alert)
          
 
         } else {// 本地通知

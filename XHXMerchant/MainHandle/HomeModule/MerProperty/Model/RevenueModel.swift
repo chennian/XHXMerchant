@@ -16,6 +16,7 @@ class oneRevenueModel: SNSwiftyJSONAble {
     var money : String
     var add_time:String
     var shopName:String
+    var pass_pay:String
     
     required init?(jsonData: JSON) {
         self.credit = jsonData["credit"].stringValue
@@ -23,6 +24,8 @@ class oneRevenueModel: SNSwiftyJSONAble {
         self.money = jsonData["money"].stringValue
         self.add_time = jsonData["add_time"].stringValue
         self.shopName = jsonData["shopName"].stringValue
+        self.pass_pay = jsonData["pass_pay"].stringValue
+
 
     }
 }

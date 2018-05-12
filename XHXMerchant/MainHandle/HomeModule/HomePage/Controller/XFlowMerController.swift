@@ -20,7 +20,7 @@ class XFlowMerController: SNBaseViewController {
     }
     
     fileprivate func setupUI() {
-        self.title = "我的流量店铺"
+        self.title = "商家流量"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
         tableView.delegate = self

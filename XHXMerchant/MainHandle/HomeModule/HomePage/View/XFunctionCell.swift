@@ -54,7 +54,7 @@ class XFunctionCell: SNBaseTableViewCell {
         $0.setImage(UIImage(named: "home_withdraw_deposit"), for: .normal)
         $0.contentMode = .scaleAspectFill
         $0.tag = 8
-        $0.isHidden = true
+//        $0.isHidden = true
     }
     
     let flowTeamLable = UILabel().then{
@@ -86,7 +86,7 @@ class XFunctionCell: SNBaseTableViewCell {
         $0.text = "提现"
         $0.textColor = Color(0x313131)
         $0.font = Font(30)
-        $0.isHidden = true
+//        $0.isHidden = true
     }
     let profitLable = UILabel().then{
         $0.text = "收益"

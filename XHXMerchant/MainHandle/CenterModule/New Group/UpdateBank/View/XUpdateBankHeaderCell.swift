@@ -209,7 +209,7 @@ class XUpdateBankHeaderCell: SNBaseTableViewCell {
         phoneLableField.snp.makeConstraints { (make) in
             make.left.equalTo(phoneLable.snp.right).snOffset(55)
             make.centerY.equalTo(phoneLable.snp.centerY)
-            make.width.snEqualTo(300)
+            make.right.equalToSuperview().snOffset(-30)
         }
         cardholder.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
@@ -219,7 +219,7 @@ class XUpdateBankHeaderCell: SNBaseTableViewCell {
         cardholderField.snp.makeConstraints { (make) in
             make.left.equalTo(cardholder.snp.right).snOffset(55)
             make.centerY.equalTo(cardholder.snp.centerY)
-            make.width.snEqualTo(300)
+            make.right.equalToSuperview().snOffset(-30)
         }
         IDCard.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
@@ -229,7 +229,7 @@ class XUpdateBankHeaderCell: SNBaseTableViewCell {
         IDCardField.snp.makeConstraints { (make) in
             make.left.equalTo(IDCard.snp.right).snOffset(55)
             make.centerY.equalTo(IDCard.snp.centerY)
-            make.width.snEqualTo(300)
+            make.right.equalToSuperview().snOffset(-30)
         }
         bankNumLable.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
@@ -238,7 +238,7 @@ class XUpdateBankHeaderCell: SNBaseTableViewCell {
         bankNumField.snp.makeConstraints { (make) in
             make.left.equalTo(bankNumLable.snp.right).snOffset(55)
             make.centerY.equalTo(bankNumLable.snp.centerY)
-            make.width.snEqualTo(300)
+            make.right.equalToSuperview().snOffset(-30)
         }
         cardBank.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
@@ -247,25 +247,27 @@ class XUpdateBankHeaderCell: SNBaseTableViewCell {
         cardBankField.snp.makeConstraints { (make) in
             make.left.equalTo(cardBank.snp.right).snOffset(55)
             make.centerY.equalTo(cardBank.snp.centerY)
-            make.width.snEqualTo(300)
+            make.right.equalToSuperview().snOffset(-30)
         }
         cardBranchBank.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
             make.bottom.equalTo(line6.snp.top).snOffset(-30)
+            make.width.snEqualTo(130)
         }
         cardBranchBankField.snp.makeConstraints { (make) in
-            make.left.equalTo(cardBranchBank.snp.right).snOffset(55)
+            make.left.equalTo(cardBranchBank.snp.right).snOffset(45)
             make.centerY.equalTo(cardBranchBank.snp.centerY)
-            make.width.snEqualTo(300)
+            make.right.equalToSuperview().snOffset(-30)
         }
         codeLable.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
             make.top.equalTo(line6.snp.bottom).snOffset(30)
+            make.width.snEqualTo(130)
         }
         codeLableField.snp.makeConstraints { (make) in
-            make.left.equalTo(cardBranchBank.snp.right).snOffset(55)
+            make.left.equalTo(cardBranchBank.snp.right).snOffset(45)
             make.centerY.equalTo(codeLable.snp.centerY)
-            make.width.snEqualTo(300)
+            make.right.equalToSuperview().snOffset(-30)
         }
         timeButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(codeLableField.snp.centerY)

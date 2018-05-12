@@ -47,13 +47,14 @@ class XDayEarningController: SNBaseViewController {
         }
     }
     
-    override func loadData() {
+    func getData() {
          let paramert:[String:String] = ["add_time":self.time]
         SNRequest(requestType: API.dayTotalRevenue(paremeter:paramert), modelType: [todayModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .success(let models):
                 self.model = models
                 if !self.model.isEmpty{
+                    self.cellType.removeAll()
                     self.cellType.append(.space)
                     self.cellType.append(.todayHead(self.model[0]))
                     self.cellType.append(.space)
@@ -78,6 +79,7 @@ class XDayEarningController: SNBaseViewController {
     override func setupView() {
         setupUI()
         setNavBar()
+        getData()
     }
     
 }
@@ -137,6 +139,8 @@ extension XDayEarningController{
 }
 extension XDayEarningController:UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
-        CNLog("结束编辑")
+        self.time = textField.text!
+        getData()
+        CNLog(textField.text!)
     }
 }

@@ -141,6 +141,8 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
         shortBtn.isSelected = !longBtn.isSelected
         if longBtn.isSelected {
             licenseTermField.isUserInteractionEnabled = false
+        }else{
+            licenseTermField.isUserInteractionEnabled = true
         }
         guard  let action = block else {
             return
@@ -154,6 +156,8 @@ class XMerLicenseFieldCell: SNBaseTableViewCell {
         
         if shortBtn.isSelected {
             licenseTermField.isUserInteractionEnabled = true
+        }else{
+            licenseTermField.isUserInteractionEnabled = false
         }
         
         guard  let action = block else {

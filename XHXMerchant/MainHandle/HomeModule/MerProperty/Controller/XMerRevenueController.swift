@@ -75,7 +75,7 @@ class XMerRevenueController: SNBaseViewController {
     
     fileprivate func setupUI() {
         
-        self.title = "商家收益"
+        self.title = "商家货款"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
         startDateField.delegate = self

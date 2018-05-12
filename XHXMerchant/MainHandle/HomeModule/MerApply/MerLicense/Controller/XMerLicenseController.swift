@@ -81,6 +81,11 @@ class XMerLicenseController: SNBaseViewController {
         self.stepTwoModel?.detailAddress = fieldCell.detailAddressField.text
         self.stepTwoModel?.industryType = fieldCell.industryTypeField.text
      
+        if fieldCell.longBtn.isSelected{
+            self.stepTwoModel?.term = "1"
+        }else{
+            self.stepTwoModel?.term = "0"
+        }
 
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
         
@@ -288,9 +293,9 @@ extension XMerLicenseController:UITableViewDelegate,UITableViewDataSource{
         
         if XKeyChain.get(isConpany) == "1"{
             //1:企业
-            self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
+//            self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
 
-//            self.navigationController?.pushViewController(XOpenAccountController(), animated: true)
+            self.navigationController?.pushViewController(XOpenAccountController(), animated: true)
         }else{
             self.navigationController?.pushViewController(XPrivateAccountController(), animated: true)
         }

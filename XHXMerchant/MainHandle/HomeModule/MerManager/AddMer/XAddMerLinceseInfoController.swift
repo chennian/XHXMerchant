@@ -67,7 +67,11 @@ class XAddMerLinceseInfoController: SNBaseViewController {
         self.stepTwoModel?.area = fieldCell.areaField.text
         self.stepTwoModel?.detailAddress = fieldCell.detailAddressField.text
         self.stepTwoModel?.industryType = fieldCell.industryTypeField.text
-       
+        if fieldCell.longBtn.isSelected{
+            self.stepTwoModel?.term = "1"
+        }else{
+            self.stepTwoModel?.term = "0"
+        }
         
         ApplyModelTool.save(model: ApplyModel.shareApplyModel)
         
@@ -125,10 +129,11 @@ class XAddMerLinceseInfoController: SNBaseViewController {
         if twoStep.term == "1" || twoStep.term == nil{
             fieldCell.longBtn.isSelected = true
             fieldCell.shortBtn.isSelected = false
-            
+            fieldCell.licenseTermField.isUserInteractionEnabled  = false
         }else{
             fieldCell.shortBtn.isSelected = true
             fieldCell.longBtn.isSelected = false
+            fieldCell.licenseTermField.isUserInteractionEnabled  = true
         }
     }
 }
@@ -211,6 +216,7 @@ extension XAddMerLinceseInfoController:UITableViewDelegate,UITableViewDataSource
             let cell:XButtonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.submitBoutton.setTitle("下一步", for: .normal)
             cell.clickBtnEvent = {[unowned self](parameter) in
+                
                 self.verifyValue()
             }
             return cell
@@ -226,7 +232,7 @@ extension XAddMerLinceseInfoController:UITableViewDelegate,UITableViewDataSource
             UIAlertView(title: "提示", message: "请输入营业执照名称", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
-        if !fieldCell.longBtn.isSelected {
+        if !fieldCell.longBtn.isSelected && fieldCell.licenseTermField.text == ""{
             UIAlertView(title: "提示", message: "请输入营业执照有效期", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
@@ -270,10 +276,11 @@ extension XAddMerLinceseInfoController:UITableViewDelegate,UITableViewDataSource
             UIAlertView(title: "提示", message: "请上传第二张店内照片", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
-        
-        self.uploadData()
-        
-        
+        if XKeyChain.get(isConpany) == "1"{
+            self.navigationController?.pushViewController(XAddMerOpenController(), animated: true)
+        }else{
+            self.uploadData()
+        }
     }
     func uploadData(){
         //获取第一步资料
@@ -300,7 +307,7 @@ extension XAddMerLinceseInfoController:UITableViewDelegate,UITableViewDataSource
         let busregnum: String = stepSecondeItem.codeNum ?? ""  //统一社会信用代码
         let enterpraiseLicenseTerm: String = stepSecondeItem.licenseTerm ?? "" // 营业执照有效期
         let details: String = stepSecondeItem.detailAddress ?? ""    // 详细地址
-        let industryid: String = stepSecondeItem.industryType ?? ""  // 商家类型
+        let industryid: String = stepSecondeItem.industryID ?? ""  // 商家类型
         let province: String = stepSecondeItem.province ?? ""  //省
         let city: String = stepSecondeItem.city ?? ""          //市
         let area: String = stepSecondeItem.county ?? ""        //区

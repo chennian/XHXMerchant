@@ -43,7 +43,7 @@ public let LOGIN_FALSE = "1"
 
 public let PGYer_ID: String = "48511d269791e0a561ff8392d072b72c"
 
-public let JPushAppKey:String = "17136a19280c877559e49f24"
+public let JPushAppKey:String = "2379923c7b05bbc1d00ee0f3"
 //百度
 public let AK: String = "Lov9Xi9mBvMyQwpYMkKAA8fXQpAWkwcC"
 

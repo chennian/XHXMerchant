@@ -241,16 +241,159 @@ extension XPrivateAccountController:UITableViewDelegate,UITableViewDataSource{
         
         //1:企业 2:个人
         if XKeyChain.get(isConpany) == "1"{
-            let vc = XOpenAccountController()
-            vc.verifyCode = fieldCell.codeLableField.text!
-            self.navigationController?.pushViewController(vc, animated: true)
+//            let vc = XOpenAccountController()
+//            vc.verifyCode = fieldCell.codeLableField.text!
+//            self.navigationController?.pushViewController(vc, animated: true)
+            uploadConpanyData()
         }else{
-            uploadData()
+            uploadPersonData()
         }
         
     }
+    func uploadConpanyData(){
+        //获取第一步资料
+        let stepOneItem = ApplyModel.shareApplyModel.applySelfModel.stepOne
+        let cardtype:String =  XKeyChain.get(isConpany) //公司类型 0：个体 1：公司
+        let name :String = stepOneItem.principal ?? ""  //负责人姓名
+        let phone: String = stepOneItem.principalPhone ?? "" //负责人电话
+        let registerPhone: String = stepOneItem.registName ?? "" //注册手机号
+        let idCard: String = stepOneItem.idCard ?? ""  //证件号码
+        let validity: String = stepOneItem.validity ?? "" //证件有效期
+        let idcardone: String = stepOneItem.frontImage?.path ?? "" //正面照
+        let idcardtwo: String = stepOneItem.backImage?.path ?? ""  //反面照
+        let idcardThird: String = stepOneItem.handImage?.path ?? ""  //反面照
+        let iDterm: String = stepOneItem.term ?? "1" //省份证有效期
+        let email: String = stepOneItem.email ?? "" //邮箱地址
+        
+        //获取第二步资料
+        let stepSecondeItem = ApplyModel.shareApplyModel.applySelfModel.stepTwo
+        
+        let entabb: String = stepSecondeItem.merShortName ?? ""  //企业简称
+        let entname: String = stepSecondeItem.licenseName ?? ""  //企业名称
+        let busregnum: String = stepSecondeItem.codeNum ?? ""  //统一社会信用代码
+        let enterpraiseLicenseTerm: String = stepSecondeItem.licenseTerm ?? "" // 营业执照有效期
+        let details: String = stepSecondeItem.detailAddress ?? ""    // 详细地址
+        let industryid: String = stepSecondeItem.industryID ?? ""  // 商家类型
+        let province: String = stepSecondeItem.province ?? ""  //省
+        let city: String = stepSecondeItem.city ?? ""          //市
+        let area: String = stepSecondeItem.county ?? ""        //区
+        let licenseTerm: String = stepSecondeItem.term ?? "1"        //有效期
+        
+        
+        let busregimg: String = stepSecondeItem.LicenseImage?.path ?? ""  //反面照
+        let gatepic: String = stepSecondeItem.doorImage?.path ?? ""  //反面照
+        let checkStandPic: String = stepSecondeItem.checkstand?.path ?? ""  //反面照
+        let storePic: String = stepSecondeItem.indoorImage?.path ?? ""  //反面照
+        let storePic2: String = stepSecondeItem.indoorImage1?.path ?? ""  //反面照
+        
+        //获取第三步资料
+        let stepThreeItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
+        
+        
+        /*----------------------------对私----------------------------------------------*/
+        
+        let priaccount: String = stepThreeItem.privateBankAccount ?? "" //对私银行账号
+        let opnbank: String = stepThreeItem.privateBank ?? ""//开户行
+        let ponaccname: String = stepThreeItem.branchName ?? ""//支行名称
+        let accountName: String = stepThreeItem.privatebankName ?? ""//私有银行开户行名
+        let cardphone: String = stepThreeItem.leftMobile ?? ""//预留手机号
+        let bankProvince: String = stepThreeItem.bankProvince ?? ""//预留手机号
+        let bankCity: String = stepThreeItem.bankCity ?? ""//预留手机号
+        let bankArea: String = stepThreeItem.bankCounty ?? ""//预留手机号
+        
+        let balancecardone: String = stepThreeItem.frontCard?.path ?? ""  //正面照
+        let balancecardtwo: String = stepThreeItem.backCard?.path ?? ""  //反面照
+        
+        /*----------------------------对公----------------------------------------------*/
+        
+        let comaccnum: String = stepThreeItem.openBankAccount ?? "" //对公银行账号
+        let publicOpnbank: String = stepThreeItem.openBank ?? ""//开户行
+        let publicPonaccname: String = stepThreeItem.branchnName ?? ""//支行名称
+        let publicAccountName: String = stepThreeItem.openbankName ?? ""//对公银行开户行名
+        let publicCardphone: String = stepThreeItem.leftPhone ?? ""//预留手机号
+        
+        
+        let publicBankProvince: String = stepThreeItem.openBankProvince ?? ""//省
+        let publicBankCity: String = stepThreeItem.openBankCity ?? ""//市
+        let publicBankArea: String = stepThreeItem.openBankCounty ?? ""//县
+        
+        let openlicense: String = stepThreeItem.permitCard?.path ?? ""  //反面照
+        
+        
+        let parameters:[String:Any] = [
+            "cardtype":cardtype,
+            "name":name,
+            "phone":phone,
+            "registerPhone":registerPhone,
+            "idcard":idCard,
+            "validterm":validity,
+            "idcardone":idcardone,
+            "idcardtwo":idcardtwo,
+            "idcardThird":idcardThird,
+            "term":iDterm,
+            "email":email,
+            
+            "entabb":entabb,
+            "entname":entname,
+            "busregnum":busregnum,
+            "enterpraiseLicenseTerm":enterpraiseLicenseTerm,
+            "province":province,
+            "city":city,
+            "area":area,
+            "details":details,
+            "industryid":industryid,
+            "busregimg":busregimg,
+            "gatepic":gatepic,
+            "checkStandPic":checkStandPic,
+            "storePic":storePic,
+            "storePic2":storePic2,
+            "licenseTerm":licenseTerm,
+            
+            
+            "priaccount":priaccount,
+            "opnbank":opnbank,
+            "ponaccname":ponaccname,
+            "accountName":accountName,
+            "cardphone":cardphone,
+            "balancecardone":balancecardone,
+            "bankProvince":bankProvince,
+            "bankCity":bankCity,
+            "bankArea":bankArea,
+            "verifycode":fieldCell.codeLableField.text!,
+            "balancecardtwo":balancecardtwo,
+            
+            
+            "comaccnum":comaccnum,
+            "publicOpnbank":publicOpnbank,
+            "publicPonaccname":publicPonaccname,
+            "publicAccountName":publicAccountName,
+            "publicCardphone":publicCardphone,
+            "publicBankProvince":publicBankProvince,
+            "publicBankCity":publicBankCity,
+            "publicBankArea":publicBankArea,
+            "openlicense":openlicense
+        ]
+        CNLog(parameters)
+        
+        SNRequestBool(requestType: API.merchantAddPublic(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .bool(_):
+                ApplyModelTool.removeModel()
+                SZHUD("上传成功", type: .info, callBack: nil)
+                self.navigationController?.popToRootViewController(animated: true)
+            case .fail(let code,let res):
+                SZHUD(res ?? "上传失败", type: .error, callBack: nil)
+                if code == 1006 {
+                    self.navigationController?.pushViewController(XLoginController(), animated: true)
+                }
+            default:
+                UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            }
+        }).disposed(by: disposeBag)
+        
+    }
     
-    func uploadData(){
+    func uploadPersonData(){
         //获取第一步资料
         let stepOneItem = ApplyModel.shareApplyModel.applySelfModel.stepOne
         let cardtype:String =  XKeyChain.get(isConpany) //公司类型 0：个体 1：公司

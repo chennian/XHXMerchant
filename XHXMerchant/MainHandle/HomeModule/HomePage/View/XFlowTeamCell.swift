@@ -15,6 +15,7 @@ class XFlowTeamCell: SNBaseTableViewCell {
             guard let model = models else {
                 return
             }
+            num.text = model.shop_num
             if model.nickName == ""{
                 nameLable.text = model.phone
             }else{
@@ -42,21 +43,28 @@ class XFlowTeamCell: SNBaseTableViewCell {
     
     var nameLable = UILabel().then{
         $0.text = "木屋烧烤"
-        $0.font = Font(32)
+        $0.font = Font(30)
         $0.textColor = Color(0x313131)
     }
     
     var rank = UILabel().then{
         $0.text = "当前等级:服务商"
-        $0.font = Font(24)
-        $0.textColor = Color(0x818181)
+        $0.font = Font(26)
+        $0.textColor = Color(0x313131)
     }
-
+    
+    var num = UILabel().then{
+        $0.text = "流量商家:0家"
+        $0.font = Font(24)
+        $0.textColor = Color(0x636363)
+    }
     
     override func setupView() {
         contentView.addSubview(img)
         contentView.addSubview(nameLable)
         contentView.addSubview(rank)
+        contentView.addSubview(num)
+
         
         line.isHidden = true
         
@@ -73,7 +81,10 @@ class XFlowTeamCell: SNBaseTableViewCell {
             make.left.equalTo(img.snp.right).snOffset(25)
             make.bottom.equalTo(img.snp.bottom)
         }
-        
+        num.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().snOffset(-30)
+            make.centerY.equalTo(img.snp.centerY)
+        }
        
        
     }

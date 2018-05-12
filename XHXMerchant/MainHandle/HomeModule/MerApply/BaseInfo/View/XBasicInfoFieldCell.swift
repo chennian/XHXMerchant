@@ -96,7 +96,6 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         $0.isSelected = true
         $0.setImage(UIImage(named: "select"), for:.normal)
         $0.setImage(UIImage(named: "select1"), for:.selected)
-        
     }
     let shortBtn = UIButton().then{
         $0.setImage(UIImage(named: "select"), for:.normal)
@@ -139,6 +138,9 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         
         if longBtn.isSelected {
             validityField.isUserInteractionEnabled = false
+            
+        }else{
+            validityField.isUserInteractionEnabled = true
         }
         
         guard  let action = block else {
@@ -153,6 +155,8 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         
         if shortBtn.isSelected {
             validityField.isUserInteractionEnabled = true
+        }else{
+            validityField.isUserInteractionEnabled = false
         }
         
         guard  let action = block else {
@@ -189,6 +193,7 @@ class XBasicInfoFieldCell: SNBaseTableViewCell {
         view.addSubview(notice)
         longBtn.addTarget(self, action: #selector(clickOne), for: .touchUpInside)
         shortBtn.addTarget(self, action: #selector(clickTwo), for: .touchUpInside)
+        hidLine()
 
         line1.snp.makeConstraints { (make) in
             make.left.equalToSuperview()

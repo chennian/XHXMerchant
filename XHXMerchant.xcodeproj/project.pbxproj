@@ -35,9 +35,33 @@
 		8E110E3920812B1C002176F9 /* XOperatorTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E3820812B1C002176F9 /* XOperatorTopCell.swift */; };
 		8E110E3B20812F9B002176F9 /* XOperatorEndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E110E3A20812F9B002176F9 /* XOperatorEndCell.swift */; };
 		8E1758D320823AD300D58DCE /* BankListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1758D220823AD300D58DCE /* BankListModel.swift */; };
+		8E1A518620A1DAA200E5A54D /* XAddMerOpenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1A518520A1DAA200E5A54D /* XAddMerOpenController.swift */; };
 		8E1EA9A1209B09D10034A7A5 /* XCashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1EA9A0209B09D10034A7A5 /* XCashController.swift */; };
 		8E1EA9A3209B0B0E0034A7A5 /* PassWordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1EA9A2209B0B0E0034A7A5 /* PassWordField.swift */; };
 		8E346239209D9F9D00B942EA /* XCashRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E346238209D9F9D00B942EA /* XCashRecordController.swift */; };
+		8E34623B20A0399A00B942EA /* XServiceFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E34623A20A0399A00B942EA /* XServiceFlowController.swift */; };
+		8E34623D20A039C400B942EA /* XOperationFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E34623C20A039C400B942EA /* XOperationFlowController.swift */; };
+		8E34623F20A04AF300B942EA /* XMerDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E34623E20A04AF300B942EA /* XMerDescriptionCell.swift */; };
+		8E34624120A16F9000B942EA /* XMyBankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E34624020A16F9000B942EA /* XMyBankCell.swift */; };
+		8E3C00BE20A2CCFF00F7DB75 /* XAddGoodsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00BD20A2CCFF00F7DB75 /* XAddGoodsController.swift */; };
+		8E3C00C020A2CE8D00F7DB75 /* XAddGoodFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00BF20A2CE8D00F7DB75 /* XAddGoodFieldCell.swift */; };
+		8E3C00C320A2CFAC00F7DB75 /* XGoodListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00C220A2CFAC00F7DB75 /* XGoodListController.swift */; };
+		8E3C00C520A2D21500F7DB75 /* XAddGoodMainImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00C420A2D21500F7DB75 /* XAddGoodMainImgCell.swift */; };
+		8E3C00C720A2D72A00F7DB75 /* XAddGoodDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00C620A2D72A00F7DB75 /* XAddGoodDetailCell.swift */; };
+		8E3C00C920A2D90C00F7DB75 /* XAddGoodDesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00C820A2D90C00F7DB75 /* XAddGoodDesCell.swift */; };
+		8E3C00CB20A2DA1300F7DB75 /* XAddGoodSubmitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00CA20A2DA1300F7DB75 /* XAddGoodSubmitCell.swift */; };
+		8E3C00CD20A2FB1400F7DB75 /* XGoodOnSaleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00CC20A2FB1400F7DB75 /* XGoodOnSaleController.swift */; };
+		8E3C00CF20A2FB4D00F7DB75 /* XGoodSoldOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00CE20A2FB4D00F7DB75 /* XGoodSoldOutController.swift */; };
+		8E3C00D120A2FCB200F7DB75 /* XGoodListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00D020A2FCB200F7DB75 /* XGoodListCell.swift */; };
+		8E3C00D420A427E400F7DB75 /* XGoodEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00D320A427E400F7DB75 /* XGoodEditController.swift */; };
+		8E3C00D620A4284A00F7DB75 /* XGoodEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00D520A4284A00F7DB75 /* XGoodEditCell.swift */; };
+		8E3C00D920A445F400F7DB75 /* XGoodSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00D820A445F400F7DB75 /* XGoodSearchController.swift */; };
+		8E3C00DC20A4992800F7DB75 /* XGoodCateListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00DB20A4992800F7DB75 /* XGoodCateListController.swift */; };
+		8E3C00DE20A4994700F7DB75 /* XGoodCateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00DD20A4994700F7DB75 /* XGoodCateCell.swift */; };
+		8E3C00E020A49B2B00F7DB75 /* XAddCateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00DF20A49B2B00F7DB75 /* XAddCateController.swift */; };
+		8E3C00E320A4A51500F7DB75 /* XGoodCateSearchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00E220A4A51500F7DB75 /* XGoodCateSearchListController.swift */; };
+		8E3C00E520A4A55C00F7DB75 /* XGoodCateSearchListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00E420A4A55C00F7DB75 /* XGoodCateSearchListCell.swift */; };
+		8E3C00E720A4A60100F7DB75 /* XCateSearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C00E620A4A60100F7DB75 /* XCateSearchResultController.swift */; };
 		8E4EFCEB2082566F00798F99 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCEA2082566F00798F99 /* TokenModel.swift */; };
 		8E4EFCED208264C300798F99 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCEC208264C300798F99 /* UserModel.swift */; };
 		8E4EFCEF2082FFA100798F99 /* BankCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4EFCEE2082FFA100798F99 /* BankCardModel.swift */; };
@@ -129,6 +153,20 @@
 		8EAC3A3C208B56CA005C8489 /* SNMainTabBarStaffController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC3A3B208B56CA005C8489 /* SNMainTabBarStaffController.swift */; };
 		8EAC3A3E208BA93D005C8489 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC3A3D208BA93D005C8489 /* UIViewController+Extension.swift */; };
 		8EAC3A42208C38D1005C8489 /* XReceiveCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC3A41208C38D1005C8489 /* XReceiveCodeController.swift */; };
+		8EB98E0C20A57B6400E901C0 /* XGoodCateEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E0B20A57B6400E901C0 /* XGoodCateEditController.swift */; };
+		8EB98E0E20A57FF800E901C0 /* GoodCateSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E0D20A57FF800E901C0 /* GoodCateSearchModel.swift */; };
+		8EB98E1120A5B4F100E901C0 /* XGoodPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E1020A5B4F100E901C0 /* XGoodPreviewController.swift */; };
+		8EB98E1320A5B77100E901C0 /* XGoodBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E1220A5B77100E901C0 /* XGoodBannerCell.swift */; };
+		8EB98E1520A5C6CC00E901C0 /* XGoodNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E1420A5C6CC00E901C0 /* XGoodNameCell.swift */; };
+		8EB98E1720A5C6DF00E901C0 /* XGoodDesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E1620A5C6DF00E901C0 /* XGoodDesCell.swift */; };
+		8EB98E1920A5CFB700E901C0 /* XGoodShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E1820A5CFB700E901C0 /* XGoodShopCell.swift */; };
+		8EB98E1B20A60F7400E901C0 /* XCashRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E1A20A60F7400E901C0 /* XCashRecordCell.swift */; };
+		8EB98E1D20A6784B00E901C0 /* CashListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E1C20A6784B00E901C0 /* CashListModel.swift */; };
+		8EB98E1F20A67B8700E901C0 /* CashInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E1E20A67B8700E901C0 /* CashInfoModel.swift */; };
+		8EB98E2220A689D300E901C0 /* XPayPasswordStepOneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E2120A689D300E901C0 /* XPayPasswordStepOneController.swift */; };
+		8EB98E2420A689F900E901C0 /* XPayPasswordStepTwoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E2320A689F900E901C0 /* XPayPasswordStepTwoController.swift */; };
+		8EB98E3820A6F34000E901C0 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB98E3720A6F34000E901C0 /* NotificationService.swift */; };
+		8EB98E3C20A6F34000E901C0 /* XMerchantExtention.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8EB98E3520A6F34000E901C0 /* XMerchantExtention.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8EC4D7D92094D934007488D0 /* XCouponCancerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4D7D82094D934007488D0 /* XCouponCancerController.swift */; };
 		8EC4D7DB20956A76007488D0 /* XInputCouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4D7DA20956A76007488D0 /* XInputCouponController.swift */; };
 		8EC4D7DD20958B5E007488D0 /* XCouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC4D7DC20958B5E007488D0 /* XCouponController.swift */; };
@@ -214,6 +252,8 @@
 		8ED284D62081DBB5008ED5AE /* IndustyPiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D52081DBB5008ED5AE /* IndustyPiker.swift */; };
 		8ED284D82081E2D7008ED5AE /* XKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D72081E2D7008ED5AE /* XKeyChain.swift */; };
 		8ED284DA208209E4008ED5AE /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED284D9208209E4008ED5AE /* BannerModel.swift */; };
+		8ED4CDDC20A563F600CF3A31 /* GoodListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4CDDB20A563F600CF3A31 /* GoodListModel.swift */; };
+		8ED4CDDE20A5687600CF3A31 /* GoodCateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4CDDD20A5687600CF3A31 /* GoodCateModel.swift */; };
 		8EF0C2F52084BEB10002340D /* ShopHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2F42084BEB10002340D /* ShopHomeModel.swift */; };
 		8EF0C2F72085A5770002340D /* XTotalEarningsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2F62085A5770002340D /* XTotalEarningsListCell.swift */; };
 		8EF0C2FB2085B1090002340D /* TotalPropertyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF0C2FA2085B1090002340D /* TotalPropertyModel.swift */; };
@@ -251,6 +291,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8EB98E3A20A6F34000E901C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8EC76CF42076092A00F78749 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8EB98E3420A6F34000E901C0;
+			remoteInfo = XMerchantExtention;
+		};
 		8EC76D112076092C00F78749 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8EC76CF42076092A00F78749 /* Project object */;
@@ -266,6 +313,20 @@
 			remoteInfo = XHXMerchant;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8EB98E4020A6F34000E901C0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8EB98E3C20A6F34000E901C0 /* XMerchantExtention.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E3319DF7A7EA7E6E016C884 /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = "<group>"; };
@@ -302,9 +363,33 @@
 		8E110E3820812B1C002176F9 /* XOperatorTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOperatorTopCell.swift; sourceTree = "<group>"; };
 		8E110E3A20812F9B002176F9 /* XOperatorEndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOperatorEndCell.swift; sourceTree = "<group>"; };
 		8E1758D220823AD300D58DCE /* BankListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankListModel.swift; sourceTree = "<group>"; };
+		8E1A518520A1DAA200E5A54D /* XAddMerOpenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAddMerOpenController.swift; sourceTree = "<group>"; };
 		8E1EA9A0209B09D10034A7A5 /* XCashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCashController.swift; sourceTree = "<group>"; };
 		8E1EA9A2209B0B0E0034A7A5 /* PassWordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassWordField.swift; sourceTree = "<group>"; };
 		8E346238209D9F9D00B942EA /* XCashRecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCashRecordController.swift; sourceTree = "<group>"; };
+		8E34623A20A0399A00B942EA /* XServiceFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XServiceFlowController.swift; sourceTree = "<group>"; };
+		8E34623C20A039C400B942EA /* XOperationFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XOperationFlowController.swift; sourceTree = "<group>"; };
+		8E34623E20A04AF300B942EA /* XMerDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMerDescriptionCell.swift; sourceTree = "<group>"; };
+		8E34624020A16F9000B942EA /* XMyBankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMyBankCell.swift; sourceTree = "<group>"; };
+		8E3C00BD20A2CCFF00F7DB75 /* XAddGoodsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAddGoodsController.swift; sourceTree = "<group>"; };
+		8E3C00BF20A2CE8D00F7DB75 /* XAddGoodFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAddGoodFieldCell.swift; sourceTree = "<group>"; };
+		8E3C00C220A2CFAC00F7DB75 /* XGoodListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodListController.swift; sourceTree = "<group>"; };
+		8E3C00C420A2D21500F7DB75 /* XAddGoodMainImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAddGoodMainImgCell.swift; sourceTree = "<group>"; };
+		8E3C00C620A2D72A00F7DB75 /* XAddGoodDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAddGoodDetailCell.swift; sourceTree = "<group>"; };
+		8E3C00C820A2D90C00F7DB75 /* XAddGoodDesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAddGoodDesCell.swift; sourceTree = "<group>"; };
+		8E3C00CA20A2DA1300F7DB75 /* XAddGoodSubmitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAddGoodSubmitCell.swift; sourceTree = "<group>"; };
+		8E3C00CC20A2FB1400F7DB75 /* XGoodOnSaleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodOnSaleController.swift; sourceTree = "<group>"; };
+		8E3C00CE20A2FB4D00F7DB75 /* XGoodSoldOutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodSoldOutController.swift; sourceTree = "<group>"; };
+		8E3C00D020A2FCB200F7DB75 /* XGoodListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodListCell.swift; sourceTree = "<group>"; };
+		8E3C00D320A427E400F7DB75 /* XGoodEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodEditController.swift; sourceTree = "<group>"; };
+		8E3C00D520A4284A00F7DB75 /* XGoodEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodEditCell.swift; sourceTree = "<group>"; };
+		8E3C00D820A445F400F7DB75 /* XGoodSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodSearchController.swift; sourceTree = "<group>"; };
+		8E3C00DB20A4992800F7DB75 /* XGoodCateListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodCateListController.swift; sourceTree = "<group>"; };
+		8E3C00DD20A4994700F7DB75 /* XGoodCateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodCateCell.swift; sourceTree = "<group>"; };
+		8E3C00DF20A49B2B00F7DB75 /* XAddCateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAddCateController.swift; sourceTree = "<group>"; };
+		8E3C00E220A4A51500F7DB75 /* XGoodCateSearchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodCateSearchListController.swift; sourceTree = "<group>"; };
+		8E3C00E420A4A55C00F7DB75 /* XGoodCateSearchListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodCateSearchListCell.swift; sourceTree = "<group>"; };
+		8E3C00E620A4A60100F7DB75 /* XCateSearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCateSearchResultController.swift; sourceTree = "<group>"; };
 		8E4EFCEA2082566F00798F99 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		8E4EFCEC208264C300798F99 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		8E4EFCEE2082FFA100798F99 /* BankCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCardModel.swift; sourceTree = "<group>"; };
@@ -397,6 +482,21 @@
 		8EAC3A3B208B56CA005C8489 /* SNMainTabBarStaffController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNMainTabBarStaffController.swift; sourceTree = "<group>"; };
 		8EAC3A3D208BA93D005C8489 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		8EAC3A41208C38D1005C8489 /* XReceiveCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XReceiveCodeController.swift; sourceTree = "<group>"; };
+		8EB98E0B20A57B6400E901C0 /* XGoodCateEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodCateEditController.swift; sourceTree = "<group>"; };
+		8EB98E0D20A57FF800E901C0 /* GoodCateSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodCateSearchModel.swift; sourceTree = "<group>"; };
+		8EB98E1020A5B4F100E901C0 /* XGoodPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodPreviewController.swift; sourceTree = "<group>"; };
+		8EB98E1220A5B77100E901C0 /* XGoodBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodBannerCell.swift; sourceTree = "<group>"; };
+		8EB98E1420A5C6CC00E901C0 /* XGoodNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodNameCell.swift; sourceTree = "<group>"; };
+		8EB98E1620A5C6DF00E901C0 /* XGoodDesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodDesCell.swift; sourceTree = "<group>"; };
+		8EB98E1820A5CFB700E901C0 /* XGoodShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XGoodShopCell.swift; sourceTree = "<group>"; };
+		8EB98E1A20A60F7400E901C0 /* XCashRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCashRecordCell.swift; sourceTree = "<group>"; };
+		8EB98E1C20A6784B00E901C0 /* CashListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashListModel.swift; sourceTree = "<group>"; };
+		8EB98E1E20A67B8700E901C0 /* CashInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashInfoModel.swift; sourceTree = "<group>"; };
+		8EB98E2120A689D300E901C0 /* XPayPasswordStepOneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPayPasswordStepOneController.swift; sourceTree = "<group>"; };
+		8EB98E2320A689F900E901C0 /* XPayPasswordStepTwoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPayPasswordStepTwoController.swift; sourceTree = "<group>"; };
+		8EB98E3520A6F34000E901C0 /* XMerchantExtention.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XMerchantExtention.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EB98E3720A6F34000E901C0 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		8EB98E3920A6F34000E901C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EC4D7D82094D934007488D0 /* XCouponCancerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCouponCancerController.swift; sourceTree = "<group>"; };
 		8EC4D7DA20956A76007488D0 /* XInputCouponController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XInputCouponController.swift; sourceTree = "<group>"; };
 		8EC4D7DC20958B5E007488D0 /* XCouponController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCouponController.swift; sourceTree = "<group>"; };
@@ -488,6 +588,8 @@
 		8ED284D52081DBB5008ED5AE /* IndustyPiker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndustyPiker.swift; sourceTree = "<group>"; };
 		8ED284D72081E2D7008ED5AE /* XKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XKeyChain.swift; sourceTree = "<group>"; };
 		8ED284D9208209E4008ED5AE /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		8ED4CDDB20A563F600CF3A31 /* GoodListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodListModel.swift; sourceTree = "<group>"; };
+		8ED4CDDD20A5687600CF3A31 /* GoodCateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodCateModel.swift; sourceTree = "<group>"; };
 		8EF0C2F42084BEB10002340D /* ShopHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopHomeModel.swift; sourceTree = "<group>"; };
 		8EF0C2F62085A5770002340D /* XTotalEarningsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTotalEarningsListCell.swift; sourceTree = "<group>"; };
 		8EF0C2FA2085B1090002340D /* TotalPropertyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPropertyModel.swift; sourceTree = "<group>"; };
@@ -526,6 +628,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8EB98E3220A6F34000E901C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EC76CF92076092A00F78749 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -751,8 +860,81 @@
 				8E1EA9A0209B09D10034A7A5 /* XCashController.swift */,
 				8E1EA9A2209B0B0E0034A7A5 /* PassWordField.swift */,
 				8E346238209D9F9D00B942EA /* XCashRecordController.swift */,
+				8EB98E1A20A60F7400E901C0 /* XCashRecordCell.swift */,
+				8EB98E1C20A6784B00E901C0 /* CashListModel.swift */,
+				8EB98E1E20A67B8700E901C0 /* CashInfoModel.swift */,
 			);
 			path = Cash;
+			sourceTree = "<group>";
+		};
+		8E3C00BB20A2CCC000F7DB75 /* GoodManager */ = {
+			isa = PBXGroup;
+			children = (
+				8EB98E0F20A5B4A600E901C0 /* GoodPreview */,
+				8E3C00D720A445A700F7DB75 /* GoodSearch */,
+				8E3C00D220A4279B00F7DB75 /* GoodEdit */,
+				8E3C00C120A2CF8800F7DB75 /* GoodsList */,
+				8E3C00BC20A2CCDB00F7DB75 /* AddGoods */,
+			);
+			path = GoodManager;
+			sourceTree = "<group>";
+		};
+		8E3C00BC20A2CCDB00F7DB75 /* AddGoods */ = {
+			isa = PBXGroup;
+			children = (
+				8E3C00BD20A2CCFF00F7DB75 /* XAddGoodsController.swift */,
+				8E3C00BF20A2CE8D00F7DB75 /* XAddGoodFieldCell.swift */,
+				8E3C00C420A2D21500F7DB75 /* XAddGoodMainImgCell.swift */,
+				8E3C00C620A2D72A00F7DB75 /* XAddGoodDetailCell.swift */,
+				8E3C00C820A2D90C00F7DB75 /* XAddGoodDesCell.swift */,
+				8E3C00CA20A2DA1300F7DB75 /* XAddGoodSubmitCell.swift */,
+			);
+			path = AddGoods;
+			sourceTree = "<group>";
+		};
+		8E3C00C120A2CF8800F7DB75 /* GoodsList */ = {
+			isa = PBXGroup;
+			children = (
+				8E3C00C220A2CFAC00F7DB75 /* XGoodListController.swift */,
+				8E3C00CC20A2FB1400F7DB75 /* XGoodOnSaleController.swift */,
+				8E3C00CE20A2FB4D00F7DB75 /* XGoodSoldOutController.swift */,
+				8E3C00D020A2FCB200F7DB75 /* XGoodListCell.swift */,
+				8ED4CDDB20A563F600CF3A31 /* GoodListModel.swift */,
+			);
+			path = GoodsList;
+			sourceTree = "<group>";
+		};
+		8E3C00D220A4279B00F7DB75 /* GoodEdit */ = {
+			isa = PBXGroup;
+			children = (
+				8E3C00D320A427E400F7DB75 /* XGoodEditController.swift */,
+				8E3C00D520A4284A00F7DB75 /* XGoodEditCell.swift */,
+			);
+			path = GoodEdit;
+			sourceTree = "<group>";
+		};
+		8E3C00D720A445A700F7DB75 /* GoodSearch */ = {
+			isa = PBXGroup;
+			children = (
+				8E3C00D820A445F400F7DB75 /* XGoodSearchController.swift */,
+				8E3C00E220A4A51500F7DB75 /* XGoodCateSearchListController.swift */,
+				8E3C00E420A4A55C00F7DB75 /* XGoodCateSearchListCell.swift */,
+				8E3C00E620A4A60100F7DB75 /* XCateSearchResultController.swift */,
+				8EB98E0D20A57FF800E901C0 /* GoodCateSearchModel.swift */,
+			);
+			path = GoodSearch;
+			sourceTree = "<group>";
+		};
+		8E3C00DA20A498B400F7DB75 /* GoodCate */ = {
+			isa = PBXGroup;
+			children = (
+				8E3C00DB20A4992800F7DB75 /* XGoodCateListController.swift */,
+				8E3C00DD20A4994700F7DB75 /* XGoodCateCell.swift */,
+				8E3C00DF20A49B2B00F7DB75 /* XAddCateController.swift */,
+				8ED4CDDD20A5687600CF3A31 /* GoodCateModel.swift */,
+				8EB98E0B20A57B6400E901C0 /* XGoodCateEditController.swift */,
+			);
+			path = GoodCate;
 			sourceTree = "<group>";
 		};
 		8E4EFCE92082565B00798F99 /* Model */ = {
@@ -776,6 +958,8 @@
 		8E4EFD072083C3B800798F99 /* MerManager */ = {
 			isa = PBXGroup;
 			children = (
+				8E3C00DA20A498B400F7DB75 /* GoodCate */,
+				8E3C00BB20A2CCC000F7DB75 /* GoodManager */,
 				8EC4D7D72094D8F6007488D0 /* CouponCancer */,
 				8E0B68182091706B00C698FF /* menberManager */,
 				8EF308462090C86C00752FED /* MerSecend */,
@@ -821,11 +1005,12 @@
 		8E7357412088720800DB53CB /* AddMer */ = {
 			isa = PBXGroup;
 			children = (
+				8EF30807208F18DB00752FED /* XLincensePiker.swift */,
 				8E7357422088749800DB53CB /* XAddMerCell.swift */,
 				8E7357442088757F00DB53CB /* XAddMerController.swift */,
 				8EAC3A33208B31E9005C8489 /* XAddMerBaseInfoController.swift */,
 				8EAC3A35208B3467005C8489 /* XAddMerLinceseInfoController.swift */,
-				8EF30807208F18DB00752FED /* XLincensePiker.swift */,
+				8E1A518520A1DAA200E5A54D /* XAddMerOpenController.swift */,
 			);
 			path = AddMer;
 			sourceTree = "<group>";
@@ -973,6 +1158,7 @@
 				8E7F1F6F20845EE3007C9D1A /* XMerActiveImgCell.swift */,
 				8E7F1F7120846258007C9D1A /* XMerLogoImgCell.swift */,
 				8E7F1F73208463C0007C9D1A /* XMerDetailImgsCell.swift */,
+				8E34623E20A04AF300B942EA /* XMerDescriptionCell.swift */,
 				8E7F1F7520846C57007C9D1A /* XMerDataEndCell.swift */,
 				8E7F1F7720846C93007C9D1A /* XMerDataView.swift */,
 				8E73575F2088ED1100DB53CB /* XMerCatePiker.swift */,
@@ -1086,6 +1272,36 @@
 			path = HomeStaff;
 			sourceTree = "<group>";
 		};
+		8EB98E0F20A5B4A600E901C0 /* GoodPreview */ = {
+			isa = PBXGroup;
+			children = (
+				8EB98E1020A5B4F100E901C0 /* XGoodPreviewController.swift */,
+				8EB98E1220A5B77100E901C0 /* XGoodBannerCell.swift */,
+				8EB98E1420A5C6CC00E901C0 /* XGoodNameCell.swift */,
+				8EB98E1620A5C6DF00E901C0 /* XGoodDesCell.swift */,
+				8EB98E1820A5CFB700E901C0 /* XGoodShopCell.swift */,
+			);
+			path = GoodPreview;
+			sourceTree = "<group>";
+		};
+		8EB98E2020A6897200E901C0 /* SetPaySecret */ = {
+			isa = PBXGroup;
+			children = (
+				8EB98E2120A689D300E901C0 /* XPayPasswordStepOneController.swift */,
+				8EB98E2320A689F900E901C0 /* XPayPasswordStepTwoController.swift */,
+			);
+			path = SetPaySecret;
+			sourceTree = "<group>";
+		};
+		8EB98E3620A6F34000E901C0 /* XMerchantExtention */ = {
+			isa = PBXGroup;
+			children = (
+				8EB98E3720A6F34000E901C0 /* NotificationService.swift */,
+				8EB98E3920A6F34000E901C0 /* Info.plist */,
+			);
+			path = XMerchantExtention;
+			sourceTree = "<group>";
+		};
 		8EC4D7D72094D8F6007488D0 /* CouponCancer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1103,6 +1319,7 @@
 				8EC76CFE2076092A00F78749 /* XHXMerchant */,
 				8EC76D132076092C00F78749 /* XHXMerchantTests */,
 				8EC76D1E2076092C00F78749 /* XHXMerchantUITests */,
+				8EB98E3620A6F34000E901C0 /* XMerchantExtention */,
 				8EC76CFD2076092A00F78749 /* Products */,
 				72F67815D5D63CD4D9FB28F0 /* Pods */,
 				C8E6596F4CEFF5F7014DB98E /* Frameworks */,
@@ -1115,6 +1332,7 @@
 				8EC76CFC2076092A00F78749 /* XHXMerchant.app */,
 				8EC76D102076092C00F78749 /* XHXMerchantTests.xctest */,
 				8EC76D1B2076092C00F78749 /* XHXMerchantUITests.xctest */,
+				8EB98E3520A6F34000E901C0 /* XMerchantExtention.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1354,6 +1572,7 @@
 		8EC76DA220760AE900F78749 /* CenterModule */ = {
 			isa = PBXGroup;
 			children = (
+				8EB98E2020A6897200E901C0 /* SetPaySecret */,
 				8E1EA99F209B09900034A7A5 /* Cash */,
 				8E7357552088A86300DB53CB /* MyBank */,
 				8E7EDA4820773FBB00483ADC /* Center */,
@@ -1399,8 +1618,10 @@
 				8EC76DA720760AE900F78749 /* XHomeController.swift */,
 				8ED207F0207E0DCB006F441A /* XOperRoleController.swift */,
 				8E4EFCF7208359B100798F99 /* XServiceRoleController.swift */,
-				8E4EFCFB2083988600798F99 /* XFlowTeamController.swift */,
 				8E4EFCFF20839BA300798F99 /* XFlowMerController.swift */,
+				8E4EFCFB2083988600798F99 /* XFlowTeamController.swift */,
+				8E34623A20A0399A00B942EA /* XServiceFlowController.swift */,
+				8E34623C20A039C400B942EA /* XOperationFlowController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1479,6 +1700,7 @@
 			children = (
 				8ED207FE207F0B71006F441A /* XMyBankCardController.swift */,
 				8E4EFCEE2082FFA100798F99 /* BankCardModel.swift */,
+				8E34624020A16F9000B942EA /* XMyBankCell.swift */,
 			);
 			path = MyBankCard;
 			sourceTree = "<group>";
@@ -1599,6 +1821,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8EB98E3420A6F34000E901C0 /* XMerchantExtention */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8EB98E3D20A6F34000E901C0 /* Build configuration list for PBXNativeTarget "XMerchantExtention" */;
+			buildPhases = (
+				8EB98E3120A6F34000E901C0 /* Sources */,
+				8EB98E3220A6F34000E901C0 /* Frameworks */,
+				8EB98E3320A6F34000E901C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XMerchantExtention;
+			productName = XMerchantExtention;
+			productReference = 8EB98E3520A6F34000E901C0 /* XMerchantExtention.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		8EC76CFB2076092A00F78749 /* XHXMerchant */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EC76D242076092C00F78749 /* Build configuration list for PBXNativeTarget "XHXMerchant" */;
@@ -1609,10 +1848,12 @@
 				8EC76CFA2076092A00F78749 /* Resources */,
 				6C026E321408F0F2582BD0F2 /* [CP] Embed Pods Frameworks */,
 				B77228A2B01078D035BD6C56 /* [CP] Copy Pods Resources */,
+				8EB98E4020A6F34000E901C0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8EB98E3B20A6F34000E901C0 /* PBXTargetDependency */,
 			);
 			name = XHXMerchant;
 			productName = XHXMerchant;
@@ -1671,6 +1912,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = CHENNIAN;
 				TargetAttributes = {
+					8EB98E3420A6F34000E901C0 = {
+						CreatedOnToolsVersion = 9.3;
+					};
 					8EC76CFB2076092A00F78749 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 0930;
@@ -1709,11 +1953,19 @@
 				8EC76CFB2076092A00F78749 /* XHXMerchant */,
 				8EC76D0F2076092C00F78749 /* XHXMerchantTests */,
 				8EC76D1A2076092C00F78749 /* XHXMerchantUITests */,
+				8EB98E3420A6F34000E901C0 /* XMerchantExtention */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8EB98E3320A6F34000E901C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EC76CFA2076092A00F78749 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1947,6 +2199,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8EB98E3120A6F34000E901C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EB98E3820A6F34000E901C0 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8EC76CF82076092A00F78749 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1955,14 +2215,20 @@
 				8EC76D7120760AA300F78749 /* Date+Extension.swift in Sources */,
 				8ED20809207F4192006F441A /* XRecmdUpdateController.swift in Sources */,
 				8EA0E05E207C5E130018232E /* PNValue.swift in Sources */,
+				8EB98E1320A5B77100E901C0 /* XGoodBannerCell.swift in Sources */,
 				8ED207F1207E0DCB006F441A /* XOperRoleController.swift in Sources */,
 				8E0AC3E8207FA8360050BE7C /* XMerLicenseController.swift in Sources */,
+				8E3C00C520A2D21500F7DB75 /* XAddGoodMainImgCell.swift in Sources */,
+				8EB98E1520A5C6CC00E901C0 /* XGoodNameCell.swift in Sources */,
+				8E3C00D920A445F400F7DB75 /* XGoodSearchController.swift in Sources */,
 				8ED207FC207EFE60006F441A /* XUploadFrontBankCell.swift in Sources */,
+				8E1A518620A1DAA200E5A54D /* XAddMerOpenController.swift in Sources */,
 				8E0AC3F9207FC54B0050BE7C /* XOpenAccountController.swift in Sources */,
 				8E4EFCED208264C300798F99 /* UserModel.swift in Sources */,
 				8EF30806208F0D1800752FED /* XStaffCenterController.swift in Sources */,
 				8EF0C2FD2085B4980002340D /* TotalModel.swift in Sources */,
 				8EC76D7920760AA300F78749 /* SNNetModel.swift in Sources */,
+				8E3C00C920A2D90C00F7DB75 /* XAddGoodDesCell.swift in Sources */,
 				8E73858D207665B0003349B8 /* XCenterListCell.swift in Sources */,
 				8EC76D9420760AA300F78749 /* SNRXSectionModel.swift in Sources */,
 				8EA0E05B207C5DFD0018232E /* PNPieChartDataItem.swift in Sources */,
@@ -1975,15 +2241,19 @@
 				8E7357542088927400DB53CB /* XNoticeListController.swift in Sources */,
 				8E73575C2088E90900DB53CB /* XMerLableController.swift in Sources */,
 				8E73575E2088EC1600DB53CB /* XMerCateController.swift in Sources */,
+				8EB98E1D20A6784B00E901C0 /* CashListModel.swift in Sources */,
 				8EC76D8020760AA300F78749 /* SNMoyaResult.swift in Sources */,
 				8E7357452088757F00DB53CB /* XAddMerController.swift in Sources */,
 				8E4EFD062083A73100798F99 /* FlowTeamModel.swift in Sources */,
 				8EC76D9F20760AA300F78749 /* SNContentGet.swift in Sources */,
 				8E7EDA422076804D00483ADC /* XForgetPwdController.swift in Sources */,
+				8E3C00C320A2CFAC00F7DB75 /* XGoodListController.swift in Sources */,
 				8EC76D7520760AA300F78749 /* SnapKit_Extension.swift in Sources */,
 				8ED284D22081CE56008ED5AE /* AddressPiker.swift in Sources */,
+				8E3C00D120A2FCB200F7DB75 /* XGoodListCell.swift in Sources */,
 				8EC76DA020760AA300F78749 /* SNBaseNaviController.swift in Sources */,
 				8EC4D7DB20956A76007488D0 /* XInputCouponController.swift in Sources */,
+				8E3C00DE20A4994700F7DB75 /* XGoodCateCell.swift in Sources */,
 				8EC76D9320760AA300F78749 /* SNBaseViewModel.swift in Sources */,
 				8ED20807207F4165006F441A /* XRecmdMerController.swift in Sources */,
 				8EA0E074207C82B80018232E /* PNBarChart.swift in Sources */,
@@ -1997,7 +2267,9 @@
 				8E0AC3F4207FB9760050BE7C /* XMerLicenseImgCell.swift in Sources */,
 				8E7EDA4E207740BA00483ADC /* XBasicInfoFieldCell.swift in Sources */,
 				8E0B68172091562600C698FF /* XPushSwitchCell.swift in Sources */,
+				8E3C00E320A4A51500F7DB75 /* XGoodCateSearchListController.swift in Sources */,
 				8EAC3A42208C38D1005C8489 /* XReceiveCodeController.swift in Sources */,
+				8EB98E1B20A60F7400E901C0 /* XCashRecordCell.swift in Sources */,
 				8EAC3A36208B3467005C8489 /* XAddMerLinceseInfoController.swift in Sources */,
 				8ED207E9207DD390006F441A /* XEarningDayDetailTCell.swift in Sources */,
 				8E543358208C905600364246 /* XTotalEarningMidHeaderCell.swift in Sources */,
@@ -2007,6 +2279,7 @@
 				8EF0C2F52084BEB10002340D /* ShopHomeModel.swift in Sources */,
 				8E7EDA4420773BF100483ADC /* XMerBasicInfoController.swift in Sources */,
 				8EF216982092AE84007A83E6 /* RecordListModel.swift in Sources */,
+				8ED4CDDC20A563F600CF3A31 /* GoodListModel.swift in Sources */,
 				8ED2080B207F4657006F441A /* XRecmdMerCell.swift in Sources */,
 				8EC76D8620760AA300F78749 /* RxMoyaAvailability.swift in Sources */,
 				8EC76D8C20760AA300F78749 /* UIButton_Extension.swift in Sources */,
@@ -2014,6 +2287,7 @@
 				8E7F1F7220846258007C9D1A /* XMerLogoImgCell.swift in Sources */,
 				8EA0E069207C5F890018232E /* XPropertyController.swift in Sources */,
 				8E110E3B20812F9B002176F9 /* XOperatorEndCell.swift in Sources */,
+				8EB98E0C20A57B6400E901C0 /* XGoodCateEditController.swift in Sources */,
 				8EC76D7D20760AA300F78749 /* VaporTestModel.swift in Sources */,
 				8ED2080D207F466D006F441A /* XRecmdUpdateCell.swift in Sources */,
 				8E54335E208DA18900364246 /* RevenueModel.swift in Sources */,
@@ -2031,10 +2305,12 @@
 				8E4EFD0C2083C52F00798F99 /* MerHomeTopCell.swift in Sources */,
 				8ED207EB207DDB2D006F441A /* XbarChartView.swift in Sources */,
 				8EF3084E2090C8B700752FED /* LBAddSeckillDescriptionCell.swift in Sources */,
+				8E3C00E520A4A55C00F7DB75 /* XGoodCateSearchListCell.swift in Sources */,
 				8E4EFCEF2082FFA100798F99 /* BankCardModel.swift in Sources */,
 				8EC76D9620760AA300F78749 /* SNBaseViewController.swift in Sources */,
 				8EC76D9120760AA300F78749 /* UIView_Extension.swift in Sources */,
 				8ED207FF207F0B71006F441A /* XMyBankCardController.swift in Sources */,
+				8EB98E0E20A57FF800E901C0 /* GoodCateSearchModel.swift in Sources */,
 				8EA0E07D207CA1140018232E /* XEarningDeatilCell.swift in Sources */,
 				8E73858920766577003349B8 /* XCenterController.swift in Sources */,
 				8E7F1F74208463C0007C9D1A /* XMerDetailImgsCell.swift in Sources */,
@@ -2044,11 +2320,14 @@
 				8E4EFD0E2083C54F00798F99 /* XMerHomeController.swift in Sources */,
 				8ED284D82081E2D7008ED5AE /* XKeyChain.swift in Sources */,
 				8EF308512090C8B700752FED /* LBAddSeckillDetailImgCell.swift in Sources */,
+				8E3C00E720A4A60100F7DB75 /* XCateSearchResultController.swift in Sources */,
 				8EF0C30A2085F4730002340D /* XMerShortNameController.swift in Sources */,
 				8E4EFCF62083575800798F99 /* XUpdateServiceCell.swift in Sources */,
 				8E54335C208D935700364246 /* XHistoryDetailController.swift in Sources */,
 				8EC76D7A20760AA300F78749 /* APIManager.swift in Sources */,
 				8E4EFCF32083232400798F99 /* ErCodeTool.swift in Sources */,
+				8E3C00CB20A2DA1300F7DB75 /* XAddGoodSubmitCell.swift in Sources */,
+				8E3C00CD20A2FB1400F7DB75 /* XGoodOnSaleController.swift in Sources */,
 				8EF0C3082085D91D0002340D /* XServiceTopCell.swift in Sources */,
 				8EC76D9B20760AA300F78749 /* SNBaseTableView.swift in Sources */,
 				8EF3084F2090C8B700752FED /* SLTextView.swift in Sources */,
@@ -2058,12 +2337,14 @@
 				8EAC3A3E208BA93D005C8489 /* UIViewController+Extension.swift in Sources */,
 				8EC76D8E20760AA300F78749 /* UINavigation_Extension.swift in Sources */,
 				8E59008920890560000F9720 /* XMerAddressController.swift in Sources */,
+				8E3C00D420A427E400F7DB75 /* XGoodEditController.swift in Sources */,
 				8EC76D8320760AA300F78749 /* Observable+Response.swift in Sources */,
 				8EF0C2FB2085B1090002340D /* TotalPropertyModel.swift in Sources */,
 				8E73574A208882FC00DB53CB /* XMerStaffListCell.swift in Sources */,
 				8EC76D8720760AA300F78749 /* Common.swift in Sources */,
 				8E1758D320823AD300D58DCE /* BankListModel.swift in Sources */,
 				8E4EFCFC2083988600798F99 /* XFlowTeamController.swift in Sources */,
+				8E34623D20A039C400B942EA /* XOperationFlowController.swift in Sources */,
 				8E0B681A209170AC00C698FF /* XMenberListController.swift in Sources */,
 				8E7F1F6B20845325007C9D1A /* XMerReciptCodeController.swift in Sources */,
 				8EC76D9E20760AA300F78749 /* SNTableCellContent.swift in Sources */,
@@ -2081,11 +2362,13 @@
 				8EAC3A3A208B46E2005C8489 /* XRecmdUserModel.swift in Sources */,
 				8E7EDA5020774C5F00483ADC /* XButtonCell.swift in Sources */,
 				8E0B68152091560A00C698FF /* XPushController.swift in Sources */,
+				8E34623B20A0399A00B942EA /* XServiceFlowController.swift in Sources */,
 				8EAC3A2D2089BD6A005C8489 /* XLocationManager.swift in Sources */,
 				8EA0E085207CEF3A0018232E /* XEarningDayEndCell.swift in Sources */,
 				8ED284D02081BF61008ED5AE /* XOperatorBtnCell.swift in Sources */,
 				8EF30808208F18DB00752FED /* XLincensePiker.swift in Sources */,
 				8E543366208DB6E200364246 /* XOperRevenueController.swift in Sources */,
+				8E3C00DC20A4992800F7DB75 /* XGoodCateListController.swift in Sources */,
 				8EC4D7DD20958B5E007488D0 /* XCouponController.swift in Sources */,
 				8EC76D8220760AA300F78749 /* DDZOssManager.swift in Sources */,
 				8E543360208DB62600364246 /* XFlowRevenueController.swift in Sources */,
@@ -2093,34 +2376,43 @@
 				8E73858B20766591003349B8 /* XCenterHeadCell.swift in Sources */,
 				8EC76D9220760AA300F78749 /* SNStoreSectoiniModel.swift in Sources */,
 				8EA0E07B207C9FAA0018232E /* XEarningDetailController.swift in Sources */,
+				8E3C00E020A49B2B00F7DB75 /* XAddCateController.swift in Sources */,
 				8EA0E06B207C6E690018232E /* XTotalEarningTopCell.swift in Sources */,
 				8E1EA9A1209B09D10034A7A5 /* XCashController.swift in Sources */,
 				8EF308502090C8B700752FED /* LBAddSeckillFieldCell.swift in Sources */,
+				8ED4CDDE20A5687600CF3A31 /* GoodCateModel.swift in Sources */,
 				8E7F1F7820846C93007C9D1A /* XMerDataView.swift in Sources */,
+				8E34623F20A04AF300B942EA /* XMerDescriptionCell.swift in Sources */,
 				8E110E3920812B1C002176F9 /* XOperatorTopCell.swift in Sources */,
 				8E7357602088ED1100DB53CB /* XMerCatePiker.swift in Sources */,
 				8E4EFD102083CCC100798F99 /* MerHomeView.swift in Sources */,
 				8EAC3A34208B31E9005C8489 /* XAddMerBaseInfoController.swift in Sources */,
+				8E3C00BE20A2CCFF00F7DB75 /* XAddGoodsController.swift in Sources */,
 				8E54336A208DBA0E00364246 /* XEarningDayDetailTwoCell.swift in Sources */,
 				8E0B68222091873F00C698FF /* XMerPushSwitchController.swift in Sources */,
 				8E7F1F6E20845D7F007C9D1A /* XMerDataController.swift in Sources */,
 				8EC76D9520760AA300F78749 /* DDZBasicTableVC.swift in Sources */,
 				8E0AC404207FD0050050BE7C /* XPrivateAccountFieldCell.swift in Sources */,
+				8E3C00C020A2CE8D00F7DB75 /* XAddGoodFieldCell.swift in Sources */,
 				8E4EFCF8208359B100798F99 /* XServiceRoleController.swift in Sources */,
 				8E7F1F7620846C57007C9D1A /* XMerDataEndCell.swift in Sources */,
 				8EC76DA920760AE900F78749 /* XHomeController.swift in Sources */,
 				8E0B68112091278600C698FF /* XSeckillListCell.swift in Sources */,
 				8E7357572088BFD000DB53CB /* XMerListModel.swift in Sources */,
+				8EB98E1720A5C6DF00E901C0 /* XGoodDesCell.swift in Sources */,
 				8EAC3A3C208B56CA005C8489 /* SNMainTabBarStaffController.swift in Sources */,
 				8E543364208DB6A000364246 /* XMerRevenueController.swift in Sources */,
 				8EA0E05A207C5DFD0018232E /* PNPieChart.swift in Sources */,
 				8E0AC3FD207FC8DF0050BE7C /* XOpenAccountImgCell.swift in Sources */,
 				8EC76D9020760AA300F78749 /* UIImage_Extension.swift in Sources */,
 				8E4EFD0220839BD000798F99 /* XFlowMerCell.swift in Sources */,
+				8EB98E2220A689D300E901C0 /* XPayPasswordStepOneController.swift in Sources */,
 				8E73574C208886BB00DB53CB /* XMerAddStaffController.swift in Sources */,
 				8ED284D62081DBB5008ED5AE /* IndustyPiker.swift in Sources */,
 				8E73575A2088E20E00DB53CB /* XMerServicePhoneController.swift in Sources */,
 				8E0B681E209170FA00C698FF /* XMenberListModel.swift in Sources */,
+				8EB98E2420A689F900E901C0 /* XPayPasswordStepTwoController.swift in Sources */,
+				8E3C00CF20A2FB4D00F7DB75 /* XGoodSoldOutController.swift in Sources */,
 				8ED207EE207E055E006F441A /* XUpdateOperCell.swift in Sources */,
 				8E110E2F2080E19A002176F9 /* XLoginOutCell.swift in Sources */,
 				8EC76D8120760AA300F78749 /* DDZUploadBtn.swift in Sources */,
@@ -2140,12 +2432,15 @@
 				8E0AC3FB207FC5840050BE7C /* XOpenAccountFieldCell.swift in Sources */,
 				8ED284DA208209E4008ED5AE /* BannerModel.swift in Sources */,
 				8EC76D8920760AA300F78749 /* CGRect_Extension.swift in Sources */,
+				8E3C00D620A4284A00F7DB75 /* XGoodEditCell.swift in Sources */,
 				8EAC3A38208B46CD005C8489 /* XRecmdMerModel.swift in Sources */,
 				8EC76D7320760AA300F78749 /* Extension_Then.swift in Sources */,
 				8E4EFCFA208388FF00798F99 /* bankCardPiker.swift in Sources */,
 				8E543362208DB65D00364246 /* XServiceRevenueController.swift in Sources */,
 				8EF308522090C8B700752FED /* LBSubmitButtonCell.swift in Sources */,
+				8E34624120A16F9000B942EA /* XMyBankCell.swift in Sources */,
 				8EA0E063207C5E4C0018232E /* PNChartLabel.swift in Sources */,
+				8E3C00C720A2D72A00F7DB75 /* XAddGoodDetailCell.swift in Sources */,
 				8EA0E079207C98DB0018232E /* XTotalEarningsListHeaderCell.swift in Sources */,
 				8E4EFD0420839F0A00798F99 /* FlowMerModel.swift in Sources */,
 				8EC76D9920760AA300F78749 /* SNTimerButton.swift in Sources */,
@@ -2153,9 +2448,12 @@
 				8EC76D8820760AA300F78749 /* Color_Extension.swift in Sources */,
 				8E0B680F2091274E00C698FF /* XAddSeckillListController.swift in Sources */,
 				8E0B681C209170DA00C698FF /* XMenberListCell.swift in Sources */,
+				8EB98E1120A5B4F100E901C0 /* XGoodPreviewController.swift in Sources */,
 				8EC76DAE20762BC700F78749 /* XSpaceCell.swift in Sources */,
+				8EB98E1920A5CFB700E901C0 /* XGoodShopCell.swift in Sources */,
 				8E4EFD122083D91300798F99 /* MerHomeEndCell.swift in Sources */,
 				8E4EFCF42083232400798F99 /* ZJPayErCodeContetnView.swift in Sources */,
+				8EB98E1F20A67B8700E901C0 /* CashInfoModel.swift in Sources */,
 				8EC76D9D20760AA300F78749 /* SNModelsContent.swift in Sources */,
 				8EC76D9A20760AA300F78749 /* SNBaseView.swift in Sources */,
 				8EA0E075207C82B80018232E /* PNBar.swift in Sources */,
@@ -2190,6 +2488,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8EB98E3B20A6F34000E901C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8EB98E3420A6F34000E901C0 /* XMerchantExtention */;
+			targetProxy = 8EB98E3A20A6F34000E901C0 /* PBXContainerItemProxy */;
+		};
 		8EC76D122076092C00F78749 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8EC76CFB2076092A00F78749 /* XHXMerchant */;
@@ -2222,6 +2525,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8EB98E3E20A6F34000E901C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GS5MNVJVED;
+				INFOPLIST_FILE = XMerchantExtention/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.merchant.XMerchantExtention;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8EB98E3F20A6F34000E901C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GS5MNVJVED;
+				INFOPLIST_FILE = XMerchantExtention/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.merchant.XMerchantExtention;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8EC76D222076092C00F78749 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2340,6 +2681,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 209C9F7DF401D23DFF095DA0 /* Pods-XHXMerchant.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -2347,10 +2689,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GS5MNVJVED;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/XHXMerchant/GtSdkLib",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				INFOPLIST_FILE = XHXMerchant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2376,6 +2715,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 23FE2184717D0D16A737B640 /* Pods-XHXMerchant.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -2383,10 +2723,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GS5MNVJVED;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/XHXMerchant/GtSdkLib",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				INFOPLIST_FILE = XHXMerchant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2500,6 +2837,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8EB98E3D20A6F34000E901C0 /* Build configuration list for PBXNativeTarget "XMerchantExtention" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EB98E3E20A6F34000E901C0 /* Debug */,
+				8EB98E3F20A6F34000E901C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8EC76CF72076092A00F78749 /* Build configuration list for PBXProject "XHXMerchant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

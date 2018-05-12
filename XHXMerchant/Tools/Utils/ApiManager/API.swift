@@ -31,12 +31,13 @@ enum API {
     case alterAccountPwd(mobile:String,code:String,password:String)
     case myBankCard
     case addBankcard(paremeter:[String:Any])
+    case updateBank(paremeter:[String:Any])
     case recmdOperator(paremeter:[String:Any])
     case recommendService(paremeter:[String:Any])
     case upgrade0perator(verifycode:String)
     case upgradeServer(verifycode:String,activatecode:String)
     case flowMer
-    case flowTeam
+    case flowTeam(role:String)
     case monthTotalRevenue
     case shopHome(shopId:String)
     case uploadMerData(paremeter:[String:Any])
@@ -70,7 +71,30 @@ enum API {
     case couponCancel(code:String)
     case getUserMiaoMiaoDetal(code:String)
     case updateHeadPic(headImg:String)
-
+    case setPushSwitch(paremeter:[String:Any]) //推送开关
+    
+    case addGood(paremeter:[String:Any])   //添加商品
+    case editGood(paremeter:[String:Any])//编辑商品
+    case getGoodsDetal(paremeter:[String:Any])//获取商品详情
+    case goodList(paremeter:[String:Any])//商品列表
+    case addCategory(paremeter:[String:Any])//添加商品分类
+    case deleteCategory(paremeter:[String:Any])//删除商品分类
+    case editCategory(paremeter:[String:Any])//编辑商品分类
+    case getCategory(paremeter:[String:Any])//获取商品分类列表
+    case delGoodsBat(paremeter:[String:Any])//批量删除商品
+    case putOffGoodsBat(paremeter:[String:Any])//批量下架商品
+    case putOnGoodsBat(paremeter:[String:Any])//批量商家商品
+    case putOffOrONGoodsBat(paremeter:[String:Any])
+    case searchGoodGoodsList(paremeter:[String:Any])
+    case getCategoryGoodNum(paremeter:[String:Any])
+    case goodCategoryGoodsList(paremeter:[String:Any])
+    
+    case getExchangeInfo //提现页面信息
+    case getExchangeList //提现记录
+    case exchange(paremeter:[String:Any])         //提现
+    case alterPwd(mobile:String,code:String,password:String)        //设置支付密码
+    case verifySecret(paremeter:[String:Any])     //验证支付密码
+ 
 }
 
 
@@ -128,6 +152,8 @@ extension API: JSONMappableTargetType {
             return "api/getBank"
         case .addBankcard:
             return "api/addBankcard"
+        case .updateBank:
+            return "api/updateBank"
         case .recmdOperator:
             return "api/recommendOperator"
         case .recommendService:
@@ -206,6 +232,51 @@ extension API: JSONMappableTargetType {
             return "api/getUserMiaoMiaoDetal"
         case .updateHeadPic:
             return "api/updateHeadPic"
+        case .setPushSwitch:
+            return "commom/setPushSwitch"
+            
+        case .addGood:
+            return "goods/addGood"
+        case .editGood:
+            return "goods/editGood"
+        case .getGoodsDetal:
+            return "goods/getGoodsDetal"
+        case .goodList:
+            return "goods/goodList"
+        case .addCategory:
+            return "goods/addCategory"
+        case .deleteCategory:
+            return "goods/deleteCategory"
+        case .editCategory:
+            return "goods/editCategory"
+        case .getCategory:
+            return "goods/getCategory"
+        case .delGoodsBat:
+            return "goods/delGoodsBat"
+        case .putOffGoodsBat:
+            return "goods/putOffGoodsBat"
+        case .putOnGoodsBat:
+            return "goods/putOnGoodsBat"
+        case .putOffOrONGoodsBat:
+            return "goods/putOffOrONGoodsBat"
+        case .searchGoodGoodsList:
+            return "goods/searchGoodGoodsList"
+        case .getCategoryGoodNum:
+            return "goods/getCategoryGoodNum"
+        case .goodCategoryGoodsList:
+            return "goods/goodCategoryGoodsList"
+            
+        case .getExchangeInfo:
+            return "api/getExchangeInfo"
+        case .getExchangeList:
+            return "api/getExchangeList"
+        case .exchange:
+            return "api/exchange"
+        case .alterPwd:
+            return "api/alterPwd"
+        case .verifySecret:
+            return "api/verifySecret"
+
         }
     }
     
@@ -250,6 +321,8 @@ extension API: JSONMappableTargetType {
             let para = ["mobile": mobile,"code":code,"password":password]
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
         case .addBankcard(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .updateBank(let paremeter):
             return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
         case .recmdOperator(let paremeter):
             return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
@@ -328,6 +401,51 @@ extension API: JSONMappableTargetType {
         case .getUserMiaoMiaoDetal(let code):
             let para = ["verfifyCode":code]
             return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .setPushSwitch(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .flowTeam(let role):
+            let para = ["role":role]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+            
+        case .addGood(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .editGood(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .getGoodsDetal(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .goodList(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .addCategory(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .deleteCategory(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .editCategory(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .getCategory(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .delGoodsBat(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .putOffGoodsBat(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .putOnGoodsBat(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .putOffOrONGoodsBat(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .searchGoodGoodsList(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .getCategoryGoodNum(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .goodCategoryGoodsList(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+            
+     
+        case .exchange(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+        case .alterPwd(let mobile,let code,let password):
+            let para = ["mobile": mobile,"code":code,"password":password]
+            return .requestParameters(parameters:para,encoding: URLEncoding.default)
+        case .verifySecret(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
         default:
             return Task.requestPlain
         }

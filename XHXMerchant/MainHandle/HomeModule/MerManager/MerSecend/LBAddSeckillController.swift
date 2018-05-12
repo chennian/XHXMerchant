@@ -26,6 +26,7 @@ class LBAddSeckillController: SNBaseViewController {
     var shopid :String = ""  
     fileprivate var detailImgArray:[String] = []
     var model : XSeckillListModel?
+    var temp:String = ""
 
     fileprivate var detailImg1:String = ""
     fileprivate var detailImg2:String = ""
@@ -188,7 +189,7 @@ class LBAddSeckillController: SNBaseViewController {
     
     //编辑
     
-    @objc fileprivate func EditData(){
+    @objc fileprivate func editData(){
         self.name = fieldCell.titleTextField.text!
         self.price = fieldCell.priceTextField.text!
         self.cardNum = fieldCell.numTextField.text!
@@ -223,14 +224,29 @@ class LBAddSeckillController: SNBaseViewController {
             return
         }
         
-        guard !mainImg.isEmpty else {
-            showMessage(title: "提示", message: "请上传展示图片")
-            return
+        var tempMainImg:String = ""
+        if mainImg.isEmpty{
+            tempMainImg = (self.model?.mainImg)!
+        }else{
+            tempMainImg = mainImg
         }
-        guard detailImgArray.count == 3 else {
-            showMessage(title: "提示", message: "请上传详情展示图")
-            return
+        
+        var tempDetailImg:String = ""
+        if   detailImgArray.isEmpty{
+            tempDetailImg = (self.model?.detailImg)!
+        }else{
+            tempDetailImg = detailImg
         }
+        
+    
+//        guard !mainImg.isEmpty else {
+//            showMessage(title: "提示", message: "请上传展示图片")
+//            return
+//        }
+//        guard detailImgArray.count == 3 else {
+//            showMessage(title: "提示", message: "请上传详情展示图")
+//            return
+//        }
         guard !desc.isEmpty else {
             showMessage(title: "提示", message: "请输入卡卷描述")
             return
@@ -244,12 +260,12 @@ class LBAddSeckillController: SNBaseViewController {
                                         "endTime":endTime,
                                         "terminaltime":termTime,
                                         "cardNum":cardNum,
-                                        "mainImg":mainImg,
-                                        "detailImg":detailImg,
+                                        "mainImg":tempMainImg,
+                                        "detailImg":tempDetailImg,
                                         "description":desc,
-                                        "shopId":shopid]
+                                        "shopId":(self.model?.shopId)!]
         //上传数据
-        
+        CNLog(paramert)
         SZHUD("正在上传中...", type: .loading, callBack: nil)
         
         SNRequestBool(requestType: API.editShopKill(paremeter:paramert)).subscribe(onNext: {[unowned self] (result) in
@@ -423,11 +439,13 @@ extension LBAddSeckillController:UITableViewDelegate,UITableViewDataSource{
             let cell : LBSubmitButtonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.contentView.backgroundColor = color_bg_gray_f5
             cell.submitBoutton.setTitle("确定", for: UIControlState.normal)
-//            if self.model?.add_time != ""{
-//                self.EditData()
-//            }else{
-            cell.submitBoutton.addTarget(self, action: #selector(uploadData), for: .touchUpInside)
-//            }
+            if self.temp == "1"{
+                cell.submitBoutton.addTarget(self, action: #selector(editData), for: .touchUpInside)
+
+            }else{
+                cell.submitBoutton.addTarget(self, action: #selector(uploadData), for: .touchUpInside)
+
+            }
             
             return cell
         }

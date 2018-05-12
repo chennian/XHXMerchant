@@ -97,11 +97,12 @@ extension XAddSeckillListController:UITableViewDelegate,UITableViewDataSource{
         cell.clickEventDelete = {[unowned self] (para1,para2) in
             self.deleteThis(para1,para2)
         }
-//        cell.clickEventPreview = {[unowned self] (para) in
-//            let vc = LBAddSeckillController()
-//            vc.model = self.model[indexPath.row]
-//            self.navigationController?.pushViewController(vc, animated:true)
-//        }
+        cell.clickEventPreview = {[unowned self] (para) in
+            let vc = LBAddSeckillController()
+            vc.model = self.model[indexPath.row]
+            vc.temp = "1"
+            self.navigationController?.pushViewController(vc, animated:true)
+        }
         return cell
         
         

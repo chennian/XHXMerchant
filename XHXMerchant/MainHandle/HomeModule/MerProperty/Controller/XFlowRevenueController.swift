@@ -75,7 +75,7 @@ class XFlowRevenueController:SNBaseViewController {
     
     fileprivate func setupUI() {
         
-        self.title = "流水收益"
+        self.title = "跨店分红"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
         startDateField.delegate = self
