@@ -10,7 +10,7 @@ import UserNotifications
 import AVFoundation
 
 class NotificationService: UNNotificationServiceExtension {
-
+    fileprivate let avSpeech = AVSpeechSynthesizer()
     var contentHandler: ((UNNotificationContent) -> Void)?
     var bestAttemptContent: UNMutableNotificationContent?
 
@@ -20,21 +20,26 @@ class NotificationService: UNNotificationServiceExtension {
         
         if let bestAttemptContent = bestAttemptContent {
             // Modify the notification content here...
-            bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
-            syntheticVoice("123")
+            let userInfo = bestAttemptContent.userInfo
+            let aps = userInfo["aps"] as! NSDictionary
+            let alert = aps["alert"] as! String
+            startTranslattion(alert)
             contentHandler(bestAttemptContent)
         }
     }
-    func syntheticVoice(_ string: String?) {
-        //  语音合成
-        let synthesizer = AVSpeechSynthesizer()
-        let speechUtterance = AVSpeechUtterance(string: string ?? "")
-        //设置语言类别（不能被识别，返回值为nil）
-        speechUtterance.voice = AVSpeechSynthesisVoice(language: "zh-CN")
-        //设置语速快慢
-        speechUtterance.rate = 0.55
-        //语音合成器会生成音频
-        synthesizer.speak(speechUtterance)
+    fileprivate func startTranslattion(_ string:String){
+        //1. 创建需要合成的声音类型
+        let voice = AVSpeechSynthesisVoice(language: "zh-CN")
+        
+        //2. 创建合成的语音类
+        let utterance = AVSpeechUtterance(string:string)
+        utterance.rate = AVSpeechUtteranceDefaultSpeechRate
+        utterance.voice = voice
+        utterance.volume = 1
+        utterance.postUtteranceDelay = 0.1
+        utterance.pitchMultiplier = 1
+        //开始播放
+        avSpeech.speak(utterance)
     }
     override func serviceExtensionTimeWillExpire() {
         // Called just before the extension will be terminated by the system.

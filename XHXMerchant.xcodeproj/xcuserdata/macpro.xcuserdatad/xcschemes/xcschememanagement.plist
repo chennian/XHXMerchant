@@ -6,13 +6,40 @@
 	<dict>
 		<key>XHXMerchant.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>30</integer>
 		</dict>
 		<key>XMerchantExtention.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>31</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>8EB98E3420A6F34000E901C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8EC76CFB2076092A00F78749</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8EC76D0F2076092C00F78749</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8EC76D1A2076092C00F78749</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -134,10 +134,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//
-//        let session = AVAudioSession.sharedInstance()
-//        try? session.setActive(true)
-//        try? session.setCategory(AVAudioSessionCategoryPlayback)
         
         JPUSHService.handleRemoteNotification(userInfo)
         let aps = userInfo["aps"] as! NSDictionary
