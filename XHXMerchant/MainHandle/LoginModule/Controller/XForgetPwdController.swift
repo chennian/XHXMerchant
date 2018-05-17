@@ -9,6 +9,7 @@
 import UIKit
 
 class XForgetPwdController: SNBaseViewController {
+    var temp :String = ""
 
     let viewOne = UIView().then{
         $0.backgroundColor = Color(0xffffff)
@@ -105,6 +106,12 @@ class XForgetPwdController: SNBaseViewController {
         
         self.view.backgroundColor = Color(0xf5f5f5)
         self.title = "找回密码"
+        
+        if temp == "1"{
+            phoneField.text = XKeyChain.get(PHONE)
+            phoneField.isEnabled = false
+        }
+        
         
         self.view.addSubview(viewOne)
         viewOne.addSubview(phoneLable)

@@ -28,6 +28,8 @@ class XPayPasswordStepOneController: SNBaseViewController {
         $0.textColor = Color(0x313131)
         $0.font = Font(30)
         $0.borderStyle = .none
+        $0.isEnabled = false
+        $0.text = XKeyChain.get(PHONE)
     }
     let codeField = UITextField().then{
         $0.placeholder = "请输入验证码"
@@ -55,6 +57,7 @@ class XPayPasswordStepOneController: SNBaseViewController {
             UIAlertView(title: "温馨提示", message:"请输入手机号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
+        
         if self.codeField.text == "" {
             UIAlertView(title: "温馨提示", message:"请输入验证码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return

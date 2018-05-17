@@ -296,10 +296,12 @@ extension XCenterController:UITableViewDelegate,UITableViewDataSource{
             navigationController?.pushViewController(XMyBankCardController(), animated: true)
         }
         if indexPath.row == 3 {
-            navigationController?.pushViewController(XForgetPwdController(), animated: true)
+            let vc = XForgetPwdController()
+            vc.temp = "1"
+            navigationController?.pushViewController(vc, animated: true)
         }
         if indexPath.row == 4 {
-            navigationController?.pushViewController(XForgetPwdController(), animated: true)
+            navigationController?.pushViewController(XPayPasswordStepOneController(), animated: true)
         }
         if indexPath.row == 5 {
 //            SZHUD("正在开发中...", type: .info, callBack: nil)

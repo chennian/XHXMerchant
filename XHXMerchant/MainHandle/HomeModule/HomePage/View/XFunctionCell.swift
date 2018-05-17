@@ -59,32 +59,32 @@ class XFunctionCell: SNBaseTableViewCell {
     
     let flowTeamLable = UILabel().then{
         $0.text = "团队流量"
-        $0.textColor = Color(0x313131)
+        $0.textColor = Color(0x6b6e72)
         $0.font = Font(30)
     }
     let flowMerLable = UILabel().then{
         $0.text = "商家流量"
-        $0.textColor = Color(0x313131)
+        $0.textColor = Color(0x6b6e72)
         $0.font = Font(30)
     }
     let recommendLable = UILabel().then{
         $0.text = "推荐"
-        $0.textColor = Color(0x313131)
+        $0.textColor = Color(0x6b6e72)
         $0.font = Font(30)
     }
     let uploadRoleLable = UILabel().then{
         $0.text = "升级服务商"
-        $0.textColor = Color(0x313131)
+        $0.textColor = Color(0x6b6e72)
         $0.font = Font(30)
     }
     let operatorRoleLable = UILabel().then{
         $0.text = "升级运营商"
-        $0.textColor = Color(0x313131)
+        $0.textColor = Color(0x6b6e72)
         $0.font = Font(30)
     }
     let cashMoney = UILabel().then{
         $0.text = "提现"
-        $0.textColor = Color(0x313131)
+        $0.textColor = Color(0x6b6e72)
         $0.font = Font(30)
 //        $0.isHidden = true
     }
@@ -187,27 +187,27 @@ class XFunctionCell: SNBaseTableViewCell {
         
         flowTeamLable.snp.makeConstraints { (make) in
             make.centerX.equalTo(flowTeam.snp.centerX)
-            make.top.equalTo(flowTeam.snp.bottom).snOffset(5)
+            make.top.equalTo(flowTeam.snp.bottom).snOffset(-10)
         }
         flowMerLable.snp.makeConstraints { (make) in
             make.centerX.equalTo(flowMer.snp.centerX)
-            make.top.equalTo(flowMer.snp.bottom).snOffset(5)
+            make.top.equalTo(flowMer.snp.bottom).snOffset(-10)
         }
         recommendLable.snp.makeConstraints { (make) in
             make.centerX.equalTo(recommend.snp.centerX)
-            make.top.equalTo(recommend.snp.bottom).snOffset(5)
+            make.top.equalTo(recommend.snp.bottom).snOffset(-10)
         }
         uploadRoleLable.snp.makeConstraints { (make) in
             make.centerX.equalTo(uploadRole.snp.centerX)
-            make.top.equalTo(uploadRole.snp.bottom).snOffset(5)
+            make.top.equalTo(uploadRole.snp.bottom).snOffset(-10)
         }
         operatorRoleLable.snp.makeConstraints { (make) in
             make.centerX.equalTo(operatorRole.snp.centerX)
-            make.top.equalTo(operatorRole.snp.bottom).snOffset(5)
+            make.top.equalTo(operatorRole.snp.bottom).snOffset(-10)
         }
         cashMoney.snp.makeConstraints { (make) in
             make.centerX.equalTo(cashMoneyRole.snp.centerX)
-            make.top.equalTo(cashMoneyRole.snp.bottom).snOffset(5)
+            make.top.equalTo(cashMoneyRole.snp.bottom).snOffset(-10)
         }
         profitLable.snp.makeConstraints { (make) in
             make.right.equalTo(profit.snp.right).snOffset(-60)

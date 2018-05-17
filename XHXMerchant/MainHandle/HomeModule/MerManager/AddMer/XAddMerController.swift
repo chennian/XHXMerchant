@@ -66,7 +66,8 @@ class XAddMerController: SNBaseViewController {
                                         "address":cell.addressField.text! + cell.detailAddressField.text!,
                                         "entname":cell.LicenseNameField.text!,
                                         "longitude":"\(String(describing: self.location?.longitude))",
-                                        "latitude":"\(String(describing: self.location?.latitude))"]
+                                        "latitude":"\(String(describing: self.location?.latitude))",
+                                        "city":self.City]
         CNLog(parameters)
         
         SNRequestBool(requestType: API.addBranchShop(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in

@@ -63,7 +63,7 @@ class XCashController: SNBaseViewController {
     let noticeTwo = UILabel().then{
         $0.font = Font(28)
         $0.textColor = Color(0xa2a2a2)
-        $0.text = "兑换金额必须是100的整数倍，每笔扣除5%的手续费"
+        $0.text = "兑换金额必须是100的整数倍，每笔扣除2元的手续费"
         $0.numberOfLines = 0
     }
     
@@ -260,12 +260,16 @@ class XCashController: SNBaseViewController {
                     self.deleteBack()
                 }
                 self.navigationController?.popViewController(animated: true)
-            case .fail(let res):
+            case .fail(let code,let res):
                 DispatchQueue.main.async {
                     self.deleteBack()
                 }
-                UIAlertController.showConfirmPay(message: "支付密码错误") { (_) in
-                    self.navigationController?.pushViewController(XPayPasswordStepOneController(), animated: true)
+                if code == 1011 {
+                    UIAlertController.showConfirmPay(message:res!) { (_) in
+                        self.navigationController?.pushViewController(XPayPasswordStepOneController(), animated: true)
+                    }
+                }else{
+                     UIAlertView(title: "温馨提示", message:res!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
                 }
             default:
                 UIAlertView(title: "温馨提示", message: "请求错误", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()

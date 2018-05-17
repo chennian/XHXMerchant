@@ -151,6 +151,10 @@ extension XUploadBankController:UITableViewDelegate,UITableViewDataSource{
             UIAlertView(title: "提示", message: "请输入持卡人", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
+        if  fieldCell.IDCardField.text! == ""{
+            UIAlertView(title: "提示", message: "请输入身份证号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
         if  fieldCell.bankNumField.text! == ""{
             UIAlertView(title: "提示", message: "请输入银行卡号", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return

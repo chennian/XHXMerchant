@@ -55,8 +55,12 @@ class XPayPasswordStepTwoController: SNBaseViewController {
             UIAlertView(title: "温馨提示", message:"请输入新密码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
+        if self.pwdField.text?.count != 6 {
+            UIAlertView(title: "温馨提示", message:"支付密码必须为6位数", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            return
+        }
         if  self.confirmField.text! == "" {
-            UIAlertView(title: "温馨提示", message:"请输入确认手机号码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            UIAlertView(title: "温馨提示", message:"请输入确认密码", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
             return
         }
         if self.pwdField.text != self.confirmField.text{
